@@ -1,0 +1,19 @@
+# --- Orquestração / MCP (usadas nas Etapas 2 e 3, já deixamos fixado) ---
+crewai>=0.140.0
+crewai-tools[mcp]>=0.50.0
+mcp>=1.9.0
+
+# --- Servidor MCP (Etapa 1) ---
+pydantic>=2.7.0
+yfinance>=0.2.60
+pandas-datareader>=0.10.0
+ddgs>=9.0.0          # NAO instalar duckduckgo-search, foi renomeado/deprecado
+tenacity>=8.3.0
+python-dotenv>=1.0.1
+
+# --- LLM providers (Etapa 2) ---
+openai>=1.30.0       # cliente da DeepSeek e do Groq usam interface OpenAI-compatible
+groq>=0.9.0
+
+# --- UI (Etapa 3) ---
+gradio>=4.40.0
