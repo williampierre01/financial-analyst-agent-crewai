@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import os
 import sys
+from typing import Callable, Optional
 
 from crewai import Agent, Crew, Process, Task
 from crewai_tools import MCPServerAdapter
@@ -37,7 +38,9 @@ def _mcp_server_params() -> StdioServerParameters:
     )
 
 
-def _build_crew(ticker: str, mcp_tools) -> Crew:
+def _build_crew(
+    ticker: str, mcp_tools, on_stage: Optional[Callable[[str], None]] = None
+) -> Crew:
     deepseek_key = os.environ["DEEPSEEK_API_KEY"]
     groq_key = os.environ["GROQ_API_KEY"]
     llm = get_llm(deepseek_api_key=deepseek_key, groq_api_key=groq_key)
@@ -108,6 +111,7 @@ def _build_crew(ticker: str, mcp_tools) -> Crew:
             "incluindo o status de fundamentals_available."
         ),
         agent=data_gatherer,
+        callback=(lambda output: on_stage("quant")) if on_stage else None,
     )
 
     quant_task = Task(
@@ -122,6 +126,7 @@ def _build_crew(ticker: str, mcp_tools) -> Crew:
         ),
         agent=quant_analyst,
         context=[gather_task],
+        callback=(lambda output: on_stage("cio")) if on_stage else None,
     )
 
     cio_task = Task(
@@ -146,16 +151,20 @@ def _build_crew(ticker: str, mcp_tools) -> Crew:
     )
 
 
-def run_analysis(ticker: str) -> str:
+def run_analysis(ticker: str, on_stage: Optional[Callable[[str], None]] = None) -> str:
     """Ponto de entrada principal: abre a conexao MCP, monta o crew e executa.
 
     A conexao MCP (subprocesso stdio) precisa ficar viva durante toda a
     execucao do crew -- por isso o kickoff() acontece dentro do `with`.
+
+    on_stage(stage_key), se fornecido, e chamado quando a etapa muda:
+    "quant" quando o Data Gatherer termina, "cio" quando o Quant Analyst
+    termina. Usado pela UI Gradio (Etapa 3) para mostrar progresso simples.
     """
     server_params = _mcp_server_params()
     with MCPServerAdapter(server_params) as mcp_tools:
         print(f"Tools MCP carregadas: {[t.name for t in mcp_tools]}")
-        crew = _build_crew(ticker, mcp_tools)
+        crew = _build_crew(ticker, mcp_tools, on_stage=on_stage)
         result = crew.kickoff()
     return str(result)
 

@@ -135,18 +135,50 @@ def _fetch_yfinance(ticker: str) -> yf.Ticker:
     return t
 
 
-def _df_to_nested_dict(df) -> dict[str, dict[str, float | None]]:
-    """Converte um DataFrame do yfinance (linhas=conta, colunas=periodo)
-    em dict serializavel: {periodo_iso: {conta: valor}}."""
+MAX_PERIODS = 2  # so os 2 periodos mais recentes -- o JSON com 5 anos e ~30
+                 # linhas por demonstrativo ficava grande demais e estourava
+                 # o orcamento de contexto do free tier do Groq apos a tool
+                 # ser chamada (historico da conversa cresce com o resultado)
+
+# linhas que realmente importam pro Quant Analyst calcular P/L, ROE, Margem
+# Liquida e DCF -- o restante e ruido que so consome tokens sem agregar.
+_ESSENTIAL_INCOME_STATEMENT = {
+    "Total Revenue", "Gross Profit", "Operating Income", "EBITDA", "EBIT",
+    "Net Income", "Total Expenses", "Diluted EPS", "Basic EPS", "Pretax Income",
+}
+_ESSENTIAL_BALANCE_SHEET = {
+    "Total Assets", "Total Liabilities Net Minority Interest",
+    "Total Equity Gross Minority Interest", "Total Debt", "Cash And Cash Equivalents",
+    "Common Stock Equity",
+}
+_ESSENTIAL_CASH_FLOW = {
+    "Free Cash Flow", "Operating Cash Flow", "Capital Expenditure",
+    "Net Income From Continuing Operations",
+}
+
+
+def _df_to_nested_dict(
+    df, essential_rows: Optional[set[str]] = None
+) -> dict[str, dict[str, float | None]]:
+    """Converte um DataFrame do yfinance (linhas=conta, colunas=periodo) em
+    dict serializavel: {periodo_iso: {conta: valor}}.
+
+    Limita a MAX_PERIODS colunas mais recentes e, se essential_rows for
+    passado, filtra so as linhas relevantes -- mantem o payload pequeno o
+    suficiente pra nao estourar o orcamento de contexto dos providers
+    gratuitos depois que a tool roda.
+    """
     if df is None or df.empty:
         return {}
     out: dict[str, dict[str, float | None]] = {}
-    for col in df.columns:
+    for col in df.columns[:MAX_PERIODS]:
         period_key = col.strftime("%Y-%m-%d") if hasattr(col, "strftime") else str(col)
-        out[period_key] = {
+        rows = {
             str(idx): (float(val) if val == val else None)  # val==val descarta NaN
             for idx, val in df[col].items()
+            if essential_rows is None or str(idx) in essential_rows
         }
+        out[period_key] = rows
     return out
 
 
@@ -198,9 +230,9 @@ def get_financial_statements(ticker: str) -> dict:
         result = FinancialStatements(
             ticker=ticker,
             quote=quote,
-            income_statement=_df_to_nested_dict(t.financials),
-            balance_sheet=_df_to_nested_dict(t.balance_sheet),
-            cash_flow=_df_to_nested_dict(t.cashflow),
+            income_statement=_df_to_nested_dict(t.financials, _ESSENTIAL_INCOME_STATEMENT),
+            balance_sheet=_df_to_nested_dict(t.balance_sheet, _ESSENTIAL_BALANCE_SHEET),
+            cash_flow=_df_to_nested_dict(t.cashflow, _ESSENTIAL_CASH_FLOW),
             fundamentals_available=True,
         )
         return result.model_dump(mode="json")
@@ -222,7 +254,7 @@ def get_financial_statements(ticker: str) -> dict:
 
 
 @mcp.tool()
-def get_market_news(ticker: str, max_results: int = 5) -> dict:
+def get_market_news(ticker: str, max_results: int = 3) -> dict:
     """Retorna as noticias mais recentes relevantes para o ticker via ddgs."""
     # tickers brasileiros (.SA) tem pouco resultado com query em ingles
     # generica -- adicionar "acoes" ajuda o ddgs a achar cobertura local
@@ -234,7 +266,7 @@ def get_market_news(ticker: str, max_results: int = 5) -> dict:
             NewsItem(
                 title=r.get("title", ""),
                 url=r.get("url", ""),
-                snippet=(r.get("body", "") or "")[:300],
+                snippet=(r.get("body", "") or "")[:200],
                 source=r.get("source", ""),
             )
             for r in raw
@@ -306,13 +338,23 @@ Por que uma classe BaseLLM customizada em vez do wrapper padrao do CrewAI
    que o reasoning trace NUNCA vaza pro parser de tool-calling do agente
    (o problema classico do <think> tag que quebrava o R1 antigo).
 
+Nota de arquitetura (importante): a primeira versao deste arquivo implementava
+um loop manual de tool-calling (chamando as funcoes e reinjetando o resultado).
+Isso estava errado para essa versao do CrewAI (1.15.x): o modulo
+`crewai.experimental.agent_executor` tem seu PROPRIO executor nativo de tool
+calling (`call_llm_native_tools`), que chama nosso `call()` sempre com
+`available_functions=None` de proposito -- ele espera que devolvamos a LISTA
+BRUTA de tool_calls (formato OpenAI: objetos com atributo `.function`) quando
+o modelo pedir uma ferramenta, e o proprio CrewAI executa a chamada e faz o
+loop, nao nos. Confirmado lendo o codigo-fonte instalado
+(crewai/utilities/agent_utils.py::is_tool_call_list).
+
 Ambos os provedores sao OpenAI-compatible, entao usamos um unico cliente
 `openai.OpenAI` trocando so o base_url e a chave.
 """
 
 from __future__ import annotations
 
-import json
 import logging
 from typing import Any, Dict, List, Optional, Union
 
@@ -327,11 +369,38 @@ DEEPSEEK_MODEL = "deepseek-v4-flash"  # thinking mode ligado via extra_body
 GROQ_BASE_URL = "https://api.groq.com/openai/v1"
 GROQ_MODEL = "openai/gpt-oss-120b"  # fallback gratuito permanente, tambem reasoning
 
-MAX_TOOL_ROUNDS = 8  # trava de seguranca contra loop infinito de tool calling
+# orcamento de tokens de saida por provider. O free tier do Groq tem um teto
+# de TPM (tokens por minuto) BEM apertado -- 8000 tokens TOTAIS (prompt +
+# resposta) por chamada nessa conta. A DeepSeek, com os 5M tokens de credito
+# gratuito, aguenta um teto bem maior.
+DEEPSEEK_MAX_TOKENS = 8000
+GROQ_MAX_TOKENS = 1500
+
+# campos que o schema de chat completions OpenAI-compatible realmente aceita.
+# O CrewAI injeta campos proprios (ex: cache_breakpoint, usado como dica de
+# cache de contexto pra providers nativos) que a API da DeepSeek rejeita com
+# 400 se forem repassados sem filtro.
+_ALLOWED_MESSAGE_KEYS = {"role", "content", "name", "tool_calls", "tool_call_id"}
+
+
+def _sanitize_messages(messages: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    sanitized = []
+    for m in messages:
+        if isinstance(m, dict):
+            sanitized.append({k: v for k, v in m.items() if k in _ALLOWED_MESSAGE_KEYS})
+        else:
+            sanitized.append(m)
+    return sanitized
 
 
 class DeepSeekGroqFallbackLLM(BaseLLM):
-    """LLM customizado com fallback DeepSeek -> Groq e tool-calling loop manual."""
+    """LLM customizado com fallback DeepSeek -> Groq.
+
+    So faz UMA chamada de API por invocacao de call(). Quando o modelo decide
+    chamar uma ferramenta, devolvemos a lista de tool_calls crua -- quem
+    executa e faz o loop de tool-calling e o proprio executor nativo do
+    CrewAI, nao esta classe.
+    """
 
     def __init__(
         self,
@@ -365,131 +434,91 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
         if isinstance(messages, str):
             messages = [{"role": "user", "content": messages}]
         else:
-            messages = list(messages)  # copia -- vamos mutar essa lista
+            messages = list(messages)
+        messages = _sanitize_messages(messages)
 
         try:
-            return self._run_tool_loop(
+            return self._call_once(
                 client=self._deepseek_client,
                 model=DEEPSEEK_MODEL,
                 provider_name="deepseek",
                 messages=messages,
                 tools=tools,
-                available_functions=available_functions,
                 extra_body={"thinking": {"type": "enabled"}},
+                max_tokens=DEEPSEEK_MAX_TOKENS,
             )
         except Exception as exc:  # noqa: BLE001
             logger.warning(
                 "DeepSeek falhou (%s) -- caindo para Groq gpt-oss-120b", exc
             )
-            return self._run_tool_loop(
+            return self._call_once(
                 client=self._groq_client,
                 model=GROQ_MODEL,
                 provider_name="groq",
                 messages=messages,
                 tools=tools,
-                available_functions=available_functions,
                 extra_body=None,
+                max_tokens=GROQ_MAX_TOKENS,
             )
 
     # ------------------------------------------------------------------ #
-    # Loop de tool calling (mantido explicito para controlar o
-    # reasoning_content e nao deixar o rastro de pensamento vazar pro
-    # parser de ferramentas do agente)
+    # Uma unica chamada de API. Nao executa tools nem faz loop -- isso e
+    # responsabilidade do executor nativo do CrewAI.
     # ------------------------------------------------------------------ #
 
-    def _run_tool_loop(
+    def _call_once(
         self,
         client: OpenAI,
         model: str,
         provider_name: str,
         messages: List[Dict[str, Any]],
         tools: Optional[List[dict]],
-        available_functions: Optional[Dict[str, Any]],
         extra_body: Optional[dict],
-    ) -> str:
+        max_tokens: int,
+    ) -> Union[str, List[Any]]:
         self.last_provider_used = provider_name
 
-        for round_num in range(MAX_TOOL_ROUNDS):
-            kwargs: Dict[str, Any] = {
-                "model": model,
-                "messages": messages,
-                "temperature": self.temperature,
-            }
-            if tools:
-                kwargs["tools"] = tools
-            if extra_body:
-                kwargs["extra_body"] = extra_body
+        kwargs: Dict[str, Any] = {
+            "model": model,
+            "messages": messages,
+            "temperature": self.temperature,
+            "max_tokens": max_tokens,
+        }
+        if tools:
+            kwargs["tools"] = tools
+        if extra_body:
+            kwargs["extra_body"] = extra_body
 
-            response = client.chat.completions.create(**kwargs)
-            message = response.choices[0].message
+        response = client.chat.completions.create(**kwargs)
+        message = response.choices[0].message
 
-            # o reasoning_content (quando existe) fica de fora do texto que
-            # segue pro parser de tools -- so logamos, nunca reinjetamos no
-            # content que o CrewAI vai tentar interpretar como JSON de tool.
-            reasoning = getattr(message, "reasoning_content", None)
-            if reasoning:
-                logger.info(
-                    "[%s] reasoning_content (%d chars) descartado do fluxo de tool-calling",
-                    provider_name,
-                    len(reasoning),
-                )
-
-            tool_calls = getattr(message, "tool_calls", None)
-            if not tool_calls:
-                return message.content or ""
-
-            if not available_functions:
-                # o modelo pediu pra chamar uma tool mas nao recebemos
-                # implementacoes -- devolve o texto (se houver) em vez de
-                # quebrar silenciosamente.
-                return message.content or ""
-
-            # registra a resposta do assistente (com tool_calls) no historico
-            messages.append(
-                {
-                    "role": "assistant",
-                    "content": message.content or "",
-                    "tool_calls": [
-                        {
-                            "id": tc.id,
-                            "type": "function",
-                            "function": {
-                                "name": tc.function.name,
-                                "arguments": tc.function.arguments,
-                            },
-                        }
-                        for tc in tool_calls
-                    ],
-                }
+        # o reasoning_content (quando existe) fica de fora do texto que
+        # segue pro parser de tools -- so logamos, nunca reinjetamos no
+        # content que o CrewAI vai tentar interpretar.
+        reasoning = getattr(message, "reasoning_content", None)
+        if reasoning:
+            logger.info(
+                "[%s] reasoning_content (%d chars) descartado do fluxo de tool-calling",
+                provider_name,
+                len(reasoning),
             )
 
-            for tc in tool_calls:
-                fn_name = tc.function.name
-                try:
-                    fn_args = json.loads(tc.function.arguments or "{}")
-                except json.JSONDecodeError:
-                    fn_args = {}
+        tool_calls = getattr(message, "tool_calls", None)
+        if tool_calls:
+            # devolve a lista crua (objetos com .function.name/.function.arguments)
+            # -- o executor nativo do CrewAI reconhece esse formato e executa
+            # as tools e o loop por conta propria.
+            return list(tool_calls)
 
-                fn = available_functions.get(fn_name)
-                if fn is None:
-                    tool_result = f"erro: tool '{fn_name}' nao encontrada"
-                else:
-                    try:
-                        tool_result = fn(**fn_args)
-                    except Exception as exc:  # noqa: BLE001
-                        tool_result = f"erro executando '{fn_name}': {exc}"
-
-                messages.append(
-                    {
-                        "role": "tool",
-                        "tool_call_id": tc.id,
-                        "content": json.dumps(tool_result, ensure_ascii=False, default=str),
-                    }
-                )
-
-        # estourou o limite de rounds -- devolve o que tiver, nao trava o crew
-        logger.error("MAX_TOOL_ROUNDS (%d) atingido para provider=%s", MAX_TOOL_ROUNDS, provider_name)
-        return "Erro: numero maximo de chamadas de ferramenta excedido antes de uma resposta final."
+        content = message.content or ""
+        if not content.strip():
+            finish_reason = getattr(response.choices[0], "finish_reason", "desconhecido")
+            raise RuntimeError(
+                f"[{provider_name}] resposta vazia (finish_reason={finish_reason}) "
+                "-- provavelmente o orcamento de tokens acabou durante o "
+                "raciocinio antes de gerar o conteudo final"
+            )
+        return content
 
 
 def get_llm(deepseek_api_key: str, groq_api_key: str) -> DeepSeekGroqFallbackLLM:
@@ -519,6 +548,7 @@ from __future__ import annotations
 
 import os
 import sys
+from typing import Callable, Optional
 
 from crewai import Agent, Crew, Process, Task
 from crewai_tools import MCPServerAdapter
@@ -540,7 +570,9 @@ def _mcp_server_params() -> StdioServerParameters:
     )
 
 
-def _build_crew(ticker: str, mcp_tools) -> Crew:
+def _build_crew(
+    ticker: str, mcp_tools, on_stage: Optional[Callable[[str], None]] = None
+) -> Crew:
     deepseek_key = os.environ["DEEPSEEK_API_KEY"]
     groq_key = os.environ["GROQ_API_KEY"]
     llm = get_llm(deepseek_api_key=deepseek_key, groq_api_key=groq_key)
@@ -611,6 +643,7 @@ def _build_crew(ticker: str, mcp_tools) -> Crew:
             "incluindo o status de fundamentals_available."
         ),
         agent=data_gatherer,
+        callback=(lambda output: on_stage("quant")) if on_stage else None,
     )
 
     quant_task = Task(
@@ -625,6 +658,7 @@ def _build_crew(ticker: str, mcp_tools) -> Crew:
         ),
         agent=quant_analyst,
         context=[gather_task],
+        callback=(lambda output: on_stage("cio")) if on_stage else None,
     )
 
     cio_task = Task(
@@ -649,16 +683,20 @@ def _build_crew(ticker: str, mcp_tools) -> Crew:
     )
 
 
-def run_analysis(ticker: str) -> str:
+def run_analysis(ticker: str, on_stage: Optional[Callable[[str], None]] = None) -> str:
     """Ponto de entrada principal: abre a conexao MCP, monta o crew e executa.
 
     A conexao MCP (subprocesso stdio) precisa ficar viva durante toda a
     execucao do crew -- por isso o kickoff() acontece dentro do `with`.
+
+    on_stage(stage_key), se fornecido, e chamado quando a etapa muda:
+    "quant" quando o Data Gatherer termina, "cio" quando o Quant Analyst
+    termina. Usado pela UI Gradio (Etapa 3) para mostrar progresso simples.
     """
     server_params = _mcp_server_params()
     with MCPServerAdapter(server_params) as mcp_tools:
         print(f"Tools MCP carregadas: {[t.name for t in mcp_tools]}")
-        crew = _build_crew(ticker, mcp_tools)
+        crew = _build_crew(ticker, mcp_tools, on_stage=on_stage)
         result = crew.kickoff()
     return str(result)
 
@@ -671,4 +709,110 @@ if __name__ == "__main__":
 
 FILE_EOF
 
-echo "6 arquivos criados/atualizados com sucesso."
+cat > app.py << 'FILE_EOF'
+"""
+Interface Gradio do analista financeiro autonomo (Etapa 3).
+
+crew.kickoff() e uma chamada sincrona e bloqueante -- para mostrar progresso
+enquanto os agentes trabalham (em vez de travar a tela por 1-2 minutos), a
+execucao roda numa thread separada, e os callbacks de mudanca de estagio
+(ver agents.py::on_stage) empurram atualizacoes por uma fila thread-safe que
+o generator do Gradio consome e transforma em `yield`.
+"""
+
+from __future__ import annotations
+
+import queue
+import threading
+
+import gradio as gr
+
+from agents import run_analysis
+
+STAGE_LABELS = {
+    "gathering": "🔎 **Data Gatherer** coletando dados financeiros e noticias...",
+    "quant": "📊 **Quant Analyst** calculando P/L, ROE, Margem Liquida e DCF...",
+    "cio": "📝 **CIO** sintetizando o relatorio final...",
+}
+
+
+def analyze(ticker: str):
+    ticker = (ticker or "").strip().upper()
+    if not ticker:
+        yield "⚠️ Digite um ticker antes de analisar (ex: AAPL, PETR4.SA)."
+        return
+
+    update_queue: "queue.Queue[tuple[str, str]]" = queue.Queue()
+    result_holder: dict = {}
+
+    def on_stage(stage_key: str) -> None:
+        update_queue.put(("stage", stage_key))
+
+    def worker() -> None:
+        try:
+            report = run_analysis(ticker, on_stage=on_stage)
+            result_holder["report"] = report
+        except Exception as exc:  # noqa: BLE001
+            result_holder["error"] = str(exc)
+        finally:
+            update_queue.put(("done", ""))
+
+    thread = threading.Thread(target=worker, daemon=True)
+    thread.start()
+
+    yield STAGE_LABELS["gathering"]
+
+    while True:
+        kind, payload = update_queue.get()
+        if kind == "stage":
+            yield STAGE_LABELS.get(payload, f"Processando ({payload})...")
+        elif kind == "done":
+            break
+
+    thread.join()
+
+    if "error" in result_holder:
+        yield (
+            "❌ **A analise falhou.**\n\n"
+            f"Detalhe do erro: `{result_holder['error']}`\n\n"
+            "Isso pode acontecer por indisponibilidade temporaria dos "
+            "provedores de LLM (DeepSeek/Groq) ou de dados de mercado "
+            "(yfinance/Stooq). Tente novamente em alguns instantes."
+        )
+    else:
+        yield result_holder["report"]
+
+
+with gr.Blocks(title="Analista Financeiro Autonomo") as demo:
+    gr.Markdown(
+        "# 📈 Analista Financeiro Autonomo\n"
+        "Sistema multi-agente (CrewAI + MCP) que coleta dados de mercado, "
+        "calcula metricas fundamentalistas e gera um relatorio de due "
+        "diligence. **Projeto de portfolio/demonstracao tecnica -- nao e "
+        "recomendacao de investimento real.**"
+    )
+
+    with gr.Row():
+        ticker_input = gr.Textbox(
+            label="Ticker",
+            placeholder="Ex: AAPL, MSFT, PETR4.SA, VALE3.SA",
+            scale=4,
+        )
+        submit_btn = gr.Button("Analisar", variant="primary", scale=1)
+
+    output = gr.Markdown(label="Resultado")
+
+    submit_btn.click(fn=analyze, inputs=ticker_input, outputs=output)
+    ticker_input.submit(fn=analyze, inputs=ticker_input, outputs=output)
+
+    gr.Examples(
+        examples=["AAPL", "MSFT", "PETR4.SA"],
+        inputs=ticker_input,
+    )
+
+
+if __name__ == "__main__":
+    demo.queue().launch()
+FILE_EOF
+
+echo "7 arquivos criados/atualizados com sucesso."
