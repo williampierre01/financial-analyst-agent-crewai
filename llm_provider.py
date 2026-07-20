@@ -103,7 +103,6 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
                 tools=tools,
                 available_functions=available_functions,
                 extra_body={"thinking": {"type": "enabled"}},
-                extra_top_level={"reasoning_effort": "high", "max_tokens": 8000},
             )
         except Exception as exc:  # noqa: BLE001
             logger.warning(
@@ -117,7 +116,6 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
                 tools=tools,
                 available_functions=available_functions,
                 extra_body=None,
-                extra_top_level={"max_tokens": 8000},
             )
 
     # ------------------------------------------------------------------ #
