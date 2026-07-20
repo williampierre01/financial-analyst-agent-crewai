@@ -35,6 +35,9 @@ GROQ_BASE_URL = "https://api.groq.com/openai/v1"
 GROQ_MODEL = "openai/gpt-oss-120b"  # fallback gratuito permanente, tambem reasoning
 
 MAX_TOOL_ROUNDS = 8  # trava de seguranca contra loop infinito de tool calling
+MAX_TOKENS = 8000  # thinking mode consome parte do orcamento so em raciocinio;
+                   # sem isso, respostas podem sair vazias (conteudo cortado
+                   # antes de terminar o pensamento)
 
 # campos que o schema de chat completions OpenAI-compatible realmente aceita.
 # O CrewAI injeta campos proprios (ex: cache_breakpoint, usado como dica de
@@ -100,6 +103,7 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
                 tools=tools,
                 available_functions=available_functions,
                 extra_body={"thinking": {"type": "enabled"}},
+                extra_top_level={"reasoning_effort": "high", "max_tokens": 8000},
             )
         except Exception as exc:  # noqa: BLE001
             logger.warning(
@@ -113,6 +117,7 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
                 tools=tools,
                 available_functions=available_functions,
                 extra_body=None,
+                extra_top_level={"max_tokens": 8000},
             )
 
     # ------------------------------------------------------------------ #
@@ -138,6 +143,7 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
                 "model": model,
                 "messages": messages,
                 "temperature": self.temperature,
+                "max_tokens": MAX_TOKENS,
             }
             if tools:
                 kwargs["tools"] = tools
@@ -160,7 +166,15 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
 
             tool_calls = getattr(message, "tool_calls", None)
             if not tool_calls:
-                return message.content or ""
+                content = message.content or ""
+                if not content.strip():
+                    finish_reason = getattr(response.choices[0], "finish_reason", "desconhecido")
+                    raise RuntimeError(
+                        f"[{provider_name}] resposta vazia (finish_reason={finish_reason}) "
+                        "-- provavelmente o orcamento de tokens acabou durante o "
+                        "raciocinio antes de gerar o conteudo final"
+                    )
+                return content
 
             if not available_functions:
                 # o modelo pediu pra chamar uma tool mas nao recebemos
