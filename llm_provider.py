@@ -66,6 +66,8 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
         tools: Optional[List[dict]] = None,
         callbacks: Optional[List[Any]] = None,
         available_functions: Optional[Dict[str, Any]] = None,
+        **kwargs: Any,  # absorve extras que versoes do CrewAI possam passar
+                        # (ex: from_task, from_agent) sem quebrar a chamada
     ) -> Union[str, Any]:
         if isinstance(messages, str):
             messages = [{"role": "user", "content": messages}]

@@ -359,6 +359,8 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
         tools: Optional[List[dict]] = None,
         callbacks: Optional[List[Any]] = None,
         available_functions: Optional[Dict[str, Any]] = None,
+        **kwargs: Any,  # absorve extras que versoes do CrewAI possam passar
+                        # (ex: from_task, from_agent) sem quebrar a chamada
     ) -> Union[str, Any]:
         if isinstance(messages, str):
             messages = [{"role": "user", "content": messages}]
@@ -503,8 +505,14 @@ cat > agents.py << 'FILE_EOF'
 Agentes CrewAI do pipeline de due diligence financeira.
 
 Topologia sequencial: Data Gatherer -> Quant Analyst -> CIO.
-Cada agente consome o mcp_server.py (Etapa 1) via o campo nativo `mcps` do
-CrewAI, transporte stdio.
+
+Nota de arquitetura: a primeira versao deste arquivo usava o campo nativo
+`mcps` do CrewAI (feature nova, poucos meses de existencia). Na pratica ele
+disparou um RuntimeError de event loop assincrono ("no running event loop")
+dentro do proprio kickoff() sincrono nessa versao do CrewAI (1.15.4) --
+sintoma de uma feature ainda instavel. Trocamos para o `MCPServerAdapter`
+do crewai-tools, que resolve a conexao MCP via um context manager sincrono
+comum, com muito mais uso real em producao e sem essa classe de bug.
 """
 
 from __future__ import annotations
@@ -513,8 +521,9 @@ import os
 import sys
 
 from crewai import Agent, Crew, Process, Task
-from crewai.mcp import MCPServerStdio
+from crewai_tools import MCPServerAdapter
 from dotenv import load_dotenv
+from mcp import StdioServerParameters
 
 from llm_provider import get_llm
 
@@ -523,20 +532,18 @@ load_dotenv()
 MCP_SERVER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "mcp_server.py")
 
 
-def _build_mcp_connection() -> MCPServerStdio:
-    return MCPServerStdio(
+def _mcp_server_params() -> StdioServerParameters:
+    return StdioServerParameters(
         command=sys.executable,  # usa o mesmo interpretador Python do processo atual
         args=[MCP_SERVER_PATH],
         env={**os.environ},
     )
 
 
-def build_crew(ticker: str) -> Crew:
+def _build_crew(ticker: str, mcp_tools) -> Crew:
     deepseek_key = os.environ["DEEPSEEK_API_KEY"]
     groq_key = os.environ["GROQ_API_KEY"]
     llm = get_llm(deepseek_api_key=deepseek_key, groq_api_key=groq_key)
-
-    mcp_connection = _build_mcp_connection()
 
     data_gatherer = Agent(
         role="Data Gatherer",
@@ -551,7 +558,7 @@ def build_crew(ticker: str) -> Crew:
             "os dados -- apenas coleta e reporta, incluindo explicitamente quando "
             "algum dado nao estiver disponivel (fundamentals_available=false)."
         ),
-        mcps=[mcp_connection],
+        tools=mcp_tools,
         llm=llm,
         verbose=True,
     )
@@ -642,12 +649,26 @@ def build_crew(ticker: str) -> Crew:
     )
 
 
+def run_analysis(ticker: str) -> str:
+    """Ponto de entrada principal: abre a conexao MCP, monta o crew e executa.
+
+    A conexao MCP (subprocesso stdio) precisa ficar viva durante toda a
+    execucao do crew -- por isso o kickoff() acontece dentro do `with`.
+    """
+    server_params = _mcp_server_params()
+    with MCPServerAdapter(server_params) as mcp_tools:
+        print(f"Tools MCP carregadas: {[t.name for t in mcp_tools]}")
+        crew = _build_crew(ticker, mcp_tools)
+        result = crew.kickoff()
+    return str(result)
+
+
 if __name__ == "__main__":
     ticker_arg = sys.argv[1] if len(sys.argv) > 1 else "AAPL"
-    crew = build_crew(ticker_arg)
-    result = crew.kickoff()
+    final_report = run_analysis(ticker_arg)
     print("\n\n=== RELATORIO FINAL ===\n")
-    print(result)
+    print(final_report)
+
 FILE_EOF
 
 echo "6 arquivos criados/atualizados com sucesso."
