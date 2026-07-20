@@ -13,13 +13,23 @@ Por que uma classe BaseLLM customizada em vez do wrapper padrao do CrewAI
    que o reasoning trace NUNCA vaza pro parser de tool-calling do agente
    (o problema classico do <think> tag que quebrava o R1 antigo).
 
+Nota de arquitetura (importante): a primeira versao deste arquivo implementava
+um loop manual de tool-calling (chamando as funcoes e reinjetando o resultado).
+Isso estava errado para essa versao do CrewAI (1.15.x): o modulo
+`crewai.experimental.agent_executor` tem seu PROPRIO executor nativo de tool
+calling (`call_llm_native_tools`), que chama nosso `call()` sempre com
+`available_functions=None` de proposito -- ele espera que devolvamos a LISTA
+BRUTA de tool_calls (formato OpenAI: objetos com atributo `.function`) quando
+o modelo pedir uma ferramenta, e o proprio CrewAI executa a chamada e faz o
+loop, nao nos. Confirmado lendo o codigo-fonte instalado
+(crewai/utilities/agent_utils.py::is_tool_call_list).
+
 Ambos os provedores sao OpenAI-compatible, entao usamos um unico cliente
 `openai.OpenAI` trocando so o base_url e a chave.
 """
 
 from __future__ import annotations
 
-import json
 import logging
 from typing import Any, Dict, List, Optional, Union
 
@@ -34,13 +44,10 @@ DEEPSEEK_MODEL = "deepseek-v4-flash"  # thinking mode ligado via extra_body
 GROQ_BASE_URL = "https://api.groq.com/openai/v1"
 GROQ_MODEL = "openai/gpt-oss-120b"  # fallback gratuito permanente, tambem reasoning
 
-MAX_TOOL_ROUNDS = 8  # trava de seguranca contra loop infinito de tool calling
-
 # orcamento de tokens de saida por provider. O free tier do Groq tem um teto
 # de TPM (tokens por minuto) BEM apertado -- 8000 tokens TOTAIS (prompt +
-# resposta) por chamada nessa conta. Pedir max_tokens=8000 de saida sozinho
-# ja estoura isso assim que o system prompt/tools do CrewAI entram na conta.
-# A DeepSeek, com os 5M tokens de credito gratuito, aguenta um teto bem maior.
+# resposta) por chamada nessa conta. A DeepSeek, com os 5M tokens de credito
+# gratuito, aguenta um teto bem maior.
 DEEPSEEK_MAX_TOKENS = 8000
 GROQ_MAX_TOKENS = 1500
 
@@ -62,7 +69,13 @@ def _sanitize_messages(messages: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
 
 class DeepSeekGroqFallbackLLM(BaseLLM):
-    """LLM customizado com fallback DeepSeek -> Groq e tool-calling loop manual."""
+    """LLM customizado com fallback DeepSeek -> Groq.
+
+    So faz UMA chamada de API por invocacao de call(). Quando o modelo decide
+    chamar uma ferramenta, devolvemos a lista de tool_calls crua -- quem
+    executa e faz o loop de tool-calling e o proprio executor nativo do
+    CrewAI, nao esta classe.
+    """
 
     def __init__(
         self,
@@ -96,17 +109,16 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
         if isinstance(messages, str):
             messages = [{"role": "user", "content": messages}]
         else:
-            messages = list(messages)  # copia -- vamos mutar essa lista
+            messages = list(messages)
         messages = _sanitize_messages(messages)
 
         try:
-            return self._run_tool_loop(
+            return self._call_once(
                 client=self._deepseek_client,
                 model=DEEPSEEK_MODEL,
                 provider_name="deepseek",
                 messages=messages,
                 tools=tools,
-                available_functions=available_functions,
                 extra_body={"thinking": {"type": "enabled"}},
                 max_tokens=DEEPSEEK_MAX_TOKENS,
             )
@@ -114,27 +126,66 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
             logger.warning(
                 "DeepSeek falhou (%s) -- caindo para Groq gpt-oss-120b", exc
             )
-            return self._run_tool_loop(
+            return self._call_once(
                 client=self._groq_client,
                 model=GROQ_MODEL,
                 provider_name="groq",
                 messages=messages,
                 tools=tools,
-                available_functions=available_functions,
                 extra_body=None,
                 max_tokens=GROQ_MAX_TOKENS,
             )
 
     # ------------------------------------------------------------------ #
-    # Loop de tool calling (mantido explicito para controlar o
-    # reasoning_content e nao deixar o rastro de pensamento vazar pro
-    # parser de ferramentas do agente)
+    # Uma unica chamada de API. Nao executa tools nem faz loop -- isso e
+    # responsabilidade do executor nativo do CrewAI.
     # ------------------------------------------------------------------ #
 
-    def _final_answer(self, content: Optional[str], response: Any, provider_name: str) -> str:
-        """Centraliza a checagem de resposta vazia -- usado em todo ponto de
-        retorno do loop, para nunca devolver "" silenciosamente ao CrewAI."""
-        content = content or ""
+    def _call_once(
+        self,
+        client: OpenAI,
+        model: str,
+        provider_name: str,
+        messages: List[Dict[str, Any]],
+        tools: Optional[List[dict]],
+        extra_body: Optional[dict],
+        max_tokens: int,
+    ) -> Union[str, List[Any]]:
+        self.last_provider_used = provider_name
+
+        kwargs: Dict[str, Any] = {
+            "model": model,
+            "messages": messages,
+            "temperature": self.temperature,
+            "max_tokens": max_tokens,
+        }
+        if tools:
+            kwargs["tools"] = tools
+        if extra_body:
+            kwargs["extra_body"] = extra_body
+
+        response = client.chat.completions.create(**kwargs)
+        message = response.choices[0].message
+
+        # o reasoning_content (quando existe) fica de fora do texto que
+        # segue pro parser de tools -- so logamos, nunca reinjetamos no
+        # content que o CrewAI vai tentar interpretar.
+        reasoning = getattr(message, "reasoning_content", None)
+        if reasoning:
+            logger.info(
+                "[%s] reasoning_content (%d chars) descartado do fluxo de tool-calling",
+                provider_name,
+                len(reasoning),
+            )
+
+        tool_calls = getattr(message, "tool_calls", None)
+        if tool_calls:
+            # devolve a lista crua (objetos com .function.name/.function.arguments)
+            # -- o executor nativo do CrewAI reconhece esse formato e executa
+            # as tools e o loop por conta propria.
+            return list(tool_calls)
+
+        content = message.content or ""
         if not content.strip():
             finish_reason = getattr(response.choices[0], "finish_reason", "desconhecido")
             raise RuntimeError(
@@ -143,101 +194,6 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
                 "raciocinio antes de gerar o conteudo final"
             )
         return content
-
-    def _run_tool_loop(
-        self,
-        client: OpenAI,
-        model: str,
-        provider_name: str,
-        messages: List[Dict[str, Any]],
-        tools: Optional[List[dict]],
-        available_functions: Optional[Dict[str, Any]],
-        extra_body: Optional[dict],
-        max_tokens: int,
-    ) -> str:
-        self.last_provider_used = provider_name
-
-        for round_num in range(MAX_TOOL_ROUNDS):
-            kwargs: Dict[str, Any] = {
-                "model": model,
-                "messages": messages,
-                "temperature": self.temperature,
-                "max_tokens": max_tokens,
-            }
-            if tools:
-                kwargs["tools"] = tools
-            if extra_body:
-                kwargs["extra_body"] = extra_body
-
-            response = client.chat.completions.create(**kwargs)
-            message = response.choices[0].message
-
-            # o reasoning_content (quando existe) fica de fora do texto que
-            # segue pro parser de tools -- so logamos, nunca reinjetamos no
-            # content que o CrewAI vai tentar interpretar como JSON de tool.
-            reasoning = getattr(message, "reasoning_content", None)
-            if reasoning:
-                logger.info(
-                    "[%s] reasoning_content (%d chars) descartado do fluxo de tool-calling",
-                    provider_name,
-                    len(reasoning),
-                )
-
-            tool_calls = getattr(message, "tool_calls", None)
-            if not tool_calls:
-                return self._final_answer(message.content, response, provider_name)
-
-            if not available_functions:
-                # o modelo pediu pra chamar uma tool mas nao recebemos
-                # implementacoes -- mesma validacao de vazio se aplica aqui.
-                return self._final_answer(message.content, response, provider_name)
-
-            # registra a resposta do assistente (com tool_calls) no historico
-            messages.append(
-                {
-                    "role": "assistant",
-                    "content": message.content or "",
-                    "tool_calls": [
-                        {
-                            "id": tc.id,
-                            "type": "function",
-                            "function": {
-                                "name": tc.function.name,
-                                "arguments": tc.function.arguments,
-                            },
-                        }
-                        for tc in tool_calls
-                    ],
-                }
-            )
-
-            for tc in tool_calls:
-                fn_name = tc.function.name
-                try:
-                    fn_args = json.loads(tc.function.arguments or "{}")
-                except json.JSONDecodeError:
-                    fn_args = {}
-
-                fn = available_functions.get(fn_name)
-                if fn is None:
-                    tool_result = f"erro: tool '{fn_name}' nao encontrada"
-                else:
-                    try:
-                        tool_result = fn(**fn_args)
-                    except Exception as exc:  # noqa: BLE001
-                        tool_result = f"erro executando '{fn_name}': {exc}"
-
-                messages.append(
-                    {
-                        "role": "tool",
-                        "tool_call_id": tc.id,
-                        "content": json.dumps(tool_result, ensure_ascii=False, default=str),
-                    }
-                )
-
-        # estourou o limite de rounds -- devolve o que tiver, nao trava o crew
-        logger.error("MAX_TOOL_ROUNDS (%d) atingido para provider=%s", MAX_TOOL_ROUNDS, provider_name)
-        return "Erro: numero maximo de chamadas de ferramenta excedido antes de uma resposta final."
 
 
 def get_llm(deepseek_api_key: str, groq_api_key: str) -> DeepSeekGroqFallbackLLM:
