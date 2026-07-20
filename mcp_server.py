@@ -98,18 +98,50 @@ def _fetch_yfinance(ticker: str) -> yf.Ticker:
     return t
 
 
-def _df_to_nested_dict(df) -> dict[str, dict[str, float | None]]:
-    """Converte um DataFrame do yfinance (linhas=conta, colunas=periodo)
-    em dict serializavel: {periodo_iso: {conta: valor}}."""
+MAX_PERIODS = 2  # so os 2 periodos mais recentes -- o JSON com 5 anos e ~30
+                 # linhas por demonstrativo ficava grande demais e estourava
+                 # o orcamento de contexto do free tier do Groq apos a tool
+                 # ser chamada (historico da conversa cresce com o resultado)
+
+# linhas que realmente importam pro Quant Analyst calcular P/L, ROE, Margem
+# Liquida e DCF -- o restante e ruido que so consome tokens sem agregar.
+_ESSENTIAL_INCOME_STATEMENT = {
+    "Total Revenue", "Gross Profit", "Operating Income", "EBITDA", "EBIT",
+    "Net Income", "Total Expenses", "Diluted EPS", "Basic EPS", "Pretax Income",
+}
+_ESSENTIAL_BALANCE_SHEET = {
+    "Total Assets", "Total Liabilities Net Minority Interest",
+    "Total Equity Gross Minority Interest", "Total Debt", "Cash And Cash Equivalents",
+    "Common Stock Equity",
+}
+_ESSENTIAL_CASH_FLOW = {
+    "Free Cash Flow", "Operating Cash Flow", "Capital Expenditure",
+    "Net Income From Continuing Operations",
+}
+
+
+def _df_to_nested_dict(
+    df, essential_rows: Optional[set[str]] = None
+) -> dict[str, dict[str, float | None]]:
+    """Converte um DataFrame do yfinance (linhas=conta, colunas=periodo) em
+    dict serializavel: {periodo_iso: {conta: valor}}.
+
+    Limita a MAX_PERIODS colunas mais recentes e, se essential_rows for
+    passado, filtra so as linhas relevantes -- mantem o payload pequeno o
+    suficiente pra nao estourar o orcamento de contexto dos providers
+    gratuitos depois que a tool roda.
+    """
     if df is None or df.empty:
         return {}
     out: dict[str, dict[str, float | None]] = {}
-    for col in df.columns:
+    for col in df.columns[:MAX_PERIODS]:
         period_key = col.strftime("%Y-%m-%d") if hasattr(col, "strftime") else str(col)
-        out[period_key] = {
+        rows = {
             str(idx): (float(val) if val == val else None)  # val==val descarta NaN
             for idx, val in df[col].items()
+            if essential_rows is None or str(idx) in essential_rows
         }
+        out[period_key] = rows
     return out
 
 
@@ -161,9 +193,9 @@ def get_financial_statements(ticker: str) -> dict:
         result = FinancialStatements(
             ticker=ticker,
             quote=quote,
-            income_statement=_df_to_nested_dict(t.financials),
-            balance_sheet=_df_to_nested_dict(t.balance_sheet),
-            cash_flow=_df_to_nested_dict(t.cashflow),
+            income_statement=_df_to_nested_dict(t.financials, _ESSENTIAL_INCOME_STATEMENT),
+            balance_sheet=_df_to_nested_dict(t.balance_sheet, _ESSENTIAL_BALANCE_SHEET),
+            cash_flow=_df_to_nested_dict(t.cashflow, _ESSENTIAL_CASH_FLOW),
             fundamentals_available=True,
         )
         return result.model_dump(mode="json")
@@ -185,7 +217,7 @@ def get_financial_statements(ticker: str) -> dict:
 
 
 @mcp.tool()
-def get_market_news(ticker: str, max_results: int = 5) -> dict:
+def get_market_news(ticker: str, max_results: int = 3) -> dict:
     """Retorna as noticias mais recentes relevantes para o ticker via ddgs."""
     # tickers brasileiros (.SA) tem pouco resultado com query em ingles
     # generica -- adicionar "acoes" ajuda o ddgs a achar cobertura local
@@ -197,7 +229,7 @@ def get_market_news(ticker: str, max_results: int = 5) -> dict:
             NewsItem(
                 title=r.get("title", ""),
                 url=r.get("url", ""),
-                snippet=(r.get("body", "") or "")[:300],
+                snippet=(r.get("body", "") or "")[:200],
                 source=r.get("source", ""),
             )
             for r in raw
