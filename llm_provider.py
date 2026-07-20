@@ -131,6 +131,19 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
     # parser de ferramentas do agente)
     # ------------------------------------------------------------------ #
 
+    def _final_answer(self, content: Optional[str], response: Any, provider_name: str) -> str:
+        """Centraliza a checagem de resposta vazia -- usado em todo ponto de
+        retorno do loop, para nunca devolver "" silenciosamente ao CrewAI."""
+        content = content or ""
+        if not content.strip():
+            finish_reason = getattr(response.choices[0], "finish_reason", "desconhecido")
+            raise RuntimeError(
+                f"[{provider_name}] resposta vazia (finish_reason={finish_reason}) "
+                "-- provavelmente o orcamento de tokens acabou durante o "
+                "raciocinio antes de gerar o conteudo final"
+            )
+        return content
+
     def _run_tool_loop(
         self,
         client: OpenAI,
@@ -172,21 +185,12 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
 
             tool_calls = getattr(message, "tool_calls", None)
             if not tool_calls:
-                content = message.content or ""
-                if not content.strip():
-                    finish_reason = getattr(response.choices[0], "finish_reason", "desconhecido")
-                    raise RuntimeError(
-                        f"[{provider_name}] resposta vazia (finish_reason={finish_reason}) "
-                        "-- provavelmente o orcamento de tokens acabou durante o "
-                        "raciocinio antes de gerar o conteudo final"
-                    )
-                return content
+                return self._final_answer(message.content, response, provider_name)
 
             if not available_functions:
                 # o modelo pediu pra chamar uma tool mas nao recebemos
-                # implementacoes -- devolve o texto (se houver) em vez de
-                # quebrar silenciosamente.
-                return message.content or ""
+                # implementacoes -- mesma validacao de vazio se aplica aqui.
+                return self._final_answer(message.content, response, provider_name)
 
             # registra a resposta do assistente (com tool_calls) no historico
             messages.append(
@@ -235,13 +239,6 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
         logger.error("MAX_TOOL_ROUNDS (%d) atingido para provider=%s", MAX_TOOL_ROUNDS, provider_name)
         return "Erro: numero maximo de chamadas de ferramenta excedido antes de uma resposta final."
 
-
-def get_llm(deepseek_api_key: str, groq_api_key: str) -> DeepSeekGroqFallbackLLM:
-    """Factory simples -- mantem agents.py desacoplado dos detalhes de provider."""
-    return DeepSeekGroqFallbackLLM(
-        deepseek_api_key=deepseek_api_key,
-        groq_api_key=groq_api_key,
-    )
 
 def get_llm(deepseek_api_key: str, groq_api_key: str) -> DeepSeekGroqFallbackLLM:
     """Factory simples -- mantem agents.py desacoplado dos detalhes de provider."""
