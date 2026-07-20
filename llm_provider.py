@@ -35,9 +35,14 @@ GROQ_BASE_URL = "https://api.groq.com/openai/v1"
 GROQ_MODEL = "openai/gpt-oss-120b"  # fallback gratuito permanente, tambem reasoning
 
 MAX_TOOL_ROUNDS = 8  # trava de seguranca contra loop infinito de tool calling
-MAX_TOKENS = 8000  # thinking mode consome parte do orcamento so em raciocinio;
-                   # sem isso, respostas podem sair vazias (conteudo cortado
-                   # antes de terminar o pensamento)
+
+# orcamento de tokens de saida por provider. O free tier do Groq tem um teto
+# de TPM (tokens por minuto) BEM apertado -- 8000 tokens TOTAIS (prompt +
+# resposta) por chamada nessa conta. Pedir max_tokens=8000 de saida sozinho
+# ja estoura isso assim que o system prompt/tools do CrewAI entram na conta.
+# A DeepSeek, com os 5M tokens de credito gratuito, aguenta um teto bem maior.
+DEEPSEEK_MAX_TOKENS = 8000
+GROQ_MAX_TOKENS = 1500
 
 # campos que o schema de chat completions OpenAI-compatible realmente aceita.
 # O CrewAI injeta campos proprios (ex: cache_breakpoint, usado como dica de
@@ -103,6 +108,7 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
                 tools=tools,
                 available_functions=available_functions,
                 extra_body={"thinking": {"type": "enabled"}},
+                max_tokens=DEEPSEEK_MAX_TOKENS,
             )
         except Exception as exc:  # noqa: BLE001
             logger.warning(
@@ -116,6 +122,7 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
                 tools=tools,
                 available_functions=available_functions,
                 extra_body=None,
+                max_tokens=GROQ_MAX_TOKENS,
             )
 
     # ------------------------------------------------------------------ #
@@ -133,6 +140,7 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
         tools: Optional[List[dict]],
         available_functions: Optional[Dict[str, Any]],
         extra_body: Optional[dict],
+        max_tokens: int,
     ) -> str:
         self.last_provider_used = provider_name
 
@@ -141,7 +149,7 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
                 "model": model,
                 "messages": messages,
                 "temperature": self.temperature,
-                "max_tokens": MAX_TOKENS,
+                "max_tokens": max_tokens,
             }
             if tools:
                 kwargs["tools"] = tools
@@ -227,6 +235,13 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
         logger.error("MAX_TOOL_ROUNDS (%d) atingido para provider=%s", MAX_TOOL_ROUNDS, provider_name)
         return "Erro: numero maximo de chamadas de ferramenta excedido antes de uma resposta final."
 
+
+def get_llm(deepseek_api_key: str, groq_api_key: str) -> DeepSeekGroqFallbackLLM:
+    """Factory simples -- mantem agents.py desacoplado dos detalhes de provider."""
+    return DeepSeekGroqFallbackLLM(
+        deepseek_api_key=deepseek_api_key,
+        groq_api_key=groq_api_key,
+    )
 
 def get_llm(deepseek_api_key: str, groq_api_key: str) -> DeepSeekGroqFallbackLLM:
     """Factory simples -- mantem agents.py desacoplado dos detalhes de provider."""
