@@ -36,6 +36,22 @@ GROQ_MODEL = "openai/gpt-oss-120b"  # fallback gratuito permanente, tambem reaso
 
 MAX_TOOL_ROUNDS = 8  # trava de seguranca contra loop infinito de tool calling
 
+# campos que o schema de chat completions OpenAI-compatible realmente aceita.
+# O CrewAI injeta campos proprios (ex: cache_breakpoint, usado como dica de
+# cache de contexto pra providers nativos) que a API da DeepSeek rejeita com
+# 400 se forem repassados sem filtro.
+_ALLOWED_MESSAGE_KEYS = {"role", "content", "name", "tool_calls", "tool_call_id"}
+
+
+def _sanitize_messages(messages: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    sanitized = []
+    for m in messages:
+        if isinstance(m, dict):
+            sanitized.append({k: v for k, v in m.items() if k in _ALLOWED_MESSAGE_KEYS})
+        else:
+            sanitized.append(m)
+    return sanitized
+
 
 class DeepSeekGroqFallbackLLM(BaseLLM):
     """LLM customizado com fallback DeepSeek -> Groq e tool-calling loop manual."""
@@ -73,6 +89,7 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
             messages = [{"role": "user", "content": messages}]
         else:
             messages = list(messages)  # copia -- vamos mutar essa lista
+        messages = _sanitize_messages(messages)
 
         try:
             return self._run_tool_loop(
