@@ -146,12 +146,18 @@ def get_financial_statements(ticker: str) -> dict:
     """
     try:
         t = _fetch_yfinance(ticker)
+        # fast_info nao e um dict comum -- acesso por atributo e o caminho
+        # confiavel entre versoes do yfinance. .get("last_price") sempre
+        # cai no default e mascara o preco real como 0.0 silenciosamente.
+        raw_price = getattr(t.fast_info, "last_price", None)
+        raw_currency = getattr(t.fast_info, "currency", None)
         quote = Quote(
-            price=float(t.fast_info.get("last_price", 0.0)),
-            currency=str(t.fast_info.get("currency", "USD")),
+            price=float(raw_price) if raw_price is not None else 0.0,
+            currency=str(raw_currency) if raw_currency else "USD",
             source="yfinance",
             as_of=datetime.now(timezone.utc),
         )
+
         result = FinancialStatements(
             ticker=ticker,
             quote=quote,
@@ -181,9 +187,12 @@ def get_financial_statements(ticker: str) -> dict:
 @mcp.tool()
 def get_market_news(ticker: str, max_results: int = 5) -> dict:
     """Retorna as noticias mais recentes relevantes para o ticker via ddgs."""
+    # tickers brasileiros (.SA) tem pouco resultado com query em ingles
+    # generica -- adicionar "acoes" ajuda o ddgs a achar cobertura local
+    query = f"{ticker} acoes" if ticker.upper().endswith(".SA") else f"{ticker} stock"
     try:
         with DDGS() as ddgs:
-            raw = list(ddgs.news(f"{ticker} stock", max_results=max_results))
+            raw = list(ddgs.news(query, max_results=max_results))
         items = [
             NewsItem(
                 title=r.get("title", ""),
