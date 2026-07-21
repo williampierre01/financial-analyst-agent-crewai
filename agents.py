@@ -133,11 +133,17 @@ def _build_crew(
         description=(
             f"Produza o relatorio final em Markdown para {ticker}, combinando a "
             "analise quantitativa com o sentimento das noticias recentes. Inclua "
-            "recomendacao de Compra/Venda/Manutencao e os disclaimers necessarios."
+            "recomendacao de Compra/Venda/Manutencao e os disclaimers necessarios. "
+            "Seja OBJETIVO: use tabelas enxutas (sem linhas redundantes) e frases "
+            "curtas. O relatorio precisa terminar com a secao de disclaimers "
+            "completa -- prefira cortar detalhe intermediario a deixar o "
+            "relatorio incompleto."
         ),
         expected_output=(
-            "Relatorio em Markdown com: resumo executivo, metricas principais, "
-            "sentimento de mercado, recomendacao final e disclaimers."
+            "Relatorio em Markdown COMPLETO e conciso (idealmente sob 600 palavras) "
+            "com: resumo executivo, metricas principais, sentimento de mercado, "
+            "recomendacao final e disclaimers -- todas as secoes devem aparecer "
+            "por inteiro, incluindo os disclaimers no final."
         ),
         agent=cio,
         context=[gather_task, quant_task],

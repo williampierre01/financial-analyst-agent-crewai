@@ -49,7 +49,7 @@ GROQ_MODEL = "openai/gpt-oss-120b"  # fallback gratuito permanente, tambem reaso
 # resposta) por chamada nessa conta. A DeepSeek, com os 5M tokens de credito
 # gratuito, aguenta um teto bem maior.
 DEEPSEEK_MAX_TOKENS = 8000
-GROQ_MAX_TOKENS = 1500
+GROQ_MAX_TOKENS = 2500
 
 # campos que o schema de chat completions OpenAI-compatible realmente aceita.
 # O CrewAI injeta campos proprios (ex: cache_breakpoint, usado como dica de
