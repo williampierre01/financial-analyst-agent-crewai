@@ -10,6 +10,7 @@ o generator do Gradio consome e transforma em `yield`.
 
 from __future__ import annotations
 
+import os
 import queue
 import threading
 
@@ -100,4 +101,7 @@ with gr.Blocks(title="Analista Financeiro Autonomo") as demo:
 
 
 if __name__ == "__main__":
-    demo.queue().launch()
+    # Plataformas como Render definem a porta via variavel de ambiente PORT.
+    # Localmente (Codespace), cai no 7860 de sempre.
+    port = int(os.environ.get("PORT", 7860))
+    demo.queue().launch(server_name="0.0.0.0", server_port=port)
