@@ -10,12 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-
-      - name: Sync to Hugging Face Hub
-        uses: huggingface/hub-sync@v0.1.0
         with:
-          github_repo_id: ${{ github.repository }}
-          huggingface_repo_id: willp01/financial-analyst-crew-mcp
-          hf_token: ${{ secrets.HF_TOKEN }}
-          repo_type: space
-          space_sdk: gradio
+          fetch-depth: 0
+
+      - name: Push direto pro git remote do Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git push -f https://willp01:$HF_TOKEN@huggingface.co/spaces/willp01/financial-analyst-crew-mcp main
