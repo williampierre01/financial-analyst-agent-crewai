@@ -25,11 +25,19 @@ STAGE_LABELS = {
 }
 
 
-def analyze(ticker: str):
+PROVIDER_CHOICES = {
+    "yfinance (padrao)": "yfinance",
+    "Financial Modeling Prep (FMP)": "fmp",
+}
+
+
+def analyze(ticker: str, provider_label: str):
     ticker = (ticker or "").strip().upper()
     if not ticker:
         yield "⚠️ Digite um ticker antes de analisar (ex: AAPL, PETR4.SA)."
         return
+
+    data_provider = PROVIDER_CHOICES.get(provider_label, "yfinance")
 
     update_queue: "queue.Queue[tuple[str, str]]" = queue.Queue()
     result_holder: dict = {}
@@ -39,7 +47,7 @@ def analyze(ticker: str):
 
     def worker() -> None:
         try:
-            report = run_analysis(ticker, on_stage=on_stage)
+            report = run_analysis(ticker, on_stage=on_stage, data_provider=data_provider)
             result_holder["report"] = report
         except Exception as exc:  # noqa: BLE001
             result_holder["error"] = str(exc)
@@ -85,14 +93,21 @@ with gr.Blocks(title="Analista Financeiro Autonomo") as demo:
         ticker_input = gr.Textbox(
             label="Ticker",
             placeholder="Ex: AAPL, MSFT, PETR4.SA, VALE3.SA",
-            scale=4,
+            scale=3,
+        )
+        provider_input = gr.Dropdown(
+            label="Fonte de dados financeiros",
+            choices=list(PROVIDER_CHOICES.keys()),
+            value="yfinance (padrao)",
+            scale=2,
+            info="Se o yfinance falhar (comum em nuvem), troque para FMP.",
         )
         submit_btn = gr.Button("Analisar", variant="primary", scale=1)
 
     output = gr.Markdown(label="Resultado")
 
-    submit_btn.click(fn=analyze, inputs=ticker_input, outputs=output)
-    ticker_input.submit(fn=analyze, inputs=ticker_input, outputs=output)
+    submit_btn.click(fn=analyze, inputs=[ticker_input, provider_input], outputs=output)
+    ticker_input.submit(fn=analyze, inputs=[ticker_input, provider_input], outputs=output)
 
     gr.Examples(
         examples=["AAPL", "MSFT", "PETR4.SA"],

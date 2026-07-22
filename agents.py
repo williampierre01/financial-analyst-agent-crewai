@@ -39,7 +39,10 @@ def _mcp_server_params() -> StdioServerParameters:
 
 
 def _build_crew(
-    ticker: str, mcp_tools, on_stage: Optional[Callable[[str], None]] = None
+    ticker: str,
+    mcp_tools,
+    on_stage: Optional[Callable[[str], None]] = None,
+    data_provider: str = "yfinance",
 ) -> Crew:
     deepseek_key = os.environ["DEEPSEEK_API_KEY"]
     groq_key = os.environ["GROQ_API_KEY"]
@@ -103,12 +106,14 @@ def _build_crew(
     gather_task = Task(
         description=(
             f"Use as ferramentas MCP disponiveis para coletar DRE, Balanco, Fluxo de "
-            f"Caixa, cotacao atual e noticias recentes do ticker {ticker}. Reporte os "
-            "dados brutos organizados, sem interpretacao."
+            f"Caixa, cotacao atual e noticias recentes do ticker {ticker}. "
+            f"IMPORTANTE: ao chamar get_financial_statements, use obrigatoriamente "
+            f"o parametro provider='{data_provider}'. Reporte os dados brutos "
+            "organizados, sem interpretacao."
         ),
         expected_output=(
             "Um resumo estruturado com os dados financeiros e as noticias coletadas, "
-            "incluindo o status de fundamentals_available."
+            "incluindo o status de fundamentals_available e o provider_used."
         ),
         agent=data_gatherer,
         callback=(lambda output: on_stage("quant")) if on_stage else None,
@@ -157,7 +162,11 @@ def _build_crew(
     )
 
 
-def run_analysis(ticker: str, on_stage: Optional[Callable[[str], None]] = None) -> str:
+def run_analysis(
+    ticker: str,
+    on_stage: Optional[Callable[[str], None]] = None,
+    data_provider: str = "yfinance",
+) -> str:
     """Ponto de entrada principal: abre a conexao MCP, monta o crew e executa.
 
     A conexao MCP (subprocesso stdio) precisa ficar viva durante toda a
@@ -166,17 +175,21 @@ def run_analysis(ticker: str, on_stage: Optional[Callable[[str], None]] = None) 
     on_stage(stage_key), se fornecido, e chamado quando a etapa muda:
     "quant" quando o Data Gatherer termina, "cio" quando o Quant Analyst
     termina. Usado pela UI Gradio (Etapa 3) para mostrar progresso simples.
+
+    data_provider: "yfinance" (padrao) ou "fmp" -- qual fonte de dados
+    financeiros o Data Gatherer deve usar.
     """
     server_params = _mcp_server_params()
     with MCPServerAdapter(server_params) as mcp_tools:
         print(f"Tools MCP carregadas: {[t.name for t in mcp_tools]}")
-        crew = _build_crew(ticker, mcp_tools, on_stage=on_stage)
+        crew = _build_crew(ticker, mcp_tools, on_stage=on_stage, data_provider=data_provider)
         result = crew.kickoff()
     return str(result)
 
 
 if __name__ == "__main__":
     ticker_arg = sys.argv[1] if len(sys.argv) > 1 else "AAPL"
-    final_report = run_analysis(ticker_arg)
+    provider_arg = sys.argv[2] if len(sys.argv) > 2 else "yfinance"
+    final_report = run_analysis(ticker_arg, data_provider=provider_arg)
     print("\n\n=== RELATORIO FINAL ===\n")
     print(final_report)

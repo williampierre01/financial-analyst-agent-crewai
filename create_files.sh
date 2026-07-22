@@ -14,6 +14,7 @@ pydantic>=2.7.0
 yfinance>=0.2.60
 pandas-datareader>=0.10.0
 ddgs>=9.0.0          # NAO instalar duckduckgo-search, foi renomeado/deprecado
+requests>=2.31.0     # usado pelo provider FMP (Financial Modeling Prep)
 tenacity>=8.3.0
 python-dotenv>=1.0.1
 
@@ -41,10 +42,16 @@ cat > mcp_server.py << 'FILE_EOF'
 Servidor MCP (stdio) para o pipeline de analise financeira autonoma.
 
 Expoe duas tools:
-  - get_financial_statements(ticker): fundamentos (DRE, balanco, fluxo de caixa)
-    + cotacao atual. Fundamentos vem exclusivamente do yfinance (nao existe
-    fallback gratuito equivalente para DRE/Balanco -- o Stooq so tem
-    historico de preco). A cotacao atual, essa sim, tem fallback no Stooq.
+  - get_financial_statements(ticker, provider): fundamentos (DRE, balanco,
+    fluxo de caixa) + cotacao atual. Dois providers disponiveis:
+      - "yfinance" (padrao): gratuito, mas a Yahoo Finance bloqueia/limita
+        agressivamente IPs de datacenter (Render, Streamlit Cloud, etc.) --
+        problema conhecido, documentado, nao e bug deste projeto.
+      - "fmp" (Financial Modeling Prep): API oficial com key, 250
+        requisicoes/dia gratis, nao sofre bloqueio de IP por ser um
+        endpoint autenticado (nao scraping). Alternativa quando o yfinance
+        falha em ambientes de nuvem.
+    A cotacao tem fallback no Stooq quando o provider ativo e "yfinance".
   - get_market_news(ticker): noticias recentes via ddgs.
 
 Toda saida e validada contra um schema Pydantic antes de retornar. Se a
@@ -55,9 +62,11 @@ malformado vazar pro agente seguinte.
 from __future__ import annotations
 
 import logging
+import os
 from datetime import datetime, timezone
 from typing import Optional
 
+import requests
 import yfinance as yf
 from ddgs import DDGS
 from mcp.server.fastmcp import FastMCP
@@ -83,19 +92,20 @@ mcp = FastMCP("financial-analyst-tools")
 class Quote(BaseModel):
     price: float
     currency: str = "USD"
-    source: str = Field(description="'yfinance' ou 'stooq' (fallback)")
+    source: str = Field(description="'yfinance', 'fmp' ou 'stooq' (fallback)")
     as_of: datetime
 
 
 class FinancialStatements(BaseModel):
     ticker: str
+    provider_used: str = Field(default="yfinance", description="'yfinance' ou 'fmp'")
     quote: Optional[Quote] = None
     income_statement: dict[str, dict[str, float | None]] = Field(default_factory=dict)
     balance_sheet: dict[str, dict[str, float | None]] = Field(default_factory=dict)
     cash_flow: dict[str, dict[str, float | None]] = Field(default_factory=dict)
     fundamentals_available: bool = Field(
-        description="False se o yfinance falhou -- nesse caso nao ha fallback "
-        "gratuito para DRE/Balanco, so para cotacao."
+        description="False se o provider escolhido falhou -- fallback "
+        "gratuito completo (DRE/Balanco) so existe trocando de provider."
     )
     warning: Optional[str] = None
 
@@ -203,18 +213,90 @@ def _fetch_stooq_price(ticker: str) -> Optional[Quote]:
 
 
 # --------------------------------------------------------------------------- #
+# Provider: Financial Modeling Prep (FMP)
+#
+# API oficial autenticada (nao scraping) -- nao sofre o bloqueio de IP de
+# datacenter que afeta o yfinance em plataformas como Render/Streamlit Cloud.
+# Free tier: 250 requisicoes/dia, ate 5 anos de demonstrativos anuais.
+# --------------------------------------------------------------------------- #
+
+FMP_BASE_URL = "https://financialmodelingprep.com/stable"
+
+# campos de metadado que a FMP inclui em toda linha e que nao agregam valor
+# pro Quant Analyst (sao ruido, nao dado financeiro)
+_FMP_META_FIELDS = {
+    "date", "symbol", "reportedCurrency", "cik", "filingDate", "acceptedDate",
+    "fiscalYear", "period", "link", "finalLink", "calendarYear",
+}
+
+
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+    retry=retry_if_exception_type(requests.RequestException),
+    reraise=True,
+)
+def _fetch_fmp_json(endpoint: str, ticker: str, api_key: str) -> list:
+    url = f"{FMP_BASE_URL}/{endpoint}"
+    resp = requests.get(
+        url,
+        params={"symbol": ticker, "limit": MAX_PERIODS, "apikey": api_key},
+        timeout=15,
+    )
+    resp.raise_for_status()
+    data = resp.json()
+    if isinstance(data, dict) and data.get("Error Message"):
+        raise ValueError(f"FMP retornou erro para {ticker}: {data['Error Message']}")
+    if not isinstance(data, list):
+        raise ValueError(f"FMP retornou formato inesperado para {ticker}: {data!r}")
+    return data
+
+
+def _fmp_rows_to_nested_dict(rows: list) -> dict[str, dict[str, float | None]]:
+    """Converte a lista de periodos da FMP (cada item = 1 ano) no mesmo
+    formato nested dict usado pelo provider yfinance, descartando campos
+    de metadado (data ja vira a chave do periodo)."""
+    out: dict[str, dict[str, float | None]] = {}
+    for row in rows[:MAX_PERIODS]:
+        period_key = str(row.get("date", "desconhecido"))
+        out[period_key] = {
+            k: (float(v) if isinstance(v, (int, float)) else None)
+            for k, v in row.items()
+            if k not in _FMP_META_FIELDS
+        }
+    return out
+
+
+def _fetch_fmp_quote(ticker: str, api_key: str) -> Optional[Quote]:
+    try:
+        resp = requests.get(
+            f"{FMP_BASE_URL}/quote",
+            params={"symbol": ticker, "apikey": api_key},
+            timeout=15,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        if not data or not isinstance(data, list):
+            return None
+        price = data[0].get("price")
+        if price is None:
+            return None
+        return Quote(
+            price=float(price),
+            currency="USD",
+            source="fmp",
+            as_of=datetime.now(timezone.utc),
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Cotacao FMP falhou para %s: %s", ticker, exc)
+        return None
+
+
+# --------------------------------------------------------------------------- #
 # Tools MCP
 # --------------------------------------------------------------------------- #
 
-@mcp.tool()
-def get_financial_statements(ticker: str) -> dict:
-    """Retorna DRE, Balanco, Fluxo de Caixa e cotacao atual para um ticker.
-
-    Fundamentos vem do yfinance. Se o yfinance falhar completamente, a tool
-    ainda tenta obter a cotacao via Stooq (fallback), mas retorna
-    fundamentals_available=False -- nao existe fallback gratuito para
-    demonstrativos financeiros.
-    """
+def _get_financial_statements_yfinance(ticker: str) -> dict:
     try:
         t = _fetch_yfinance(ticker)
         # fast_info nao e um dict comum -- acesso por atributo e o caminho
@@ -231,6 +313,7 @@ def get_financial_statements(ticker: str) -> dict:
 
         result = FinancialStatements(
             ticker=ticker,
+            provider_used="yfinance",
             quote=quote,
             income_statement=_df_to_nested_dict(t.financials, _ESSENTIAL_INCOME_STATEMENT),
             balance_sheet=_df_to_nested_dict(t.balance_sheet, _ESSENTIAL_BALANCE_SHEET),
@@ -244,15 +327,75 @@ def get_financial_statements(ticker: str) -> dict:
         fallback_quote = _fetch_stooq_price(ticker)
         result = FinancialStatements(
             ticker=ticker,
+            provider_used="yfinance",
             quote=fallback_quote,
             fundamentals_available=False,
             warning=(
                 f"yfinance indisponivel ({exc}). Cotacao "
                 f"{'obtida via Stooq' if fallback_quote else 'tambem indisponivel'}. "
-                "DRE/Balanco/Fluxo de caixa nao puderam ser recuperados."
+                "DRE/Balanco/Fluxo de caixa nao puderam ser recuperados. "
+                "Tente o provider 'fmp', que nao sofre bloqueio de IP de "
+                "datacenter (comum ao yfinance em ambientes de nuvem)."
             ),
         )
         return result.model_dump(mode="json")
+
+
+def _get_financial_statements_fmp(ticker: str) -> dict:
+    api_key = os.environ.get("FMP_API_KEY")
+    if not api_key:
+        result = FinancialStatements(
+            ticker=ticker,
+            provider_used="fmp",
+            fundamentals_available=False,
+            warning="FMP_API_KEY nao configurada no ambiente.",
+        )
+        return result.model_dump(mode="json")
+
+    try:
+        income_rows = _fetch_fmp_json("income-statement", ticker, api_key)
+        balance_rows = _fetch_fmp_json("balance-sheet-statement", ticker, api_key)
+        cashflow_rows = _fetch_fmp_json("cash-flow-statement", ticker, api_key)
+
+        if not income_rows:
+            raise ValueError(f"FMP nao retornou dados para {ticker} -- ticker invalido?")
+
+        quote = _fetch_fmp_quote(ticker, api_key)
+
+        result = FinancialStatements(
+            ticker=ticker,
+            provider_used="fmp",
+            quote=quote,
+            income_statement=_fmp_rows_to_nested_dict(income_rows),
+            balance_sheet=_fmp_rows_to_nested_dict(balance_rows),
+            cash_flow=_fmp_rows_to_nested_dict(cashflow_rows),
+            fundamentals_available=True,
+        )
+        return result.model_dump(mode="json")
+
+    except Exception as exc:  # noqa: BLE001
+        logger.error("FMP falhou para %s: %s", ticker, exc)
+        result = FinancialStatements(
+            ticker=ticker,
+            provider_used="fmp",
+            fundamentals_available=False,
+            warning=f"FMP indisponivel ({exc}).",
+        )
+        return result.model_dump(mode="json")
+
+
+@mcp.tool()
+def get_financial_statements(ticker: str, provider: str = "yfinance") -> dict:
+    """Retorna DRE, Balanco, Fluxo de Caixa e cotacao atual para um ticker.
+
+    provider: "yfinance" (padrao, gratis mas pode ser bloqueado por IP de
+    datacenter em ambientes de nuvem) ou "fmp" (Financial Modeling Prep,
+    API autenticada, 250 req/dia gratis, nao sofre bloqueio de IP).
+    """
+    provider = (provider or "yfinance").strip().lower()
+    if provider == "fmp":
+        return _get_financial_statements_fmp(ticker)
+    return _get_financial_statements_yfinance(ticker)
 
 
 @mcp.tool()
@@ -573,7 +716,10 @@ def _mcp_server_params() -> StdioServerParameters:
 
 
 def _build_crew(
-    ticker: str, mcp_tools, on_stage: Optional[Callable[[str], None]] = None
+    ticker: str,
+    mcp_tools,
+    on_stage: Optional[Callable[[str], None]] = None,
+    data_provider: str = "yfinance",
 ) -> Crew:
     deepseek_key = os.environ["DEEPSEEK_API_KEY"]
     groq_key = os.environ["GROQ_API_KEY"]
@@ -637,12 +783,14 @@ def _build_crew(
     gather_task = Task(
         description=(
             f"Use as ferramentas MCP disponiveis para coletar DRE, Balanco, Fluxo de "
-            f"Caixa, cotacao atual e noticias recentes do ticker {ticker}. Reporte os "
-            "dados brutos organizados, sem interpretacao."
+            f"Caixa, cotacao atual e noticias recentes do ticker {ticker}. "
+            f"IMPORTANTE: ao chamar get_financial_statements, use obrigatoriamente "
+            f"o parametro provider='{data_provider}'. Reporte os dados brutos "
+            "organizados, sem interpretacao."
         ),
         expected_output=(
             "Um resumo estruturado com os dados financeiros e as noticias coletadas, "
-            "incluindo o status de fundamentals_available."
+            "incluindo o status de fundamentals_available e o provider_used."
         ),
         agent=data_gatherer,
         callback=(lambda output: on_stage("quant")) if on_stage else None,
@@ -691,7 +839,11 @@ def _build_crew(
     )
 
 
-def run_analysis(ticker: str, on_stage: Optional[Callable[[str], None]] = None) -> str:
+def run_analysis(
+    ticker: str,
+    on_stage: Optional[Callable[[str], None]] = None,
+    data_provider: str = "yfinance",
+) -> str:
     """Ponto de entrada principal: abre a conexao MCP, monta o crew e executa.
 
     A conexao MCP (subprocesso stdio) precisa ficar viva durante toda a
@@ -700,18 +852,22 @@ def run_analysis(ticker: str, on_stage: Optional[Callable[[str], None]] = None) 
     on_stage(stage_key), se fornecido, e chamado quando a etapa muda:
     "quant" quando o Data Gatherer termina, "cio" quando o Quant Analyst
     termina. Usado pela UI Gradio (Etapa 3) para mostrar progresso simples.
+
+    data_provider: "yfinance" (padrao) ou "fmp" -- qual fonte de dados
+    financeiros o Data Gatherer deve usar.
     """
     server_params = _mcp_server_params()
     with MCPServerAdapter(server_params) as mcp_tools:
         print(f"Tools MCP carregadas: {[t.name for t in mcp_tools]}")
-        crew = _build_crew(ticker, mcp_tools, on_stage=on_stage)
+        crew = _build_crew(ticker, mcp_tools, on_stage=on_stage, data_provider=data_provider)
         result = crew.kickoff()
     return str(result)
 
 
 if __name__ == "__main__":
     ticker_arg = sys.argv[1] if len(sys.argv) > 1 else "AAPL"
-    final_report = run_analysis(ticker_arg)
+    provider_arg = sys.argv[2] if len(sys.argv) > 2 else "yfinance"
+    final_report = run_analysis(ticker_arg, data_provider=provider_arg)
     print("\n\n=== RELATORIO FINAL ===\n")
     print(final_report)
 
@@ -730,6 +886,7 @@ o generator do Gradio consome e transforma em `yield`.
 
 from __future__ import annotations
 
+import os
 import queue
 import threading
 
@@ -744,11 +901,19 @@ STAGE_LABELS = {
 }
 
 
-def analyze(ticker: str):
+PROVIDER_CHOICES = {
+    "yfinance (padrao)": "yfinance",
+    "Financial Modeling Prep (FMP)": "fmp",
+}
+
+
+def analyze(ticker: str, provider_label: str):
     ticker = (ticker or "").strip().upper()
     if not ticker:
         yield "⚠️ Digite um ticker antes de analisar (ex: AAPL, PETR4.SA)."
         return
+
+    data_provider = PROVIDER_CHOICES.get(provider_label, "yfinance")
 
     update_queue: "queue.Queue[tuple[str, str]]" = queue.Queue()
     result_holder: dict = {}
@@ -758,7 +923,7 @@ def analyze(ticker: str):
 
     def worker() -> None:
         try:
-            report = run_analysis(ticker, on_stage=on_stage)
+            report = run_analysis(ticker, on_stage=on_stage, data_provider=data_provider)
             result_holder["report"] = report
         except Exception as exc:  # noqa: BLE001
             result_holder["error"] = str(exc)
@@ -804,14 +969,21 @@ with gr.Blocks(title="Analista Financeiro Autonomo") as demo:
         ticker_input = gr.Textbox(
             label="Ticker",
             placeholder="Ex: AAPL, MSFT, PETR4.SA, VALE3.SA",
-            scale=4,
+            scale=3,
+        )
+        provider_input = gr.Dropdown(
+            label="Fonte de dados financeiros",
+            choices=list(PROVIDER_CHOICES.keys()),
+            value="yfinance (padrao)",
+            scale=2,
+            info="Se o yfinance falhar (comum em nuvem), troque para FMP.",
         )
         submit_btn = gr.Button("Analisar", variant="primary", scale=1)
 
     output = gr.Markdown(label="Resultado")
 
-    submit_btn.click(fn=analyze, inputs=ticker_input, outputs=output)
-    ticker_input.submit(fn=analyze, inputs=ticker_input, outputs=output)
+    submit_btn.click(fn=analyze, inputs=[ticker_input, provider_input], outputs=output)
+    ticker_input.submit(fn=analyze, inputs=[ticker_input, provider_input], outputs=output)
 
     gr.Examples(
         examples=["AAPL", "MSFT", "PETR4.SA"],
@@ -820,7 +992,10 @@ with gr.Blocks(title="Analista Financeiro Autonomo") as demo:
 
 
 if __name__ == "__main__":
-    demo.queue().launch()
+    # Plataformas como Render definem a porta via variavel de ambiente PORT.
+    # Localmente (Codespace), cai no 7860 de sempre.
+    port = int(os.environ.get("PORT", 7860))
+    demo.queue().launch(server_name="0.0.0.0", server_port=port)
 FILE_EOF
 
 cat > README.md << 'FILE_EOF'
@@ -954,6 +1129,10 @@ diretamente nas Settings do Space (não no GitHub).
 
 FILE_EOF
 
+cat > .python-version << 'FILE_EOF'
+3.11.9
+FILE_EOF
+
 cat > .github/workflows/sync-to-hf-space.yml << 'FILE_EOF'
 name: Sync to Hugging Face Space
 
@@ -967,13 +1146,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-
-      - name: Sync to Hugging Face Hub
-        uses: huggingface/hub-sync@v0.1.0
         with:
-          github_repo_id: ${{ github.repository }}
-          huggingface_repo_id: willp01/financial-analyst-crew-mcp
-          hf_token: ${{ secrets.HF_TOKEN }}
+          fetch-depth: 0
+
+      - name: Push direto pro git remote do Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git push -f https://willp01:$HF_TOKEN@huggingface.co/spaces/willp01/financial-analyst-crew-mcp main
 FILE_EOF
 
 echo "Arquivos criados/atualizados com sucesso."
