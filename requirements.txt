@@ -1,5 +1,8 @@
 # --- Orquestração / MCP (usadas nas Etapas 2 e 3, já deixamos fixado) ---
-crewai>=0.140.0
+# crewai passou por uma virada de versionamento (era 0.140.x, hoje e 1.x) --
+# 1.15.0 e o minimo real testado neste projeto (confirmado: 1.15.4 em uso).
+# NAO reduzir para 0.x -- isso e uma versao antiga, nao um erro de digitacao.
+crewai>=1.15.0
 crewai-tools[mcp]>=0.50.0
 mcp>=1.9.0
 
