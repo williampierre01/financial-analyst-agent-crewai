@@ -4,14 +4,12 @@
 # NAO reduzir para 0.x -- isso e uma versao antiga, nao um erro de digitacao.
 crewai>=1.15.0
 crewai-tools[mcp]>=0.50.0
-mcp>=1.9.0
+mcp>=1.9.0,<2  # FastMCP e StdioServerParameters usam a API v1
 
 # --- Servidor MCP (Etapa 1) ---
 pydantic>=2.7.0
 yfinance>=0.2.60
-pandas-datareader>=0.10.0
 ddgs>=9.0.0          # NAO instalar duckduckgo-search, foi renomeado/deprecado
-requests>=2.31.0     # usado pelo provider FMP (Financial Modeling Prep)
 tenacity>=8.3.0
 python-dotenv>=1.0.1
 

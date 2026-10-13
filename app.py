@@ -17,6 +17,7 @@ import threading
 import gradio as gr
 
 from agents import run_analysis
+from financial_data import normalize_ticker
 
 STAGE_LABELS = {
     "gathering": "🔎 **Data Gatherer** coletando dados financeiros e noticias...",
@@ -25,19 +26,12 @@ STAGE_LABELS = {
 }
 
 
-PROVIDER_CHOICES = {
-    "yfinance (padrao)": "yfinance",
-    "Financial Modeling Prep (FMP)": "fmp",
-}
-
-
-def analyze(ticker: str, provider_label: str):
-    ticker = (ticker or "").strip().upper()
-    if not ticker:
-        yield "⚠️ Digite um ticker antes de analisar (ex: AAPL, PETR4.SA)."
+def analyze(ticker: str):
+    try:
+        ticker = normalize_ticker(ticker)
+    except ValueError as exc:
+        yield f"⚠️ {exc}"
         return
-
-    data_provider = PROVIDER_CHOICES.get(provider_label, "yfinance")
 
     update_queue: "queue.Queue[tuple[str, str]]" = queue.Queue()
     result_holder: dict = {}
@@ -47,10 +41,10 @@ def analyze(ticker: str, provider_label: str):
 
     def worker() -> None:
         try:
-            report = run_analysis(ticker, on_stage=on_stage, data_provider=data_provider)
+            report = run_analysis(ticker, on_stage=on_stage)
             result_holder["report"] = report
         except Exception as exc:  # noqa: BLE001
-            result_holder["error"] = str(exc)
+            result_holder["error"] = True
         finally:
             update_queue.put(("done", ""))
 
@@ -71,10 +65,9 @@ def analyze(ticker: str, provider_label: str):
     if "error" in result_holder:
         yield (
             "❌ **A analise falhou.**\n\n"
-            f"Detalhe do erro: `{result_holder['error']}`\n\n"
             "Isso pode acontecer por indisponibilidade temporaria dos "
             "provedores de LLM (DeepSeek/Groq) ou de dados de mercado "
-            "(yfinance/Stooq). Tente novamente em alguns instantes."
+            "(Yahoo Finance). Confira a configuração ou tente novamente."
         )
     else:
         yield result_holder["report"]
@@ -82,7 +75,8 @@ def analyze(ticker: str, provider_label: str):
 
 with gr.Blocks(title="Analista Financeiro Autonomo") as demo:
     gr.Markdown(
-        "# 📈 Analista Financeiro Autonomo\n"
+        "# 📈 Análise de ações brasileiras\n"
+        "Informe o código da ação na B3. Dados financeiros do Yahoo Finance.\n\n"
         "Sistema multi-agente (CrewAI + MCP) que coleta dados de mercado, "
         "calcula metricas fundamentalistas e gera um relatorio de due "
         "diligence. **Projeto de portfolio/demonstracao tecnica -- nao e "
@@ -91,26 +85,19 @@ with gr.Blocks(title="Analista Financeiro Autonomo") as demo:
 
     with gr.Row():
         ticker_input = gr.Textbox(
-            label="Ticker",
-            placeholder="Ex: AAPL, MSFT, PETR4.SA, VALE3.SA",
+            label="Código da ação",
+            placeholder="Ex: PETR4, VALE3, ITUB4",
             scale=3,
-        )
-        provider_input = gr.Dropdown(
-            label="Fonte de dados financeiros",
-            choices=list(PROVIDER_CHOICES.keys()),
-            value="yfinance (padrao)",
-            scale=2,
-            info="Se o yfinance falhar (comum em nuvem), troque para FMP.",
         )
         submit_btn = gr.Button("Analisar", variant="primary", scale=1)
 
     output = gr.Markdown(label="Resultado")
 
-    submit_btn.click(fn=analyze, inputs=[ticker_input, provider_input], outputs=output)
-    ticker_input.submit(fn=analyze, inputs=[ticker_input, provider_input], outputs=output)
+    submit_btn.click(fn=analyze, inputs=[ticker_input], outputs=output)
+    ticker_input.submit(fn=analyze, inputs=[ticker_input], outputs=output)
 
     gr.Examples(
-        examples=["AAPL", "MSFT", "PETR4.SA"],
+        examples=["PETR4", "VALE3", "ITUB4"],
         inputs=ticker_input,
     )
 

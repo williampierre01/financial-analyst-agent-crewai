@@ -1,43 +1,24 @@
-"""
-Servidor MCP (stdio) para o pipeline de analise financeira autonoma.
-
-Expoe duas tools:
-  - get_financial_statements(ticker, provider): fundamentos (DRE, balanco,
-    fluxo de caixa) + cotacao atual. Dois providers disponiveis:
-      - "yfinance" (padrao): gratuito, mas a Yahoo Finance bloqueia/limita
-        agressivamente IPs de datacenter (Render, Streamlit Cloud, etc.) --
-        problema conhecido, documentado, nao e bug deste projeto.
-      - "fmp" (Financial Modeling Prep): API oficial com key, 250
-        requisicoes/dia gratis, nao sofre bloqueio de IP por ser um
-        endpoint autenticado (nao scraping). Alternativa quando o yfinance
-        falha em ambientes de nuvem.
-    A cotacao tem fallback no Stooq quando o provider ativo e "yfinance".
-  - get_market_news(ticker): noticias recentes via ddgs.
-
-Toda saida e validada contra um schema Pydantic antes de retornar. Se a
-validacao falhar, a tool retorna um erro estruturado em vez de deixar dado
-malformado vazar pro agente seguinte.
-"""
+"""Yahoo Finance financial adapter and MCP news tools for the B3 contract."""
 
 from __future__ import annotations
 
 import logging
-import os
+import math
 from datetime import datetime, timezone
 from typing import Optional
 
-import requests
 import yfinance as yf
 from ddgs import DDGS
 from mcp.server.fastmcp import FastMCP
-from pandas_datareader import data as pdr
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, FiniteFloat, model_validator
 from tenacity import (
     retry,
     retry_if_exception_type,
     stop_after_attempt,
     wait_exponential,
 )
+
+from financial_data import load_snapshot, timestamp, currency_code
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("mcp_server")
@@ -50,24 +31,46 @@ mcp = FastMCP("financial-analyst-tools")
 # --------------------------------------------------------------------------- #
 
 class Quote(BaseModel):
-    price: float
-    currency: str = "USD"
-    source: str = Field(description="'yfinance', 'fmp' ou 'stooq' (fallback)")
-    as_of: datetime
+    price: FiniteFloat = Field(gt=0)
+    currency: Optional[str] = None
+    symbol: Optional[str] = None
+    source: str = "yfinance"
+    as_of: Optional[datetime] = None
+    retrieved_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class FinancialStatements(BaseModel):
     ticker: str
-    provider_used: str = Field(default="yfinance", description="'yfinance' ou 'fmp'")
+    provider_used: str = "yfinance"
     quote: Optional[Quote] = None
-    income_statement: dict[str, dict[str, float | None]] = Field(default_factory=dict)
-    balance_sheet: dict[str, dict[str, float | None]] = Field(default_factory=dict)
-    cash_flow: dict[str, dict[str, float | None]] = Field(default_factory=dict)
+    income_statement: dict[str, dict[str, FiniteFloat | None]] = Field(default_factory=dict)
+    balance_sheet: dict[str, dict[str, FiniteFloat | None]] = Field(default_factory=dict)
+    cash_flow: dict[str, dict[str, FiniteFloat | None]] = Field(default_factory=dict)
     fundamentals_available: bool = Field(
-        description="False se o provider escolhido falhou -- fallback "
-        "gratuito completo (DRE/Balanco) so existe trocando de provider."
+        default=False,
+        description="True quando os tres demonstrativos contem valores numericos validos. "
+        "Nao garante os campos, periodos ou denominadores necessarios a cada metrica."
     )
     warning: Optional[str] = None
+    statement_metadata: dict[str, dict[str, dict]] = Field(default_factory=dict)
+
+    @model_validator(mode="after")
+    def validate_availability(self):
+        # Availability means all three statements contain numeric data;
+        # it does not guarantee that every metric can be calculated.
+        missing = [
+            name for name in ("income_statement", "balance_sheet", "cash_flow")
+            if not any(value is not None for period in getattr(self, name).values()
+                       for value in period.values())
+        ]
+        self.fundamentals_available = not missing
+        warnings = [self.warning] if self.warning else []
+        if missing:
+            warnings.append("Demonstrativos ausentes ou sem valores validos: " + ", ".join(missing) + ".")
+        if self.quote is None:
+            warnings.append("Cotacao ausente ou invalida; nao calcular metricas que dependem do preco.")
+        self.warning = " ".join(warnings) or None
+        return self
 
 
 class NewsItem(BaseModel):
@@ -122,11 +125,23 @@ _ESSENTIAL_BALANCE_SHEET = {
     "Total Assets", "Total Liabilities Net Minority Interest",
     "Total Equity Gross Minority Interest", "Total Debt", "Cash And Cash Equivalents",
     "Common Stock Equity",
+    "Stockholders Equity",
 }
 _ESSENTIAL_CASH_FLOW = {
     "Free Cash Flow", "Operating Cash Flow", "Capital Expenditure",
     "Net Income From Continuing Operations",
 }
+
+
+def _finite_number(value) -> float | None:
+    """Preserve zero/negative accounting values, never fabricate missing data."""
+    if value is None or isinstance(value, (bool, str, bytes)):
+        return None
+    try:
+        number = float(value)
+    except (TypeError, ValueError, OverflowError):
+        return None
+    return number if math.isfinite(number) else None
 
 
 def _df_to_nested_dict(
@@ -143,10 +158,10 @@ def _df_to_nested_dict(
     if df is None or df.empty:
         return {}
     out: dict[str, dict[str, float | None]] = {}
-    for col in df.columns[:MAX_PERIODS]:
+    for col in sorted(df.columns, reverse=True)[:MAX_PERIODS]:
         period_key = col.strftime("%Y-%m-%d") if hasattr(col, "strftime") else str(col)
         rows = {
-            str(idx): (float(val) if val == val else None)  # val==val descarta NaN
+            str(idx): _finite_number(val)
             for idx, val in df[col].items()
             if essential_rows is None or str(idx) in essential_rows
         }
@@ -154,208 +169,82 @@ def _df_to_nested_dict(
     return out
 
 
-def _fetch_stooq_price(ticker: str) -> Optional[Quote]:
-    """Fallback de cotacao. Stooq NAO tem DRE/Balanco, so preco historico."""
-    try:
-        df = pdr.DataReader(ticker, "stooq")
-        if df is None or df.empty:
-            return None
-        last_row = df.sort_index().iloc[-1]
-        return Quote(
-            price=float(last_row["Close"]),
-            currency="USD",
-            source="stooq",
-            as_of=datetime.now(timezone.utc),
-        )
-    except Exception as exc:  # noqa: BLE001
-        logger.warning("Fallback Stooq tambem falhou para %s: %s", ticker, exc)
-        return None
-
-
-# --------------------------------------------------------------------------- #
-# Provider: Financial Modeling Prep (FMP)
-#
-# API oficial autenticada (nao scraping) -- nao sofre o bloqueio de IP de
-# datacenter que afeta o yfinance em plataformas como Render/Streamlit Cloud.
-# Free tier: 250 requisicoes/dia, ate 5 anos de demonstrativos anuais.
-# --------------------------------------------------------------------------- #
-
-FMP_BASE_URL = "https://financialmodelingprep.com/stable"
-
-# campos de metadado que a FMP inclui em toda linha e que nao agregam valor
-# pro Quant Analyst (sao ruido, nao dado financeiro)
-_FMP_META_FIELDS = {
-    "date", "symbol", "reportedCurrency", "cik", "filingDate", "acceptedDate",
-    "fiscalYear", "period", "link", "finalLink", "calendarYear",
-}
-
-
-@retry(
-    stop=stop_after_attempt(3),
-    wait=wait_exponential(multiplier=1, min=2, max=10),
-    retry=retry_if_exception_type(requests.RequestException),
-    reraise=True,
-)
-def _fetch_fmp_json(endpoint: str, ticker: str, api_key: str) -> list:
-    url = f"{FMP_BASE_URL}/{endpoint}"
-    resp = requests.get(
-        url,
-        params={"symbol": ticker, "limit": MAX_PERIODS, "apikey": api_key},
-        timeout=15,
-    )
-    resp.raise_for_status()
-    data = resp.json()
-    if isinstance(data, dict) and data.get("Error Message"):
-        raise ValueError(f"FMP retornou erro para {ticker}: {data['Error Message']}")
-    if not isinstance(data, list):
-        raise ValueError(f"FMP retornou formato inesperado para {ticker}: {data!r}")
-    return data
-
-
-def _fmp_rows_to_nested_dict(rows: list) -> dict[str, dict[str, float | None]]:
-    """Converte a lista de periodos da FMP (cada item = 1 ano) no mesmo
-    formato nested dict usado pelo provider yfinance, descartando campos
-    de metadado (data ja vira a chave do periodo)."""
-    out: dict[str, dict[str, float | None]] = {}
-    for row in rows[:MAX_PERIODS]:
-        period_key = str(row.get("date", "desconhecido"))
-        out[period_key] = {
-            k: (float(v) if isinstance(v, (int, float)) else None)
-            for k, v in row.items()
-            if k not in _FMP_META_FIELDS
-        }
-    return out
-
-
-def _fetch_fmp_quote(ticker: str, api_key: str) -> Optional[Quote]:
-    try:
-        resp = requests.get(
-            f"{FMP_BASE_URL}/quote",
-            params={"symbol": ticker, "apikey": api_key},
-            timeout=15,
-        )
-        resp.raise_for_status()
-        data = resp.json()
-        if not data or not isinstance(data, list):
-            return None
-        price = data[0].get("price")
-        if price is None:
-            return None
-        return Quote(
-            price=float(price),
-            currency="USD",
-            source="fmp",
-            as_of=datetime.now(timezone.utc),
-        )
-    except Exception as exc:  # noqa: BLE001
-        logger.warning("Cotacao FMP falhou para %s: %s", ticker, exc)
-        return None
-
-
-# --------------------------------------------------------------------------- #
-# Tools MCP
-# --------------------------------------------------------------------------- #
-
 def _get_financial_statements_yfinance(ticker: str) -> dict:
     try:
         t = _fetch_yfinance(ticker)
+        try:
+            info = t.get_info()
+            if not isinstance(info, dict):
+                info = {}
+        except Exception:
+            info = {}
         # fast_info nao e um dict comum -- acesso por atributo e o caminho
         # confiavel entre versoes do yfinance. .get("last_price") sempre
         # cai no default e mascara o preco real como 0.0 silenciosamente.
-        raw_price = getattr(t.fast_info, "last_price", None)
-        raw_currency = getattr(t.fast_info, "currency", None)
-        quote = Quote(
-            price=float(raw_price) if raw_price is not None else 0.0,
-            currency=str(raw_currency) if raw_currency else "USD",
-            source="yfinance",
-            as_of=datetime.now(timezone.utc),
-        )
+        try:
+            raw_price = _finite_number(info.get("regularMarketPrice"))
+            quote_time = timestamp(info.get("regularMarketTime"))
+            if raw_price is None:
+                raw_price = _finite_number(getattr(t.fast_info, "last_price", None))
+                quote_time = None  # fast_info has no timestamp paired with last_price.
+            raw_currency = info.get("currency") or getattr(t.fast_info, "currency", None)
+            quote = Quote(
+                price=raw_price,
+                currency=currency_code(raw_currency),
+                symbol=info.get("symbol"),
+                source="yfinance",
+                as_of=quote_time,
+            )
+        except Exception:
+            quote = None
+
+        statements = {}
+        metadata = {}
+        warnings = []
+        for name, attribute, rows in (
+            ("income_statement", "financials", _ESSENTIAL_INCOME_STATEMENT),
+            ("balance_sheet", "balance_sheet", _ESSENTIAL_BALANCE_SHEET),
+            ("cash_flow", "cashflow", _ESSENTIAL_CASH_FLOW),
+        ):
+            try:
+                statements[name] = _df_to_nested_dict(getattr(t, attribute), rows)
+                metadata[name] = {
+                    end: {"currency": currency_code(info.get("financialCurrency")),
+                          "symbol": info.get("symbol"), "period": "FY"}
+                    for end in statements[name]
+                }
+            except Exception:
+                statements[name] = {}
+                warnings.append(f"Falha ao obter {name} via yfinance.")
 
         result = FinancialStatements(
             ticker=ticker,
             provider_used="yfinance",
             quote=quote,
-            income_statement=_df_to_nested_dict(t.financials, _ESSENTIAL_INCOME_STATEMENT),
-            balance_sheet=_df_to_nested_dict(t.balance_sheet, _ESSENTIAL_BALANCE_SHEET),
-            cash_flow=_df_to_nested_dict(t.cashflow, _ESSENTIAL_CASH_FLOW),
+            **statements,
+            statement_metadata=metadata,
             fundamentals_available=True,
+            warning=" ".join(warnings) or None,
         )
         return result.model_dump(mode="json")
 
     except Exception as exc:  # noqa: BLE001
-        logger.error("yfinance falhou para %s: %s", ticker, exc)
-        fallback_quote = _fetch_stooq_price(ticker)
+        logger.error("yfinance indisponivel para %s (%s)", ticker, type(exc).__name__)
         result = FinancialStatements(
-            ticker=ticker,
-            provider_used="yfinance",
-            quote=fallback_quote,
-            fundamentals_available=False,
-            warning=(
-                f"yfinance indisponivel ({exc}). Cotacao "
-                f"{'obtida via Stooq' if fallback_quote else 'tambem indisponivel'}. "
-                "DRE/Balanco/Fluxo de caixa nao puderam ser recuperados. "
-                "Tente o provider 'fmp', que nao sofre bloqueio de IP de "
-                "datacenter (comum ao yfinance em ambientes de nuvem)."
-            ),
-        )
-        return result.model_dump(mode="json")
-
-
-def _get_financial_statements_fmp(ticker: str) -> dict:
-    api_key = os.environ.get("FMP_API_KEY")
-    if not api_key:
-        result = FinancialStatements(
-            ticker=ticker,
-            provider_used="fmp",
-            fundamentals_available=False,
-            warning="FMP_API_KEY nao configurada no ambiente.",
-        )
-        return result.model_dump(mode="json")
-
-    try:
-        income_rows = _fetch_fmp_json("income-statement", ticker, api_key)
-        balance_rows = _fetch_fmp_json("balance-sheet-statement", ticker, api_key)
-        cashflow_rows = _fetch_fmp_json("cash-flow-statement", ticker, api_key)
-
-        if not income_rows:
-            raise ValueError(f"FMP nao retornou dados para {ticker} -- ticker invalido?")
-
-        quote = _fetch_fmp_quote(ticker, api_key)
-
-        result = FinancialStatements(
-            ticker=ticker,
-            provider_used="fmp",
-            quote=quote,
-            income_statement=_fmp_rows_to_nested_dict(income_rows),
-            balance_sheet=_fmp_rows_to_nested_dict(balance_rows),
-            cash_flow=_fmp_rows_to_nested_dict(cashflow_rows),
-            fundamentals_available=True,
-        )
-        return result.model_dump(mode="json")
-
-    except Exception as exc:  # noqa: BLE001
-        logger.error("FMP falhou para %s: %s", ticker, exc)
-        result = FinancialStatements(
-            ticker=ticker,
-            provider_used="fmp",
-            fundamentals_available=False,
-            warning=f"FMP indisponivel ({exc}).",
+            ticker=ticker, provider_used="yfinance", fundamentals_available=False,
+            warning="Yahoo Finance indisponivel. Tente novamente mais tarde.",
         )
         return result.model_dump(mode="json")
 
 
 @mcp.tool()
-def get_financial_statements(ticker: str, provider: str = "yfinance") -> dict:
-    """Retorna DRE, Balanco, Fluxo de Caixa e cotacao atual para um ticker.
+def get_financial_statements(ticker: str, market: str = "BR") -> dict:
+    """Contrato B3 v3: dados Yahoo Finance validados, periodos, moedas e origem.
 
-    provider: "yfinance" (padrao, gratis mas pode ser bloqueado por IP de
-    datacenter em ambientes de nuvem) ou "fmp" (Financial Modeling Prep,
-    API autenticada, 250 req/dia gratis, nao sofre bloqueio de IP).
+    Aceita PETR4 ou PETR4.SA. Sem selecao de fonte; falhas produzem dados
+    parciais ou indisponiveis com avisos, sem consultar outros provedores.
     """
-    provider = (provider or "yfinance").strip().lower()
-    if provider == "fmp":
-        return _get_financial_statements_fmp(ticker)
-    return _get_financial_statements_yfinance(ticker)
+    return load_snapshot(ticker, _get_financial_statements_yfinance, market=market)
 
 
 @mcp.tool()
