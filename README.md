@@ -16,8 +16,8 @@ raciocínio (DeepSeek V4 Flash em modo thinking, com fallback automático para
 Groq gpt-oss-120b) e integração de ferramentas via Model Context Protocol
 (MCP).
 
-Projeto de portfólio — foco em resiliência de arquitetura (fallback de LLM
-e de provedor de dados) e não em precisão financeira real (ver disclaimers
+Projeto de portfólio — foco em validação dos dados Yahoo e resiliência dos
+modelos de IA, não em precisão financeira real (ver disclaimers
 gerados pelo próprio relatório).
 
 🔗 **App no ar (Render):** [financial-analyst-agent-crewai.onrender.com](https://financial-analyst-agent-crewai.onrender.com)
@@ -28,66 +28,68 @@ Gradio/Docker em CPU básica passou a exigir assinatura PRO na HF (mudança de
 política, julho/2026). Reativar quando o upgrade for feito; nenhum código
 precisa mudar para isso.
 
-## Status — v1 encerrada
+## Estado atual — Yahoo Finance para ações brasileiras
 
-- [x] **Etapa 1** — Servidor MCP com tools de dados financeiros (yfinance + FMP)
-- [x] **Etapa 2** — Camada de fallback de LLM + agentes CrewAI
-- [x] **Etapa 3** — Interface Gradio + deploy (Render)
-- [x] **Etapa extra** — Fallback de provedor de dados (FMP), resolvendo bloqueio de IP de datacenter do yfinance em nuvem
+Os dados financeiros vêm exclusivamente do **Yahoo Finance via yfinance**.
+A interface aceita `PETR4` ou `PETR4.SA`; basta informar o código e analisar.
+Não há seletor de fonte nem troca automática de provedor financeiro.
+Outros mercados e novos provedores ficam para uma etapa posterior.
 
-Próximas versões (v2+: modo comparação entre providers, escolha de LLM pelo
-usuário, versão "light" vs "completa") ficam para uma iteração futura deste
-projeto, não fazem parte desta v1.
+### Validação e apresentação
 
-## Arquitetura
+- Preços devem ser finitos e positivos, com símbolo correspondente e moeda BRL
+  confirmada. Não há moeda padrão nem conversão cambial presumida.
+- A data da cotação vem do Yahoo; a hora da consulta fica separada. Quando a
+  fonte não informar a data, isso aparece explicitamente.
+- Os demonstrativos usam campos padronizados, valores em unidades da moeda
+  reportada e exercícios anuais. Lucro por ação usa moeda por ação.
+- A base essencial exige receita, lucro líquido, patrimônio dos acionistas,
+  caixa operacional e caixa livre no mesmo exercício anual e moeda conhecida.
+- `complete`: essa base tem até 550 dias e cotação BRL de até 7 dias,
+  compatível com a moeda dos demonstrativos.
+- `partial`: há dados úteis, mas algum desses critérios não foi atendido.
+- `unavailable`: nenhum dado foi aceito. O cliente recebe avisos, sem dados
+  inventados ou consulta a outra fonte financeira.
 
+Os limites são em dias corridos, sem garantia de tempo real. NaN/infinito viram
+`null`; zeros e negativos contábeis são preservados. Uma falha em um demonstrativo
+não apaga os demais. A tabela é produzida diretamente pelo código, com números
+em formato brasileiro, períodos, moeda, origem e limitações.
+
+### Fluxo
+
+```text
+Código B3 → Yahoo Finance → validação e contrato de dados
+    → tabela determinística para o cliente
+    → agentes: dados validados + notícias via MCP → análise → interpretação
 ```
-Gradio UI (app.py)
-      │  (thread separada + fila, para streaming de progresso)
-      │  dropdown: fonte de dados (yfinance | FMP)
-      ▼
-CrewAI Crew (agents.py) — Process.sequential
-  Data Gatherer → Quant Analyst → CIO
-      │
-      ├── MCPServerAdapter ──► mcp_server.py (subprocesso stdio)
-      │                          ├── get_financial_statements(ticker, provider)
-      │                          │      "yfinance" (padrao) ──falha──► Stooq (so cotacao)
-      │                          │      "fmp" (API autenticada, sem bloqueio de IP)
-      │                          └── get_market_news (ddgs)
-      │
-      └── DeepSeekGroqFallbackLLM (llm_provider.py)
-                 DeepSeek V4 Flash (thinking) ──falha──► Groq gpt-oss-120b
-```
 
-## Etapa 1 — Servidor MCP (`mcp_server.py`)
+Os agentes recebem a mesma base exibida ao cliente. A busca de notícias continua
+usando `ddgs`; DeepSeek/Groq continuam responsáveis pela interpretação. Se a IA
+falhar, a tabela permanece disponível. Sem dados financeiros, não chamamos a IA.
 
-Duas tools, ambas com saída validada por Pydantic:
+### Executar e testar
 
-- **`get_financial_statements(ticker, provider)`**: DRE, Balanço, Fluxo de
-  Caixa e cotação atual. Dois providers:
-  - `"yfinance"` (padrão): gratuito, mas a Yahoo Finance bloqueia/limita IPs
-    de datacenter — problema conhecido e documentado que afeta qualquer app
-    rodando em nuvem (Render, Streamlit Cloud, etc.), não é bug deste
-    projeto. Cotação tem fallback no Stooq quando esse provider falha.
-  - `"fmp"` (Financial Modeling Prep): API oficial autenticada, 250
-    requisições/dia grátis, não sofre bloqueio de IP por não ser scraping.
-    Fallback real quando o yfinance falha em ambiente de nuvem.
-  O payload é reduzido de propósito (2 períodos mais recentes, só as linhas
-  essenciais de cada demonstrativo) para não estourar o orçamento de
-  contexto dos provedores de LLM gratuitos mais adiante no pipeline.
-- **`get_market_news(ticker)`**: notícias recentes via `ddgs` (o pacote
-  antigo `duckduckgo-search` foi renomeado e está deprecado).
-
-Toda chamada externa instável usa retry com backoff exponencial (`tenacity`).
-Falhas nunca retornam dado malformado silenciosamente — o schema expõe
-`fundamentals_available: bool`, `provider_used: str` e um campo `warning`
-explícito.
+Instale as dependências em um ambiente Python isolado:
 
 ```bash
-python test_tools.py AAPL
-python test_tools.py PETR4.SA
-python test_tools.py TICKER_INVALIDO_XPTO   # valida o caminho de fallback
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python test_tools.py PETR4
+python app.py
 ```
+
+A suíte automatizada não chama APIs externas. `test_tools.py` é um teste manual
+online das ferramentas. Yahoo não requer chave no aplicativo; a interpretação
+precisa de `DEEPSEEK_API_KEY` e `GROQ_API_KEY`.
+
+O MCP permanece limitado a `mcp<2`. O contrato público agora é v3.0:
+`get_financial_statements(ticker, market="BR")`, sem argumento `provider` nem
+campo `selection`. Mantivemos `provider_used` para registrar a origem dos dados.
+Veja [o contrato B3](docs/contrato-b3.md) para os campos e critérios completos.
+
+`create_files.sh` foi desativado: era um gerador antigo que sobrescrevia o
+projeto com versões obsoletas. Use os arquivos versionados e os comandos acima.
 
 ## Etapa 2 — LLM com fallback + agentes (`llm_provider.py`, `agents.py`)
 
@@ -105,12 +107,11 @@ python test_tools.py TICKER_INVALIDO_XPTO   # valida o caminho de fallback
   ferramenta; quem executa e faz o loop é o próprio CrewAI, não esta classe.
 - **Agentes**: Data Gatherer → Quant Analyst → CIO, topologia sequencial,
   consumindo o servidor MCP via `MCPServerAdapter` (mais estável, nesta
-  versão do CrewAI, que o campo nativo `mcps`). `data_provider` é propagado
-  do dropdown da UI até a instrução do Data Gatherer.
+  versão do CrewAI, que o campo nativo `mcps`). A coleta Yahoo ocorre antes dos agentes; o Data Gatherer recebe
+  o snapshot normalizado e apenas a ferramenta de notícias.
 
 ```bash
-python agents.py AAPL          # yfinance (padrao)
-python agents.py AAPL fmp      # forca o provider FMP
+python agents.py PETR4          # Yahoo Finance
 ```
 
 ## Etapa 3 — Interface Gradio (`app.py`)
@@ -120,7 +121,7 @@ os callbacks de mudança de estágio de cada `Task` empurram atualizações por
 uma fila thread-safe que o generator do Gradio consome via `yield`,
 mostrando progresso simples ("Data Gatherer coletando..." → "Quant Analyst
 calculando..." → "CIO sintetizando...") em vez de travar a tela por 1-2
-minutos. Um dropdown deixa a pessoa escolher a fonte de dados financeiros.
+minutos. A interface usa somente Yahoo Finance e pede apenas o código da ação.
 
 ```bash
 python app.py
@@ -132,14 +133,14 @@ python app.py
 GitHub (redeploy automático a cada push na `main`). Requer `.python-version`
 fixando `3.11.9` — o crewai não suporta Python 3.14+, e algumas plataformas
 usam Python mais recente por padrão. Secrets configurados nas Environment
-Variables do Render: `DEEPSEEK_API_KEY`, `GROQ_API_KEY`, `FMP_API_KEY`.
+Variables do Render: `DEEPSEEK_API_KEY`, `GROQ_API_KEY`.
 
 **Hugging Face Space** (pausado): sincronizado automaticamente do GitHub via
 GitHub Actions (`.github/workflows/sync-to-hf-space.yml`, `git push` direto
 pro remote do Space — não usa a action `hub-sync`, que tenta recriar o repo
 via API e esbarra no paywall de CPU básica). Para reativar: trocar o
 hardware do Space de volta pra CPU basic (exige assinatura PRO hoje) e
-conferir se os secrets `DEEPSEEK_API_KEY`/`GROQ_API_KEY`/`FMP_API_KEY` ainda
+conferir se os secrets `DEEPSEEK_API_KEY`/`GROQ_API_KEY` ainda
 estão configurados nas Settings do Space.
 
 ## Lições de engenharia (por que várias decisões foram tomadas)
@@ -157,9 +158,8 @@ estão configurados nas Settings do Space.
   contra o mesmo orçamento de contexto.
 - **yfinance é scraping, não API oficial**: funciona bem localmente, mas
   a Yahoo Finance bloqueia IPs de datacenter conhecidos (Render, Streamlit
-  Cloud). Um provider alternativo autenticado (FMP) resolveu isso sem
-  custo, e virou uma feature real (escolha de fonte de dados) em vez de só
-  um workaround.
+  Cloud). O fluxo atual sinaliza indisponibilidade e preserva dados parciais;
+  não promete disponibilidade contínua do Yahoo.
 - **Versão do Python importa mais do que parece**: crewai exige
   `>=3.10,<3.14`. Plataformas (Render) e até o mesmo Codespace após um
   rebuild podem vir com uma versão default fora dessa faixa — o
