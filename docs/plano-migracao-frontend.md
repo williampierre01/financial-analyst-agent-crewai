@@ -70,7 +70,7 @@ independentes e apresentação responsiva. Contratos TypeScript gerados do
 OpenAPI. Guia de execução e validação: [interface React](frontend-local.md).
 Gradio permanece em paralelo; implantação e validação operacional são etapa 4.
 
-### 4. Integração e publicação — preparação implementada; publicação pendente
+### 4. Integração e publicação — publicada; validações operacionais pendentes
 
 Testar ponta a ponta, concorrência, tempo máximo, reinício e configuração.
 Definir infraestrutura compatível com tarefas longas e acesso de usuários.
@@ -85,16 +85,20 @@ O timeout preserva dados, mas não interrompe threads: a vaga permanece ocupada
 até a execução terminar. Não há cancelamento forçado nem persistência.
 
 Operação e retorno: [publicação restrita no Render](publicacao-render.md).
-Pendente: aplicar as configurações no Render, validar a publicação com os
-provedores reais e confirmar o retorno. O Gradio continua como interface
-publicada até essa mudança explícita. A etapa 4 não está encerrada.
+Publicação do commit 7901396 confirmada no Render em 14/10/2026, com acesso
+por senha e fluxo de PETR4 observado até a interpretação. Reinício e retorno
+em nuvem ainda não foram confirmados. As pendências de conteúdo e layout
+continuam registradas; a validação operacional da etapa 4 não está encerrada.
 
 Critério: publicação reproduzível e comportamento documentado em falhas.
 
-### 5. React como interface principal — pendente
+### 5. React como interface principal — consolidada na documentação local
 
-Publicar a nova interface após validação, atualizar instruções e manter Gradio
-como apoio temporário. Remover Gradio em uma alteração separada, se desejado.
+React já atende o fluxo principal publicado. README e guia Windows passam a
+orientar React + FastAPI como caminho principal; o modo unificado com senha
+está no guia de publicação. Gradio permanece como apoio temporário. Sua remoção
+exige uma alteração separada, se desejada. Esta consolidação não encerra as
+pendências operacionais da etapa 4 nem as correções adiadas pelo usuário.
 
 Critério: React e FastAPI atendem o fluxo principal com testes e documentação.
 

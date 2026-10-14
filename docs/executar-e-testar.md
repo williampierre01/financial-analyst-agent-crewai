@@ -8,8 +8,9 @@ Abra o PowerShell ou o terminal do editor e execute:
 cd "C:\Users\will\Documents\Codex\2026-10-13\lis\work\financial-analyst-agent-crewai"
 ```
 
-Use a branch da alteração em teste ou a main após o merge. Não é necessário
-instalar React ou Node nesta etapa: a interface continua sendo o Gradio.
+Use a branch da alteração em teste ou a main após o merge. A interface principal
+é React + TypeScript, com FastAPI. Instale Node 22.17.1 (npm 10.9.2), além do
+ambiente Python abaixo. O Gradio permanece como apoio temporário.
 
 ## 2. Sincronizar o ambiente controlado
 
@@ -59,23 +60,37 @@ Yahoo Finance não exige chave neste aplicativo. Sem as chaves de IA, você pode
 consultar os dados; a interpretação indicará indisponibilidade. Reinicie o
 aplicativo após alterar as variáveis.
 
-## 4. Rodar a interface
+## 4. Rodar a interface principal
+
+Para desenvolvimento, inicie a API na raiz do projeto:
 
 ```powershell
-& .\.venv\Scripts\python.exe app.py
+& .\.venv\Scripts\python.exe -m uvicorn backend.api.main:app --host 127.0.0.1 --port 8000
 ```
 
-Mantenha o terminal aberto e acesse http://localhost:7860 no navegador.
-Se PORT estiver configurada no seu ambiente, use a porta exibida no terminal.
-Para parar o servidor, pressione Ctrl+C. Para escolher outra porta:
+Em outro terminal, na pasta do projeto:
 
 ```powershell
-$env:PORT = "7861"
-& .\.venv\Scripts\python.exe app.py
+cd frontend
+npm.cmd ci
+npm.cmd run dev
 ```
 
-Nesse caso, acesse http://localhost:7861. O comando atual escuta em 0.0.0.0,
-portanto pode aceitar conexões de rede conforme o firewall; não há login.
+Abra http://127.0.0.1:5173. Mantenha ambos os terminais abertos e encerre com
+Ctrl+C. Este modo é local, sem senha; não o utilize como publicação na internet.
+Veja [o guia React](frontend-local.md) para portas alternativas e testes.
+
+Para testar o mesmo modo utilizado no Render (build compilado, uma porta e
+senha), siga [Rodar a versão unificada no Windows](publicacao-render.md#rodar-a-versão-unificada-no-windows).
+As variáveis WEB_USERNAME e WEB_PASSWORD são configuradas no servidor; não
+as coloque no frontend.
+
+### Gradio — apoio temporário
+
+Na raiz, execute `& .\.venv\Scripts\python.exe app.py` e abra
+http://localhost:7860. Esse comando não é necessário para o React. O Gradio
+escuta em 0.0.0.0 e não tem a proteção por senha de backend.web; use-o apenas
+no ambiente de apoio apropriado. Para encerrar, pressione Ctrl+C.
 
 ## 5. Testar pela tela
 

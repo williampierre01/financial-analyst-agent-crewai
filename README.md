@@ -11,6 +11,22 @@ pinned: false
 
 # Financial Analyst Crew
 
+## Interface principal — React + FastAPI
+
+A interface principal publicada no Render é React + TypeScript, com API FastAPI
+na mesma origem e acesso restrito por usuário e senha. Em 14/10/2026, o usuário
+confirmou o acesso e o fluxo de PETR4 com dados antecipados e interpretação.
+
+- Para desenvolver a interface: [React e API em dois terminais](docs/frontend-local.md).
+- Para executar o aplicativo unificado com senha: [guia de execução e publicação](docs/publicacao-render.md).
+- Para preparar o ambiente: [passo a passo Windows](docs/executar-e-testar.md).
+- Para acompanhar limitações conhecidas: [pendências de homologação](docs/pendencias-homologacao.md).
+
+O Gradio permanece como apoio temporário, executado por `python app.py`.
+Ele não é a interface principal e não utiliza a proteção de acesso do servidor
+unificado. Sua remoção, se desejada, será uma alteração separada.
+
+
 Sistema multi-agente de análise financeira autônoma, usando CrewAI, um LLM de
 raciocínio (DeepSeek V4 Flash em modo thinking, com fallback automático para
 Groq gpt-oss-120b) e integração de ferramentas via Model Context Protocol
@@ -94,8 +110,12 @@ que instalam com pip; não deve ser editado manualmente.
 uv sync --locked
 uv run --locked python -m unittest discover -s tests -v
 uv run --locked python test_tools.py PETR4
-uv run --locked python app.py
+uv run --locked uvicorn backend.api.main:app --host 127.0.0.1 --port 8000
 ```
+
+O último comando inicia a API local. Para a interface, execute `npm ci` e
+`npm run dev` na pasta `frontend`, em outro terminal. Para usar o build unificado
+com senha, siga o guia de publicação indicado acima.
 
 Veja [como preparar, reproduzir e atualizar o ambiente](docs/ambiente-desenvolvimento.md)
 e [o guia de execução no Windows](docs/executar-e-testar.md). O grupo `dev` inclui `httpx2` para os testes HTTP; `unittest` vem com o Python.

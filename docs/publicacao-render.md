@@ -2,10 +2,15 @@
 
 ## Estado e escopo
 
-Preparação implementada em 14/10/2026. Nenhuma configuração do serviço Render
-foi alterada e nenhuma publicação foi executada nesta etapa. O Gradio atual
-permanece disponível. A homologação em nuvem ainda é necessária para concluir
-a etapa 4; React como interface principal continua sendo a etapa 5.
+Publicado no Render em 14/10/2026, commit 7901396. O usuário confirmou a
+solicitação de usuário e senha e apresentou a consulta PETR4 com dados antes
+da interpretação, seguida do relatório. React é a interface principal;
+Gradio permanece como apoio temporário no repositório.
+
+Reinício e retorno em nuvem ainda não foram confirmados. As correções adiadas
+estão em [pendências de homologação](pendencias-homologacao.md). O sucesso do
+fluxo não constitui validação da precisão financeira ou das afirmações da IA.
+As seções abaixo documentam como reproduzir a configuração e os testes restantes.
 
 O destino escolhido é o serviço Python existente no Render, inicialmente com
 acesso restrito. O build React e a API são servidos pelo mesmo processo Python:
@@ -182,7 +187,9 @@ Testes Python cobrem reinício, retenção, proteção de rotas e configuração
 
 57 testes Python, 18 testes de interface e 3 testes integrados aprovados.
 Build, formatação, contrato OpenAPI e sintaxe dos scripts Bash conferidos.
-Nenhuma nova chamada real a Yahoo/IA nem publicação no Render foi realizada.
+Os testes automatizados não fizeram chamadas reais a Yahoo/IA. A publicação
+e a consulta real posteriores foram confirmadas pelo usuário conforme o estado
+registrado no início deste documento.
 
 No ambiente restrito do agente no Windows, a finalização automática dos
 servidores pelo Playwright ficou presa. As suítes foram repetidas com os mesmos
