@@ -1,0 +1,9 @@
+# Stable text files across Windows and Linux, including generated lock exports.
+* text=auto
+*.py text eol=lf
+*.toml text eol=lf
+*.lock text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+.python-version text eol=lf

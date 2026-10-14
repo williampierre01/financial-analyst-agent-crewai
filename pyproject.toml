@@ -1,0 +1,25 @@
+[project]
+name = "financial-analyst-agent-crewai"
+version = "0.1.0"
+description = "Análise de ações brasileiras com Yahoo Finance e agentes de IA"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "crewai>=1.15.0",
+    "crewai-tools[mcp]>=0.50.0",
+    "ddgs>=9.0.0",
+    "gradio>=4.40.0",
+    "mcp>=1.9.0,<2",
+    "openai>=1.30.0",
+    "pydantic>=2.7.0",
+    "python-dotenv>=1.0.1",
+    "tenacity>=8.3.0",
+    "yfinance>=0.2.60",
+]
+
+[dependency-groups]
+# unittest faz parte do Python; adicionar aqui futuras ferramentas de teste/lint.
+dev = []
+
+[tool.uv]
+package = false
+required-version = "==0.11.33"
