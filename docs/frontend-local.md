@@ -2,9 +2,10 @@
 
 ## Entrega
 
-Uma interface própria para consultar ações brasileiras, conectada à API da
-etapa 2. O Gradio continua disponível em paralelo. Não houve implantação em
-nuvem nem substituição do aplicativo publicado.
+A interface principal para consultar ações brasileiras usa React e a API
+FastAPI. Foi publicada no Render em 14/10/2026, com acesso restrito. O Gradio
+continua disponível como apoio temporário. Este guia descreve desenvolvimento
+local; o modo unificado com senha está no [guia de publicação](publicacao-render.md).
 
 A tela oferece consulta por código, etapas de processamento, cotação com data,
 resumo anual, demonstrativos por grupo com exercícios lado a lado, limitações
