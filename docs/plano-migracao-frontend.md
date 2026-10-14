@@ -70,13 +70,24 @@ independentes e apresentação responsiva. Contratos TypeScript gerados do
 OpenAPI. Guia de execução e validação: [interface React](frontend-local.md).
 Gradio permanece em paralelo; implantação e validação operacional são etapa 4.
 
-### 4. Integração e publicação — pendente
+### 4. Integração e publicação — preparação implementada; publicação pendente
 
 Testar ponta a ponta, concorrência, tempo máximo, reinício e configuração.
 Definir infraestrutura compatível com tarefas longas e acesso de usuários.
 Verificar responsividade, acessibilidade, credenciais e documentação operacional.
 Preparar retorno à versão anterior. Não assumir que desconectar o navegador
 cancela trabalho em execução: cancelamento requer implementação própria.
+
+Preparação: React compilado e FastAPI na mesma origem, proteção HTTP Basic
+para acesso restrito, scripts para o serviço Python existente no Render,
+testes integrados com HTTP real e limite de 600 segundos para o resultado.
+O timeout preserva dados, mas não interrompe threads: a vaga permanece ocupada
+até a execução terminar. Não há cancelamento forçado nem persistência.
+
+Operação e retorno: [publicação restrita no Render](publicacao-render.md).
+Pendente: aplicar as configurações no Render, validar a publicação com os
+provedores reais e confirmar o retorno. O Gradio continua como interface
+publicada até essa mudança explícita. A etapa 4 não está encerrada.
 
 Critério: publicação reproduzível e comportamento documentado em falhas.
 

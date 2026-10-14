@@ -2,7 +2,7 @@
 from contextlib import asynccontextmanager
 from uuid import UUID
 
-from fastapi import FastAPI, HTTPException, Response
+from fastapi import FastAPI, HTTPException, Request, Response
 
 from backend.api.schemas import AnalysisRequest, AnalysisResponse, HealthResponse
 from backend.services.analyses import AnalysisStore, CapacityExceeded, StoreClosed, run_analysis
@@ -26,14 +26,14 @@ def create_app(runner=run_analysis, **store_options):
                               retention_seconds=store.retention_seconds)
 
     @app.post("/analyses", response_model=AnalysisResponse, status_code=202)
-    def start_analysis(body: AnalysisRequest, response: Response):
+    def start_analysis(body: AnalysisRequest, response: Response, request: Request):
         try:
             record = app.state.analyses.create(body.ticker)
         except CapacityExceeded:
             raise HTTPException(429, detail={"code": "capacity_exceeded", "message": "Limite de análises atingido. Tente novamente mais tarde."}) from None
         except StoreClosed:
             raise HTTPException(503, detail={"code": "service_unavailable", "message": "Serviço temporariamente indisponível."}) from None
-        response.headers["Location"] = f"/analyses/{record['id']}"
+        response.headers["Location"] = f"{request.scope.get('root_path', '')}/analyses/{record['id']}"
         response.headers["Cache-Control"] = "no-store"
         return record
 

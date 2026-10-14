@@ -8,7 +8,7 @@ from fastapi.testclient import TestClient
 
 from analysis_models import AnalysisResult
 from backend.api.main import create_app
-from backend.services.analyses import AnalysisStore, StoreClosed
+from backend.services.analyses import AnalysisStore, CapacityExceeded, StoreClosed
 from financial_data import load_snapshot
 from test_yahoo_contract import NOW, payload
 
@@ -33,6 +33,36 @@ def wait_done(client, url):
 
 
 class ApiTests(unittest.TestCase):
+    def test_timeout_preserves_data_and_capacity_until_worker_exits(self):
+        published, release = threading.Event(), threading.Event()
+        def runner(ticker, on_update):
+            on_update(AnalysisResult(ticker, data=data(), interpretation_status="running"))
+            published.set()
+            release.wait(5)
+            on_update(finish(ticker, on_update))
+            return finish(ticker, on_update)
+        store = AnalysisStore(runner, max_concurrent=1, timeout_seconds=1)
+        try:
+            accepted = store.create("PETR4")
+            self.assertTrue(published.wait(2))
+            deadline = time.monotonic() + 3
+            while store.get(accepted["id"])["status"] == "running" and time.monotonic() < deadline:
+                time.sleep(0.01)
+            record = store.get(accepted["id"])
+            self.assertEqual(record["status"], "failed")
+            self.assertEqual(record["errors"][0]["code"], "analysis_timeout")
+            self.assertIsNotNone(record["data"])
+            self.assertIsNone(record["expires_at"])
+            with self.assertRaises(CapacityExceeded):
+                store.create("VALE3")
+        finally:
+            release.set()
+            store.close()
+        record = store.get(accepted["id"])
+        self.assertEqual(record["status"], "failed")
+        self.assertIsNone(record["interpretation"])
+        self.assertIsNotNone(record["expires_at"])
+
     def test_health_and_openapi_do_not_run_analysis(self):
         def runner(*args, **kwargs):
             self.fail("Health must not create an analysis")

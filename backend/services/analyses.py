@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 from copy import deepcopy
 from datetime import datetime, timedelta, timezone
 import logging
-from threading import RLock
+from threading import RLock, Timer
 import time
 from uuid import uuid4
 
@@ -27,13 +27,14 @@ class StoreClosed(Exception):
 
 class AnalysisStore:
     def __init__(self, runner=run_analysis, *, max_concurrent=2, max_records=100,
-                 retention_seconds=3600, clock=time.monotonic):
-        if min(max_concurrent, max_records, retention_seconds) < 1:
+                 retention_seconds=3600, timeout_seconds=600, clock=time.monotonic):
+        if min(max_concurrent, max_records, retention_seconds, timeout_seconds) < 1:
             raise ValueError("Limits must be positive")
         self.runner = runner
         self.max_concurrent = max_concurrent
         self.max_records = max_records
         self.retention_seconds = retention_seconds
+        self.timeout_seconds = timeout_seconds
         self.clock = clock
         self._lock = RLock()
         self._records = {}
@@ -72,10 +73,28 @@ class AnalysisStore:
 
     def _update(self, job_id, result):
         with self._lock:
+            if self._records[job_id]["status"] != "running":
+                return
             self._records[job_id].update(result.to_dict())
             self._records[job_id]["updated_at"] = datetime.now(timezone.utc)
 
+    def _timeout(self, job_id):
+        with self._lock:
+            record = self._records[job_id]
+            if record["status"] != "running":
+                return
+            record.update(status="failed", stage="done", updated_at=datetime.now(timezone.utc))
+            if record["interpretation_status"] in ("pending", "running"):
+                record["interpretation_status"] = "failed"
+            record["errors"].append({"code": "analysis_timeout", "message":
+                "A análise excedeu o tempo limite. Os dados já recebidos foram preservados."})
+            # Do not release the slot: a Python thread may still be doing work.
+            # Retention only starts once the worker actually exits.
+
     def _run(self, job_id, ticker):
+        timer = Timer(self.timeout_seconds, self._timeout, args=(job_id,))
+        timer.daemon = True
+        timer.start()
         try:
             result = self.runner(ticker, on_update=lambda update: self._update(job_id, update))
             if result.status not in ("completed", "failed"):
@@ -85,11 +104,13 @@ class AnalysisStore:
             logging.getLogger(__name__).warning("Analysis failed (%s)", type(exc).__name__)
             with self._lock:
                 record = self._records[job_id]
-                record.update(status="failed", stage="done", updated_at=datetime.now(timezone.utc))
-                if record["interpretation_status"] in ("pending", "running"):
-                    record["interpretation_status"] = "failed"
-                record["errors"].append({"code": "analysis_failed", "message": "A análise foi interrompida. Tente novamente."})
+                if record["status"] == "running":
+                    record.update(status="failed", stage="done", updated_at=datetime.now(timezone.utc))
+                    if record["interpretation_status"] in ("pending", "running"):
+                        record["interpretation_status"] = "failed"
+                    record["errors"].append({"code": "analysis_failed", "message": "A análise foi interrompida. Tente novamente."})
         finally:
+            timer.cancel()
             with self._lock:
                 self._records[job_id]["expires_at"] = datetime.now(timezone.utc) + timedelta(seconds=self.retention_seconds)
                 self._deadlines[job_id] = self.clock() + self.retention_seconds

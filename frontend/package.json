@@ -14,8 +14,9 @@
     "types:generate": "openapi-typescript openapi.json -o src/types/api.generated.ts",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "format:check": "prettier --check src tests *.ts *.json *.html",
-    "format": "prettier --write src tests *.ts *.json *.html"
+    "test:integration": "playwright test --config playwright.integration.config.ts",
+    "format:check": "prettier --check src tests integration *.ts *.json *.html",
+    "format": "prettier --write src tests integration *.ts *.json *.html"
   },
   "dependencies": {
     "lucide-react": "1.56.0",
