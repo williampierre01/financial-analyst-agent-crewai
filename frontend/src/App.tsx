@@ -449,6 +449,17 @@ export default function App() {
                     remarkPlugins={[remarkGfm]}
                     skipHtml
                     components={{
+                      table: ({ children }) => (
+                        <div
+                          className="table-scroll"
+                          tabIndex={0}
+                          role="region"
+                          aria-label="Tabela da interpretação — role para ver todas as colunas"
+                        >
+                          <table>{children}</table>
+                        </div>
+                      ),
+                      pre: ({ children }) => <pre tabIndex={0}>{children}</pre>,
                       a: (props) => (
                         <a
                           href={props.href}
