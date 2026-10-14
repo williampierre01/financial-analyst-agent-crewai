@@ -406,16 +406,19 @@ test("long reports keep page contained and tables independently scrollable", asy
       });
       if (overflows)
         expect(await region.evaluate((el) => el.scrollLeft > 0)).toBe(true);
-      const lastCell = await region
-        .locator("tr")
-        .last()
-        .locator("td")
-        .last()
-        .boundingBox();
-      const box = await region.boundingBox();
-      expect(lastCell!.x + lastCell!.width).toBeLessThanOrEqual(
-        box!.x + box!.width + 1,
-      );
+      await expect
+        .poll(() =>
+          region.evaluate((el) => {
+            // Measure together after scrolling; keyboard scrolling can still be settling.
+            el.scrollLeft = el.scrollWidth;
+            const lastCell = el.querySelector("tr:last-child td:last-child")!;
+            return (
+              lastCell.getBoundingClientRect().right -
+              el.getBoundingClientRect().right
+            );
+          }),
+        )
+        .toBeLessThanOrEqual(1);
     }
     await page.getByLabel("Escala dos valores").selectOption("full");
     expect(
