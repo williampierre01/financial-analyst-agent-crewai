@@ -37,6 +37,7 @@ A etapa 3 entrega a interface React + TypeScript, com dados e interpretação
 separados, navegação responsiva e acompanhamento da análise.
 A tabela aparece assim que a coleta termina, antes da interpretação por IA.
 
+- [Preparação da publicação restrita no Render](docs/publicacao-render.md)
 - [Interface React: iniciar e testar no Windows](docs/frontend-local.md)
 - [API local: executar, consultar análises e limites](docs/api-local.md)
 - [Planejamento, etapas e contrato interno](docs/plano-migracao-frontend.md)

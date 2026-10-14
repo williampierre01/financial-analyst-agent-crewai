@@ -106,9 +106,10 @@ resultado do trabalho. Erros 422 seguem o formato padrão de validação FastAPI
   acesso de criação/consulta. Trabalhos ativos nunca expiram por esse prazo.
 - Dados e controle ficam em memória; não usar mais de um processo/instância.
 - Limites são definidos no serviço; create_app permite ajustes nos testes.
-- Não há timeout global nem cancelamento: tarefas travadas podem ocupar uma
-  vaga indefinidamente. Fechar o navegador não encerra uma tarefa. O encerramento
-  normal aguarda os workers; threads em Python não são canceladas à força.
+- O resultado tem limite de 600 segundos: timeout retorna failed e preserva
+  os dados publicados. A thread não é cancelada e a vaga fica ocupada até ela
+  terminar; só então começa a retenção. Tarefas travadas podem exigir reinício.
+  Fechar o navegador não encerra a tarefa; o encerramento normal aguarda workers.
 - Antes de disponibilizar para múltiplos usuários: armazenamento compartilhado,
   execução de tarefas com timeout/cancelamento, autenticação e isolamento.
 

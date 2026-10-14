@@ -161,8 +161,10 @@ o build local em http://127.0.0.1:4173, com o mesmo encaminhamento para a API.
 Vite dev/preview são ferramentas locais; para publicar será necessário servir
 o build e encaminhar /api a FastAPI na infraestrutura escolhida.
 
-Persistência, autenticação, timeout/cancelamento de tarefas e implantação ficam
-para a etapa 4. Gradio permanece disponível pelo comando python app.py.
+A preparação da etapa 4 acrescenta execução unificada com acesso restrito,
+testes HTTP integrados e limite de tempo do resultado. Veja
+[publicação no Render](publicacao-render.md). Persistência e cancelamento
+forçado ainda não existem. Gradio permanece disponível por python app.py.
 
 ## Validação desta entrega
 
