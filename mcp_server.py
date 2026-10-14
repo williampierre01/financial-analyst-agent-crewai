@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 import math
 from datetime import datetime, timezone
-from typing import Optional
+from typing import Literal, Optional
 
 import yfinance as yf
 from ddgs import DDGS
@@ -19,6 +19,7 @@ from tenacity import (
 )
 
 from financial_data import load_snapshot, timestamp, currency_code
+from news_data import news_date, news_url
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("mcp_server")
@@ -78,11 +79,21 @@ class NewsItem(BaseModel):
     url: str
     snippet: str = ""
     source: str = ""
+    date_raw: str | None = None
+    published_at: str | None = None
+    date_status: Literal["missing", "invalid", "timezone_missing", "future", "reported"] = "missing"
+    date_label: str
+    date_origin: str = "ddgs.news.date"
+    article_verified: bool = False
 
 
 class MarketNews(BaseModel):
     ticker: str
+    query: str
+    retrieved_at: datetime
+    provider: str = "ddgs"
     items: list[NewsItem] = Field(default_factory=list)
+    warnings: list[str] = Field(default_factory=list)
 
 
 class ToolError(BaseModel):
@@ -249,27 +260,42 @@ def get_financial_statements(ticker: str, market: str = "BR") -> dict:
 
 @mcp.tool()
 def get_market_news(ticker: str, max_results: int = 3) -> dict:
-    """Retorna as noticias mais recentes relevantes para o ticker via ddgs."""
+    """Busca notícias via ddgs com URLs e datas rastreáveis, não verificadas no artigo.
+
+    Use date_label no relatório. retrieved_at é consulta, não publicação. Datas
+    futuras, inválidas ou sem fuso não são aceitas como publicação confirmada.
+    """
     # tickers brasileiros (.SA) tem pouco resultado com query em ingles
     # generica -- adicionar "acoes" ajuda o ddgs a achar cobertura local
     query = f"{ticker} acoes" if ticker.upper().endswith(".SA") else f"{ticker} stock"
     try:
         with DDGS() as ddgs:
             raw = list(ddgs.news(query, max_results=max_results))
-        items = [
-            NewsItem(
-                title=r.get("title", ""),
-                url=r.get("url", ""),
-                snippet=(r.get("body", "") or "")[:200],
-                source=r.get("source", ""),
-            )
-            for r in raw
-        ]
-        return MarketNews(ticker=ticker, items=items).model_dump(mode="json")
+        retrieved_at = datetime.now(timezone.utc)
+        items = []
+        warnings = []
+        for r in raw:
+            url = news_url(r.get("url")) if isinstance(r, dict) else None
+            if not url:
+                warnings.append("Resultado descartado: link HTTP(S) ausente ou inválido.")
+                continue
+            title = r.get("title")
+            if not isinstance(title, str) or not title.strip():
+                warnings.append("Resultado descartado: título ausente ou inválido.")
+                continue
+            items.append(NewsItem(
+                title=title, url=url,
+                snippet=r["body"][:200] if isinstance(r.get("body"), str) else "",
+                source=r["source"] if isinstance(r.get("source"), str) else "",
+                **news_date(r.get("date"), retrieved_at),
+            ))
+        return MarketNews(ticker=ticker, query=query, retrieved_at=retrieved_at,
+                          items=items, warnings=list(dict.fromkeys(warnings))).model_dump(mode="json")
 
     except Exception as exc:  # noqa: BLE001
-        logger.error("ddgs falhou para %s: %s", ticker, exc)
-        return ToolError(error=str(exc), ticker=ticker).model_dump(mode="json")
+        logger.error("ddgs falhou para %s (%s)", ticker, type(exc).__name__)
+        return ToolError(error="Não foi possível consultar as notícias. Datas e fontes não confirmadas.",
+                         ticker=ticker).model_dump(mode="json")
 
 
 if __name__ == "__main__":

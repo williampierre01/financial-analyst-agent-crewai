@@ -96,3 +96,55 @@ Limites: as regras de idioma/moeda da IA são instruções de geração, não ga
 sobre texto livre. Ainda é necessária homologação com consulta real após uma
 publicação autorizada. Não houve chamada real a provedores, merge ou deploy.
 Grupos 3 (notícias) e 4 (fundamentação) permanecem pendentes.
+
+## Grupo 3 — notícias, datas e fontes (14/10/2026)
+
+Base: merge confirmado do PR #11 (`6c62fbb`), branch
+`codex/noticias-datas-fontes`.
+
+### Investigação
+
+`get_market_news` descartava o campo `date` retornado por `ddgs.news` e não
+informava o horário da consulta aos agentes. A versão instalada de ddgs pode
+normalizar datas extraídas pelos buscadores; esse campo não é evidência de
+verificação da página original. Sem o retorno bruto da consulta capturada,
+não foi possível determinar a causa específica de 15/10 em consulta de 14/10.
+Um dia diferente também pode resultar de fuso, por isso a validação compara
+instantes e não apenas a parte de calendário.
+
+### Correções e contrato da ferramenta de notícias
+
+- Envelope registra `query`, `provider=ddgs`, `retrieved_at` em UTC e avisos.
+- Cada item conserva título, URL HTTP(S), veículo e resumo da busca; acrescenta
+  `date_raw` (texto recebido), `date_origin=ddgs.news.date`, `date_status`,
+  `published_at`, `date_label` e `article_verified=false`.
+- Apenas ISO com horário/fuso explícito e instante não posterior à consulta
+  produz `published_at` normalizado em UTC e rótulo em Brasília. `reported`
+  significa informado pela busca, sem confirmação na página original.
+- Datas futuras, inválidas, ausentes, relativas ou sem horário/fuso têm
+  `published_at=null` e rótulo de publicação não confirmada. Não se inventa
+  meia-noite, fuso, data de hoje ou data a partir de URL/título/resumo.
+- Resultados sem título ou link válido são descartados com aviso, preservando
+  os outros itens. Veículo ausente não é inventado. Erros de busca não expõem
+  exceções internas ao agente/cliente.
+- Instruções dos agentes exigem título, veículo, URL retornada e `date_label`,
+  distinguem consulta de publicação e impedem alegação de leitura integral.
+
+O contrato financeiro/API React não muda. Não há novo provedor nem coleta de
+páginas completas. Os metadados seguem no contexto MCP; a reprodução fiel no
+texto final depende da adesão do modelo às instruções, ainda não homologada
+com consulta real. Datas não confirmadas não são corrigidas automaticamente.
+
+### Validação
+
+Testes sem rede cobrem: 15/10 em fuso que corresponde a 14/10 em Brasília;
+data realmente futura; ausência/formato inválido/sem fuso; data antiga;
+limite exato da consulta; URLs inválidas; lote parcialmente malformado;
+consulta vazia/falha; preservação da origem; serialização e chamada da
+ferramenta registrada no MCP. Contrato OpenAPI e `git diff --check` conferidos.
+Nenhuma alteração de interface, merge ou publicação no Render nesta etapa.
+O grupo 4 (fundamentação) permanece pendente.
+
+Resultado final do grupo 3: 72 testes Python aprovados, incluindo 15 casos de
+notícias e a chamada MCP registrada, sem acesso à rede. Suítes de navegador
+não repetidas, pois a interface e seu contrato não foram alterados.
