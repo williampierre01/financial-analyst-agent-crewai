@@ -16,6 +16,7 @@
 }
 body {
   margin: 0;
+  overflow-wrap: anywhere;
 }
 button,
 input,
@@ -546,7 +547,7 @@ main {
 }
 .detail-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(260px, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   margin-top: 26px;
   align-items: start;
@@ -556,7 +557,6 @@ main {
   background: #fff;
   border-radius: 11px;
   min-width: 0;
-  overflow: hidden;
 }
 .panel-heading {
   padding: 22px 22px 17px;
@@ -855,6 +855,7 @@ main {
 }
 .table-scroll {
   overflow: auto;
+  max-width: 100%;
 }
 table {
   width: 100%;
@@ -901,7 +902,33 @@ th small {
   color: #53644c;
   padding: 0 22px 24px;
   overflow-wrap: anywhere;
-  overflow-x: auto;
+}
+.markdown > :not(.table-scroll):not(pre) {
+  max-width: 80ch;
+}
+.markdown .table-scroll {
+  margin: 16px 0;
+}
+.markdown pre {
+  overflow: auto;
+  padding: 12px;
+  background: #f8faf5;
+}
+.markdown img {
+  max-width: 100%;
+  height: auto;
+}
+.notice > div,
+.panel-heading > div {
+  min-width: 0;
+}
+.search-meta,
+.examples,
+.section-heading,
+.table-toolbar,
+.progress-title,
+.progress-panel ol {
+  flex-wrap: wrap;
 }
 .markdown h3,
 .markdown h2 {

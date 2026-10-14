@@ -36,3 +36,26 @@ foi testado retorno ao Gradio, nem uma nova análise completa após rollback ou
 restauração. A perda de um identificador específico após reinício não foi
 verificada em nuvem. Esses limites não alteram os resultados observados acima.
 As correções de layout e conteúdo permanecem adiadas.
+
+## Grupo 1 — layout e responsividade (14/10/2026)
+
+Implementado na branch `codex/layout-responsividade`, a partir de `cef5b49`
+(merge confirmado do PR #9), para revisão antes de publicação.
+
+- Demonstrativos e interpretação ocupam a largura disponível em sequência;
+  o texto corrido tem limite de largura para leitura no desktop.
+- Tabelas Markdown têm rolagem própria e foco por teclado. Blocos de código
+  também têm rolagem própria; textos, links e avisos extensos quebram linhas.
+- Retirada a contenção por corte do painel, preservando o contorno de foco.
+- Testes de regressão usam 12 exercícios, links e palavras extensas, listas,
+  citações, código e avisos, entre 320 e 1920 px. Verificam ausência de rolagem
+  horizontal da página, posição dos painéis, foco, rolagem por teclado, acesso
+  à última coluna e troca para valores integrais.
+- Validação: build TypeScript/Vite, 57 testes Python, 20 cenários de interface
+  (18 existentes e 2 novos), 3 integrados, formatação e diff sem erros.
+  Capturas de desktop e celular emulado revisadas. Chromium emulado não
+  substitui teste em aparelho físico/Safari. Dados e IA simulados nos testes.
+- Servidores gerenciados separadamente neste ambiente Windows, conforme a
+  limitação documentada. Nenhum merge ou deploy realizado nesta etapa.
+
+Os grupos 2 (apresentação), 3 (notícias) e 4 (fundamentação) permanecem pendentes.

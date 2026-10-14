@@ -322,3 +322,111 @@ test("key pages have no automated WCAG AA violations", async ({ page }) => {
   ).toBeVisible();
   await check();
 });
+
+test("long reports keep page contained and tables independently scrollable", async ({
+  page,
+}, info) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const result = complete();
+  const longWord = "Documento".repeat(50);
+  const url = `https://example.com/${"fonte".repeat(65)}`;
+  const headers = Array.from({ length: 12 }, (_, i) => `Exercício ${2025 - i}`);
+  result.interpretation = [
+    "## Relatório extenso",
+    `Texto longo ${longWord}`,
+    `[${url}](${url})`,
+    `| Indicador | ${headers.join(" | ")} |`,
+    `| --- | ${headers.map(() => "---").join(" | ")} |`,
+    `| Receita | ${headers.map(() => "R$ 123.456.789.012,34").join(" | ")} |`,
+    "",
+    "Parágrafo após a tabela permanece legível sem rolagem lateral.",
+    "```text\n" + longWord + "\n```",
+    `> ${longWord}`,
+    `- ${longWord}`,
+  ]
+    .join("\n\n")
+    .replace(/\|\n\n\|/g, "|\n|");
+  result.data.warnings = [longWord];
+  for (const periods of Object.values(result.data.statements)) {
+    const period = periods[0];
+    periods.splice(
+      0,
+      periods.length,
+      ...headers.map((_, index) => ({
+        ...structuredClone(period),
+        period_end: `${2025 - index}-12-31`,
+      })),
+    );
+  }
+  await mock(page, result);
+  await page.goto("/");
+  await search(page);
+  await expect(
+    page.getByRole("heading", { name: "Relatório extenso" }),
+  ).toBeVisible();
+  for (const width of [320, 390, 700, 768, 1150, 1280, 1440, 1920]) {
+    await page.setViewportSize({ width, height: 1000 });
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+      `page at ${width}`,
+    ).toBe(true);
+    const financial = await page.locator(".financial-panel").boundingBox();
+    const interpretation = await page
+      .locator(".interpretation-panel")
+      .boundingBox();
+    expect(interpretation!.y).toBeGreaterThanOrEqual(
+      financial!.y + financial!.height,
+    );
+    expect(interpretation!.width).toBeCloseTo(financial!.width, 0);
+    expect(
+      await page
+        .locator(".markdown")
+        .evaluate((el) => el.scrollWidth <= el.clientWidth),
+    ).toBe(true);
+    for (const region of await page.locator(".table-scroll").all()) {
+      const overflows = await region.evaluate(
+        (el) => el.scrollWidth > el.clientWidth,
+      );
+      if (width <= 390) expect(overflows).toBe(true);
+      await region.focus();
+      await expect(region).toBeFocused();
+      if (overflows) {
+        await region.evaluate((el) => {
+          el.scrollLeft = 0;
+        });
+        await region.press("ArrowRight");
+        await expect
+          .poll(() => region.evaluate((el) => el.scrollLeft))
+          .toBeGreaterThan(0);
+      }
+      await region.evaluate((el) => {
+        el.scrollLeft = el.scrollWidth;
+      });
+      if (overflows)
+        expect(await region.evaluate((el) => el.scrollLeft > 0)).toBe(true);
+      const lastCell = await region
+        .locator("tr")
+        .last()
+        .locator("td")
+        .last()
+        .boundingBox();
+      const box = await region.boundingBox();
+      expect(lastCell!.x + lastCell!.width).toBeLessThanOrEqual(
+        box!.x + box!.width + 1,
+      );
+    }
+    await page.getByLabel("Escala dos valores").selectOption("full");
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+    ).toBe(true);
+    if (width === 390 || width === 1440) {
+      await page
+        .locator(".interpretation-panel")
+        .screenshot({ path: info.outputPath(`report-${width}.png`) });
+    }
+  }
+});
