@@ -1,11 +1,7 @@
-"""
-Interface Gradio do analista financeiro autonomo (Etapa 3).
+"""Gradio adapter: render structured updates from a background analysis.
 
-crew.kickoff() e uma chamada sincrona e bloqueante -- para mostrar progresso
-enquanto os agentes trabalham (em vez de travar a tela por 1-2 minutos), a
-execucao roda numa thread separada, e os callbacks de mudanca de estagio
-(ver agents.py::on_stage) empurram atualizacoes por uma fila thread-safe que
-o generator do Gradio consome e transforma em `yield`.
+Financial data is published before interpretation, keeping the table visible
+while the agents work. The service has no dependency on this UI.
 """
 
 from __future__ import annotations
@@ -16,14 +12,9 @@ import threading
 
 import gradio as gr
 
-from agents import run_analysis
+from agents import run_analysis_result
+from presentation import STAGE_LABELS, render_analysis_report
 from financial_data import normalize_ticker
-
-STAGE_LABELS = {
-    "gathering": "🔎 **Data Gatherer** coletando dados financeiros e noticias...",
-    "quant": "📊 **Quant Analyst** calculando P/L, ROE, Margem Liquida e DCF...",
-    "cio": "📝 **CIO** sintetizando o relatorio final...",
-}
 
 
 def analyze(ticker: str):
@@ -33,44 +24,33 @@ def analyze(ticker: str):
         yield f"⚠️ {exc}"
         return
 
-    update_queue: "queue.Queue[tuple[str, str]]" = queue.Queue()
-    result_holder: dict = {}
-
-    def on_stage(stage_key: str) -> None:
-        update_queue.put(("stage", stage_key))
+    update_queue = queue.Queue()
 
     def worker() -> None:
         try:
-            report = run_analysis(ticker, on_stage=on_stage)
-            result_holder["report"] = report
-        except Exception as exc:  # noqa: BLE001
-            result_holder["error"] = True
+            run_analysis_result(
+                ticker,
+                on_update=lambda result: update_queue.put(("update", result)),
+            )
+        except Exception:
+            update_queue.put(("error", None))
         finally:
-            update_queue.put(("done", ""))
+            update_queue.put(("done", None))
 
     thread = threading.Thread(target=worker, daemon=True)
     thread.start()
-
-    yield STAGE_LABELS["gathering"]
-
+    last_report = STAGE_LABELS["gathering"]
+    yield last_report
     while True:
         kind, payload = update_queue.get()
-        if kind == "stage":
-            yield STAGE_LABELS.get(payload, f"Processando ({payload})...")
+        if kind == "update":
+            last_report = render_analysis_report(payload)
+            yield last_report
+        elif kind == "error":
+            yield last_report + "\n\n❌ A análise foi interrompida. Tente novamente em alguns instantes."
         elif kind == "done":
             break
-
     thread.join()
-
-    if "error" in result_holder:
-        yield (
-            "❌ **A analise falhou.**\n\n"
-            "Isso pode acontecer por indisponibilidade temporaria dos "
-            "provedores de LLM (DeepSeek/Groq) ou de dados de mercado "
-            "(Yahoo Finance). Confira a configuração ou tente novamente."
-        )
-    else:
-        yield result_holder["report"]
 
 
 with gr.Blocks(title="Analista Financeiro Autonomo") as demo:
