@@ -28,6 +28,15 @@ Gradio/Docker em CPU básica passou a exigir assinatura PRO na HF (mudança de
 política, julho/2026). Reativar quando o upgrade for feito; nenhum código
 precisa mudar para isso.
 
+## Migração gradual da interface
+
+Arquitetura aprovada: React + TypeScript, FastAPI e análise financeira em Python.
+A etapa 1 separa resultado estruturado, progresso e apresentação, mantendo Gradio.
+A tabela aparece assim que a coleta termina, antes da interpretação por IA.
+
+- [Planejamento, etapas e contrato interno](docs/plano-migracao-frontend.md)
+- [Passo a passo para executar e testar no Windows](docs/executar-e-testar.md)
+
 ## Estado atual — Yahoo Finance para ações brasileiras
 
 Os dados financeiros vêm exclusivamente do **Yahoo Finance via yfinance**.
@@ -116,12 +125,12 @@ python agents.py PETR4          # Yahoo Finance
 
 ## Etapa 3 — Interface Gradio (`app.py`)
 
-`crew.kickoff()` é bloqueante, então a execução roda numa thread separada;
-os callbacks de mudança de estágio de cada `Task` empurram atualizações por
-uma fila thread-safe que o generator do Gradio consome via `yield`,
-mostrando progresso simples ("Data Gatherer coletando..." → "Quant Analyst
-calculando..." → "CIO sintetizando...") em vez de travar a tela por 1-2
-minutos. A interface usa somente Yahoo Finance e pede apenas o código da ação.
+`crew.kickoff()` é bloqueante, então a execução roda numa thread separada.
+`run_analysis_result` publica estados estruturados, consumidos pelo Gradio via
+fila. A tabela aparece após a coleta e permanece durante a interpretação.
+`presentation.py` transforma esses estados em Markdown; `run_analysis` mantém
+compatibilidade com consumidores do relatório textual. A interface usa somente
+Yahoo Finance e pede apenas o código da ação.
 
 ```bash
 python app.py

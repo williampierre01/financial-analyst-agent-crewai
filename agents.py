@@ -26,7 +26,10 @@ from dotenv import load_dotenv
 from mcp import StdioServerParameters
 
 from llm_provider import get_llm
-from financial_data import normalize_ticker, render_data_report
+from financial_data import normalize_ticker
+from analysis_models import AnalysisResult
+from presentation import render_analysis_report
+from copy import deepcopy
 from mcp_server import get_financial_statements
 
 load_dotenv()
@@ -173,37 +176,79 @@ def _build_crew(
     )
 
 
+def run_analysis_result(
+    ticker: str,
+    on_update: Optional[Callable[[AnalysisResult], None]] = None,
+    on_stage: Optional[Callable[[str], None]] = None,
+) -> AnalysisResult:
+    """Collect once and publish detached states before and during interpretation.
+
+    Data quality remains in data.status; processing and interpretation have
+    independent statuses. Callback failures must not abort the analysis.
+    """
+    result = AnalysisResult(ticker=normalize_ticker(ticker))
+
+    def emit():
+        if on_update:
+            try:
+                on_update(deepcopy(result))
+            except Exception:
+                logging.getLogger(__name__).warning("Analysis observer failed")
+
+    def stage_changed(stage):
+        result.stage = stage
+        emit()
+        if on_stage:
+            try:
+                on_stage(stage)
+            except Exception:
+                logging.getLogger(__name__).warning("Stage observer failed")
+
+    emit()
+    try:
+        result.data = get_financial_statements(result.ticker)
+    except Exception:
+        result.status = "failed"
+        result.stage = "done"
+        result.interpretation_status = "skipped"
+        result.errors.append({"code": "data_fetch_failed", "message": "Não foi possível consultar os dados financeiros. Tente novamente."})
+        emit()
+        return result
+    emit()  # The financial table is available before MCP or LLM work starts.
+    if result.data["status"] == "unavailable":
+        result.status = "completed"
+        result.stage = "done"
+        result.interpretation_status = "skipped"
+        emit()
+        return result
+
+    result.interpretation_status = "running"
+    emit()
+    try:
+        with MCPServerAdapter(_mcp_server_params()) as mcp_tools:
+            news_tools = [tool for tool in mcp_tools if tool.name == "get_market_news"]
+            crew = _build_crew(result.ticker, news_tools, on_stage=stage_changed, financial_snapshot=result.data)
+            interpretation = str(crew.kickoff()).strip()
+            if not interpretation:
+                raise ValueError("Empty interpretation")
+        result.interpretation = interpretation
+        result.interpretation_status = "completed"
+    except Exception as exc:
+        logging.getLogger(__name__).warning("Interpretacao indisponivel (%s)", type(exc).__name__)
+        result.interpretation_status = "failed"
+        result.errors.append({"code": "interpretation_failed", "message": "A interpretação está indisponível. Os dados consultados permanecem acima; verifique a configuração dos serviços ou tente novamente."})
+    result.status = "completed"
+    result.stage = "done"
+    emit()
+    return result
+
+
 def run_analysis(
     ticker: str,
     on_stage: Optional[Callable[[str], None]] = None,
 ) -> str:
-    """Ponto de entrada principal: abre a conexao MCP, monta o crew e executa.
-
-    A conexao MCP (subprocesso stdio) precisa ficar viva durante toda a
-    execucao do crew -- por isso o kickoff() acontece dentro do `with`.
-
-    on_stage(stage_key), se fornecido, e chamado quando a etapa muda:
-    "quant" quando o Data Gatherer termina, "cio" quando o Quant Analyst
-    termina. Usado pela UI Gradio (Etapa 3) para mostrar progresso simples.
-
-    A coleta Yahoo ocorre antes dos agentes; o mesmo snapshot alimenta
-    a tabela do cliente e o LLM.
-    """
-    ticker = normalize_ticker(ticker)
-    snapshot = get_financial_statements(ticker)
-    data_report = render_data_report(snapshot)
-    if snapshot["status"] == "unavailable":
-        return data_report + "\n\nNão foi possível obter dados para analisar este ativo."
-    server_params = _mcp_server_params()
-    try:
-        with MCPServerAdapter(server_params) as mcp_tools:
-            news_tools = [tool for tool in mcp_tools if tool.name == "get_market_news"]
-            crew = _build_crew(ticker, news_tools, on_stage=on_stage, financial_snapshot=snapshot)
-            result = crew.kickoff()
-    except Exception as exc:
-        logging.getLogger(__name__).warning("Interpretacao indisponivel (%s)", type(exc).__name__)
-        return data_report + "\n\n## Interpretação assistida por IA\n\nA interpretação está indisponível. Os dados consultados permanecem acima; verifique a configuração dos serviços ou tente novamente."
-    return data_report + "\n\n## Interpretação assistida por IA\n\n" + str(result)
+    """Compatibility adapter for callers expecting the final Markdown report."""
+    return render_analysis_report(run_analysis_result(ticker, on_stage=on_stage))
 
 
 if __name__ == "__main__":
