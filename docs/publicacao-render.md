@@ -7,7 +7,10 @@ solicitação de usuário e senha e apresentou a consulta PETR4 com dados antes
 da interpretação, seguida do relatório. React é a interface principal;
 Gradio permanece como apoio temporário no repositório.
 
-Reinício e retorno em nuvem ainda não foram confirmados. As correções adiadas
+Em 14/10/2026, foram confirmados reinício com nova análise PETR4, rollback
+para b839261 e restauração de b725d5b como Live. Carregamento e senha foram
+conferidos nas três situações. O rollback foi entre versões React; retorno ao
+Gradio não foi executado. Veja o registro de homologação para os limites do teste. As correções adiadas
 estão em [pendências de homologação](pendencias-homologacao.md). O sucesso do
 fluxo não constitui validação da precisão financeira ou das afirmações da IA.
 As seções abaixo documentam como reproduzir a configuração e os testes restantes.

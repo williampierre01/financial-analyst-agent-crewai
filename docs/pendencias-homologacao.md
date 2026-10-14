@@ -19,8 +19,20 @@ Registro: 14/10/2026. Correções adiadas a pedido do usuário.
 
 ## Ainda não confirmado nesta homologação
 
-- Comportamento em reinício e retorno à versão anterior no Render.
 - Revisão da exatidão dos números e das fontes citadas pela IA.
 - Correção dos pontos listados acima.
 
 Nenhuma correção de código foi realizada neste registro. Não registrar credenciais neste documento.
+
+## Validação operacional — 14/10/2026
+
+- Reinício: Render confirmou sucesso em b725d5b; o usuário confirmou a solicitação de senha em nova sessão anônima e apresentou nova consulta PETR4 com dados e interpretação.
+- Rollback: usuário confirmou b839261 como Live, interface carregada e solicitação de senha.
+- Restauração: usuário confirmou interface carregada, solicitação de senha e b725d5b novamente como Live.
+- O Render informou que o rollback desativaria Auto-Deploy; não houve confirmação posterior de reativação.
+
+O teste de retorno foi entre versões React que diferem em documentação. Não
+foi testado retorno ao Gradio, nem uma nova análise completa após rollback ou
+restauração. A perda de um identificador específico após reinício não foi
+verificada em nuvem. Esses limites não alteram os resultados observados acima.
+As correções de layout e conteúdo permanecem adiadas.

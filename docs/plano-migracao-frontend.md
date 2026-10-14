@@ -172,3 +172,13 @@ interpretação. Pendências visuais, de padronização e fundamentação foram
 adiadas a pedido do usuário e estão em [pendências da homologação](pendencias-homologacao.md).
 Esse registro atualiza o estado de publicação descrito acima; testes de reinício
 e retorno em nuvem ainda não foram confirmados.
+
+## Atualização operacional — 14/10/2026
+
+Concluído o roteiro assistido de reinício, rollback para b839261 e restauração
+para b725d5b. O usuário confirmou o commit restaurado como Live e a proteção
+por senha. Uma nova consulta completa foi observada após o reinício; no rollback
+e na restauração foram conferidos carregamento e autenticação.
+Este registro substitui as indicações anteriores de reinício e retorno ainda
+não confirmados. Escopo e limites: [registro de homologação](pendencias-homologacao.md#validação-operacional--14102026).
+As correções adiadas continuam no mesmo registro; não foram implementadas.
