@@ -930,22 +930,30 @@ th small {
 .progress-panel ol {
   flex-wrap: wrap;
 }
-.markdown h3,
-.markdown h2 {
-  font-size: 14px;
-  margin: 20px 0 10px;
+.markdown :is(h1, h2, h3, h4, h5, h6) {
+  font-size: 16px;
+  margin: 24px 0 12px;
   line-height: 1.5;
   color: #334c2e;
 }
 .markdown p {
-  margin: 10px 0;
+  margin: 12px 0;
 }
 .markdown a {
   text-decoration: underline;
   color: #236946;
 }
-.markdown ul {
-  padding-left: 19px;
+.markdown :is(ul, ol) {
+  padding-left: 24px;
+  margin: 12px 0;
+}
+.markdown li + li {
+  margin-top: 6px;
+}
+.markdown blockquote {
+  margin: 16px 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--line);
 }
 .markdown table {
   font-size: 12px;
@@ -1025,7 +1033,8 @@ th small {
     font-size: 10px;
   }
   .progress-title > span {
-    display: none;
+    flex-basis: 100%;
+    margin-left: 0;
   }
 }
 @media (max-width: 700px) {

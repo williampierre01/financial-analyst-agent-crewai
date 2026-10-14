@@ -20,6 +20,7 @@ import remarkGfm from "remark-gfm";
 import Statements from "./components/Statements";
 import { useAnalysis } from "./services/useAnalysis";
 import { date, money } from "./services/format";
+import { reportMarkdown } from "./services/reportMarkdown";
 import type { Snapshot } from "./services/api";
 
 const steps = [
@@ -275,7 +276,11 @@ export default function App() {
                 <LoaderCircle className="spin" size={17} />
                 <strong>{steps[stageIndex]}</strong>
                 <span>
-                  Os dados aparecerão assim que estiverem disponíveis.
+                  {data
+                    ? data.status === "unavailable"
+                      ? "Coleta concluída sem dados financeiros disponíveis."
+                      : "Dados disponíveis abaixo. A interpretação está em andamento."
+                    : "Os dados aparecerão assim que estiverem disponíveis."}
                 </span>
               </div>
               <ol>
@@ -472,7 +477,7 @@ export default function App() {
                       ),
                     }}
                   >
-                    {analysis.interpretation}
+                    {reportMarkdown(analysis.interpretation)}
                   </ReactMarkdown>
                 </div>
               ) : (
