@@ -159,3 +159,12 @@ antes da coleta; o Gradio apresenta a orientação ao usuário.
 
 Ainda não há identificadores, armazenamento de tarefas, timeout global nem
 cancelamento. A API e esses controles serão tratados nas etapas seguintes.
+
+## Registro de homologação — 14/10/2026
+
+Publicação do commit 7901396 observada no Render. O usuário confirmou a
+solicitação de usuário e senha e apresentou o fluxo de PETR4 com dados e
+interpretação. Pendências visuais, de padronização e fundamentação foram
+adiadas a pedido do usuário e estão em [pendências da homologação](pendencias-homologacao.md).
+Esse registro atualiza o estado de publicação descrito acima; testes de reinício
+e retorno em nuvem ainda não foram confirmados.
