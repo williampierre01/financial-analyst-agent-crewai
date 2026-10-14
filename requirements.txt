@@ -397,7 +397,9 @@ et-xmlfile==2.0.0 \
 fastapi==0.143.0 \
     --hash=sha256:1acffe48206a80917cf7dac21992b5c44b25384e8902bf745c1fd9dabcf6c51f \
     --hash=sha256:3e9395fd35276425b61b516a31fdd7c77fe2af83e41b4da22e30696fb1304c5d
-    # via gradio
+    # via
+    #   financial-analyst-agent-crewai
+    #   gradio
 filelock==4.1.1 \
     --hash=sha256:3f4a557945a7b0f95efeb1f432267affe5d45ac8ddde2aed1b97ebb62382c089 \
     --hash=sha256:7ba0927482c5a814b0a7f391d029ccdb8010f576f0a74c0dcde1811e8bc4c1b6
@@ -1577,6 +1579,7 @@ uvicorn==0.54.0 \
     --hash=sha256:a2e33cbfaa0306f8e6b0c13e0cb89d7d7a2da3e62b90c66e18c33d9807b28620
     # via
     #   chromadb
+    #   financial-analyst-agent-crewai
     #   gradio
     #   mcp
 uvloop==0.23.0 ; platform_python_implementation != 'PyPy' and sys_platform != 'cygwin' and sys_platform != 'win32' \

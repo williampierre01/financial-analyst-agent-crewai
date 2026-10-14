@@ -32,8 +32,10 @@ precisa mudar para isso.
 
 Arquitetura aprovada: React + TypeScript, FastAPI e análise financeira em Python.
 A etapa 1 separa resultado estruturado, progresso e apresentação, mantendo Gradio.
+A etapa 2 adiciona a API local FastAPI para iniciar e acompanhar análises.
 A tabela aparece assim que a coleta termina, antes da interpretação por IA.
 
+- [API local: executar, consultar análises e limites](docs/api-local.md)
 - [Planejamento, etapas e contrato interno](docs/plano-migracao-frontend.md)
 - [Passo a passo para executar e testar no Windows](docs/executar-e-testar.md)
 
@@ -92,8 +94,7 @@ uv run --locked python app.py
 ```
 
 Veja [como preparar, reproduzir e atualizar o ambiente](docs/ambiente-desenvolvimento.md)
-e [o guia de execução no Windows](docs/executar-e-testar.md). O grupo `dev` está
-separado, mas vazio: os testes atuais usam `unittest`, incluído no Python.
+e [o guia de execução no Windows](docs/executar-e-testar.md). O grupo `dev` inclui `httpx2` para os testes HTTP; `unittest` vem com o Python.
 
 A suíte automatizada não chama APIs externas. `test_tools.py` é um teste manual
 online das ferramentas. Yahoo não requer chave no aplicativo; a interpretação
@@ -142,6 +143,17 @@ Yahoo Finance e pede apenas o código da ação.
 ```bash
 python app.py
 ```
+
+### API local (migração — etapa 2)
+
+```bash
+uv run --locked uvicorn backend.api.main:app --host 127.0.0.1 --port 8000
+```
+
+Abra http://127.0.0.1:8000/docs. Use POST /analyses para iniciar e
+GET /analyses/{id} para acompanhar; GET /health verifica a API. Execute um único
+processo: os registros ficam em memória e são perdidos em reinícios.
+Veja [o guia da API](docs/api-local.md) para limites, estados e testes.
 
 ### Deploy
 

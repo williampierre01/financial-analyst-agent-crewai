@@ -41,20 +41,22 @@ atualizações isoladas de mutações e tabela disponível durante a interpreta�
 Validação local: 38 testes aprovados, incluindo esses cenários. Testes utilizam
 serviços externos simulados; não validam disponibilidade real de Yahoo ou LLM.
 
-### 2. Criar API FastAPI — pendente
+### 2. Criar API FastAPI — implementada localmente
 
 Definir contratos HTTP, iniciar uma análise, devolver identificador, consultar
 andamento/resultado e disponibilizar verificação de saúde. Rotas propostas:
-POST /analyses, GET /analyses/{id}, GET /health. Confirmar contratos no início
-da etapa. Consultas periódicas pelo navegador serão suficientes inicialmente.
+POST /analyses, GET /analyses/{id}, GET /health. Contratos implementados e documentados em [API local](api-local.md). Consultas periódicas pelo navegador serão suficientes inicialmente.
 
 Separar processamento de qualidade dos dados. A primeira implementação local
 pode guardar tarefas em memória; isso perde resultados após reinício e exige
 um único processo. Antes de produção, definir persistência, fila de execução,
 limites, expiração, isolamento entre usuários e tratamento de reinícios.
 
-Critério: API entrega dados antes da IA, comunica falhas com códigos seguros
-e permite consultar o estado terminal sem executar uma segunda análise.
+Critério atendido localmente: API entrega dados antes da IA, comunica falhas
+com códigos seguros e permite consultar o estado terminal sem executar uma
+segunda análise. Limites: 2 trabalhos simultâneos, 100 registros e retenção
+de uma hora após término; um único processo e nenhuma persistência.
+Validação: 52 testes aprovados e inicialização HTTP local confirmada.
 
 ### 3. Criar interface React + TypeScript — pendente
 

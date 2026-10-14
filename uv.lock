@@ -730,13 +730,20 @@ dependencies = [
     { name = "crewai" },
     { name = "crewai-tools", extra = ["mcp"] },
     { name = "ddgs" },
+    { name = "fastapi" },
     { name = "gradio" },
     { name = "mcp" },
     { name = "openai" },
     { name = "pydantic" },
     { name = "python-dotenv" },
     { name = "tenacity" },
+    { name = "uvicorn" },
     { name = "yfinance" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "httpx2" },
 ]
 
 [package.metadata]
@@ -744,17 +751,19 @@ requires-dist = [
     { name = "crewai", specifier = ">=1.15.0" },
     { name = "crewai-tools", extras = ["mcp"], specifier = ">=0.50.0" },
     { name = "ddgs", specifier = ">=9.0.0" },
+    { name = "fastapi", specifier = "==0.143.0" },
     { name = "gradio", specifier = ">=4.40.0" },
     { name = "mcp", specifier = ">=1.9.0,<2" },
     { name = "openai", specifier = ">=1.30.0" },
     { name = "pydantic", specifier = ">=2.7.0" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "tenacity", specifier = ">=8.3.0" },
+    { name = "uvicorn", specifier = "==0.54.0" },
     { name = "yfinance", specifier = ">=0.2.60" },
 ]
 
 [package.metadata.requires-dev]
-dev = []
+dev = [{ name = "httpx2", specifier = "==2.13.1" }]
 
 [[package]]
 name = "flatbuffers"
