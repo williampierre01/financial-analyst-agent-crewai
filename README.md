@@ -33,8 +33,11 @@ precisa mudar para isso.
 Arquitetura aprovada: React + TypeScript, FastAPI e análise financeira em Python.
 A etapa 1 separa resultado estruturado, progresso e apresentação, mantendo Gradio.
 A etapa 2 adiciona a API local FastAPI para iniciar e acompanhar análises.
+A etapa 3 entrega a interface React + TypeScript, com dados e interpretação
+separados, navegação responsiva e acompanhamento da análise.
 A tabela aparece assim que a coleta termina, antes da interpretação por IA.
 
+- [Interface React: iniciar e testar no Windows](docs/frontend-local.md)
 - [API local: executar, consultar análises e limites](docs/api-local.md)
 - [Planejamento, etapas e contrato interno](docs/plano-migracao-frontend.md)
 - [Passo a passo para executar e testar no Windows](docs/executar-e-testar.md)
@@ -154,6 +157,20 @@ Abra http://127.0.0.1:8000/docs. Use POST /analyses para iniciar e
 GET /analyses/{id} para acompanhar; GET /health verifica a API. Execute um único
 processo: os registros ficam em memória e são perdidos em reinícios.
 Veja [o guia da API](docs/api-local.md) para limites, estados e testes.
+
+### Interface React (migração — etapa 3)
+
+Mantenha a API na porta 8000 e, em outro terminal:
+
+```bash
+cd frontend
+npm ci
+npm run dev
+```
+
+Abra http://127.0.0.1:5173. Node 22.17.1 e npm 10.9.2; dependências fixadas em
+package-lock.json. No PowerShell, use npm.cmd. O [guia do front-end](docs/frontend-local.md)
+detalha testes, geração de tipos e execução. O Gradio continua disponível.
 
 ### Deploy
 

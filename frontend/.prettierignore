@@ -1,0 +1,8 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+openapi.json
+package-lock.json
+src/types/api.generated.ts
+tests/fixture.json

@@ -148,3 +148,11 @@ e [migração a partir de pip](https://docs.astral.sh/uv/guides/migration/pip-to
 Os avisos de dependências sobre lifespan e um ResourceWarning de event loop
 foram observados na suíte local, sem falhas de testes. Não foram tratados como
 parte desta mudança de controle de dependências.
+
+## Ambiente JavaScript — etapa 3
+
+A interface em frontend utiliza Node 22.17.1 e npm 10.9.2. As dependências têm
+versões exatas em package.json e transitivas em package-lock.json. Use npm ci
+para instalação reproduzível. node_modules não integra o .venv e não é enviado
+ao Git. O workflow inclui geração dos tipos, compilação e testes em navegador.
+Veja [as instruções completas da interface](frontend-local.md).

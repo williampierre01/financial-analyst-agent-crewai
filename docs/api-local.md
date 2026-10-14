@@ -3,8 +3,8 @@
 ## O que foi implementado
 
 FastAPI fornece início e consulta de análises, reutilizando run_analysis_result.
-O Gradio permanece independente e continua funcionando. A interface React ainda
-não foi criada. Novos módulos estão em backend/api e backend/services; os módulos
+O Gradio permanece independente e continua funcionando. A interface React da etapa 3 já consome esta API; veja
+[o guia do front-end](frontend-local.md). Novos módulos estão em backend/api e backend/services; os módulos
 financeiros existentes permanecem na raiz para evitar uma movimentação ampla.
 
 ## Executar no Windows
