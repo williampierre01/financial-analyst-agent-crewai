@@ -1,0 +1,601 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Análise de ações brasileiras",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analyses": {
+      "post": {
+        "summary": "Start Analysis",
+        "operationId": "start_analysis_analyses_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AnalysisRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analyses/{analysis_id}": {
+      "get": {
+        "summary": "Get Analysis",
+        "operationId": "get_analysis_analyses__analysis_id__get",
+        "parameters": [
+          {
+            "name": "analysis_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Analysis Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AnalysisError": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "title": "Code"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "AnalysisError"
+      },
+      "AnalysisRequest": {
+        "properties": {
+          "ticker": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 1,
+            "title": "Ticker"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "ticker"
+        ],
+        "title": "AnalysisRequest"
+      },
+      "AnalysisResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          },
+          "expires_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expires At"
+          },
+          "ticker": {
+            "type": "string",
+            "title": "Ticker"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "running",
+              "completed",
+              "failed"
+            ],
+            "title": "Status"
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "gathering",
+              "quant",
+              "cio",
+              "done"
+            ],
+            "title": "Stage"
+          },
+          "data": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FinancialSnapshot"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "interpretation_status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "running",
+              "completed",
+              "failed",
+              "skipped"
+            ],
+            "title": "Interpretation Status"
+          },
+          "interpretation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interpretation"
+          },
+          "errors": {
+            "items": {
+              "$ref": "#/components/schemas/AnalysisError"
+            },
+            "type": "array",
+            "title": "Errors"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "created_at",
+          "updated_at",
+          "expires_at",
+          "ticker",
+          "status",
+          "stage",
+          "data",
+          "interpretation_status",
+          "interpretation",
+          "errors"
+        ],
+        "title": "AnalysisResponse"
+      },
+      "FinancialSnapshot": {
+        "properties": {
+          "schema_version": {
+            "type": "string",
+            "const": "3.0",
+            "title": "Schema Version"
+          },
+          "ticker": {
+            "type": "string",
+            "title": "Ticker"
+          },
+          "display_ticker": {
+            "type": "string",
+            "title": "Display Ticker"
+          },
+          "market": {
+            "type": "string",
+            "const": "BR",
+            "title": "Market"
+          },
+          "exchange": {
+            "type": "string",
+            "const": "B3",
+            "title": "Exchange"
+          },
+          "provider_used": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "yfinance"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider Used"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Retrieved At"
+          },
+          "quote": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Quote"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "statements": {
+            "$ref": "#/components/schemas/Statements"
+          },
+          "fundamentals_available": {
+            "type": "boolean",
+            "title": "Fundamentals Available"
+          },
+          "common_period": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Common Period"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "complete",
+              "partial",
+              "unavailable"
+            ],
+            "title": "Status"
+          },
+          "warnings": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Warnings"
+          }
+        },
+        "type": "object",
+        "required": [
+          "schema_version",
+          "ticker",
+          "display_ticker",
+          "market",
+          "exchange",
+          "provider_used",
+          "retrieved_at",
+          "quote",
+          "statements",
+          "fundamentals_available",
+          "common_period",
+          "status",
+          "warnings"
+        ],
+        "title": "FinancialSnapshot"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status",
+            "default": "ok"
+          },
+          "storage": {
+            "type": "string",
+            "const": "memory",
+            "title": "Storage",
+            "default": "memory"
+          },
+          "max_concurrent": {
+            "type": "integer",
+            "title": "Max Concurrent"
+          },
+          "max_records": {
+            "type": "integer",
+            "title": "Max Records"
+          },
+          "retention_seconds": {
+            "type": "integer",
+            "title": "Retention Seconds"
+          }
+        },
+        "type": "object",
+        "required": [
+          "max_concurrent",
+          "max_records",
+          "retention_seconds"
+        ],
+        "title": "HealthResponse"
+      },
+      "Quote": {
+        "properties": {
+          "price": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Price"
+          },
+          "currency": {
+            "type": "string",
+            "const": "BRL",
+            "title": "Currency"
+          },
+          "source": {
+            "type": "string",
+            "const": "yfinance",
+            "title": "Source"
+          },
+          "as_of": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "As Of"
+          },
+          "freshness": {
+            "type": "string",
+            "enum": [
+              "unknown",
+              "stale",
+              "recent"
+            ],
+            "title": "Freshness"
+          }
+        },
+        "type": "object",
+        "required": [
+          "price",
+          "currency",
+          "source",
+          "as_of",
+          "freshness"
+        ],
+        "title": "Quote"
+      },
+      "StatementPeriod": {
+        "properties": {
+          "period_end": {
+            "type": "string",
+            "format": "date",
+            "title": "Period End"
+          },
+          "period_type": {
+            "type": "string",
+            "const": "annual",
+            "title": "Period Type"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Currency"
+          },
+          "source": {
+            "type": "string",
+            "const": "yfinance",
+            "title": "Source"
+          },
+          "unit": {
+            "type": "string",
+            "const": "currency_units",
+            "title": "Unit"
+          },
+          "per_share_fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Per Share Fields"
+          },
+          "values": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "object",
+            "title": "Values"
+          },
+          "missing_fields": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Missing Fields"
+          }
+        },
+        "type": "object",
+        "required": [
+          "period_end",
+          "period_type",
+          "currency",
+          "source",
+          "unit",
+          "per_share_fields",
+          "values",
+          "missing_fields"
+        ],
+        "title": "StatementPeriod"
+      },
+      "Statements": {
+        "properties": {
+          "income_statement": {
+            "items": {
+              "$ref": "#/components/schemas/StatementPeriod"
+            },
+            "type": "array",
+            "title": "Income Statement"
+          },
+          "balance_sheet": {
+            "items": {
+              "$ref": "#/components/schemas/StatementPeriod"
+            },
+            "type": "array",
+            "title": "Balance Sheet"
+          },
+          "cash_flow": {
+            "items": {
+              "$ref": "#/components/schemas/StatementPeriod"
+            },
+            "type": "array",
+            "title": "Cash Flow"
+          }
+        },
+        "type": "object",
+        "required": [
+          "income_statement",
+          "balance_sheet",
+          "cash_flow"
+        ],
+        "title": "Statements"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

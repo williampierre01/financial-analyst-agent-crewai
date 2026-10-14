@@ -165,4 +165,16 @@ O Gradio segue em localhost:7860. A API é um processo separado, na porta 8000:
 
 Abra http://127.0.0.1:8000/docs e siga [o guia da API](api-local.md).
 A validação da etapa 2 aprovou 52 testes e confirmou /health em um servidor
-Uvicorn local. A interface React continua prevista para a etapa 3.
+Uvicorn local. A interface React está implementada na etapa 3.
+
+## Interface React — etapa 3
+
+Mantenha a API na porta 8000. Em outro terminal, entre na pasta frontend:
+
+```powershell
+npm.cmd ci
+npm.cmd run dev
+```
+
+Abra http://127.0.0.1:5173. Consulte [o guia completo](frontend-local.md)
+para requisitos Node, testes do navegador e funcionamento da nova tela.

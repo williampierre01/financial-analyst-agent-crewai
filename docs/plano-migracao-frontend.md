@@ -58,15 +58,17 @@ segunda análise. Limites: 2 trabalhos simultâneos, 100 registros e retenção
 de uma hora após término; um único processo e nenhuma persistência.
 Validação: 52 testes aprovados e inicialização HTTP local confirmada.
 
-### 3. Criar interface React + TypeScript — pendente
+### 3. Criar interface React + TypeScript — implementada localmente
 
 Uma página inicial: consulta, andamento em português, resumo do ativo,
 qualidade dos dados, exercícios lado a lado e interpretação independente.
 Gerar tipos a partir do contrato da API quando viável. Não usar dados fictícios
 como se fossem dados reais. Estados vazios, de falha e de carregamento explícitos.
 
-Critério: sucesso, dados parciais, indisponibilidade e falha da IA funcionam;
-interface utilizável em celular e por teclado.
+Critérios implementados: consulta, progresso, dados antecipados, falhas
+independentes e apresentação responsiva. Contratos TypeScript gerados do
+OpenAPI. Guia de execução e validação: [interface React](frontend-local.md).
+Gradio permanece em paralelo; implantação e validação operacional são etapa 4.
 
 ### 4. Integração e publicação — pendente
 
