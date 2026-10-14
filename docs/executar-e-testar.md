@@ -102,7 +102,7 @@ Em outro terminal, na mesma pasta:
 & .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-Resultado esperado nesta etapa: Ran 38 tests e OK. A suíte não chama Yahoo,
+Resultado esperado após a etapa 2: Ran 52 tests e OK. A suíte não chama Yahoo,
 notícias nem serviços de IA reais. Ela testa validações, contrato, adaptadores,
 coleta única, progresso, tabela antecipada, isolamento dos estados, falhas de
 IA e compatibilidade do relatório textual.
@@ -154,3 +154,15 @@ de teste), retornando HTTP 200 e uma página HTML; o servidor foi encerrado
 após a verificação. Nenhuma análise paga
 com LLM real foi executada nesta entrega. Disponibilidade dos serviços e
 qualidade visual no navegador não são comprovadas pela suíte de unidade.
+
+## API FastAPI — etapa 2
+
+O Gradio segue em localhost:7860. A API é um processo separado, na porta 8000:
+
+```powershell
+& .\.venv\Scripts\uv.exe run --locked uvicorn backend.api.main:app --host 127.0.0.1 --port 8000
+```
+
+Abra http://127.0.0.1:8000/docs e siga [o guia da API](api-local.md).
+A validação da etapa 2 aprovou 52 testes e confirmou /health em um servidor
+Uvicorn local. A interface React continua prevista para a etapa 3.

@@ -15,9 +15,9 @@ A cada troca de branch com mudanças de dependências, sincronize o .venv.
 | requirements-tooling.txt | Versão exata de uv para preparar a ferramenta |
 | .github/workflows/tests.yml | Recriação e testes em Windows e Linux |
 
-O grupo dev está vazio porque unittest é da biblioteca padrão do Python.
-Não adicionamos ferramentas sem necessidade. Ferramentas futuras de testes
-ou análise estática devem entrar nesse grupo, separadas da execução.
+O grupo dev inclui httpx2 para o TestClient do Starlette usado nos testes HTTP.
+unittest continua vindo com o Python. Ferramentas futuras de testes ou análise
+estática devem entrar nesse grupo, separadas da execução.
 O uv também aparece transitivamente no conjunto atual de execução porque
 é exigido por dependências do CrewAI; isso não foi removido à força.
 
