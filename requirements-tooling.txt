@@ -1,0 +1,2 @@
+# Ferramenta de ambiente; separada das dependências do aplicativo.
+uv==0.11.33

@@ -17,6 +17,13 @@ Manter um único repositório. Gradio continua funcionando durante a transição
 - Dados financeiros e interpretação por IA são independentes.
 - Chaves ficam no servidor. A interface não recebe credenciais.
 
+## Preparação entre etapas 1 e 2
+
+Consolidar o ambiente antes de criar a API: Python 3.13.9, dependências diretas
+em pyproject.toml, versões e hashes em uv.lock, exportação requirements.txt e
+verificação contínua em Windows/Linux. Consulte
+[o procedimento de ambiente](ambiente-desenvolvimento.md).
+
 ## Etapas e critérios de conclusão
 
 ### 1. Separar análise e apresentação — implementada localmente

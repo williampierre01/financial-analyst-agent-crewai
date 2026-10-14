@@ -8,31 +8,39 @@ Abra o PowerShell ou o terminal do editor e execute:
 cd "C:\Users\will\Documents\Codex\2026-10-13\lis\work\financial-analyst-agent-crewai"
 ```
 
-As alterações da etapa 1 foram preparadas na branch refactor/structured-analysis.
-Para testar esta entrega, use essa branch ou a main após o merge do respectivo PR. Não é necessário instalar React,
-Node ou FastAPI nesta etapa: a interface continua sendo o Gradio.
+Use a branch da alteração em teste ou a main após o merge. Não é necessário
+instalar React ou Node nesta etapa: a interface continua sendo o Gradio.
 
-## 2. Usar o ambiente existente
+## 2. Sincronizar o ambiente controlado
 
-O ambiente .venv deste computador já contém as dependências. Confira:
+O projeto usa Python **3.13.9** e uv **0.11.33**. Neste computador, uv já está
+disponível no ambiente existente. Na pasta do projeto, execute:
 
 ```powershell
+& .\.venv\Scripts\uv.exe sync --locked
 & .\.venv\Scripts\python.exe --version
 ```
 
-O ambiente usado na validação local é Python 3.13.9. Os comandos abaixo usam
-esse executável diretamente, sem exigir ativação nem alteração de políticas
-do PowerShell.
+O comando usa as versões de uv.lock e remove bibliotecas extras que não fazem
+parte do projeto. Feche o aplicativo antes de sincronizar. Nenhum arquivo de
+código ou .env é removido. Se o lock estiver desatualizado em relação ao
+pyproject.toml, o comando falha em vez de alterar versões silenciosamente.
 
-Somente para uma instalação nova: instale Python 3.11, crie um ambiente e
-instale as dependências (é necessário acesso à internet):
+Em uma instalação nova, primeiro instale a ferramenta no Python do computador
+(fora de um ambiente virtual ativo):
 
 ```powershell
-py -3.11 -m venv .venv
-& .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+py -m pip install --user -r requirements-tooling.txt
+py -m uv sync --locked
 ```
 
-Não recrie o ambiente já existente para executar este projeto.
+O uv encontra ou baixa o Python 3.13.9 indicado por .python-version e cria o
+.venv. Esses comandos precisam de internet na primeira instalação. Se o
+comando py não existir, instale o Python e o launcher para Windows primeiro.
+Consulte [o guia de ambiente](ambiente-desenvolvimento.md) para atualizações.
+
+Os próximos comandos usam o executável da .venv diretamente: não exigem
+ativação nem mudança de política do PowerShell.
 
 ## 3. Configurar a interpretação por IA (opcional para testar dados)
 
@@ -131,7 +139,7 @@ continua em Markdown, preservando compatibilidade com a versão anterior.
 ## Solução de problemas
 
 - Executável não encontrado: confirme a pasta e a existência de .venv.
-- Módulo ausente: instale requirements.txt usando o Python da própria .venv.
+- Módulo ausente: pare o app e execute `.\.venv\Scripts\uv.exe sync --locked`.
 - Porta ocupada: pare o processo anterior ou escolha PORT=7861.
 - Dados indisponíveis: confira conexão e avisos; o Yahoo pode limitar consultas.
 - Interpretação indisponível: confira as duas chaves, acesso e saldo dos serviços.

@@ -4,7 +4,7 @@ emoji: 📈
 colorFrom: green
 colorTo: blue
 sdk: gradio
-sdk_version: 4.44.0
+sdk_version: 6.30.0
 app_file: app.py
 pinned: false
 ---
@@ -79,14 +79,21 @@ falhar, a tabela permanece disponível. Sem dados financeiros, não chamamos a I
 
 ### Executar e testar
 
-Instale as dependências em um ambiente Python isolado:
+O ambiente oficial usa **Python 3.13.9** e **uv 0.11.33**. As dependências
+diretas estão em `pyproject.toml`; `uv.lock` fixa as versões transitivas e os
+hashes dos arquivos. `requirements.txt` é uma exportação gerada para serviços
+que instalam com pip; não deve ser editado manualmente.
 
 ```bash
-python -m pip install -r requirements.txt
-python -m unittest discover -s tests -v
-python test_tools.py PETR4
-python app.py
+uv sync --locked
+uv run --locked python -m unittest discover -s tests -v
+uv run --locked python test_tools.py PETR4
+uv run --locked python app.py
 ```
+
+Veja [como preparar, reproduzir e atualizar o ambiente](docs/ambiente-desenvolvimento.md)
+e [o guia de execução no Windows](docs/executar-e-testar.md). O grupo `dev` está
+separado, mas vazio: os testes atuais usam `unittest`, incluído no Python.
 
 A suíte automatizada não chama APIs externas. `test_tools.py` é um teste manual
 online das ferramentas. Yahoo não requer chave no aplicativo; a interpretação
@@ -139,9 +146,11 @@ python app.py
 ### Deploy
 
 **Render** (ativo): Web Service Python, free tier, conectado direto ao
-GitHub (redeploy automático a cada push na `main`). Requer `.python-version`
-fixando `3.11.9` — o crewai não suporta Python 3.14+, e algumas plataformas
-usam Python mais recente por padrão. Secrets configurados nas Environment
+GitHub (redeploy automático a cada push na `main`). O projeto agora fixa Python `3.13.9` em `.python-version`. Ao publicar esta
+alteração, confira se a configuração do serviço usa essa mesma versão; variáveis
+de ambiente da plataforma podem prevalecer sobre o arquivo. Use instalação por
+`uv sync --locked --no-dev` ou `python -m pip install --require-hashes -r requirements.txt`.
+A publicação em nuvem desta configuração ainda precisa ser validada. Secrets configurados nas Environment
 Variables do Render: `DEEPSEEK_API_KEY`, `GROQ_API_KEY`.
 
 **Hugging Face Space** (pausado): sincronizado automaticamente do GitHub via
@@ -170,9 +179,10 @@ estão configurados nas Settings do Space.
   Cloud). O fluxo atual sinaliza indisponibilidade e preserva dados parciais;
   não promete disponibilidade contínua do Yahoo.
 - **Versão do Python importa mais do que parece**: crewai exige
-  `>=3.10,<3.14`. Plataformas (Render) e até o mesmo Codespace após um
-  rebuild podem vir com uma versão default fora dessa faixa — o
-  `.python-version` no repo é a forma mais portátil de fixar isso.
+  `>=3.10,<3.14`. Este projeto padroniza uma faixa mais estreita, Python 3.13,
+  com patch 3.13.9 selecionado em `.python-version` e na integração contínua.
+  A escolha acompanha o ambiente local testado; alterar Python exige validar
+  novamente o lock e os testes.
 - **Políticas de provedores de nuvem mudam sem aviso**: tanto o Groq
   (rate limits por modelo) quanto a Hugging Face (CPU básica exigindo PRO)
   mudaram durante o desenvolvimento deste projeto. Vale sempre confirmar o
