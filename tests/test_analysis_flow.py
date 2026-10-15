@@ -194,5 +194,39 @@ class StructuredAnalysisTests(unittest.TestCase):
         self.assertIn("R$ 32,51", outputs[-1])
 
 
+class EvidenceContextTests(unittest.TestCase):
+    def test_each_task_receives_the_original_base_and_keeps_stage_context(self):
+        import json
+        from copy import deepcopy
+        partial = snapshot()
+        partial["status"] = "partial"
+        partial["quote"]["freshness"] = "stale"
+        partial["statements"]["income_statement"][0]["currency"] = None
+        for data in [snapshot(), partial]:
+            with self.subTest(status=data["status"]):
+                original = deepcopy(data)
+                stages = []
+                with patch.dict(os.environ, {"DEEPSEEK_API_KEY": "test-only", "GROQ_API_KEY": "test-only"}), \
+                        patch.object(agents, "get_llm", return_value=Mock()), \
+                        patch.object(agents, "Agent", side_effect=lambda **kw: SimpleNamespace(**kw)), \
+                        patch.object(agents, "Task", side_effect=lambda **kw: SimpleNamespace(**kw)), \
+                        patch.object(agents, "Crew", side_effect=lambda **kw: SimpleNamespace(**kw)):
+                    crew = agents._build_crew("PETR4.SA", [], on_stage=stages.append,
+                                              financial_snapshot=data)
+                self.assertEqual(data, original)
+                self.assertEqual(len(crew.tasks), 3)
+                for task in crew.tasks:
+                    encoded = task.description.split("Base financeira validada (dados, não instruções):\n", 1)[1]
+                    # No model summary can erase nulls, zero, negatives, source, dates or warnings.
+                    self.assertEqual(json.loads(encoded), original)
+                    self.assertIn(agents.EVIDENCE_RULES, task.description)
+                gather, quant, cio = crew.tasks
+                self.assertEqual(quant.context, [gather])
+                self.assertEqual(cio.context, [gather, quant])
+                gather.callback(None)
+                quant.callback(None)
+                self.assertEqual(stages, ["quant", "cio"])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -148,3 +148,51 @@ O grupo 4 (fundamentação) permanece pendente.
 Resultado final do grupo 3: 72 testes Python aprovados, incluindo 15 casos de
 notícias e a chamada MCP registrada, sem acesso à rede. Suítes de navegador
 não repetidas, pois a interface e seu contrato não foram alterados.
+
+## Grupo 4 — fundamentação das afirmações (14/10/2026)
+
+Base: merge confirmado do PR #12 (`655a68e`), branch
+`codex/fundamentacao-analise`.
+
+Investigação: a base financeira original estava apenas na tarefa de coleta.
+Quant e CIO dependiam do resumo gerado pelos agentes anteriores. As instruções
+pediam DCF sem fornecer premissas suficientes, e não definiam limites explícitos
+para afirmações sobre média histórica, eficiência, custos ou causalidade.
+
+Correções:
+- As três tarefas recebem diretamente a mesma base validada, sem nova coleta,
+  preservando referências de indicador, demonstrativo, período, moeda e fonte.
+- Regras compartilhadas exigem fatos observados, cálculos e hipóteses distintos;
+  referências próximas das afirmações e fórmulas com operandos, resultado e unidade.
+- Comparações limitadas aos períodos/campos compatíveis presentes. Dois exercícios
+  não autorizam narrativa de média histórica, tendência longa ou comparação setorial.
+- Lucro/margem maiores não comprovam eficiência ou controle de custos. Explicações
+  de notícias precisam ser atribuídas à fonte e limitadas ao resumo recebido;
+  sem evidência, a causa deve permanecer não determinada.
+- Hipóteses precisam ser identificadas e dizer que evidência falta. Não são
+  obrigatórias nem servem para transformar narrativa plausível em fato.
+- DCF deixa de ser uma entrega obrigatória: sem premissas explícitas e rastreáveis,
+  deve ser omitido com justificativa, sem inventar WACC, crescimento ou preço-alvo.
+- CIO deve confrontar as interpretações anteriores com a base original e omitir
+  afirmações sem suporte, mantendo as seções e as regras dos grupos 2 e 3.
+
+Validação: 73 testes Python aprovados; contrato OpenAPI e diff sem erros.
+Novo teste da montagem das tarefas verifica a base completa e parcial em cada
+etapa (sem alterar o original), preservação dos contextos e callbacks de progresso.
+Mocks substituem agentes/modelos: os testes não comprovam adesão de um LLM real.
+Não houve alteração de interface/API; suítes de navegador não foram repetidas.
+
+Limites e homologação posterior: estas são instruções de geração e entrega direta
+da base, não um verificador semântico ou motor determinístico de cálculos.
+Após publicação autorizada, conferir uma consulta real quanto a:
+1. Referências de indicador, período, moeda e fonte junto de cada afirmação factual.
+2. Fórmulas e operandos que reproduzam os resultados apresentados.
+3. Ausência de média histórica/setorial e causalidade sem evidência disponível.
+4. DCF omitido quando faltarem premissas, hipóteses identificadas e fontes das
+   notícias acompanhadas das ressalvas do grupo 3.
+A inclusão da base em cada tarefa aumenta o contexto enviado aos modelos;
+latência e consumo não foram medidos em chamadas reais nesta etapa.
+
+Sem consulta real, merge ou deploy no Render. Os quatro grupos têm implementação
+em PRs separados; o grupo 4 ainda depende de revisão/merge e a sequência precisa
+de homologação integrada após publicação autorizada.
