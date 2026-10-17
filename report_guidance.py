@@ -8,6 +8,13 @@ Apresentação final:
 - Priorize até três achados relevantes, com seus cálculos e referências. Não
   enumere todos os indicadores nem reproduza os demonstrativos em prosa ou tabela.
   Esse limite é editorial: não omita ressalvas, fontes ou limitações necessárias.
+- Organize a leitura em até três parágrafos temáticos: cada um começa pelo
+  achado e inclui apenas os números necessários para sustentá-lo. Não abra
+  com um inventário de fatos ou com a transcrição dos dois demonstrativos.
+  Referências comuns de fonte/período podem acompanhar o parágrafo, desde que
+  fique inequívoco a quais valores se referem. Preserve fórmulas e operandos.
+- Concentre ressalvas gerais na seção de limitações e mantenha junto do cálculo
+  apenas a convenção e a limitação específica necessária para interpretá-lo.
 - Use os valores de apresentação abaixo como referência de escrita, não como
   operandos arredondados: os cálculos usam a base original completa.
 - Escreva demonstrativo de resultados, balanço patrimonial e fluxo de caixa,
@@ -25,6 +32,16 @@ Apresentação final:
   19634 milhões se escreve 19.634,00 mi, nunca 19,634 mi. Preserve a moeda.
 - Prefira texto simples nas notícias, sem negrito em títulos longos. Termine
   todos os links e marcadores Markdown e inclua as limitações por inteiro.
+- Notícias: use uma lista, nunca uma tabela. Cada item deve ter [título](URL),
+  veículo e date_label preservado integralmente. Não mostre a URL como texto
+  do link. Exponha apenas linguagem em português: article_verified=false é
+  'publicação original não verificada', reported é 'data informada pela busca'.
+  Não exponha nomes de campos nem valores booleanos. Explique uma única vez
+  que datas e horários podem ser normalizados pelo buscador, inclusive a partir
+  de datas relativas; não são confirmação do horário original de publicação.
+  Preserve todas as datas recebidas, sem corrigir horários iguais por suposição.
+- Use 'Aviso importante' no lugar de 'Disclaimer', 'recente' no lugar de 'recent'
+  e 'dívida/patrimônio' no lugar de 'Debt-to-Equity'.
 """
 
 

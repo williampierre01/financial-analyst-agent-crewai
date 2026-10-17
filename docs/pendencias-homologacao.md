@@ -343,3 +343,69 @@ Validação atualizada: 90 testes Python aprovados, contrato OpenAPI inalterado
 e diff sem erros. Três regressões novas cobrem ausência de resultados, apenas
 cotação e duplicidade do último exercício. Serviços simulados, sem chamada
 real a provedores. Alterações continuam locais, sem commit ou publicação.
+
+## Grupo 2 — apresentação das notícias e síntese (17/10/2026)
+
+Base local/remota conferida: `fafc936`, merge do PR #15. Usuário confirmou o
+Render operacional e enviou nova consulta VALE3: o relatório agora distingue
+ROE médio disponível em 2025 e indisponível em 2024, explica o P/L e chega ao
+aviso final. Persistem repetição e `article_verified = false` na apresentação.
+As capturas não auditam os dados financeiros ou comprovam o SHA Live.
+
+Investigação dos horários iguais: na biblioteca ddgs instalada, os extratores
+de Bing News e Yahoo News convertem datas relativas subtraindo dias do instante
+atual, preservando hora/minuto. Isso explica um mecanismo possível para 12:07
+em notícias de dias diferentes; sem retorno bruto daquela consulta e identificação
+do mecanismo usado, a causa específica continua não confirmada. `news_date`
+mantém a informação recebida e a ressalva; nenhum horário foi corrigido por
+suposição e nenhuma página original foi consultada.
+
+Implementação local em `codex/apresentacao-noticias`:
+- Transformação de apresentação sobre a estrutura Markdown, limitada à seção
+  de notícias. Tabelas com colunas de título e URL reconhecidas viram listas;
+  o título recebe o link quando isso não elimina conteúdo adicional. Fonte,
+  data, ressalvas e colunas extras são preservadas. Tabelas desconhecidas ficam
+  intactas. Números, datas, destinos de links e texto financeiro não são reescritos.
+- URLs usadas como rótulo de links nas notícias recebem rótulo curto com domínio.
+  Campos reconhecidos da tabela e alguns termos técnicos em prosa recebem
+  apresentação portuguesa. Código e títulos descritivos de links são preservados.
+  Isto não é um tradutor genérico nem um verificador de fatos.
+- Células com links permitem quebra de linha; tabelas numéricas preservam a
+  rolagem existente. Testes anteriores de tabelas extensas continuam aplicáveis.
+- Orientações pedem até três parágrafos temáticos com achados, fórmulas e
+  referências, sem inventário inicial, com ressalvas gerais concentradas no final.
+  Notícias em lista com título clicável e explicação sobre normalização de datas.
+  A concisão do texto novo ainda depende da adesão do modelo; nenhum trecho
+  factual é removido automaticamente para encurtar a resposta.
+
+Sem mudança no contrato da API, cálculo financeiro ou coleta de notícias.
+Sem consulta real, commit, PR, merge ou publicação nesta etapa.
+
+Validação do grupo 2: 90 testes Python e 34 testes de interface aprovados;
+build TypeScript/Vite, formatação, contrato OpenAPI e diff conferidos.
+Capturas desktop/celular emulado revisadas. A suíte cobre conversão de tabela
+de notícias, preservação de campos adicionais, URLs, datas, valores e código,
+links por teclado, tabelas desconhecidas, textos extensos e larguras de 320
+a 1920 px. Dados e IA simulados; navegador Chromium não substitui aparelho
+físico/Safari. Testes integrados de servidor não repetidos: contrato inalterado.
+Não foi reproduzida rolagem horizontal da página nos cenários testados; isso
+não comprova a causa da barra vista anteriormente na sessão do usuário.
+
+### Revisão do grupo 2 — preservação de conteúdo
+
+Correções autorizadas após revisão: removidas substituições de termos técnicos
+em prosa livre, pois poderiam alterar títulos e citações. Tradução automática
+restrita aos campos de tabelas reconhecidas. A conversão de true/false no campo
+de verificação agora exige uma única célula textual simples; links, código e
+formatação são preservados, sem descarte de destinos ou estrutura.
+
+Acrescentados casos de regressão para títulos/citações e células de verificação
+com links, negrito e código. As expectativas anteriores foram ajustadas para
+preservar também prosa técnica literal. Campos técnicos em texto livre podem
+continuar visíveis; as instruções de geração orientam a redação em português.
+
+Por solicitação do usuário, não foram executados novos testes locais nem aberto
+o aplicativo nesta revisão. Os resultados de 90 testes Python e 34 de interface
+acima pertencem à versão anterior a estas correções. Os testes novos/ajustados
+aguardam execução no CI; avaliação visual será feita no Render após publicação
+manual autorizada. Apenas formatação dos arquivos e revisão do diff realizadas.

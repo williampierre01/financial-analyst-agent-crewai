@@ -21,6 +21,7 @@ import Statements from "./components/Statements";
 import { useAnalysis } from "./services/useAnalysis";
 import { date, money } from "./services/format";
 import { reportMarkdown } from "./services/reportMarkdown";
+import { reportPresentation } from "./services/reportPresentation";
 import type { Snapshot } from "./services/api";
 
 const steps = [
@@ -451,7 +452,7 @@ export default function App() {
               {analysis?.interpretation ? (
                 <div className="markdown">
                   <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
+                    remarkPlugins={[remarkGfm, reportPresentation]}
                     skipHtml
                     components={{
                       table: ({ children }) => (

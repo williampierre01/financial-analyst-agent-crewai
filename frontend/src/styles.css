@@ -959,6 +959,11 @@ th small {
   font-size: 12px;
   min-width: 300px;
 }
+.markdown :is(th, td):has(a) {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
 .analysis-errors {
   font-size: 13px;
   line-height: 1.8;
