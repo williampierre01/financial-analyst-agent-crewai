@@ -165,6 +165,9 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
             kwargs["extra_body"] = extra_body
 
         response = client.chat.completions.create(**kwargs)
+        # A nonempty fragment is still incomplete when the provider reports a cut.
+        if getattr(response.choices[0], "finish_reason", None) in {"length", "content_filter"}:
+            raise RuntimeError("Resposta do provedor interrompida antes da conclusão")
         message = response.choices[0].message
 
         # o reasoning_content (quando existe) fica de fora do texto que

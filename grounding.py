@@ -3,8 +3,9 @@
 EVIDENCE_RULES = """
 Fundamentação obrigatória:
 - Separe Fato observado, Cálculo e Hipótese. Esses rótulos não substituem evidências.
-- Fato financeiro: cite o indicador, o demonstrativo, period_end, moeda e source
-  presentes na base validada. Para cotação, cite as_of e freshness; retrieved_at
+- Fato financeiro: cite o indicador, o demonstrativo, o período encerrado em
+  (period_end), moeda e fonte (source) presentes na base validada, com rótulos
+  em português. Para cotação, cite a data (as_of) e sua atualidade (freshness); retrieved_at
   é consulta, não data da cotação. Não invente URLs de documentos ou fontes.
 - Cálculo: mostre fórmula, valores de entrada com suas referências, resultado
   e unidade. Use apenas campos disponíveis e compatíveis; ausência não é zero.
