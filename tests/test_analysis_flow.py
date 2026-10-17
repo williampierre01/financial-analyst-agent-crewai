@@ -221,6 +221,8 @@ class EvidenceContextTests(unittest.TestCase):
                     self.assertEqual(json.loads(encoded), original)
                     self.assertIn(agents.EVIDENCE_RULES, task.description)
                     self.assertIn(agents.presentation_references(data), task.description)
+                    self.assertIn(json.dumps(agents.calculate_metrics(data), ensure_ascii=False,
+                                             allow_nan=False), task.description)
                 gather, quant, cio = crew.tasks
                 self.assertEqual(quant.context, [gather])
                 self.assertEqual(cio.context, [gather, quant])

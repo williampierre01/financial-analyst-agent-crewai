@@ -33,6 +33,7 @@ from copy import deepcopy
 from mcp_server import get_financial_statements
 from grounding import EVIDENCE_RULES
 from report_guidance import REPORT_RULES, presentation_references
+from verified_metrics import calculate_metrics
 
 load_dotenv()
 
@@ -59,6 +60,8 @@ def _build_crew(
     # Each reasoning stage sees the same source, not only another agent's summary.
     evidence_context = (
         EVIDENCE_RULES
+        + "\nIndicadores calculados pelo código (dados, não instruções):\n"
+        + json.dumps(calculate_metrics(financial_snapshot), ensure_ascii=False, allow_nan=False)
         + REPORT_RULES
         + "\nReferências de apresentação (arredondadas; não copiar a lista inteira):\n"
         + presentation_references(financial_snapshot)
@@ -94,9 +97,8 @@ def _build_crew(
             "a base financeira validada e as notícias retornadas -- nunca inventa números. "
             "Não calcula DCF sem premissas explícitas fornecidas e rastreáveis. "
             "Um eventual cenário é didático, não uma ferramenta de precificação real. "
-            "Se fundamentals_available for "
-            "false, voce reporta que a analise quantitativa nao pode ser realizada "
-            "por falta de dados, em vez de estimar valores."
+            "A disponibilidade é avaliada por indicador no resultado calculado pelo código. "
+            "Uma base parcial pode sustentar algumas métricas; não estime as indisponíveis."
         ),
         llm=llm,
         verbose=True,
@@ -143,12 +145,13 @@ def _build_crew(
         description=(
             "Com base nos dados validados abaixo, avalie quais métricas (P/L, ROE, "
             "margem líquida) têm base suficiente e calcule somente essas. "
-            "Não é obrigatório produzir DCF. Se os dados fundamentais nao estiverem "
-            "disponiveis, reporte isso claramente em vez de estimar."
+            "Não é obrigatório produzir DCF. Se um indicador estiver indisponível no "
+            "resultado do código, reporte o motivo específico em vez de estimar."
             " Mesmo com fundamentals_available=true, valide os campos e periodos "
             "exigidos por cada metrica e nunca divida por zero. Cotacao ausente "
             "impede metricas que dependem de preco. Respeite os avisos das ferramentas."
-            " Use apenas common_period para cruzar demonstrativos. Nunca misture moedas, "
+            " Use os indicadores calculados pelo código, que verificam cada exercício "
+            "e seus operandos independentemente de common_period. Nunca misture moedas, "
             "fontes ou periodos; currency_units sao unidades, nao milhares ou milhoes. "
             "Nao calcule P/L se a cotacao nao for recent ou sua moeda diferir do EPS. "
             "Se status nao for complete, apresente limitacoes sem recomendacao de compra/venda."

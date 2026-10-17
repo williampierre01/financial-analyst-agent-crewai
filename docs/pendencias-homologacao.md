@@ -287,3 +287,59 @@ nem todo Markdown malformado. A causa do trecho da captura continua sem
 confirmação, aguardando texto bruto completo. Não houve mudança de interface
 ou contrato da API; testes de navegador não foram repetidos. Sem consulta real,
 commit, PR, merge ou deploy nesta etapa. Homologação real continua pendente.
+
+## Grupo 1 — indicadores calculados pelo código (17/10/2026)
+
+Após merge do PR #14, o usuário confirmou `730243a` como Live e forneceu
+capturas e texto de uma consulta VALE3. A resposta exibe números brasileiros,
+ROE sobre encerramento e aviso final, mas ainda repete dados, expõe termos
+técnicos e apresenta tabela de notícias extensa. O saldo de 2024 aparece na
+tabela, enquanto a interpretação declara ausência de saldo inicial. Datas e
+fontes das notícias constam no texto copiado, em colunas fora da área visível.
+Isso não verifica os dados frente à fonte nem a causa da falha anterior em VALE3.
+
+Grupo 1 autorizado separadamente; implementação local em
+`codex/indicadores-verificados`, a partir de `730243a`:
+
+- Novo módulo calcula ROE sobre encerramento, ROE sobre média simples de dois
+  saldos anuais consecutivos, margem líquida, dívida/patrimônio e P/L.
+- Resultados incluem fórmula, operandos originais, período, fonte, moeda,
+  status e motivo específico de indisponibilidade. Não há nova coleta, câmbio
+  ou mutação da base. Cada indicador verifica seus próprios operandos, sem
+  depender da presença de fluxo de caixa ou de um único `common_period`.
+- Média de saldos exige encerramento no mesmo dia/mês do ano anterior,
+  registros únicos, fontes/moedas/unidades compatíveis e saldos positivos.
+  Datas fiscais irregulares não são inferidas. A média é uma aproximação e
+  não confirma comparabilidade contábil nem representa média ponderada no tempo.
+- Denominadores zero/negativos bloqueiam os indicadores; prejuízo no numerador
+  do ROE/margem permanece negativo. P/L usa apenas cotação recente datada e o
+  último lucro anual disponível, sem apresentá-lo como P/L histórico ou TTM.
+- As três tarefas recebem os mesmos cálculos; instruções conflitantes que
+  bloqueavam toda análise em base parcial foram ajustadas.
+
+Validação: 87 testes Python aprovados, com serviços simulados; contrato OpenAPI
+inalterado e diff sem erros. Testes novos cobrem aritmética, referências dos
+dois exercícios, ausência de saldo inicial, duplicidade, período divergente,
+moeda/fonte/unidade incompatível, cotação antiga/ausente, denominadores inválidos,
+zero/prejuízo, ausência de fluxo de caixa e preservação da base original.
+
+Limites: o módulo verifica os cálculos a partir dos dados recebidos, não a
+precisão da fonte. A redação final continua sendo produzida pelo modelo e não
+passa por verificação semântica automática; adesão exige homologação real.
+Os resultados estruturados são contexto interno, sem alteração da API/UI.
+O contexto adicional pode aumentar consumo/latência, não medidos nesta etapa.
+Grupo 2 visual não iniciado. Sem commit, PR, merge, deploy ou consulta real.
+
+### Correção após revisão local do grupo 1
+
+A revisão identificou omissão de P/L quando faltava demonstrativo de resultados
+e lista vazia quando havia apenas cotação. Correção autorizada pelo usuário:
+P/L agora retorna indisponibilidade explícita para demonstrativo ausente ou
+ambíguo. Quando faltam resultados e balanço, os cinco indicadores retornam
+motivos de indisponibilidade com período nulo, sem inventar datas. Indicadores
+sustentados por balanços disponíveis continuam calculados independentemente.
+
+Validação atualizada: 90 testes Python aprovados, contrato OpenAPI inalterado
+e diff sem erros. Três regressões novas cobrem ausência de resultados, apenas
+cotação e duplicidade do último exercício. Serviços simulados, sem chamada
+real a provedores. Alterações continuam locais, sem commit ou publicação.

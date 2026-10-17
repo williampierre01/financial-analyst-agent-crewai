@@ -2,6 +2,16 @@
 
 EVIDENCE_RULES = """
 Fundamentação obrigatória:
+- Para P/L, ROE, margem líquida e dívida/patrimônio, use exclusivamente os
+  indicadores calculados pelo código fornecidos no contexto: preserve valores,
+  fórmulas, referências, convenções, motivos de indisponibilidade e ressalvas.
+  Não recalcule com números arredondados nem invente um indicador indisponível.
+  Comparações devem identificar os resultados e operandos de ambos os exercícios.
+  A cotação atual dividida pelo lucro anual não é o P/L histórico daquele ano.
+  Não diga que falta saldo inicial quando houver resultado calculado para média
+  de dois saldos. Essa média é uma aproximação, não uma média ponderada no tempo.
+  Ausência de fluxo de caixa não impede métricas cujos operandos estão disponíveis.
+  Estas verificações não confirmam a exatidão da fonte ou a comparabilidade contábil.
 - Separe Fato observado, Cálculo e Hipótese. Esses rótulos não substituem evidências.
 - Fato financeiro: cite o indicador, o demonstrativo, o período encerrado em
   (period_end), moeda e fonte (source) presentes na base validada, com rótulos
