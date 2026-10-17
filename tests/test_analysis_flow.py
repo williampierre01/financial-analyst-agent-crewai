@@ -220,12 +220,49 @@ class EvidenceContextTests(unittest.TestCase):
                     # No model summary can erase nulls, zero, negatives, source, dates or warnings.
                     self.assertEqual(json.loads(encoded), original)
                     self.assertIn(agents.EVIDENCE_RULES, task.description)
+                    self.assertIn(agents.presentation_references(data), task.description)
                 gather, quant, cio = crew.tasks
                 self.assertEqual(quant.context, [gather])
                 self.assertEqual(cio.context, [gather, quant])
                 gather.callback(None)
                 quant.callback(None)
                 self.assertEqual(stages, ["quant", "cio"])
+
+
+class ProviderCompletionTests(unittest.TestCase):
+    def test_incomplete_primary_uses_fallback_and_incomplete_fallback_fails(self):
+        from llm_provider import DeepSeekGroqFallbackLLM
+        def response(reason, content):
+            return SimpleNamespace(choices=[SimpleNamespace(
+                finish_reason=reason, message=SimpleNamespace(content=content, tool_calls=None))])
+        with patch("llm_provider.OpenAI"):
+            llm = DeepSeekGroqFallbackLLM("test-only", "test-only")
+        llm._deepseek_client = Mock()
+        llm._groq_client = Mock()
+        llm._deepseek_client.chat.completions.create.return_value = response("length", "Texto cortado **")
+        llm._groq_client.chat.completions.create.return_value = response("stop", "Texto completo")
+        self.assertEqual(llm.call("teste"), "Texto completo")
+        llm._groq_client.chat.completions.create.return_value = response("length", "Outro fragmento")
+        with self.assertRaisesRegex(RuntimeError, "interrompida"):
+            llm.call("teste")
+
+    def test_complete_text_and_tool_calls_are_preserved(self):
+        from llm_provider import DeepSeekGroqFallbackLLM
+        with patch("llm_provider.OpenAI"):
+            llm = DeepSeekGroqFallbackLLM("test-only", "test-only")
+        client = Mock()
+        message = SimpleNamespace(content="Texto **completo**", tool_calls=None)
+        choice = SimpleNamespace(finish_reason="stop", message=message)
+        client.chat.completions.create.return_value = SimpleNamespace(choices=[choice])
+        kwargs = dict(client=client, model="test", provider_name="test", messages=[],
+                      tools=None, extra_body=None, max_tokens=10)
+        self.assertEqual(llm._call_once(**kwargs), "Texto **completo**")
+        choice.finish_reason = "tool_calls"
+        message.tool_calls = [SimpleNamespace(function=SimpleNamespace(name="get_market_news"))]
+        self.assertEqual(llm._call_once(**kwargs), message.tool_calls)
+        choice.finish_reason = "content_filter"
+        with self.assertRaisesRegex(RuntimeError, "interrompida"):
+            llm._call_once(**kwargs)
 
 
 if __name__ == "__main__":

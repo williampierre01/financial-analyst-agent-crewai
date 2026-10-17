@@ -196,3 +196,94 @@ latência e consumo não foram medidos em chamadas reais nesta etapa.
 Sem consulta real, merge ou deploy no Render. Os quatro grupos têm implementação
 em PRs separados; o grupo 4 ainda depende de revisão/merge e a sequência precisa
 de homologação integrada após publicação autorizada.
+
+## Nova consulta PETR4 — pendências para correção futura
+
+Evidência: quatro capturas enviadas pelo usuário após os merges dos grupos 1–4.
+A tela informa consulta em 14/10/2026 às 22:38, Brasília. O usuário confirmou
+Auto-Deploy ativo; as capturas não mostram o SHA publicado no Render.
+Registro solicitado pelo usuário, sem iniciar novas correções.
+
+### Observado nas capturas de desktop
+
+- Demonstrativos e interpretação ocupam painéis amplos, sem cortes visíveis;
+  títulos principais estão formatados sem sinais `###` expostos.
+- Lucro diluído por ação aparece sem escala (`R$ 1,52` em 2025).
+- Há fórmulas, distinção entre fatos e cálculos e ressalvas de causa não determinada.
+- Notícias visíveis têm título, veículo, URL e ressalva de data informada pela
+  busca, não verificada. Isso não comprova as datas nem o conteúdo das publicações.
+
+### Pendências identificadas
+
+1. **Separadores numéricos na interpretação:** a tabela mostra `R$ 19.634,00 mi`,
+   enquanto trechos dos cálculos usam `R$ 19,634 mi`. Padronizar a notação
+   brasileira sem mudar valores, escala ou unidades por ação. A inconsistência
+   é visível; sua origem ainda precisa ser investigada no texto bruto.
+2. **Linguagem técnica exposta:** substituir na apresentação termos como
+   `income_statement`, `balance_sheet`, `cash_flow`, `period_end`, `as_of`,
+   `Diluted EPS` e `driver operacional` por linguagem clara em português,
+   preservando a rastreabilidade. Apresentar a fonte de forma compreensível.
+3. **Repetição da tabela:** a interpretação enumera quase todos os dados já
+   exibidos. Priorizar síntese e cálculos relevantes, mantendo referências
+   próximas das afirmações, sem transcrever integralmente os demonstrativos.
+4. **Rótulos sem conteúdo:** evitar a repetição de “Hipótese — Nenhuma”.
+   Identificar hipóteses apenas quando houver uma hipótese efetiva; manter
+   limitações e ressalvas necessárias sem repetição mecânica.
+5. **Convenção do ROE:** explicitar que o cálculo mostrado usa patrimônio de
+   encerramento, distinguindo-o de patrimônio médio e registrando a limitação.
+6. **Markdown ou término do relatório:** na última captura aparece
+   `**Petrobras (PETR4), Axia (AXIA3), PetroReconcavo (RECV3) e outros` sem negrito
+   renderizado. Inspecionar a continuação e o texto bruto antes de concluir se
+   é marcador malformado, resposta interrompida ou apenas limite da captura.
+   Conferir a presença integral da seção de limitações e do aviso final.
+
+### Ainda não validado por essas imagens
+
+- Layout e rolagem das tabelas em celular.
+- Mensagem de progresso antes e depois da chegada dos dados.
+- Alternância entre milhões e valores integrais, preservando valores por ação.
+- Abertura dos links e correspondência com as notícias citadas.
+- Exatidão dos valores financeiros e das moedas frente à fonte original.
+- Relatório completo, incluindo final das notícias, limitações e aviso final.
+- Commit efetivamente Live no Render e solicitação de senha em nova sessão.
+
+Não tratar estas capturas como homologação integral nem como confirmação de
+precisão financeira. Nenhuma correção, commit, PR ou deploy foi realizado
+como parte deste registro; retomar as pendências em trabalho futuro.
+
+## Retomada — clareza dos relatórios (17/10/2026)
+
+O usuário informou sucesso nos novos testes com as três ações sugeridas no
+aplicativo. A falha anterior em VALE3 não se repetiu; relação com reinício é
+uma hipótese não confirmada. Esses relatos não validam a precisão dos dados.
+
+Implementação local na branch `codex/clareza-relatorios`, base `8b7a0ed`
+(main local e remota conferidas antes da edição):
+
+- Cada tarefa recebe referências de apresentação produzidas pelo código, com
+  nomes em português, separadores brasileiros, moeda, período e fonte.
+  Totais seguem a convenção de milhões; valores por ação permanecem sem escala.
+  A base original continua integral e é a referência para calcular, evitando
+  usar valores arredondados como operandos. Nenhuma substituição de números
+  ou links é feita no texto gerado.
+- Regras de síntese priorizam até três achados, preservando ressalvas e fontes;
+  proíbem categorias vazias e explicam o ROE sobre patrimônio de encerramento.
+  Removida a instrução conflitante de produzir novas tabelas no relatório.
+- Respostas sinalizadas pelo provedor como interrompidas por limite de tamanho
+  ou filtro não são aceitas como completas, mesmo quando têm texto. O fluxo
+  existente tenta Groq após falha do DeepSeek; falha final mantém os dados e
+  informa indisponibilidade da interpretação.
+
+Validação: 78 testes Python aprovados com serviços simulados. Cobertura nova
+inclui referências para PETR4/VALE3/ITUB4, moeda desconhecida e USD nos dados,
+ausências, zero, negativos, milhões, valores por ação, preservação da base,
+resposta interrompida, fallback e preservação de chamadas de ferramentas.
+O aplicativo continua restrito a códigos da B3; USD no teste é moeda dos
+demonstrativos, não suporte novo a ações estrangeiras.
+
+Limites: as referências e regras não garantem adesão do modelo. O sinal de
+interrupção do provedor não detecta todo relatório semanticamente incompleto
+nem todo Markdown malformado. A causa do trecho da captura continua sem
+confirmação, aguardando texto bruto completo. Não houve mudança de interface
+ou contrato da API; testes de navegador não foram repetidos. Sem consulta real,
+commit, PR, merge ou deploy nesta etapa. Homologação real continua pendente.

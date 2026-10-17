@@ -1,0 +1,60 @@
+"""Localised references for generation, without rewriting model output."""
+
+from financial_data import FIELDS
+
+
+REPORT_RULES = """
+Apresentação final:
+- Priorize até três achados relevantes, com seus cálculos e referências. Não
+  enumere todos os indicadores nem reproduza os demonstrativos em prosa ou tabela.
+  Esse limite é editorial: não omita ressalvas, fontes ou limitações necessárias.
+- Use os valores de apresentação abaixo como referência de escrita, não como
+  operandos arredondados: os cálculos usam a base original completa.
+- Escreva demonstrativo de resultados, balanço patrimonial e fluxo de caixa,
+  período encerrado em, data da cotação e fonte Yahoo Finance (via yfinance).
+  Não exponha nomes de campos como income_statement, balance_sheet, cash_flow,
+  period_end, as_of ou freshness. Explique a atualidade da cotação em português.
+  Substitua driver operacional por fator operacional; não presuma causalidade.
+- Não escreva 'Hipótese — Nenhuma' ou categorias vazias. Se não houver hipótese
+  útil, omita o rótulo. Agrupe limitações repetidas sem eliminar suas ressalvas.
+- Se calcular ROE com patrimônio de encerramento, chame-o de 'ROE sobre patrimônio
+  de encerramento': lucro líquido do exercício / patrimônio ao fim do mesmo
+  exercício × 100. Explique que não usa patrimônio médio e pode diferir do ROE
+  calculado com a média dos saldos inicial e final. Não invente saldo inicial.
+- Use números brasileiros também nos operandos e resultados das fórmulas:
+  19634 milhões se escreve 19.634,00 mi, nunca 19,634 mi. Preserve a moeda.
+- Prefira texto simples nas notícias, sem negrito em títulos longos. Termine
+  todos os links e marcadores Markdown e inclua as limitações por inteiro.
+"""
+
+
+def presentation_references(snapshot: dict | None) -> str:
+    """Format supplied values only; no fetch, currency inference or mutation."""
+    if not snapshot:
+        return "Sem referência financeira disponível."
+    groups = {
+        "income_statement": "Demonstrativo de resultados",
+        "balance_sheet": "Balanço patrimonial",
+        "cash_flow": "Fluxo de caixa",
+    }
+    lines = []
+    for group, fields in FIELDS.items():
+        for period in snapshot["statements"].get(group, []):
+            for field, (label, _) in fields.items():
+                value = period["values"].get(field)
+                currency = period.get("currency")
+                unit = "R$" if currency == "BRL" else currency or "moeda não informada"
+                if value is None:
+                    formatted = "Não disponível"
+                else:
+                    per_share = field == "diluted_eps"
+                    millions = not per_share and abs(value) >= 10_000
+                    amount = value / 1_000_000 if millions else value
+                    number = f"{amount:,.2f}".replace(",", "_").replace(".", ",").replace("_", ".")
+                    formatted = f"{unit} {number}" + (" mi" if millions else "")
+                    if per_share:
+                        formatted += " por ação"
+                source = period.get("source")
+                source_label = "Yahoo Finance (via yfinance)" if source == "yfinance" else source or "não informada"
+                lines.append(f"- {label}: {formatted}; {groups[group]}; período encerrado em {period['period_end']}; fonte: {source_label}.")
+    return "\n".join(lines) or "Sem demonstrativos disponíveis."
