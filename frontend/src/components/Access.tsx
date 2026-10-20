@@ -96,7 +96,7 @@ export default function Access() {
       try {
         await sendEmailVerification(user);
       } finally {
-        await signOut(user.auth);
+        await clearFirebaseIdentity();
       }
       setMessage(
         "Confirme seu e-mail pelo link enviado e entre novamente. Confira também a pasta de spam.",
@@ -107,7 +107,7 @@ export default function Access() {
       const next = await authRequest<Account>("session", {
         id_token: await user.getIdToken(true),
       });
-      await signOut(user.auth);
+      await clearFirebaseIdentity();
       clearPrivateState();
       notifyAccountChange();
       setAccount(next);
@@ -120,7 +120,7 @@ export default function Access() {
     } catch (error) {
       if (error instanceof AccessError && error.code === "mfa_required") {
         if (multiFactor(user).enrolledFactors.length) {
-          await signOut(user.auth);
+          await clearFirebaseIdentity();
           setMessage(
             "Entre novamente e confirme o código do seu autenticador.",
           );
@@ -136,7 +136,7 @@ export default function Access() {
           );
         }
       } else {
-        await signOut(user.auth);
+        await clearFirebaseIdentity();
         throw error;
       }
     }
