@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
-import { test, expect, type Page } from "@playwright/test";
+import type { Page } from "@playwright/test";
+import { test, expect } from "./authFixture";
 import fixture from "./fixture.json" with { type: "json" };
 import type { Analysis, Snapshot } from "../src/services/api";
 
@@ -284,7 +285,7 @@ test("reload resumes a known job without POST and markdown is not executable", a
     return route.fulfill({ json: result });
   });
   await page.addInitScript(
-    (id) => sessionStorage.setItem("analista.active-analysis", id),
+    (id) => sessionStorage.setItem("analista.active-analysis.alice", id),
     result.id,
   );
   await page.goto("/");

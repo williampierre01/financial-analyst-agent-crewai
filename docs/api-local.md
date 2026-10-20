@@ -1,5 +1,9 @@
 # Etapa 2 — API local de análises
 
+> Guia histórico. A versão multiusuário exige Firebase e PostgreSQL também na API
+> isolada. Consulte [o guia atual](login-firebase-neon.md). Nesta etapa, os testes
+> serão executados no CI e a revisão visual será feita no Render.
+
 ## O que foi implementado
 
 FastAPI fornece início e consulta de análises, reutilizando run_analysis_result.

@@ -20,10 +20,19 @@ async function request<T>(
   const response = await fetch(`/api${path}`, {
     method: body ? "POST" : "GET",
     signal,
-    headers: body ? { "Content-Type": "application/json" } : undefined,
+    headers: body
+      ? { "Content-Type": "application/json", "X-Requested-With": "analista" }
+      : undefined,
     body: body ? JSON.stringify(body) : undefined,
   });
   if (!response.ok) {
+    if (response.status === 401 || response.status === 403) {
+      window.dispatchEvent(new Event("analista:unauthorized"));
+      throw new ApiError(
+        response.status,
+        "Sua sessão terminou. Entre novamente.",
+      );
+    }
     const message =
       response.status === 404
         ? "Esta análise expirou ou a API foi reiniciada. Inicie uma nova consulta."

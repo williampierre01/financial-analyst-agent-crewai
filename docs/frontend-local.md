@@ -1,5 +1,9 @@
 # Etapa 3 — interface React + TypeScript
 
+> Guia histórico. A interface agora inclui login Firebase e sessões no backend.
+> Consulte [o guia atual](login-firebase-neon.md) antes de publicar. A validação
+> desta etapa ocorre no CI e no Render, sem executar testes locais.
+
 ## Entrega
 
 A interface principal para consultar ações brasileiras usa React e a API

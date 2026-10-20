@@ -38,6 +38,7 @@ class AnalysisStore:
         self.clock = clock
         self._lock = RLock()
         self._records = {}
+        self._owners = {}
         self._deadlines = {}
         self._active = 0
         self._closed = False
@@ -47,9 +48,10 @@ class AnalysisStore:
         for job_id, deadline in list(self._deadlines.items()):
             if self.clock() >= deadline:
                 self._records.pop(job_id, None)
+                self._owners.pop(job_id, None)
                 del self._deadlines[job_id]
 
-    def create(self, ticker):
+    def create(self, ticker, *, owner=None):
         ticker = normalize_ticker(ticker)
         with self._lock:
             if self._closed:
@@ -62,11 +64,13 @@ class AnalysisStore:
             initial = {"id": job_id, "created_at": now, "updated_at": now,
                        "expires_at": None, **AnalysisResult(ticker).to_dict()}
             self._records[job_id] = initial
+            self._owners[job_id] = owner
             self._active += 1
             try:
                 self._executor.submit(self._run, job_id, ticker)
             except Exception:
                 del self._records[job_id]
+                self._owners.pop(job_id, None)
                 self._active -= 1
                 raise StoreClosed from None
             return deepcopy(initial)
@@ -116,10 +120,12 @@ class AnalysisStore:
                 self._deadlines[job_id] = self.clock() + self.retention_seconds
                 self._active -= 1
 
-    def get(self, job_id):
+    def get(self, job_id, *, owner=None):
         with self._lock:
             self._purge()
             record = self._records.get(job_id)
+            if self._owners.get(job_id) != owner:
+                return None
             return deepcopy(record) if record is not None else None
 
     def close(self):

@@ -4,13 +4,26 @@ import time
 import unittest
 from uuid import uuid4
 
-from fastapi.testclient import TestClient
+from fastapi.testclient import TestClient as BaseTestClient
 
 from analysis_models import AnalysisResult
-from backend.api.main import create_app
+from backend.api.main import create_app as real_create_app
+from backend.security.auth import COOKIE
+from auth_fakes import service
 from backend.services.analyses import AnalysisStore, CapacityExceeded, StoreClosed
 from financial_data import load_snapshot
 from test_yahoo_contract import NOW, payload
+
+
+def create_app(*args, **kwargs):
+    return real_create_app(*args, auth_service=service(), **kwargs)
+
+
+class TestClient(BaseTestClient):
+    def __init__(self, app):
+        super().__init__(app, base_url="https://testserver",
+            headers={"Origin": "https://testserver", "X-Requested-With": "analista"},
+            cookies={COOKIE: "test-session"})
 
 
 def data():

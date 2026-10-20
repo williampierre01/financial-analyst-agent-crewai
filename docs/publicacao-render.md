@@ -1,5 +1,9 @@
 # Etapa 4 — preparação para publicação restrita no Render
 
+> Guia histórico da versão HTTP Basic. Para publicar a versão com login Firebase
+> e PostgreSQL, use [o novo guia](login-firebase-neon.md). A nova API isolada também
+> exige autenticação e as variáveis WEB_USERNAME/WEB_PASSWORD não controlam seu acesso.
+
 ## Estado e escopo
 
 Publicado no Render em 14/10/2026, commit 7901396. O usuário confirmou a

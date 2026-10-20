@@ -73,12 +73,12 @@ function annualMetric(
   };
 }
 
-export default function App() {
+export default function App({ uid }: { uid: string }) {
   const [ticker, setTicker] = useState("");
   const [validation, setValidation] = useState("");
   const [millions, setMillions] = useState(true);
   const { analysis, error, paused, start, resume, reset, busy, starting } =
-    useAnalysis();
+    useAnalysis(uid);
   const data = analysis?.data;
   const revenue = annualMetric(data, "income_statement", "revenue");
   const profit = annualMetric(data, "income_statement", "net_income");

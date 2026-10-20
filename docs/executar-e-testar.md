@@ -1,5 +1,9 @@
 # Como executar e testar — Windows / PowerShell
 
+> Referência histórica de execução local. Para a etapa de login multiusuário,
+> seguir [Firebase + Neon](login-firebase-neon.md), com testes no CI e revisão
+> visual no Render. HTTP Basic deixou de ser o controle de acesso da versão nova.
+
 ## 1. Abrir o projeto
 
 Abra o PowerShell ou o terminal do editor e execute:

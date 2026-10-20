@@ -10,6 +10,31 @@ permissions:
   contents: read
 
 jobs:
+  auth-database:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: auth_test
+          POSTGRES_PASSWORD: ci-disposable-only
+          POSTGRES_DB: auth_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U auth_test"
+          --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      AUTH_TEST_DATABASE_URL: postgresql://auth_test:ci-disposable-only@localhost:5432/auth_test
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version-file: .python-version
+      - run: python -m pip install -r requirements-tooling.txt
+      - run: uv sync --locked
+      - name: Test PostgreSQL migrations and session lifecycle
+        run: uv run --locked python -m unittest discover -s tests -p test_auth_database.py -v
+
   tests:
     strategy:
       fail-fast: false

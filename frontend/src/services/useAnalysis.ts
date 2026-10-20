@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ApiError, createAnalysis, readAnalysis, type Analysis } from "./api";
 
-const key = "analista.active-analysis";
-function remember(id: string | null) {
+function remember(key: string, id: string | null) {
   try {
     if (id) sessionStorage.setItem(key, id);
     else sessionStorage.removeItem(key);
@@ -10,7 +9,7 @@ function remember(id: string | null) {
     /* Storage is optional. */
   }
 }
-function restore() {
+function restore(key: string) {
   try {
     const id = sessionStorage.getItem(key);
     return id && /^[a-f0-9-]{36}$/i.test(id) ? id : null;
@@ -19,9 +18,17 @@ function restore() {
   }
 }
 
-export function useAnalysis() {
+export function useAnalysis(uid: string) {
+  const key = `analista.active-analysis.${uid}`;
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
-  const [id, setId] = useState<string | null>(restore);
+  const [id, setId] = useState<string | null>(() => restore(key));
+  const mounted = useRef(true);
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
   const [starting, setStarting] = useState(false);
   const [error, setError] = useState("");
   const [paused, setPaused] = useState(false);
@@ -45,7 +52,7 @@ export function useAnalysis() {
         setError("");
         failures = 0;
         if (result.status !== "running") {
-          remember(null);
+          remember(key, null);
           setId(null);
           return;
         }
@@ -54,7 +61,7 @@ export function useAnalysis() {
         failures++;
         if (err instanceof ApiError && err.status === 404) {
           setError(err.message);
-          remember(null);
+          remember(key, null);
           setId(null);
           return;
         }
@@ -75,7 +82,7 @@ export function useAnalysis() {
       controller.abort();
       clearTimeout(timer);
     };
-  }, [id, revision]);
+  }, [id, revision, key]);
 
   async function start(ticker: string) {
     if (submitting.current || id) return;
@@ -86,9 +93,10 @@ export function useAnalysis() {
     setAnalysis(null);
     try {
       const result = await createAnalysis(ticker);
+      if (!mounted.current) return;
       setAnalysis(result);
       if (result.status === "running") {
-        remember(result.id);
+        remember(key, result.id);
         setId(result.id);
       }
     } catch (err) {
@@ -108,7 +116,7 @@ export function useAnalysis() {
     setRevision((value) => value + 1);
   }
   function reset() {
-    remember(null);
+    remember(key, null);
     setId(null);
     setAnalysis(null);
     setError("");
