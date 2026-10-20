@@ -19,11 +19,15 @@
     "format": "prettier --write src tests integration *.ts *.json *.html"
   },
   "dependencies": {
+    "firebase": "12.19.0",
     "lucide-react": "1.56.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-markdown": "10.1.0",
     "remark-gfm": "4.0.1"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "1.13.6"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

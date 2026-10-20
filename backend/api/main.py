@@ -6,11 +6,14 @@ from fastapi import FastAPI, HTTPException, Request, Response
 
 from backend.api.schemas import AnalysisRequest, AnalysisResponse, HealthResponse
 from backend.services.analyses import AnalysisStore, CapacityExceeded, StoreClosed, run_analysis
+from backend.security.auth import AuthService
+from backend.security.routes import install_security
 
 
-def create_app(runner=run_analysis, **store_options):
+def create_app(runner=run_analysis, *, auth_service=None, **store_options):
     @asynccontextmanager
     async def lifespan(app):
+        app.state.auth = auth_service if auth_service is not None else AuthService.production()
         app.state.analyses = AnalysisStore(runner, **store_options)
         try:
             yield
@@ -18,6 +21,7 @@ def create_app(runner=run_analysis, **store_options):
             app.state.analyses.close()
 
     app = FastAPI(title="Análise de ações brasileiras", version="0.1.0", lifespan=lifespan)
+    install_security(app)
 
     @app.get("/health", response_model=HealthResponse)
     def health():
@@ -28,7 +32,7 @@ def create_app(runner=run_analysis, **store_options):
     @app.post("/analyses", response_model=AnalysisResponse, status_code=202)
     def start_analysis(body: AnalysisRequest, response: Response, request: Request):
         try:
-            record = app.state.analyses.create(body.ticker)
+            record = app.state.analyses.create(body.ticker, owner=request.state.user["uid"])
         except CapacityExceeded:
             raise HTTPException(429, detail={"code": "capacity_exceeded", "message": "Limite de análises atingido. Tente novamente mais tarde."}) from None
         except StoreClosed:
@@ -38,8 +42,8 @@ def create_app(runner=run_analysis, **store_options):
         return record
 
     @app.get("/analyses/{analysis_id}", response_model=AnalysisResponse)
-    def get_analysis(analysis_id: UUID, response: Response):
-        record = app.state.analyses.get(str(analysis_id))
+    def get_analysis(analysis_id: UUID, response: Response, request: Request):
+        record = app.state.analyses.get(str(analysis_id), owner=request.state.user["uid"])
         if record is None:
             raise HTTPException(404, detail={"code": "analysis_not_found", "message": "Análise não encontrada ou expirada."})
         response.headers["Cache-Control"] = "no-store"

@@ -7,9 +7,10 @@ export default defineConfig({
   use: {
     ...devices["Desktop Chrome"],
     baseURL: "http://127.0.0.1:8012",
-    httpCredentials: {
-      username: "integration",
-      password: "integration-test-only",
+    extraHTTPHeaders: {
+      Origin: "http://127.0.0.1:8012",
+      "X-Requested-With": "analista",
+      Cookie: "__Host-analista_session=test-session",
     },
     trace: "retain-on-failure",
   },

@@ -21,6 +21,7 @@ confirmou o acesso e o fluxo de PETR4 com dados antecipados e interpretação.
 - Para executar o aplicativo unificado com senha: [guia de execução e publicação](docs/publicacao-render.md).
 - Para preparar o ambiente: [passo a passo Windows](docs/executar-e-testar.md).
 - Para acompanhar limitações conhecidas: [pendências de homologação](docs/pendencias-homologacao.md).
+- Para consultar a direção do produto, as três áreas e as fases previstas: [plano geral de desenvolvimento](docs/plano-geral-desenvolvimento.md).
 
 O Gradio permanece como apoio temporário, executado por `python app.py`.
 Ele não é a interface principal e não utiliza a proteção de acesso do servidor
@@ -194,6 +195,12 @@ package-lock.json. No PowerShell, use npm.cmd. O [guia do front-end](docs/fronte
 detalha testes, geração de tipos e execução. O Gradio continua disponível.
 
 ### Deploy
+
+**Nova etapa de login multiusuário:** Firebase Authentication + PostgreSQL no Neon Free.
+Antes de publicar esta versão, siga [configuração, migração e homologação](docs/login-firebase-neon.md).
+A API agora exige autenticação também no ponto de entrada isolado. Os comandos locais
+anteriores são históricos; a validação desta etapa será no CI e no Render, sem testes locais.
+O guia antigo de HTTP Basic não se aplica à versão nova.
 
 **Render** (ativo): Web Service Python, free tier, conectado direto ao
 GitHub (redeploy automático a cada push na `main`). O projeto agora fixa Python `3.13.9` em `.python-version`. Ao publicar esta

@@ -1255,3 +1255,81 @@ th small {
     margin-bottom: 8px;
   }
 }
+
+.access-page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.access-card {
+  width: min(100%, 480px);
+  padding: clamp(24px, 5vw, 40px);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.access-brand {
+  color: var(--green);
+  font-weight: 700;
+}
+.access-card h1 {
+  font-size: 1.8rem;
+  line-height: 1.25;
+}
+.access-card form {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+.access-card label {
+  font-weight: 600;
+}
+.access-card input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #81968c;
+  border-radius: 6px;
+  padding: 10px;
+}
+.access-card button,
+.account-bar button {
+  min-height: 44px;
+  border: 1px solid var(--green);
+  border-radius: 6px;
+  padding: 10px 16px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 600;
+}
+.access-card .access-secondary {
+  background: #fff;
+  color: var(--green);
+}
+.access-message {
+  background: #edf4ef;
+  border-left: 3px solid var(--green);
+  padding: 12px;
+}
+.access-note {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 24px;
+}
+.totp-secret {
+  display: block;
+  overflow-wrap: anywhere;
+  padding: 12px;
+  background: #edf4ef;
+  user-select: all;
+}
+.account-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 8px 24px;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
