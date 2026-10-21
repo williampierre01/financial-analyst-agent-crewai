@@ -5,6 +5,23 @@ import unittest
 from unittest.mock import patch
 
 
+class DatabaseTLSConfigurationTests(unittest.TestCase):
+    def test_explicit_trust_bundle_and_full_verification(self):
+        import ssl
+        import certifi
+        from backend.security.database import Database
+
+        # Reject missing/invalid PEM bundles on both CI operating systems.
+        context = ssl.create_default_context(cafile=certifi.where())
+        self.assertGreater(context.cert_store_stats()["x509_ca"], 0)
+        with patch("backend.security.database.psycopg.connect") as connect:
+            with Database("postgresql://example.invalid/app?sslmode=disable").connect():
+                pass
+            self.assertEqual(connect.call_args.kwargs["sslmode"], "verify-full")
+            self.assertEqual(connect.call_args.kwargs["sslrootcert"], certifi.where())
+            self.assertNotIn("options", connect.call_args.kwargs)
+
+
 @unittest.skipUnless(os.environ.get("AUTH_TEST_DATABASE_URL"), "PostgreSQL integration runs in CI")
 class DatabaseTests(unittest.TestCase):
     def test_production_timeout_is_transaction_local(self):
