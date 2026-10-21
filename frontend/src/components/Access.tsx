@@ -17,6 +17,7 @@ import {
 import App from "../App";
 import {
   AccessError,
+  serviceFailureMessage,
   authRequest,
   clearPrivateState,
   clearFirebaseIdentity,
@@ -194,9 +195,10 @@ export default function Access() {
     } catch (error) {
       await discardTemporaryLogin();
       setMessage(
-        error instanceof AccessError && error.status === 403
-          ? "Esta conta não tem acesso autorizado. Contate o administrador."
-          : "Não foi possível entrar. Confira os dados ou aguarde antes de tentar novamente.",
+        serviceFailureMessage(error) ??
+          (error instanceof AccessError && error.status === 403
+            ? "Esta conta não tem acesso autorizado. Contate o administrador."
+            : "Não foi possível entrar. Confira os dados ou aguarde antes de tentar novamente."),
       );
     } finally {
       setBusy(false);
@@ -259,9 +261,10 @@ export default function Access() {
         );
       } else {
         setMessage(
-          error instanceof AccessError && error.status === 403
-            ? "Esta conta não tem acesso autorizado. Contate o administrador."
-            : "Não foi possível entrar com Google. Tente novamente ou contate o administrador.",
+          serviceFailureMessage(error) ??
+            (error instanceof AccessError && error.status === 403
+              ? "Esta conta não tem acesso autorizado. Contate o administrador."
+              : "Não foi possível entrar com Google. Tente novamente ou contate o administrador."),
         );
       }
     } finally {

@@ -99,6 +99,30 @@ class AuthTests(unittest.TestCase):
         now[0] = 60
         limit.check("ip", 1, 60)
 
+    def test_login_diagnostics_are_correlated_and_do_not_disclose_secrets(self):
+        from google.auth.exceptions import RefreshError
+        from psycopg.errors import InsufficientPrivilege
+        cases = [
+            (self.auth.identity, "verify", "alice", "firebase_verify", RefreshError, "credentials_refresh_failed"),
+            (self.auth.db, "user", "alice", "database_user_lookup", InsufficientPrivilege, "database_permission_denied"),
+            (self.auth.db, "audit", "outsider", "database_denial_audit", RuntimeError, "unexpected_failure"),
+            (self.auth.db, "create_session", "alice", "database_session_create", RuntimeError, "unexpected_failure"),
+            (self.auth, "logout", "alice", "database_previous_session_revoke", RuntimeError, "unexpected_failure"),
+        ]
+        for target, method, identity, stage, error_type, kind in cases:
+            with self.subTest(stage=stage), patch.object(target, method, side_effect=error_type("SECRET-token-password-connection")):
+                with self.assertLogs("analista.auth", level="ERROR") as captured:
+                    response = self.login(identity)
+                self.assertEqual(response.status_code, 503)
+                self.assertNotIn("set-cookie", response.headers)
+                incident = response.json()["detail"]["incident"]
+                self.assertRegex(incident, r"^[a-f0-9]{32}$")
+                log = " ".join(captured.output)
+                self.assertIn("incident=" + incident, log)
+                self.assertIn("stage=" + stage, log)
+                self.assertIn("kind=" + kind, log)
+                self.assertNotIn("SECRET", log + response.text)
+                self.assertNotIn(identity, log)
     def test_missing_configuration_never_falls_back_to_basic_or_public(self):
         with patch.dict("os.environ", {}, clear=True):
             with self.assertRaises(RuntimeError):

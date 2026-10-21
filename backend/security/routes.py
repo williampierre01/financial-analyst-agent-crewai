@@ -1,10 +1,15 @@
 """Same-origin session endpoints. Never trust a user ID supplied by the client."""
+import logging
+import uuid
 from fastapi import APIRouter, HTTPException, Request, Response
 from pydantic import BaseModel, ConfigDict, Field
 from starlette.concurrency import run_in_threadpool
 from starlette.responses import JSONResponse
 
 from backend.security.auth import COOKIE, denied
+from backend.security.diagnostics import AuthDependencyFailure, auth_stage, failure_kind
+
+logger = logging.getLogger("analista.auth")
 
 router = APIRouter(prefix="/auth", include_in_schema=False)
 
@@ -37,8 +42,12 @@ def install_security(app):
             response = await call_next(request)
         except HTTPException as exc:
             response = JSONResponse({"detail": exc.detail}, status_code=exc.status_code, headers=exc.headers)
-        except Exception:
-            response = JSONResponse({"detail": {"code": "auth_unavailable", "message": "Acesso temporariamente indisponível. Tente novamente mais tarde."}}, status_code=503)
+        except Exception as error:
+            incident = uuid.uuid4().hex
+            stage = error.stage if isinstance(error, AuthDependencyFailure) else "request"
+            kind = error.kind if isinstance(error, AuthDependencyFailure) else failure_kind(error)
+            logger.error("auth_unavailable incident=%s stage=%s kind=%s", incident, stage, kind)
+            response = JSONResponse({"detail": {"code": "auth_unavailable", "incident": incident, "message": "Acesso temporariamente indisponível. Tente novamente mais tarde."}}, status_code=503)
         response.headers["Cache-Control"] = "no-store"
         response.headers["X-Content-Type-Options"] = "nosniff"
         return response
@@ -55,7 +64,8 @@ def config(request: Request):
 def login(body: SessionInput, request: Request, response: Response):
     service = request.app.state.auth
     token, user = service.login(body.id_token)
-    service.logout(request.cookies.get(COOKIE))
+    with auth_stage("database_previous_session_revoke"):
+        service.logout(request.cookies.get(COOKIE))
     response.set_cookie(COOKIE, token, max_age=8 * 3600, secure=True, httponly=True,
                         samesite="strict", path="/")
     return user

@@ -57,7 +57,7 @@ test("Google configuration failure keeps private content inaccessible", async ({
   await page.getByRole("button", { name: "Entrar com Google" }).click();
   await expect(
     page.getByText(
-      "Não foi possível entrar com Google. Tente novamente ou contate o administrador.",
+      "O serviço de acesso está temporariamente indisponível. Tente novamente mais tarde ou contate o administrador.",
     ),
   ).toBeVisible();
   await expect(page.getByLabel("Qual ação vamos analisar?")).not.toBeVisible();
@@ -68,6 +68,32 @@ test("Google configuration failure keeps private content inaccessible", async ({
   ).toBeEnabled();
   expect(configurations).toBe(2);
   expect(sessions).toBe(0);
+});
+
+test("email login shows service incident without blaming credentials", async ({
+  page,
+}) => {
+  const incident = "a".repeat(32);
+  await page.route("**/api/auth/me", (route) =>
+    route.fulfill({ status: 401, json: {} }),
+  );
+  await page.route("**/api/auth/config", (route) =>
+    route.fulfill({
+      status: 503,
+      json: { detail: { code: "auth_unavailable", incident } },
+    }),
+  );
+  await page.goto("/");
+  await page.getByLabel("E-mail", { exact: true }).fill("test@example.invalid");
+  await page.getByLabel("Senha", { exact: true }).fill("test-only-password");
+  await page.getByRole("button", { name: "Entrar", exact: true }).click();
+  await expect(page.getByRole("status")).toContainText(
+    "serviço de acesso está temporariamente indisponível",
+  );
+  await expect(page.getByRole("status")).toContainText(incident);
+  await expect(page.getByRole("status")).not.toContainText("Confira os dados");
+  await expect(page.getByLabel("Senha", { exact: true })).toHaveValue("");
+  await expect(page.getByLabel("Qual ação vamos analisar?")).not.toBeVisible();
 });
 
 test("logout clears private state even when server is unavailable and offers retry", async ({

@@ -9,6 +9,8 @@ Correções aprovadas: timeout SQL definido dentro de cada transação, compatí
 
 ## Arquitetura e limites desta entrega
 
+Diagnóstico de falhas de login: respostas HTTP 503 incluem uma referência aleatória `incident`, também presente no log `auth_unavailable` do Render. O log contém somente referência, etapa fixa (`firebase_verify`, `database_user_lookup`, `database_denial_audit`, `database_session_create`, `database_previous_session_revoke` ou `request`) e categoria de erro predefinida. Não registrar mensagem original da exceção, traceback, UID, e-mail, cookies, tokens, senha ou URL do banco. Para investigar, reproduzir uma tentativa após deploy e procurar a referência em Render → Logs. A instrumentação identifica a etapa; ela não corrige por si só a dependência indisponível.
+
 Correção de publicação em 21/10/2026: o log do Render mostrou falha de verificação do certificado nas conexões IPv4 com o Neon. A conexão agora aponta explicitamente para o conjunto de autoridades certificadoras do `certifi`, dependência direta e travada no lockfile, preservando `sslmode=verify-full`. O CI verifica a leitura do pacote de certificados e os parâmetros de segurança; a confirmação da conexão TLS real continua dependendo de novo deploy no Render. Não desativar a verificação para contornar falhas de certificado.
 
 Ampliação aprovada em 20/10/2026: login com Google como alternativa a e-mail/senha. O botão usa popup, armazenamento em memória e a mesma autorização por UID no servidor. Cancelamento, popup bloqueado e conflito de provedor possuem mensagens próprias. Não há vinculação manual automática baseada apenas em e-mail nem concessão de acesso pelo domínio da conta Google.
