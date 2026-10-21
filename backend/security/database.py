@@ -3,6 +3,7 @@ from contextlib import contextmanager
 from pathlib import Path
 import os
 
+import certifi
 import psycopg
 from psycopg.rows import dict_row
 
@@ -16,7 +17,8 @@ class Database:
     @contextmanager
     def connect(self):
         # Never log the connection string. Verify both TLS and server identity.
-        with psycopg.connect(self.url, sslmode="verify-full", sslrootcert="system", connect_timeout=10,
+        # Use an explicit CA bundle: binary libpq may not find the host trust store.
+        with psycopg.connect(self.url, sslmode="verify-full", sslrootcert=certifi.where(), connect_timeout=10,
                              row_factory=dict_row) as conn:
             # Poolers reject startup options; LOCAL stays within this transaction.
             conn.execute("SET LOCAL statement_timeout = '10s'")

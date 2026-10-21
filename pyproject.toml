@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Análise de ações brasileiras com Yahoo Finance e agentes de IA"
 requires-python = ">=3.13,<3.14"
 dependencies = [
+    "certifi>=2026.7.22",
     "crewai>=1.15.0",
     "crewai-tools[mcp]>=0.50.0",
     "ddgs>=9.0.0",
