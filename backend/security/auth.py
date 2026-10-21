@@ -8,6 +8,7 @@ import time
 from urllib.parse import urlsplit
 
 from fastapi import HTTPException
+from backend.security.diagnostics import auth_stage
 
 COOKIE = "__Host-analista_session"
 
@@ -92,14 +93,17 @@ class AuthService:
         return cls(db, FirebaseIdentity(), origin, config)
 
     def login(self, token):
-        claims = self.identity.verify(token)
+        with auth_stage("firebase_verify"):
+            claims = self.identity.verify(token)
         uid = claims["uid"]
         auth_time = int(claims.get("auth_time", 0))
         if not 0 <= time.time() - auth_time <= 300:
             raise denied("recent_login_required")
-        user = self.db.user(uid)
+        with auth_stage("database_user_lookup"):
+            user = self.db.user(uid)
         if not user or not user["active"]:
-            self.db.audit("login_denied")
+            with auth_stage("database_denial_audit"):
+                self.db.audit("login_denied")
             raise denied("account_not_authorized", 403)
         if not claims.get("email_verified"):
             raise denied("email_verification_required", 403)
@@ -107,7 +111,8 @@ class AuthService:
         if user["role"] == "admin" and not mfa:
             raise denied("mfa_required", 403)
         token = secrets.token_urlsafe(32)
-        self.db.create_session(digest(token), uid, auth_time, mfa)
+        with auth_stage("database_session_create"):
+            self.db.create_session(digest(token), uid, auth_time, mfa)
         return token, {"uid": uid, "role": user["role"], "email": claims.get("email", "")}
 
     def authenticate(self, token):

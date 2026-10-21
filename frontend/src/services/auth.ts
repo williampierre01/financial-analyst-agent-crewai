@@ -12,6 +12,7 @@ export class AccessError extends Error {
   constructor(
     public code: string,
     public status: number,
+    public incident?: string,
   ) {
     super("Não foi possível confirmar o acesso.");
   }
@@ -29,9 +30,25 @@ export async function authRequest<T>(path: string, body?: object): Promise<T> {
   });
   if (!response.ok) {
     const data = await response.json().catch(() => ({}));
-    throw new AccessError(data.detail?.code ?? "unavailable", response.status);
+    const incident = data.detail?.incident;
+    throw new AccessError(
+      data.detail?.code ?? "unavailable",
+      response.status,
+      typeof incident === "string" && /^[a-f0-9]{32}$/.test(incident)
+        ? incident
+        : undefined,
+    );
   }
   return response.status === 204 ? (undefined as T) : response.json();
+}
+
+export function serviceFailureMessage(error: unknown): string | undefined {
+  if (error instanceof AccessError && error.status >= 500) {
+    return (
+      "O serviço de acesso está temporariamente indisponível. Tente novamente mais tarde ou contate o administrador." +
+      (error.incident ? ` Referência: ${error.incident}.` : "")
+    );
+  }
 }
 
 let client: Promise<Auth> | undefined;
