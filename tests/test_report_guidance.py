@@ -41,3 +41,12 @@ class PresentationReferencesTests(unittest.TestCase):
 
     def test_no_snapshot(self):
         self.assertIn("Sem referência", presentation_references(None))
+
+    def test_utc_midnight_is_previous_day_in_brasilia_without_changing_period(self):
+        data = self.snapshot("PETR4")
+        data["retrieved_at"] = "2026-10-22T02:00:00+00:00"
+        data["quote"]["as_of"] = "2026-10-21T20:05:00+00:00"
+        text = presentation_references(data)
+        self.assertIn("Consulta dos dados: 21/10/2026 23:00 (Brasília)", text)
+        self.assertIn("Data da cotação: 21/10/2026 17:05 (Brasília)", text)
+        self.assertIn("período encerrado em 2025-12-31", text)

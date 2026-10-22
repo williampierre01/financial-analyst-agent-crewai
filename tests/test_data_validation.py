@@ -26,7 +26,12 @@ def ticker(price=100):
 
 class DataValidationTests(unittest.TestCase):
     def yahoo(self, obj):
-        with patch.object(server, "_fetch_yfinance", return_value=obj):
+        def statements(client, symbol, rows):
+            attribute = ("financials" if rows == server._ESSENTIAL_INCOME_STATEMENT else
+                         "balance_sheet" if rows == server._ESSENTIAL_BALANCE_SHEET else "cashflow")
+            return server._df_to_nested_dict(getattr(client, attribute), rows), {}
+        with patch.object(server, "_fetch_yfinance", return_value=obj), \
+                patch.object(server, "fetch_statement", side_effect=statements):
             result = server._get_financial_statements_yfinance("AAPL")
             json.dumps(result, allow_nan=False)
             return result

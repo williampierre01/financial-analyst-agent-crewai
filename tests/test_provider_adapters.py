@@ -19,7 +19,13 @@ class AdapterTests(unittest.TestCase):
             balance_sheet=pd.DataFrame({pd.Timestamp("2025-12-31"): {"Stockholders Equity": 50}}),
             cashflow=pd.DataFrame({pd.Timestamp("2025-12-31"): {"Operating Cash Flow": 20, "Free Cash Flow": 15}}),
         )
-        with patch.object(server, "_fetch_yfinance", return_value=obj):
+        def statements(client, symbol, rows):
+            attribute = ("financials" if rows == server._ESSENTIAL_INCOME_STATEMENT else
+                         "balance_sheet" if rows == server._ESSENTIAL_BALANCE_SHEET else "cashflow")
+            values = server._df_to_nested_dict(getattr(client, attribute), rows)
+            return values, {end: {"currency": "BRL", "symbol": symbol, "period": "FY"} for end in values}
+        with patch.object(server, "_fetch_yfinance", return_value=obj), \
+                patch.object(server, "fetch_statement", side_effect=statements):
             raw = server._get_financial_statements_yfinance(SYMBOL)
         result = normalize_snapshot(raw, SYMBOL, NOW)
         self.assertEqual(result["status"], "complete")

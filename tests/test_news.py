@@ -119,6 +119,14 @@ class NewsToolTests(unittest.TestCase):
     def test_empty_search_has_no_invented_items(self):
         self.assertEqual(self.fetch([])["items"], [])
 
+    def test_history_and_unknown_dates_follow_recent_results(self):
+        dates = ["2024-05-22T14:11:00Z", None, "2026-10-14T20:00:00Z", "2026-10-13T10:00:00Z"]
+        result = self.fetch([{"title": str(i), "url": f"https://example.com/{i}", "date": value}
+                             for i, value in enumerate(dates)])
+        self.assertEqual([item["title"] for item in result["items"]], ["2", "3", "0", "1"])
+        self.assertIn("Contexto histórico", result["items"][2]["date_label"])
+        self.assertIn("Atualidade não confirmada", result["items"][3]["date_label"])
+
     def test_search_error_does_not_expose_exception_or_fabricate_news(self):
         with patch.object(server, "DDGS", side_effect=RuntimeError("secret-token")):
             result = server.get_market_news("PETR4.SA")

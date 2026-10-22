@@ -1,10 +1,15 @@
 """Localised references for generation, without rewriting model output."""
 
 from financial_data import FIELDS
+from financial_data import timestamp
+from zoneinfo import ZoneInfo
 
 
 REPORT_RULES = """
 Apresentação final:
+- Use as datas e horários de apresentação em Brasília fornecidos abaixo.
+  Não extraia a data civil diretamente de timestamps UTC. Datas de encerramento
+  contábil são datas, não instantes: preserve-as sem conversão de fuso.
 - Priorize até três achados relevantes, com seus cálculos e referências. Não
   enumere todos os indicadores nem reproduza os demonstrativos em prosa ou tabela.
   Esse limite é editorial: não omita ressalvas, fontes ou limitações necessárias.
@@ -33,7 +38,12 @@ Apresentação final:
 - Prefira texto simples nas notícias, sem negrito em títulos longos. Termine
   todos os links e marcadores Markdown e inclua as limitações por inteiro.
 - Notícias: use uma lista, nunca uma tabela. Cada item deve ter [título](URL),
-  veículo e date_label preservado integralmente. Não mostre a URL como texto
+  veículo e date_label preservado integralmente.
+  Separe em subtítulos de nível 4: notícias dos últimos 30 dias, contexto histórico
+  e atualidade não confirmada, conforme os rótulos fornecidos; omita grupos vazios.
+  Preserve a ordem decrescente das datas informadas dentro de cada grupo.
+  Uma notícia histórica não deve ser apresentada como acontecimento recente.
+  Não mostre a URL como texto
   do link. Exponha apenas linguagem em português: article_verified=false é
   'publicação original não verificada', reported é 'data informada pela busca'.
   Não exponha nomes de campos nem valores booleanos. Explique uma única vez
@@ -55,6 +65,12 @@ def presentation_references(snapshot: dict | None) -> str:
         "cash_flow": "Fluxo de caixa",
     }
     lines = []
+    for label, raw in (("Consulta dos dados", snapshot.get("retrieved_at")),
+                       ("Data da cotação", (snapshot.get("quote") or {}).get("as_of"))):
+        instant = timestamp(raw)
+        if instant:
+            local = instant.astimezone(ZoneInfo("America/Sao_Paulo"))
+            lines.append(f"- {label}: {local.strftime('%d/%m/%Y %H:%M')} (Brasília).")
     for group, fields in FIELDS.items():
         for period in snapshot["statements"].get(group, []):
             for field, (label, _) in fields.items():

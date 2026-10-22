@@ -19,7 +19,8 @@ from tenacity import (
 )
 
 from financial_data import load_snapshot, timestamp, currency_code
-from news_data import news_date, news_url
+from news_data import news_date, news_url, order_news
+from yahoo_statements import fetch_statement
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("mcp_server")
@@ -218,12 +219,7 @@ def _get_financial_statements_yfinance(ticker: str) -> dict:
             ("cash_flow", "cashflow", _ESSENTIAL_CASH_FLOW),
         ):
             try:
-                statements[name] = _df_to_nested_dict(getattr(t, attribute), rows)
-                metadata[name] = {
-                    end: {"currency": currency_code(info.get("financialCurrency")),
-                          "symbol": info.get("symbol"), "period": "FY"}
-                    for end in statements[name]
-                }
+                statements[name], metadata[name] = fetch_statement(t, ticker, rows)
             except Exception:
                 statements[name] = {}
                 warnings.append(f"Falha ao obter {name} via yfinance.")
@@ -290,7 +286,8 @@ def get_market_news(ticker: str, max_results: int = 3) -> dict:
                 **news_date(r.get("date"), retrieved_at),
             ))
         return MarketNews(ticker=ticker, query=query, retrieved_at=retrieved_at,
-                          items=items, warnings=list(dict.fromkeys(warnings))).model_dump(mode="json")
+                          items=order_news(items, retrieved_at),
+                          warnings=list(dict.fromkeys(warnings))).model_dump(mode="json")
 
     except Exception as exc:  # noqa: BLE001
         logger.error("ddgs falhou para %s (%s)", ticker, type(exc).__name__)
