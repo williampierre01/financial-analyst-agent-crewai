@@ -904,7 +904,7 @@ th small {
   overflow-wrap: anywhere;
 }
 .markdown > :not(.table-scroll):not(pre) {
-  max-width: 80ch;
+  max-width: 110ch;
 }
 .markdown .table-scroll {
   margin: 16px 0;

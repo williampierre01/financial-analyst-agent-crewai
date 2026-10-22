@@ -1,6 +1,6 @@
 """Conservative provenance for search results, not verification of articles."""
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
@@ -60,3 +60,16 @@ def news_date(value, retrieved_at: datetime) -> dict:
                   local.strftime("%d/%m/%Y %H:%M") +
                   " (Brasília; data informada pela busca, não verificada na publicação).")
     return result
+
+
+def order_news(items, retrieved_at):
+    """Order reported instants; label old/undated context without inventing dates."""
+    cutoff = retrieved_at - timedelta(days=30)
+    for item in items:
+        if item.published_at:
+            published = datetime.fromisoformat(item.published_at)
+            if published < cutoff:
+                item.date_label = "Contexto histórico (mais de 30 dias): " + item.date_label
+        else:
+            item.date_label = "Atualidade não confirmada: " + item.date_label
+    return sorted(items, key=lambda item: item.published_at or "", reverse=True)
