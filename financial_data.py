@@ -79,6 +79,7 @@ def timestamp(value):
 
 def normalize_snapshot(raw: dict, ticker: str, now: datetime) -> dict:
     warnings = []
+    operating_income_withheld = False
     statements = {}
     metadata = raw.get("statement_metadata", {})
     for group, fields in FIELDS.items():
@@ -97,6 +98,11 @@ def normalize_snapshot(raw: dict, ticker: str, now: datetime) -> dict:
                 continue
             currency = currency_code(meta.get("currency"))
             mapped = {key: finite_number(values.get(names[1])) for key, names in fields.items()}
+            if group == "income_statement" and mapped.get("operating_income") is not None:
+                # Yahoo's normalized Operating Income has not been reconciled
+                # with issuer statements. Do not expose it as a comparable fact.
+                mapped["operating_income"] = None
+                operating_income_withheld = True
             missing = [key for key in REQUIRED[group] if mapped[key] is None]
             periods.append({
                 "period_end": end_date.isoformat(), "period_type": "annual", "currency": currency,
@@ -147,7 +153,9 @@ def normalize_snapshot(raw: dict, ticker: str, now: datetime) -> dict:
     if quote and financial_currency and financial_currency != quote["currency"]:
         warnings.append("Moeda dos demonstrativos difere da cotação; não combinar valores sem conversão validada.")
     has_values = any(v is not None for periods in statements.values() for p in periods for v in p["values"].values())
-    complete = bool(recent_fundamentals and quote and quote["freshness"] == "recent" and financial_currency == "BRL")
+    if operating_income_withheld:
+        warnings.append("Resultado operacional indisponível: a definição do provedor ainda não foi conciliada com os demonstrativos oficiais; não usar para comparações ou conclusões.")
+    complete = bool(recent_fundamentals and quote and quote["freshness"] == "recent" and financial_currency == "BRL" and not operating_income_withheld)
     return {
         "schema_version": "3.0", "ticker": ticker, "display_ticker": ticker.removesuffix(".SA"),
         "market": "BR", "exchange": "B3", "provider_used": SOURCE,

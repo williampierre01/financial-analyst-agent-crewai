@@ -61,3 +61,30 @@ dos cálculos permanecem em vigor. Falhas do Yahoo ainda podem causar ausência.
 Regressões no CI cobrem PETR4/VALE3 com cadastro sem campos, Mapping não-dict,
 símbolo incompatível e horário ausente. Conferir cotação no Render após deploy;
 a causa específica da consulta anterior não pode ser provada só pela captura.
+
+## Contenção do resultado operacional — 22/10/2026
+
+Conferência limitada a Vale e Petrobras, conforme solicitação do usuário. As
+divergências e fontes estão em `pendencias-homologacao.md`. Não foi encontrada
+uma definição pública suficiente para reconciliar Operating Income do Yahoo
+com as linhas oficiais comparadas. Não se concluiu que os valores do provedor
+sejam arbitrários: podem refletir ajustes ou classificações ainda não comprovados.
+
+Correção de contenção autorizada: na normalização, qualquer valor desse campo
+é substituído por ausência na base entregue à API e aos agentes, em todos os
+períodos. O retorno bruto não é alterado. Um aviso explica a falta de conciliação
+e o status fica parcial. A política vale para o campo do provedor, sem presumir
+que somente os dois tickers examinados estejam sujeitos ao problema.
+
+Não há substituição por números fixos, cálculo alternativo ou nova coleta. Os
+demais valores e indicadores calculados pelo código permanecem inalterados.
+Instruções de geração proíbem reconstruir o campo e usá-lo para comparações ou
+hipóteses com o lucro líquido. A prosa ainda não possui verificação semântica
+completa; a contenção elimina os números divergentes do contexto financeiro.
+
+Testes para CI cobrem valores positivos, zero, negativos, múltiplos períodos,
+preservação do retorno bruto e dos demais indicadores, e ausência nas referências
+de apresentação. Sem testes locais. Relatórios antigos não são reescritos;
+conferir uma nova análise após publicação manual. Liberar o campo novamente
+exige uma definição conciliada, com evidência e testes, ou fonte alternativa
+aprovada. A distinção de lucro consolidado/atribuível permanece pendente.

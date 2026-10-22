@@ -7,6 +7,10 @@ from zoneinfo import ZoneInfo
 
 REPORT_RULES = """
 Apresentação final:
+- Resultado operacional indisponível por falta de conciliação não sustenta
+  afirmações de alta, queda, eficiência ou hipóteses sobre sua diferença para
+  o lucro líquido. Não o reconstrua por subtração nem preencha com notícias
+  ou conhecimento externo. Preserve o motivo de indisponibilidade da base.
 - Use as datas e horários de apresentação em Brasília fornecidos abaixo.
   Não extraia a data civil diretamente de timestamps UTC. Datas de encerramento
   contábil são datas, não instantes: preserve-as sem conversão de fuso.
