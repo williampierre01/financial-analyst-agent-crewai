@@ -1,4 +1,5 @@
 import unittest
+from collections import UserDict
 from types import SimpleNamespace
 from unittest.mock import Mock, patch
 
@@ -41,6 +42,42 @@ class AdapterTests(unittest.TestCase):
         self.assertIsNone(raw["quote"]["as_of"])
         result = normalize_snapshot(raw, SYMBOL, NOW)
         self.assertEqual(result["quote"]["freshness"], "unknown")
+
+    def test_retired_info_fields_use_chart_observation(self):
+        for symbol in ("PETR4.SA", "VALE3.SA"):
+            obj = SimpleNamespace(
+                get_info=lambda: {"financialCurrency": "USD"},
+                get_history_metadata=lambda: UserDict({"symbol": symbol, "currency": "BRL",
+                    "regularMarketPrice": 57.75, "regularMarketTime": int(NOW.timestamp())}),
+                fast_info=SimpleNamespace(last_price=999, currency="USD"),
+            )
+            with patch.object(server, "_fetch_yfinance", return_value=obj), \
+                    patch.object(server, "fetch_statement", return_value=({}, {})):
+                raw = server._get_financial_statements_yfinance(symbol)
+            result = normalize_snapshot(raw, symbol, NOW)
+            self.assertEqual(result["quote"]["price"], 57.75)
+            self.assertEqual(result["quote"]["currency"], "BRL")
+            self.assertEqual(result["quote"]["as_of"], NOW.isoformat())
+            self.assertEqual(result["quote"]["freshness"], "recent")
+
+    def test_chart_symbol_mismatch_is_not_relabelled(self):
+        obj = SimpleNamespace(get_info=lambda: {}, get_history_metadata=lambda: {
+            "symbol": "VALE3.SA", "currency": "BRL", "regularMarketPrice": 50,
+            "regularMarketTime": int(NOW.timestamp())})
+        with patch.object(server, "_fetch_yfinance", return_value=obj), \
+                patch.object(server, "fetch_statement", return_value=({}, {})):
+            result = server._get_financial_statements_yfinance(SYMBOL)
+        self.assertIsNone(result["quote"])
+
+    def test_chart_without_time_does_not_borrow_time_from_info(self):
+        obj = SimpleNamespace(get_info=lambda: {"regularMarketTime": int(NOW.timestamp())},
+            get_history_metadata=lambda: {"symbol": SYMBOL, "currency": "BRL",
+                                          "regularMarketPrice": 50})
+        with patch.object(server, "_fetch_yfinance", return_value=obj), \
+                patch.object(server, "fetch_statement", return_value=({}, {})):
+            raw = server._get_financial_statements_yfinance(SYMBOL)
+        self.assertIsNone(raw["quote"]["as_of"])
+        self.assertEqual(normalize_snapshot(raw, SYMBOL, NOW)["quote"]["freshness"], "unknown")
 
 
 if __name__ == "__main__":
