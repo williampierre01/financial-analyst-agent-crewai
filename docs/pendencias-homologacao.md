@@ -1,5 +1,77 @@
 # Pendências da homologação no Render
 
+## Prioridades e lote futuro — 22/10/2026
+
+### Conferência limitada a Vale e Petrobras — atualização
+
+Por solicitação do usuário, limitar a amostra a VALE3 e PETR4 para economizar
+tokens; ITUB4 sai desta rodada. Reutilizar capturas, sem gerar novas análises.
+Capturas confirmam exibição de PETR4 R$57,36 às13h36 (consulta13h51) e VALE3
+R$61,88 às13h47 (consulta14h02), em22/10/2026 Brasília, demonstrativos USD e
+bloqueio do P/L entre moedas. Não houve validação independente desses preços.
+
+Conferência documental por amostragem, valores em USD milhões, 2025/2024:
+
+| Empresa | Campo | Aplicativo | Documento da companhia | Resultado |
+|---|---|---|---|---|
+| Vale | Receita | 38.403 / 38.056 | 38.403 / 38.056 | Coincide |
+| Vale | Lucro atribuível aos acionistas | 2.352 / 6.166 | 2.352 / 6.166 | Coincide; app rotula genericamente lucro líquido |
+| Vale | Resultado operacional | 11.343 / 11.101 | Operating income 5.897 / 10.788 | Divergência material a reconciliar |
+| Petrobras | Receita | 89.195 / 91.416 | 89.195 / 91.416 | Coincide |
+| Petrobras | Lucro atribuível aos acionistas | 19.634 / 7.528 | 19.634 / 7.528 | Coincide; app rotula genericamente lucro líquido |
+| Petrobras | Resultado operacional | 27.758 / 25.691 | Resultado antes de financeiro, equivalência e impostos 26.113 / 26.876 | Base/definição não reconciliada |
+
+Fontes: [Vale, relatório anual 2025, tabela de resultados p.32](https://www.vale.com/documents/44618/430705/2025_Annual%2BReport%2BEN.pdf/1a40d1ff-c65a-5c46-cc2a-78c4294bd08f?download=false&t=1776265104853&version=1.3)
+(trecho indexado consultado; abertura integral limitada pelo tamanho);
+[Petrobras, demonstrações 2025 em USD, p.4, cópia publicada no Latibex](https://www.latibex.com/docs/Documentos/esp/resulta/2026/2026.03.06_Consolidated_Financial_Statements_2025_4Q25_USD.pdf).
+
+Prioridade antes de ampliar a análise: reconciliar o conceito/mapeamento de
+Operating Income do Yahoo com os demonstrativos. Na Vale, o app afirma aumento
+do resultado operacional, mas a linha oficial comparada cai. Não atribuir causa
+ou corrigir por número fixo: investigar composição e definição, ou suspender
+o uso desse campo enquanto não reconciliado. Distinguir também lucro consolidado
+do lucro atribuível aos acionistas na apresentação e na convenção da margem.
+FCF, dívida e demais campos não foram integralmente auditados nesta amostra.
+Nenhuma correção de código autorizada/realizada nesta conferência.
+
+O usuário solicitou acumular correções de baixo impacto para uma entrega futura.
+Este registro não autoriza implementar novas etapas do plano geral.
+
+Evidência mais recente: capturas de PETR4 mostram cotação em BRL com horário,
+demonstrativos em USD, aviso de incompatibilidade de moedas, notícia de 2024
+separada como contexto histórico e texto mais largo. Isso confirma a exibição
+nessa consulta, não a auditoria dos valores ou a homologação de todos os ativos.
+
+### Lote futuro de apresentação (adiado)
+
+- Padronizar percentuais exibidos para duas casas, preservando precisão interna.
+- Trocar “P/L não existe” por “P/L não calculado nesta análise” e seu motivo.
+- Reduzir repetição e extensão da interpretação e das ressalvas.
+- Refinar espaçamento e uso da largura disponível conforme novas capturas.
+
+### Qualidade de conteúdo (prioridade separada)
+
+- Uma notícia sobre Ultrapar apareceu na análise de PETR4, com ressalva explícita
+  de falta de relação. Filtrar relevância e duplicidade antes de usar notícias
+  na interpretação. Não classificar como mero ajuste visual: se um item alheio
+  sustentar uma conclusão financeira, corrigir antes de avançar.
+
+### Próxima sequência proposta
+
+1. Concluir a conferência operacional de VALE3 e ITUB4 no Render: símbolo,
+   cotação, horário, moeda, demonstrativos e motivos de indisponibilidade.
+2. Conferir uma amostra dos dados frente aos demonstrativos oficiais das empresas,
+   incluindo moeda, escala, período e base por ação. Documentar divergências;
+   não aplicar câmbio automaticamente apenas para liberar P/L.
+3. Antes de convidar outros usuários, concluir testes reais de isolamento de
+   análises entre duas contas, acesso negado e revogação de sessão.
+4. Com a base conferida, propor a próxima entrega de síntese: achados, mudanças,
+   riscos e detalhes de cálculo acessíveis. Metodologia de compra/venda/manter
+   permanece dependente de aprovação e validação próprias.
+
+Critério de triagem: apresentação e redação podem aguardar lote; erros de valor,
+moeda, identidade do ativo, cálculo, autorização ou conclusão sem suporte não.
+
 Registro: 14/10/2026. Correções adiadas a pedido do usuário.
 
 ## Evidências confirmadas
