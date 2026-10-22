@@ -15,6 +15,7 @@ import {
   type User,
 } from "firebase/auth";
 import App from "../App";
+import { mfaFailure } from "../services/mfaErrors";
 import {
   AccessError,
   serviceFailureMessage,
@@ -147,13 +148,16 @@ export default function Access() {
     event.preventDefault();
     setBusy(true);
     setMessage("");
+    let confirmingMfa = false;
     try {
       const auth = await firebaseAuth();
       if (secret && enrollUser) {
+        confirmingMfa = true;
         await multiFactor(enrollUser).enroll(
           TotpMultiFactorGenerator.assertionForEnrollment(secret, code),
           "Autenticador",
         );
+        confirmingMfa = false;
         await signOut(auth);
         setSecret(null);
         setEnrollUser(null);
@@ -163,6 +167,7 @@ export default function Access() {
           "Autenticador cadastrado. Entre novamente pelo método escolhido e confirme o código para concluir.",
         );
       } else if (resolver) {
+        confirmingMfa = true;
         const hint = resolver.hints.find(
           (item) => item.factorId === TotpMultiFactorGenerator.FACTOR_ID,
         );
@@ -170,6 +175,7 @@ export default function Access() {
         const result = await resolver.resolveSignIn(
           TotpMultiFactorGenerator.assertionForSignIn(hint.uid, code),
         );
+        confirmingMfa = false;
         await establish(result.user);
       } else {
         try {
@@ -193,6 +199,13 @@ export default function Access() {
         }
       }
     } catch (error) {
+      if (confirmingMfa) {
+        const failure = mfaFailure(error);
+        setCode("");
+        if (!failure.retry) await discardTemporaryLogin();
+        setMessage(failure.message);
+        return;
+      }
       await discardTemporaryLogin();
       setMessage(
         serviceFailureMessage(error) ??
@@ -401,6 +414,11 @@ export default function Access() {
                 </p>
                 <code className="totp-secret">{secret.secretKey}</code>
                 <p>Depois, informe o código de seis dígitos.</p>
+                <p>
+                  Use uma entrada baseada em tempo. Mantenha esta tela aberta
+                  até confirmar; uma nova chave exige atualizar a entrada no
+                  autenticador.
+                </p>
               </div>
             )}
             {(resolver || secret) && (
