@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import logging
 import math
+from collections.abc import Mapping
 from datetime import datetime, timezone
 from typing import Literal, Optional
 
@@ -190,20 +191,34 @@ def _get_financial_statements_yfinance(ticker: str) -> dict:
                 info = {}
         except Exception:
             info = {}
+        # Recent yfinance versions retire quote fields from get_info(). Fetch
+        # chart metadata as one observation; never pair its time with fast_info.
+        quote_info = info
+        if (info.get("symbol") != ticker or not currency_code(info.get("currency"))
+                or not timestamp(info.get("regularMarketTime"))
+                or (_finite_number(info.get("regularMarketPrice")) or 0) <= 0):
+            try:
+                chart = t.get_history_metadata()
+                if (isinstance(chart, Mapping) and chart.get("symbol") == ticker
+                        and currency_code(chart.get("currency"))
+                        and (_finite_number(chart.get("regularMarketPrice")) or 0) > 0):
+                    quote_info = chart
+            except Exception:
+                pass  # Existing partial-data handling remains available.
         # fast_info nao e um dict comum -- acesso por atributo e o caminho
         # confiavel entre versoes do yfinance. .get("last_price") sempre
         # cai no default e mascara o preco real como 0.0 silenciosamente.
         try:
-            raw_price = _finite_number(info.get("regularMarketPrice"))
-            quote_time = timestamp(info.get("regularMarketTime"))
+            raw_price = _finite_number(quote_info.get("regularMarketPrice"))
+            quote_time = timestamp(quote_info.get("regularMarketTime"))
             if raw_price is None:
                 raw_price = _finite_number(getattr(t.fast_info, "last_price", None))
                 quote_time = None  # fast_info has no timestamp paired with last_price.
-            raw_currency = info.get("currency") or getattr(t.fast_info, "currency", None)
+            raw_currency = quote_info.get("currency") or getattr(t.fast_info, "currency", None)
             quote = Quote(
                 price=raw_price,
                 currency=currency_code(raw_currency),
-                symbol=info.get("symbol"),
+                symbol=quote_info.get("symbol"),
                 source="yfinance",
                 as_of=quote_time,
             )

@@ -43,3 +43,21 @@ as referências e rótulos são determinísticos, mas não há validação compl
 prosa gerada. Conferir uma nova análise no Render após merge/publicação manual.
 
 Referência técnica: [implementação de séries financeiras do yfinance](https://github.com/ranaroussi/yfinance/blob/main/yfinance/scrapers/fundamentals.py).
+
+## Cotação — acompanhamento em 22/10/2026
+
+As capturas após publicação mostram demonstrativos em USD e cotação ausente em
+PETR4 e VALE3. A versão instalada do yfinance retira campos de cotação e símbolo
+de `get_info()`. O caminho anterior dependia do símbolo desse cadastro, mesmo
+quando o preço vinha de `fast_info`, deixando a observação sem identidade válida.
+
+Quando o cadastro não fornece uma observação completa, o adaptador consulta
+`get_history_metadata()` e aceita seu mapeamento (inclusive o Mapping lazy da
+biblioteca). Símbolo, moeda, preço e horário vêm juntos desse retorno. Símbolo
+divergente é rejeitado; horário ausente não é preenchido com horário de outra
+resposta nem com o instante da consulta. As regras de atualidade e de moeda
+dos cálculos permanecem em vigor. Falhas do Yahoo ainda podem causar ausência.
+
+Regressões no CI cobrem PETR4/VALE3 com cadastro sem campos, Mapping não-dict,
+símbolo incompatível e horário ausente. Conferir cotação no Render após deploy;
+a causa específica da consulta anterior não pode ser provada só pela captura.
