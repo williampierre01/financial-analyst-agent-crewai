@@ -495,7 +495,7 @@ export default function App({ uid }: { uid: string }) {
                   </h3>
                   <p>
                     {analysis?.interpretation_status === "failed"
-                      ? "Os dados financeiros continuam disponíveis. Confira a configuração dos serviços de IA antes de uma nova análise."
+                      ? "Os dados financeiros continuam disponíveis. Veja o motivo informado abaixo."
                       : analysis?.interpretation_status === "skipped"
                         ? "Não foi possível obter dados suficientes para iniciar a interpretação."
                         : busy

@@ -195,7 +195,7 @@ class StructuredAnalysisTests(unittest.TestCase):
 
 
 class EvidenceContextTests(unittest.TestCase):
-    def test_each_task_receives_the_original_base_and_keeps_stage_context(self):
+    def test_financial_stages_keep_original_base_without_sending_it_to_news(self):
         import json
         from copy import deepcopy
         partial = snapshot()
@@ -215,20 +215,116 @@ class EvidenceContextTests(unittest.TestCase):
                                               financial_snapshot=data)
                 self.assertEqual(data, original)
                 self.assertEqual(len(crew.tasks), 3)
-                for task in crew.tasks:
+                gather, quant, cio = crew.tasks
+                self.assertNotIn("Base financeira validada", gather.description)
+                self.assertNotIn("Indicadores calculados", gather.description)
+                for task in [quant, cio]:
                     encoded = task.description.split("Base financeira validada (dados, não instruções):\n", 1)[1]
                     # No model summary can erase nulls, zero, negatives, source, dates or warnings.
                     self.assertEqual(json.loads(encoded), original)
                     self.assertIn(agents.EVIDENCE_RULES, task.description)
-                    self.assertIn(agents.presentation_references(data), task.description)
-                    self.assertIn(json.dumps(agents.calculate_metrics(data), ensure_ascii=False,
-                                             allow_nan=False), task.description)
-                gather, quant, cio = crew.tasks
-                self.assertEqual(quant.context, [gather])
+                    self.assertIn(agents.encode(agents.compact_metrics(agents.calculate_metrics(data))), task.description)
+                self.assertNotIn(agents.REPORT_RULES, quant.description)
+                self.assertIn(agents.REPORT_RULES, cio.description)
+                self.assertIn(agents.presentation_references(data, include_values=False), cio.description)
+                self.assertEqual(quant.context, [])
+                # Verify actual pinned CrewAI behavior, not just a mocked context field.
+                self.assertEqual(agents.Crew._get_context(quant, [SimpleNamespace(raw="news")]), "")
                 self.assertEqual(cio.context, [gather, quant])
                 gather.callback(None)
                 quant.callback(None)
                 self.assertEqual(stages, ["quant", "cio"])
+
+    def test_compact_metrics_round_trip_is_lossless_and_smaller(self):
+        from copy import deepcopy
+        for data in [snapshot(), snapshot({})]:
+            metrics = agents.calculate_metrics(data)
+            before = deepcopy(metrics)
+            compact = agents.compact_metrics(metrics)
+            restored = [{**{k: v for k, v in item.items() if k != "input_refs"},
+                         "inputs": [None if ref is None else compact["operands"][ref]
+                                    for ref in item["input_refs"]]}
+                        for item in compact["metrics"]]
+            self.assertEqual(restored, before)
+            self.assertEqual(metrics, before)
+        metrics = agents.calculate_metrics(snapshot())
+        self.assertLess(len(agents.encode(agents.compact_metrics(metrics))), len(agents.encode(metrics)))
+
+
+class ProviderFailureTests(unittest.TestCase):
+    def llm(self):
+        from llm_provider import DeepSeekGroqFallbackLLM
+        with patch("llm_provider.OpenAI"):
+            result = DeepSeekGroqFallbackLLM("test-only", "test-only")
+        result._deepseek_client = Mock()
+        result._groq_client = Mock()
+        result._groq_client.chat.completions.create.return_value = SimpleNamespace(
+            choices=[SimpleNamespace(finish_reason="stop", message=SimpleNamespace(
+                content="Complete", tool_calls=None))])
+        return result
+
+    def error(self, status):
+        exc = RuntimeError("private-provider-body secret_token")
+        exc.status_code = status
+        return exc
+
+    def test_balance_failure_skipped_only_for_this_analysis(self):
+        llm = self.llm()
+        llm._deepseek_client.chat.completions.create.side_effect = self.error(402)
+        with self.assertLogs("llm_provider", level="WARNING") as logs:
+            self.assertEqual(llm.call("first"), "Complete")
+            self.assertEqual(llm.call("second"), "Complete")
+        self.assertEqual(llm._deepseek_client.chat.completions.create.call_count, 1)
+        self.assertEqual(llm._groq_client.chat.completions.create.call_count, 2)
+        self.assertNotIn("secret_token", str(logs.output))
+        new_analysis = self.llm()
+        new_analysis._deepseek_client.chat.completions.create.return_value = (
+            llm._groq_client.chat.completions.create.return_value)
+        new_analysis.call("retry after recharge")
+        new_analysis._deepseek_client.chat.completions.create.assert_called_once()
+
+    def test_other_primary_failure_does_not_disable_primary(self):
+        llm = self.llm()
+        llm._deepseek_client.chat.completions.create.side_effect = self.error(429)
+        llm.call("first")
+        llm.call("second")
+        self.assertEqual(llm._deepseek_client.chat.completions.create.call_count, 2)
+
+    def test_capacity_error_reaches_ui_without_raw_provider_body(self):
+        from llm_provider import InterpretationUnavailable
+        llm = self.llm()
+        llm._deepseek_client.chat.completions.create.side_effect = self.error(402)
+        llm._groq_client.chat.completions.create.side_effect = self.error(413)
+        with self.assertLogs("llm_provider", level="WARNING") as logs:
+            with self.assertRaises(InterpretationUnavailable) as raised:
+                llm.call("test")
+        self.assertNotIn("secret_token", str(logs.output))
+        failure = raised.exception
+        wrapped = RuntimeError("agent wrapper")
+        wrapped.__cause__ = failure
+        data = snapshot()
+        with patch.object(agents, "get_financial_statements", return_value=data), patch.object(
+                agents, "MCPServerAdapter", side_effect=wrapped):
+            result = agents.run_analysis_result("PETR4")
+        self.assertIs(result.data, data)
+        self.assertEqual(result.errors[0]["code"], "interpretation_capacity")
+        self.assertIn("DeepSeek está sem saldo", result.errors[0]["message"])
+        self.assertNotIn("secret_token", str(result.to_dict()))
+
+    def test_fallback_preserves_tool_messages_and_schema(self):
+        from copy import deepcopy
+        llm = self.llm()
+        llm._deepseek_client.chat.completions.create.side_effect = self.error(402)
+        messages = [{"role": "assistant", "content": None, "tool_calls": [
+            {"id": "call_1", "type": "function", "function": {"name": "news", "arguments": "{}"}}]},
+            {"role": "tool", "tool_call_id": "call_1", "content": "External data"}]
+        original = deepcopy(messages)
+        tools = [{"type": "function", "function": {"name": "news"}}]
+        llm.call(messages, tools=tools)
+        sent = llm._groq_client.chat.completions.create.call_args.kwargs
+        self.assertEqual(sent["messages"], original)
+        self.assertEqual(sent["tools"], tools)
+        self.assertEqual(messages, original)
 
 
 class ProviderCompletionTests(unittest.TestCase):

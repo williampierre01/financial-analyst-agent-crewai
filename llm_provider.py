@@ -42,12 +42,10 @@ DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 DEEPSEEK_MODEL = "deepseek-v4-flash"  # thinking mode ligado via extra_body
 
 GROQ_BASE_URL = "https://api.groq.com/openai/v1"
-GROQ_MODEL = "openai/gpt-oss-120b"  # fallback gratuito permanente, tambem reasoning
+GROQ_MODEL = "openai/gpt-oss-120b"
 
-# orcamento de tokens de saida por provider. O free tier do Groq tem um teto
-# de TPM (tokens por minuto) BEM apertado -- 8000 tokens TOTAIS (prompt +
-# resposta) por chamada nessa conta. A DeepSeek, com os 5M tokens de credito
-# gratuito, aguenta um teto bem maior.
+# Output caps chosen by this application, not provider quotas or free credits.
+# Account rate limits and remaining balance are independent of these caps.
 DEEPSEEK_MAX_TOKENS = 8000
 GROQ_MAX_TOKENS = 2500
 
@@ -56,6 +54,32 @@ GROQ_MAX_TOKENS = 2500
 # cache de contexto pra providers nativos) que a API da DeepSeek rejeita com
 # 400 se forem repassados sem filtro.
 _ALLOWED_MESSAGE_KEYS = {"role", "content", "name", "tool_calls", "tool_call_id"}
+
+
+class InterpretationUnavailable(RuntimeError):
+    """Only fixed, public messages may cross the agent/UI boundary."""
+
+    def __init__(self, code: str, message: str):
+        self.code = code
+        self.public_message = message
+        super().__init__(message)
+
+
+def provider_failure(exc: Exception) -> str:
+    return {402: "balance", 413: "capacity", 429: "rate_limit",
+            401: "credentials", 403: "credentials"}.get(
+                getattr(exc, "status_code", None), "unavailable")
+
+
+def public_failure(exc: Exception) -> dict[str, str] | None:
+    """Inspect typed causes, never parse or return provider response bodies."""
+    seen = set()
+    while exc is not None and id(exc) not in seen:
+        seen.add(id(exc))
+        if isinstance(exc, InterpretationUnavailable):
+            return {"code": exc.code, "message": exc.public_message}
+        exc = exc.__cause__ or exc.__context__
+    return None
 
 
 def _sanitize_messages(messages: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -71,7 +95,7 @@ def _sanitize_messages(messages: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 class DeepSeekGroqFallbackLLM(BaseLLM):
     """LLM customizado com fallback DeepSeek -> Groq.
 
-    So faz UMA chamada de API por invocacao de call(). Quando o modelo decide
+    Tenta o primario e, se necessario, o fallback. Quando o modelo decide
     chamar uma ferramenta, devolvemos a lista de tool_calls crua -- quem
     executa e faz o loop de tool-calling e o proprio executor nativo do
     CrewAI, nao esta classe.
@@ -89,6 +113,8 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
         self._deepseek_client = OpenAI(api_key=deepseek_api_key, base_url=DEEPSEEK_BASE_URL)
         self._groq_client = OpenAI(api_key=groq_api_key, base_url=GROQ_BASE_URL)
         self.last_provider_used: Optional[str] = None
+        # One instance is shared by this analysis only; a new analysis retries billing.
+        self._deepseek_without_balance = False
 
     def supports_function_calling(self) -> bool:
         return True
@@ -112,20 +138,22 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
             messages = list(messages)
         messages = _sanitize_messages(messages)
 
+        if not self._deepseek_without_balance:
+            try:
+                return self._call_once(
+                    client=self._deepseek_client,
+                    model=DEEPSEEK_MODEL,
+                    provider_name="deepseek",
+                    messages=messages,
+                    tools=tools,
+                    extra_body={"thinking": {"type": "enabled"}},
+                    max_tokens=DEEPSEEK_MAX_TOKENS,
+                )
+            except Exception as exc:  # noqa: BLE001
+                kind = provider_failure(exc)
+                self._deepseek_without_balance = kind == "balance"
+                logger.warning("llm_fallback provider=deepseek kind=%s", kind)
         try:
-            return self._call_once(
-                client=self._deepseek_client,
-                model=DEEPSEEK_MODEL,
-                provider_name="deepseek",
-                messages=messages,
-                tools=tools,
-                extra_body={"thinking": {"type": "enabled"}},
-                max_tokens=DEEPSEEK_MAX_TOKENS,
-            )
-        except Exception as exc:  # noqa: BLE001
-            logger.warning(
-                "DeepSeek falhou (%s) -- caindo para Groq gpt-oss-120b", exc
-            )
             return self._call_once(
                 client=self._groq_client,
                 model=GROQ_MODEL,
@@ -135,6 +163,23 @@ class DeepSeekGroqFallbackLLM(BaseLLM):
                 extra_body=None,
                 max_tokens=GROQ_MAX_TOKENS,
             )
+        except Exception as exc:
+            kind = provider_failure(exc)
+            logger.warning("llm_unavailable provider=groq kind=%s deepseek_balance=%s",
+                           kind, "empty" if self._deepseek_without_balance else "unknown")
+            messages_by_kind = {
+                "capacity": "O serviço alternativo de IA recusou o volume de texto desta análise.",
+                "rate_limit": "O serviço alternativo de IA atingiu seu limite temporário de uso.",
+                "balance": "O serviço alternativo de IA está sem saldo disponível.",
+                "credentials": "O serviço alternativo de IA está com um problema de credenciais ou permissão.",
+                "unavailable": "A resposta do serviço alternativo de IA ficou indisponível ou foi interrompida.",
+            }
+            message = messages_by_kind[kind]
+            if self._deepseek_without_balance:
+                message = "O DeepSeek está sem saldo. " + message
+            message += " Os dados financeiros continuam disponíveis."
+            # Suppress the original API body in tracebacks printed by CrewAI.
+            raise InterpretationUnavailable("interpretation_" + kind, message) from None
 
     # ------------------------------------------------------------------ #
     # Uma unica chamada de API. Nao executa tools nem faz loop -- isso e

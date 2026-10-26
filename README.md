@@ -141,8 +141,10 @@ projeto com versões obsoletas. Use os arquivos versionados e os comandos acima.
   Groq gpt-oss-120b. Sanitiza mensagens antes de enviar (remove campos
   internos do CrewAI, como `cache_breakpoint`, que quebram a validação
   estrita de schema da API da DeepSeek) e mantém orçamentos de tokens
-  diferentes por provedor (o free tier do Groq tem um teto de 8.000
-  tokens/min por chamada — bem mais apertado que o da DeepSeek).
+  de saída diferentes por provedor. Esses tetos do app não são franquias.
+  Após HTTP 402, não repete DeepSeek durante a mesma análise; a próxima análise
+  consulta o provedor novamente. Falhas finais têm mensagens públicas fixas,
+  sem corpo da resposta do provedor. Veja [limites de IA](docs/limites-ia.md).
 - **Tool calling nativo**: o CrewAI 1.15.x tem seu próprio executor de tool
   calling (`call_llm_native_tools`) — o `call()` customizado só precisa
   devolver a lista bruta de `tool_calls` quando o modelo pedir uma
