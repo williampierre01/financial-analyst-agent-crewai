@@ -24,8 +24,7 @@ Apresentação final:
   fique inequívoco a quais valores se referem. Preserve fórmulas e operandos.
 - Concentre ressalvas gerais na seção de limitações e mantenha junto do cálculo
   apenas a convenção e a limitação específica necessária para interpretá-lo.
-- Use os valores de apresentação abaixo como referência de escrita, não como
-  operandos arredondados: os cálculos usam a base original completa.
+- Use a base original completa para cálculos; arredonde apenas na apresentação.
 - Escreva demonstrativo de resultados, balanço patrimonial e fluxo de caixa,
   período encerrado em, data da cotação e fonte Yahoo Finance (via yfinance).
   Não exponha nomes de campos como income_statement, balance_sheet, cash_flow,
@@ -59,7 +58,7 @@ Apresentação final:
 """
 
 
-def presentation_references(snapshot: dict | None) -> str:
+def presentation_references(snapshot: dict | None, *, include_values: bool = True) -> str:
     """Format supplied values only; no fetch, currency inference or mutation."""
     if not snapshot:
         return "Sem referência financeira disponível."
@@ -75,6 +74,8 @@ def presentation_references(snapshot: dict | None) -> str:
         if instant:
             local = instant.astimezone(ZoneInfo("America/Sao_Paulo"))
             lines.append(f"- {label}: {local.strftime('%d/%m/%Y %H:%M')} (Brasília).")
+    if not include_values:
+        return "\n".join(lines)
     for group, fields in FIELDS.items():
         for period in snapshot["statements"].get(group, []):
             for field, (label, _) in fields.items():

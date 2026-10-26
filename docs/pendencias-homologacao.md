@@ -1,5 +1,19 @@
 # Pendências da homologação no Render
 
+## Falha de interpretação — 26/10/2026
+
+Logs fornecidos pelo usuário: DeepSeek 402 (saldo insuficiente), seguido de
+Groq 413 (8.770 tokens solicitados frente ao limite de 8.000 TPM informado).
+Correção em revisão: contexto por etapa, operandos deduplicados sem perda,
+mensagens específicas e suspensão de novas tentativas DeepSeek após 402 apenas
+na análise atual. Não reiniciar automaticamente a tarefa que falhou.
+Detalhes e limites em [limites de IA](limites-ia.md).
+
+Testes desta correção são executados somente no CI. Após merge/deploy manual,
+homologar apenas PETR4/VALE3. A otimização não repõe saldo nem garante capacidade
+para qualquer resposta/contexto do Groq. Ajustes cosméticos permanecem no lote
+futuro; nenhuma cobrança ou mudança de plano foi autorizada nesta etapa.
+
 ## Prioridades e lote futuro — 22/10/2026
 
 ### Conferência limitada a Vale e Petrobras — atualização
