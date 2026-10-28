@@ -39,8 +39,9 @@ distinguem falta de saldo, credenciais, ritmo e indisponibilidade.
 - JSON compacto e horários de apresentação sem uma segunda cópia dos valores.
 - Um 402 suspende DeepSeek apenas na instância da análise atual. O fallback
   continua disponível; a próxima análise volta a tentar DeepSeek.
-- Falha de agente não reinicia a mesma tarefa automaticamente. As tentativas
-  internas do SDK para falhas transitórias continuam com seu comportamento padrão.
+- Falha de agente não reinicia a mesma tarefa automaticamente. Na camada configurável de 28/10, as tentativas
+  internas do SDK ficam desativadas para tornar a contagem verificável. Veja
+  [configuração e medição](provedores-ia.md).
 - Logs do app identificam provedor/categoria sem imprimir o corpo do erro;
   saída verbosa dos agentes desativada. A interface preserva os dados financeiros.
 

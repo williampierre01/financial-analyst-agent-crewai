@@ -14,6 +14,12 @@ futuras também dependem de avaliação do usuário e devem ficar no histórico 
 Problemas observados e resultados das validações permanecem no registro separado
 de [pendências de homologação](pendencias-homologacao.md).
 
+**Ampliação aprovada em 28/10/2026:** provedores de IA configuráveis e medição
+por análise, seguidos de integração Gemini em entrega separada. Manter dados,
+cálculos e validações independentes da IA; testes no CI e homologação apenas
+PETR4/VALE3, com merge/deploy manual pelo usuário. Não autoriza compra de créditos
+ou ativação de cobrança. Acompanhar execução no [estado atual](estado-atual.md).
+
 ## 1. Direção geral
 
 Desenvolver um sistema de análise de ações que entregue **Business Intelligence de alto valor para apoiar decisões**, transformando dados financeiros e informações de mercado em conclusões relevantes, claras, comparáveis e auditáveis.

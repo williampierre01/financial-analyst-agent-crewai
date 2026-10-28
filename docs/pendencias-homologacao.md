@@ -495,3 +495,18 @@ o aplicativo nesta revisão. Os resultados de 90 testes Python e 34 de interface
 acima pertencem à versão anterior a estas correções. Os testes novos/ajustados
 aguardam execução no CI; avaliação visual será feita no Render após publicação
 manual autorizada. Apenas formatação dos arquivos e revisão do diff realizadas.
+
+
+## 28/10/2026 — Provedores configuráveis e consumo por análise
+
+- Entrega em revisão: seleção DeepSeek/Groq, alternativa opcional, medição por
+  tentativa e limites explícitos; Gemini fica no próximo PR.
+- CI: novos contratos offline para ordem, chave necessária, limites, fallback,
+  tokens ausentes/resposta cortada e isolamento de medidores. Sem execução local.
+- Após merge/deploy: conferir PETR4 e VALE3 e salvar os resumos `llm_analysis`
+  para levantar consumo real. Aproximadamente quatro chamadas é estimativa,
+  não resultado observado em produção.
+- Conferir logs visíveis no Render e ID correspondente à análise da API.
+- Modelos e cotas Google/benefício estudantil ainda não verificados na conta.
+- Sem alteração de plano, recarga ou nova configuração de produção nesta etapa.
+- Ajustes cosméticos continuam acumulados nas pendências anteriores.

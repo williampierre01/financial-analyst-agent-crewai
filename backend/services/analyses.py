@@ -8,6 +8,7 @@ import time
 from uuid import uuid4
 
 from analysis_models import AnalysisResult
+from llm_usage import job_id as llm_job_id
 from financial_data import normalize_ticker
 
 
@@ -99,6 +100,7 @@ class AnalysisStore:
         timer = Timer(self.timeout_seconds, self._timeout, args=(job_id,))
         timer.daemon = True
         timer.start()
+        usage_token = llm_job_id.set(job_id)
         try:
             result = self.runner(ticker, on_update=lambda update: self._update(job_id, update))
             if result.status not in ("completed", "failed"):
@@ -114,6 +116,7 @@ class AnalysisStore:
                         record["interpretation_status"] = "failed"
                     record["errors"].append({"code": "analysis_failed", "message": "A análise foi interrompida. Tente novamente."})
         finally:
+            llm_job_id.reset(usage_token)
             timer.cancel()
             with self._lock:
                 self._records[job_id]["expires_at"] = datetime.now(timezone.utc) + timedelta(seconds=self.retention_seconds)

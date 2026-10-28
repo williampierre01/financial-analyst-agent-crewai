@@ -25,6 +25,7 @@ from dotenv import load_dotenv
 from mcp import StdioServerParameters
 
 from llm_provider import get_llm, public_failure
+from llm_usage import analysis_usage, current_usage
 from analysis_context import encode, compact_metrics
 from financial_data import normalize_ticker
 from analysis_models import AnalysisResult
@@ -54,9 +55,7 @@ def _build_crew(
     on_stage: Optional[Callable[[str], None]] = None,
     financial_snapshot: dict | None = None,
 ) -> Crew:
-    deepseek_key = os.environ["DEEPSEEK_API_KEY"]
-    groq_key = os.environ["GROQ_API_KEY"]
-    llm = get_llm(deepseek_api_key=deepseek_key, groq_api_key=groq_key)
+    llm = get_llm()
     # Financial reasoning keeps the original base. News gathering needs no financial copy.
     evidence_context = (
         EVIDENCE_RULES
@@ -232,7 +231,7 @@ def _build_crew(
     )
 
 
-def run_analysis_result(
+def _run_analysis_result(
     ticker: str,
     on_update: Optional[Callable[[AnalysisResult], None]] = None,
     on_stage: Optional[Callable[[str], None]] = None,
@@ -252,6 +251,9 @@ def run_analysis_result(
                 logging.getLogger(__name__).warning("Analysis observer failed")
 
     def stage_changed(stage):
+        meter = current_usage.get()
+        if meter is not None:
+            meter.stage = stage
         result.stage = stage
         emit()
         if on_stage:
@@ -297,6 +299,11 @@ def run_analysis_result(
     result.stage = "done"
     emit()
     return result
+
+
+def run_analysis_result(ticker, on_update=None, on_stage=None) -> AnalysisResult:
+    with analysis_usage(normalize_ticker(ticker)):
+        return _run_analysis_result(ticker, on_update=on_update, on_stage=on_stage)
 
 
 def run_analysis(
