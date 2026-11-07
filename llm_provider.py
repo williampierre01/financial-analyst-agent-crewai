@@ -4,6 +4,7 @@ from __future__ import annotations
 import logging
 import json
 import os
+from copy import deepcopy
 from time import monotonic
 from llm_config import ProviderConfig, bounded_int, configured_providers
 from llm_usage import UsageMeter, current_usage
@@ -81,6 +82,9 @@ class ConfigurableLLM(BaseLLM):
         self.max_request_chars = max_request_chars
         self.usage = current_usage.get() or UsageMeter()
         self._disabled = set()
+        # CrewAI rebuilds tool messages without Google's opaque signatures.
+        # Keep original assistant turns only in this analysis, never in logs.
+        self._gemini_tool_turns = {}
         self.last_provider_used = None
         for provider in providers:
             setattr(self, "_" + provider.name + "_client", OpenAI(
@@ -89,6 +93,29 @@ class ConfigurableLLM(BaseLLM):
 
     def supports_function_calling(self) -> bool:
         return True
+
+    @staticmethod
+    def _tool_turn_key(calls):
+        return json.dumps([{k: c.get(k) for k in ("id", "type", "function")}
+                           for c in calls], sort_keys=True, ensure_ascii=False)
+
+    def _provider_messages(self, messages, provider_name, model):
+        result = deepcopy(messages)
+        for index, message in enumerate(result):
+            calls = message.get("tool_calls")
+            if not calls:
+                continue
+            if provider_name == "gemini":
+                saved = self._gemini_tool_turns.get((model, self._tool_turn_key(calls)))
+                if saved is None:
+                    # Never invent signatures or replay another provider's turn
+                    # as if Gemini had generated it. Fallback can try next provider.
+                    raise RuntimeError("Histórico de ferramentas incompatível com Gemini")
+                result[index] = deepcopy(saved)
+            else:
+                for call in calls:
+                    call.pop("extra_content", None)
+        return result
 
     # ------------------------------------------------------------------ #
     # Interface exigida pelo BaseLLM do CrewAI
@@ -179,6 +206,11 @@ class ConfigurableLLM(BaseLLM):
     ) -> Union[str, List[Any]]:
         self.last_provider_used = provider_name
 
+        messages = self._provider_messages(messages, provider_name, model)
+        # Signatures are part of the transmitted body and must fit the same cap.
+        if len(json.dumps({"messages": messages, "tools": tools}, ensure_ascii=False)) > self.max_request_chars:
+            raise RuntimeError("Histórico do provedor excede o limite configurado")
+
         kwargs: Dict[str, Any] = {
             "model": model,
             "messages": messages,
@@ -214,6 +246,12 @@ class ConfigurableLLM(BaseLLM):
 
         tool_calls = getattr(message, "tool_calls", None)
         if tool_calls:
+            if provider_name == "gemini":
+                saved = message.model_dump(exclude_none=True)
+                saved = {k: v for k, v in saved.items()
+                         if k in _ALLOWED_MESSAGE_KEYS or k == "extra_content"}
+                key = (model, self._tool_turn_key(saved["tool_calls"]))
+                self._gemini_tool_turns[key] = deepcopy(saved)
             # devolve a lista crua (objetos com .function.name/.function.arguments)
             # -- o executor nativo do CrewAI reconhece esse formato e executa
             # as tools e o loop por conta propria.

@@ -62,10 +62,11 @@ A tabela aparece assim que a coleta termina, antes da interpretação por IA.
 
 ## Estado atual — Yahoo Finance para ações brasileiras
 
-Atualização de 28/10/2026: veja o [estado atual consolidado](docs/estado-atual.md)
+Atualização de 07/11/2026: veja o [estado atual consolidado](docs/estado-atual.md)
 para distinguir base incorporada, entrega em revisão e homologação pendente.
-A nova camada permite configurar DeepSeek/Groq e medir tentativas e tokens;
-Gemini permanece como próxima integração. [Configuração e medição](docs/provedores-ia.md).
+A camada permite configurar DeepSeek/Groq/Gemini e medir tentativas e tokens;
+Gemini exige modelo e chave explícitos, com homologação real pendente.
+[Configuração e medição](docs/provedores-ia.md).
 
 
 Os dados financeiros vêm exclusivamente do **Yahoo Finance via yfinance**.

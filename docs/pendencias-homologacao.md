@@ -510,3 +510,17 @@ manual autorizada. Apenas formatação dos arquivos e revisão do diff realizada
 - Modelos e cotas Google/benefício estudantil ainda não verificados na conta.
 - Sem alteração de plano, recarga ou nova configuração de produção nesta etapa.
 - Ajustes cosméticos continuam acumulados nas pendências anteriores.
+
+## 07/11/2026 — Medição confirmada e integração Gemini
+
+PR #25 incorporado e Render Live confirmado pelo usuário. PETR4 e VALE3 tiveram
+4 chamadas lógicas e 5 tentativas cada: DeepSeek sem saldo, três sucessos Groq
+e falha 429 no CIO. Consumo conhecido: PETR4 6.505 entrada/2.801 saída;
+VALE3 5.712 entrada/2.696 saída. Totais parciais, não custo de análise completa.
+IDs e durações registrados em `estado-atual.md`.
+
+Gemini preparado em PR separado, com modelo explícito, ferramentas e medição.
+Homologação pendente: CI, merge/deploy pelo usuário, chave/modelo/cota no Google
+AI Studio e duas análises completas (PETR4/VALE3). Sem mudança de plano ou cobrança.
+Correções cosméticas continuam acumuladas; indisponibilidade da interpretação
+permanece prioridade funcional.
