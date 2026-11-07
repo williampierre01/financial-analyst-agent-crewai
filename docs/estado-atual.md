@@ -1,73 +1,72 @@
 # Estado atual do projeto
 
-Atualizado em **28/10/2026**. Este documento distingue código entregue,
-publicação e homologação; não substitui o plano geral nem o backlog.
+Atualizado em **07/11/2026**. Código entregue, publicação e homologação são
+registrados separadamente.
 
-## Base incorporada
+## Base incorporada e publicada
 
-- React + FastAPI no Render; dados financeiros antecipados e interpretação
-  separada. Uma falha de IA não remove os demonstrativos.
-- Autenticação Firebase, autorização por UID e sessões no Neon; MFA TOTP
-  administrativo. O usuário confirmou entrada, saída e nova entrada.
-  A conferência completa de isolamento entre usuários continua pendente.
-- Yahoo Finance como fonte financeira. Moeda e data preservadas; cotação BRL
-  e demonstrativos USD não são combinados sem conversão validada.
-- Indicadores calculados pelo código. Resultado operacional não conciliado
-  permanece indisponível, com aviso. Sem metodologia aprovada para emitir posição.
-- PR #24 incorporado em 26/10: contexto reduzido sem descarte de dados e
-  diagnóstico de falta de saldo/capacidade. CI passou naquele PR. O merge foi
-  confirmado no GitHub; a publicação e homologação desse commit não foram
-  confirmadas nesta revisão.
+- React + FastAPI no Render; dados financeiros preservados quando a IA falha.
+- Firebase, autorização por UID e sessões no Neon; MFA administrativo.
+  Entrada, saída e nova entrada confirmadas pelo usuário. Conferência completa
+  de isolamento entre usuários ainda pendente.
+- Yahoo Finance; moedas e datas preservadas. Cotação BRL e demonstrativos USD
+  não são combinados sem conversão validada. Resultado operacional não conciliado
+  permanece indisponível. Indicadores calculados pelo código.
+- PR #25 incorporado em 07/11/2026, commit `9f535e9`, e Render confirmado Live
+  nas capturas do usuário. CI aprovado: backend Linux/Windows, PostgreSQL e
+  interface/contratos. Sem testes ou builds locais.
+- Seleção DeepSeek/Groq, alternativa opcional, limites de tentativas e medição
+  por análise publicados. Sem repetições ocultas do SDK.
 
-## Entrega atual: provedores configuráveis e medição
+## Medições reais — PETR4 e VALE3
 
-Implementação na branch `codex/provedores-configuraveis`, ainda não publicada:
+Evidências: capturas dos logs do Render fornecidas pelo usuário em 07/11/2026.
 
-- Principal e alternativa configuráveis entre DeepSeek e Groq; alternativa
-  pode ser desativada. Somente as chaves dos provedores selecionados são exigidas.
-- Modelos e limites de saída configuráveis, mantendo os padrões anteriores.
-- Limites por análise: tentativas, tamanho de solicitação e timeout por pedido.
-  Sem repetições ocultas do SDK. Credenciais inválidas/saldo insuficiente
-  suspendem aquele provedor até a próxima análise.
-- Logs de cada tentativa e resumo por análise: ID, etapa, provedor, modelo,
-  duração, resultado e tokens reportados. Sem prompts, respostas ou credenciais.
-- ID correlacionado ao trabalho da API; análises concorrentes têm medidores
-  separados. Sem alteração no contrato público ou na tela do usuário.
+| Análise | Chamadas lógicas | Tentativas | Entrada reportada | Saída reportada | Duração total |
+|---|---:|---:|---:|---:|---:|
+| PETR4 | 4 | 5 | 6.505 | 2.801 | 32,82 s |
+| VALE3 | 4 | 5 | 5.712 | 2.696 | 27,98 s |
 
-**Validação:** testes offline preparados para CI; execução e resultado serão
-registrados no PR. Não foram executados testes, builds ou aplicação localmente.
-Nenhuma chamada real a provedores, recarga ou mudança de plano nesta entrega.
+- PETR4: `4b04f4e0-5c44-4d92-9325-eaf31b4c35b3`, aproximadamente 04:23–04:24 (Brasília).
+- VALE3: `2835fd84-062a-4fc0-97cc-5e2977cb0a56`, aproximadamente 04:30–04:31 (Brasília).
+- Em ambas: DeepSeek fez uma tentativa sem sucesso por falta de saldo; Groq
+  fez quatro, com três sucessos e HTTP 429 na quarta, etapa CIO.
+- Os tokens cobrem **somente três respostas com uso informado**. Não representam
+  consumo completo, custo de uma análise bem-sucedida nem garantia de gratuidade.
+- O 429 mostrado não identifica qual cota foi atingida. Não atribuir a TPM,
+  limite diário ou tempo de reset sem evidência adicional.
+- Dados financeiros permaneceram visíveis; interpretação indisponível.
+  Portanto, medição e tratamento de falhas estão observados, mas a interpretação
+  completa desta versão ainda não foi homologada.
 
-## Quantas chamadas fazemos
+## Entrega em preparação — Gemini
 
-Fluxo esperado: duas interações de notícias (pedir ferramenta e ler resultado),
-uma quantitativa e uma de interpretação: aproximadamente **4 chamadas lógicas**.
-Não é uma contagem medida em produção nem uma garantia: o ciclo de ferramentas
-e falhas podem aumentá-la. Com um 402 inicial e quatro respostas da alternativa,
-são cinco tentativas. Sem dados financeiros aceitos, são zero chamadas de IA.
+Branch `codex/integracao-gemini`, ainda não publicada:
 
-O próximo deploy permitirá conferir a contagem real em `llm_analysis`. Tokens
-ausentes não significam consumo zero. Totais conhecidos não são uma fatura;
-não se estima preço nem se presume gratuidade a partir do nome do modelo.
+- Gemini selecionável como principal ou alternativa, pelo endpoint oficial
+  compatível com Chat Completions, usando o SDK já instalado.
+- `GEMINI_MODEL` e `GEMINI_API_KEY` obrigatórios somente se selecionado.
+  Não presumir modelo disponível ou cota gratuita na conta do usuário.
+- Preservação das assinaturas opacas das chamadas de ferramentas apesar da
+  reconstrução das mensagens pelo CrewAI; armazenamento apenas por análise.
+- Histórico de ferramentas de outro provedor não é enviado ao Gemini com
+  assinaturas inventadas. Nesse caso, a tentativa é recusada localmente e
+  a próxima alternativa configurada pode ser usada.
+- Limites e telemetria existentes mantidos. Nenhuma mudança financeira ou visual.
+- Contratos offline preparados para CI: serialização real do SDK com HTTP
+  simulado, ferramentas sequenciais/paralelas, isolamento, fallback, limites,
+  respostas cortadas e contadores ausentes. Não executados localmente.
 
-## Próxima entrega: Gemini
+## Próximos passos de homologação
 
-1. Integrar um adaptador compatível com ferramentas e respostas completas.
-2. Conferir modelos e cotas efetivamente disponíveis no projeto Google.
-3. Verificar elegibilidade do benefício estudantil para créditos de API:
-   assinatura Gemini não significa API ilimitada; benefício ainda não confirmado.
-4. Homologar **somente PETR4 e VALE3**, comparando a mesma base financeira e
-   registrando chamadas, tokens, falhas e qualidade de interpretação.
+1. CI e revisão do PR; merge/deploy manuais pelo usuário.
+2. Conferir modelo com ferramentas e cota disponível no projeto do Google AI
+   Studio. O benefício da assinatura estudantil para API continua não verificado.
+3. Configurar Gemini inicialmente sozinho, conforme [guia](provedores-ia.md),
+   para medir seu comportamento sem misturar provedores.
+4. Testar somente PETR4 e VALE3; conferir relatório completo, moedas, fontes,
+   chamadas e tokens nos resumos `llm_analysis`.
 
-Gemini ainda não é selecionável nesta entrega. A segunda integração será um PR
-separado após a validação desta base. Não ativar cobrança ou comprar créditos
-sem autorização específica. Trocar modelos exige compatibilidade com ferramentas;
-uma configuração válida não garante disponibilidade ou saldo no provedor.
-
-## Forma de trabalho acordada
-
-- Testes e builds no CI; homologação no Render pelo usuário.
-- Merge e deploy manuais pelo usuário, sem alteração automática do ambiente.
-- Correções pequenas acumuladas no [backlog](pendencias-homologacao.md).
-- Referências: [configuração e medição de IA](provedores-ia.md),
-  [limites de IA](limites-ia.md) e [plano geral](plano-geral-desenvolvimento.md).
+Nenhuma chave Google, chamada real ao Gemini, mudança no Render, recarga ou
+ativação de cobrança foi realizada nesta entrega. Ajustes pequenos permanecem
+no [backlog](pendencias-homologacao.md).

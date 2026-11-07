@@ -30,12 +30,15 @@ def configured_providers(env=None):
     fallback = env.get("LLM_FALLBACK_PROVIDER", "groq").strip().lower()
     if fallback not in ("", "none"):
         names.append(fallback)
-    if len(set(names)) != len(names) or any(n not in ("deepseek", "groq") for n in names):
+    if len(set(names)) != len(names) or any(n not in ("deepseek", "groq", "gemini") for n in names):
         raise ValueError("Provedores de IA inválidos ou repetidos")
     defaults = {
         "deepseek": ("deepseek-v4-flash", "https://api.deepseek.com", 8000,
                      {"thinking": {"type": "enabled"}}),
         "groq": ("openai/gpt-oss-120b", "https://api.groq.com/openai/v1", 2500, None),
+        # Explicit model: availability and free quota must be checked in AI Studio.
+        "gemini": ("", "https://generativelanguage.googleapis.com/v1beta/openai/",
+                   8000, {"reasoning_effort": "low"}),
     }
     result = []
     for name in names:
