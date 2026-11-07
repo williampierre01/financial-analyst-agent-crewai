@@ -62,6 +62,12 @@ A tabela aparece assim que a coleta termina, antes da interpretação por IA.
 
 ## Estado atual — Yahoo Finance para ações brasileiras
 
+Atualização de 28/10/2026: veja o [estado atual consolidado](docs/estado-atual.md)
+para distinguir base incorporada, entrega em revisão e homologação pendente.
+A nova camada permite configurar DeepSeek/Groq e medir tentativas e tokens;
+Gemini permanece como próxima integração. [Configuração e medição](docs/provedores-ia.md).
+
+
 Os dados financeiros vêm exclusivamente do **Yahoo Finance via yfinance**.
 A interface aceita `PETR4` ou `PETR4.SA`; basta informar o código e analisar.
 Não há seletor de fonte nem troca automática de provedor financeiro.
@@ -123,7 +129,8 @@ e [o guia de execução no Windows](docs/executar-e-testar.md). O grupo `dev` in
 
 A suíte automatizada não chama APIs externas. `test_tools.py` é um teste manual
 online das ferramentas. Yahoo não requer chave no aplicativo; a interpretação
-precisa de `DEEPSEEK_API_KEY` e `GROQ_API_KEY`.
+precisa das chaves dos provedores selecionados (por padrão,
+`DEEPSEEK_API_KEY` e `GROQ_API_KEY`).
 
 O MCP permanece limitado a `mcp<2`. O contrato público agora é v3.0:
 `get_financial_statements(ticker, market="BR")`, sem argumento `provider` nem
@@ -135,16 +142,12 @@ projeto com versões obsoletas. Use os arquivos versionados e os comandos acima.
 
 ## Etapa 2 — LLM com fallback + agentes (`llm_provider.py`, `agents.py`)
 
-- **`DeepSeekGroqFallbackLLM`**: subclasse de `BaseLLM` do CrewAI. Tenta
-  DeepSeek V4 Flash (modo thinking) primeiro; qualquer exceção (saldo
-  insuficiente, timeout, resposta vazia) aciona fallback automático para
-  Groq gpt-oss-120b. Sanitiza mensagens antes de enviar (remove campos
-  internos do CrewAI, como `cache_breakpoint`, que quebram a validação
-  estrita de schema da API da DeepSeek) e mantém orçamentos de tokens
-  de saída diferentes por provedor. Esses tetos do app não são franquias.
-  Após HTTP 402, não repete DeepSeek durante a mesma análise; a próxima análise
-  consulta o provedor novamente. Falhas finais têm mensagens públicas fixas,
-  sem corpo da resposta do provedor. Veja [limites de IA](docs/limites-ia.md).
+- **`ConfigurableLLM`**: subclasse de `BaseLLM` com provedores ordenados pela
+  configuração do servidor. Padrão: DeepSeek V4 Flash (thinking) e Groq
+  gpt-oss-120b. Permite inverter a ordem, desativar a alternativa e configurar
+  modelos e tetos. `DeepSeekGroqFallbackLLM` permanece como compatibilidade.
+  SDK sem novas tentativas ocultas; medição por análise e mensagens públicas
+  sem corpo da resposta. Veja [configuração e consumo](docs/provedores-ia.md).
 - **Tool calling nativo**: o CrewAI 1.15.x tem seu próprio executor de tool
   calling (`call_llm_native_tools`) — o `call()` customizado só precisa
   devolver a lista bruta de `tool_calls` quando o modelo pedir uma
@@ -152,7 +155,7 @@ projeto com versões obsoletas. Use os arquivos versionados e os comandos acima.
 - **Agentes**: Data Gatherer → Quant Analyst → CIO, topologia sequencial,
   consumindo o servidor MCP via `MCPServerAdapter` (mais estável, nesta
   versão do CrewAI, que o campo nativo `mcps`). A coleta Yahoo ocorre antes dos agentes; o Data Gatherer recebe
-  o snapshot normalizado e apenas a ferramenta de notícias.
+  somente instruções e a ferramenta de notícias; Quant e CIO recebem a base financeira.
 
 ```bash
 python agents.py PETR4          # Yahoo Finance
