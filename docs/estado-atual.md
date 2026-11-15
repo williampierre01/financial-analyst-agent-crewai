@@ -81,6 +81,10 @@ consultas para repetir evidência já disponível.
 
 ## Próxima entrega e pendências
 
+- CI: Ubuntu fixado em 24.04 após `ubuntu-latest` migrar para 26.04, onde
+  `setup-python` não encontrou Python 3.13.9. Versão do Python e dependências
+  preservadas; esta alteração afeta o ambiente de testes, não o Render.
+
 - Nesta branch: reforço das orientações para preservar o motivo do bloqueio do
   resultado operacional. Falta de conciliação não significa ausência na fonte.
   A orientação não é um verificador semântico e depende da adesão do modelo.
