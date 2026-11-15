@@ -13,6 +13,12 @@ Fundamentação obrigatória:
   Ausência de fluxo de caixa não impede métricas cujos operandos estão disponíveis.
   Estas verificações não confirmam a exatidão da fonte ou a comparabilidade contábil.
 - Separe Fato observado, Cálculo e Hipótese. Esses rótulos não substituem evidências.
+- Preserve o motivo de indisponibilidade informado nos avisos da base. Campo
+  nulo não prova ausência na fonte. Quando o resultado operacional estiver
+  bloqueado por definição não conciliada com os demonstrativos oficiais, diga
+  "resultado operacional não utilizado por falta de conciliação"; não diga
+  "indisponível na fonte" e não recupere ou estime o valor bloqueado. Se o motivo
+  não estiver informado, não invente uma causa para a ausência.
 - Fato financeiro: cite o indicador, o demonstrativo, o período encerrado em
   (period_end), moeda e fonte (source) presentes na base validada, com rótulos
   em português. Para cotação, cite a data (as_of) e sua atualidade (freshness); retrieved_at
