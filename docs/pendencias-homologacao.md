@@ -1,5 +1,24 @@
 # Pendências da homologação no Render
 
+## 15/11/2026 — Gemini concluído nas duas ações
+
+PR #26 Live em `d01ba22`. PETR4 e VALE3 concluíram quatro chamadas cada, todas
+com sucesso, usando Gemini `gemini-3.1-flash-lite`. Consumo e durações em
+[estado atual](estado-atual.md). Capturas suficientes para encerrar esta rodada
+funcional; não repetir chamadas apenas para obter a mesma evidência.
+
+- Qualidade de conteúdo: VALE3 chamou o resultado operacional de "indisponível
+  na fonte", embora o sistema o bloqueie por falta de conciliação. Orientações
+  compartilhadas por Quant/CIO reforçadas nesta entrega para preservar o motivo
+  recebido, sem recuperar o valor. Ainda depende de adesão do modelo; não
+  representa reconciliação financeira ou garantia de toda resposta futura.
+- Lote futuro de apresentação: eliminar repetição de "publicação original não
+  verificada" e padronizar posição do código da moeda nos valores. Adiado.
+- Manter separadas a homologação funcional, a revisão de conteúdo e a conferência
+  documental. As capturas de novembro não auditam todos os números ou notícias.
+- Sem testes/builds locais ou novas consultas reais nesta atualização. CI e
+  publicação manual da correção de orientação ainda pendentes.
+
 ## Falha de interpretação — 26/10/2026
 
 Logs fornecidos pelo usuário: DeepSeek 402 (saldo insuficiente), seguido de

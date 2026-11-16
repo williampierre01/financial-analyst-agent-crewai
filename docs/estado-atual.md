@@ -1,6 +1,6 @@
 # Estado atual do projeto
 
-Atualizado em **07/11/2026**. Código entregue, publicação e homologação são
+Atualizado em **16/11/2026**. Código entregue, publicação e homologação são
 registrados separadamente.
 
 ## Base incorporada e publicada
@@ -18,7 +18,7 @@ registrados separadamente.
 - Seleção DeepSeek/Groq, alternativa opcional, limites de tentativas e medição
   por análise publicados. Sem repetições ocultas do SDK.
 
-## Medições reais — PETR4 e VALE3
+## Histórico de falhas — 07/11/2026
 
 Evidências: capturas dos logs do Render fornecidas pelo usuário em 07/11/2026.
 
@@ -39,9 +39,11 @@ Evidências: capturas dos logs do Render fornecidas pelo usuário em 07/11/2026.
   Portanto, medição e tratamento de falhas estão observados, mas a interpretação
   completa desta versão ainda não foi homologada.
 
-## Entrega em preparação — Gemini
+## Gemini publicado e homologado funcionalmente — 15/11/2026
 
-Branch `codex/integracao-gemini`, ainda não publicada:
+PR #26 incorporado em `d01ba22`; captura do Render confirma Live em
+15/11/2026, 15:39 (Brasília), após configuração pelo usuário. CI do PR aprovado
+(backend Linux/Windows, PostgreSQL e interface). Sem execução local.
 
 - Gemini selecionável como principal ou alternativa, pelo endpoint oficial
   compatível com Chat Completions, usando o SDK já instalado.
@@ -57,16 +59,43 @@ Branch `codex/integracao-gemini`, ainda não publicada:
   simulado, ferramentas sequenciais/paralelas, isolamento, fallback, limites,
   respostas cortadas e contadores ausentes. Não executados localmente.
 
-## Próximos passos de homologação
+Configuração observada nos logs: `gemini`, modelo `gemini-3.1-flash-lite`.
+As duas análises completaram o relatório, com quatro sucessos e nenhuma falha
+cada; não houve tentativa de outro provedor nessas execuções.
 
-1. CI e revisão do PR; merge/deploy manuais pelo usuário.
-2. Conferir modelo com ferramentas e cota disponível no projeto do Google AI
-   Studio. O benefício da assinatura estudantil para API continua não verificado.
-3. Configurar Gemini inicialmente sozinho, conforme [guia](provedores-ia.md),
-   para medir seu comportamento sem misturar provedores.
-4. Testar somente PETR4 e VALE3; conferir relatório completo, moedas, fontes,
-   chamadas e tokens nos resumos `llm_analysis`.
+| Análise | Chamadas lógicas | Tentativas | Entrada reportada | Saída reportada | Duração total |
+|---|---:|---:|---:|---:|---:|
+| PETR4 | 4 | 4 | 13.856 | 3.623 | 82,709 s |
+| VALE3 | 4 | 4 | 13.911 | 3.561 | 52,882 s |
 
-Nenhuma chave Google, chamada real ao Gemini, mudança no Render, recarga ou
-ativação de cobrança foi realizada nesta entrega. Ajustes pequenos permanecem
-no [backlog](pendencias-homologacao.md).
+Evidência: capturas do usuário, resumos `llm_analysis` às 17:34:47 e 17:38:06
+(Brasília), respectivamente. Uso informado nas quatro respostas de cada análise;
+não é medição de cobrança, nem garantia de cota ou consumo futuro. Os totais
+parciais de 07/11 não são comparáveis diretamente a estas análises completas.
+
+Capturas dos relatórios confirmam moedas separadas, bloqueio do P/L BRL/USD,
+ROE sobre encerramento explicitado e notícias históricas separadas. Conferência
+de coerência da apresentação; não constitui auditoria dos demonstrativos ou
+verificação dos artigos originais. Teste restrito a PETR4 e VALE3, sem novas
+consultas para repetir evidência já disponível.
+
+## Próxima entrega e pendências
+
+- CI: Ubuntu fixado em 24.04 após `ubuntu-latest` migrar para 26.04, onde
+  `setup-python` não encontrou Python 3.13.9. Versão do Python e dependências
+  preservadas; esta alteração afeta o ambiente de testes, não o Render.
+
+- Nesta branch: reforço das orientações para preservar o motivo do bloqueio do
+  resultado operacional. Falta de conciliação não significa ausência na fonte.
+  A orientação não é um verificador semântico e depende da adesão do modelo.
+  PR #27: quatro checks aprovados no commit `d0aa680` (Linux, Windows,
+  PostgreSQL e interface). Merge ainda aberto na consulta de 16/11; deploy não
+  confirmado. Atualização documental posterior deve ter seu próprio CI conferido.
+- Reconciliar definição do resultado operacional antes de voltar a utilizá-lo.
+- Antes de convidar outros usuários, validar isolamento entre duas contas,
+  acesso negado e revogação de sessão.
+- Ajustes pequenos permanecem no [backlog](pendencias-homologacao.md).
+- Benefício estudantil para API não confirmado; nenhuma recarga ou ativação
+  de cobrança realizada por esta entrega. Nenhuma credencial registrada.
+
+Continuidade: [roteiro para o próximo chat](continuidade-projeto.md).
