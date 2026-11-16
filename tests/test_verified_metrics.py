@@ -35,7 +35,11 @@ class VerifiedMetricsTests(unittest.TestCase):
         avg = find(data, "ROE sobre média de dois saldos")
         self.assertAlmostEqual(avg["value"], 2352 / ((33406 + 33509) / 2) * 100)
         self.assertEqual([i["period_end"] for i in avg["inputs"]], ["2025-12-31", "2024-12-31", "2025-12-31"])
-        self.assertAlmostEqual(find(data, "Margem líquida")["value"], 2352 / 38403 * 100)
+        self.assertAlmostEqual(find(data, "Lucro informado/receita")["value"], 2352 / 38403 * 100)
+        margin = find(data, "Lucro informado/receita")
+        self.assertEqual(margin["inputs"][0]["value"], 2352e6)
+        self.assertIn("perímetro não conciliado", margin["note"])
+        self.assertNotIn("Margem líquida", [m["name"] for m in calculate_metrics(data)])
         self.assertAlmostEqual(find(data, "Dívida/patrimônio")["value"], 21801 / 33509 * 100)
         self.assertAlmostEqual(find(data, "P/L")["value"], 66.21 / .55)
         self.assertAlmostEqual(find(data, "ROE sobre patrimônio de encerramento", "2024-12-31")["value"], 6166 / 33406 * 100)
@@ -130,7 +134,7 @@ class VerifiedMetricsTests(unittest.TestCase):
         original = deepcopy(data)
         results = calculate_metrics(data)
         self.assertEqual({r["name"] for r in results}, {
-            "P/L", "Margem líquida", "Dívida/patrimônio",
+            "P/L", "Lucro informado/receita", "Dívida/patrimônio",
             "ROE sobre patrimônio de encerramento", "ROE sobre média de dois saldos"})
         for result in results:
             self.assertEqual(result["status"], "unavailable")

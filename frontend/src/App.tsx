@@ -340,8 +340,11 @@ export default function App({ uid }: { uid: string }) {
                 highlight
               />
               <Metric label="Receita anual" {...revenue} />
-              <Metric label="Lucro líquido anual" {...profit} />
-              <Metric label="Fluxo de caixa livre anual" {...cash} />
+              <Metric label="Lucro líquido anual do provedor" {...profit} />
+              <Metric
+                label="Fluxo de caixa livre anual do provedor"
+                {...cash}
+              />
             </div>
             {data && (
               <div className="provenance">

@@ -2,7 +2,7 @@
 
 EVIDENCE_RULES = """
 Fundamentação obrigatória:
-- Para P/L, ROE, margem líquida e dívida/patrimônio, use exclusivamente os
+- Para P/L, ROE, lucro informado/receita e dívida/patrimônio, use exclusivamente os
   indicadores calculados pelo código fornecidos no contexto: preserve valores,
   fórmulas, referências, convenções, motivos de indisponibilidade e ressalvas.
   Não recalcule com números arredondados nem invente um indicador indisponível.
@@ -13,6 +13,10 @@ Fundamentação obrigatória:
   Ausência de fluxo de caixa não impede métricas cujos operandos estão disponíveis.
   Estas verificações não confirmam a exatidão da fonte ou a comparabilidade contábil.
 - Separe Fato observado, Cálculo e Hipótese. Esses rótulos não substituem evidências.
+- Lucro informado pelo provedor não confirma lucro consolidado total nem lucro
+  atribuível aos acionistas; preserve essa incerteza de perímetro. Não renomeie
+  lucro informado/receita como margem líquida consolidada. FCF é a métrica do
+  provedor, com fórmula não conciliada, não necessariamente a medida oficial.
 - Preserve o motivo de indisponibilidade informado nos avisos da base. Campo
   nulo não prova ausência na fonte. Quando o resultado operacional estiver
   bloqueado por definição não conciliada com os demonstrativos oficiais, diga

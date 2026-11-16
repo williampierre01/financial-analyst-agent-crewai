@@ -7,6 +7,13 @@ from zoneinfo import ZoneInfo
 
 REPORT_RULES = """
 Apresentação final:
+- Preserve a definição de lucro informado pelo provedor: não presuma lucro
+  consolidado total ou atribuível aos acionistas sem evidência específica da base.
+  Chame a razão calculada de lucro informado/receita, não de margem líquida
+  consolidada. ROE usa patrimônio dos acionistas e requer ressalva de perímetro.
+- Fluxo de caixa livre é a métrica do provedor, com fórmula não conciliada;
+  pode diferir da medida oficial da companhia. Não invente sua composição,
+  nem o trate como caixa disponível para dividendos.
 - Resultado operacional indisponível por falta de conciliação não sustenta
   afirmações de alta, queda, eficiência ou hipóteses sobre sua diferença para
   o lucro líquido. Não o reconstrua por subtração nem preencha com notícias
