@@ -1,6 +1,6 @@
 # Estado atual do projeto
 
-Atualizado em **15/11/2026**. Código entregue, publicação e homologação são
+Atualizado em **16/11/2026**. Código entregue, publicação e homologação são
 registrados separadamente.
 
 ## Base incorporada e publicada
@@ -88,10 +88,14 @@ consultas para repetir evidência já disponível.
 - Nesta branch: reforço das orientações para preservar o motivo do bloqueio do
   resultado operacional. Falta de conciliação não significa ausência na fonte.
   A orientação não é um verificador semântico e depende da adesão do modelo.
-  Correção ainda não publicada; CI e merge/deploy manual pendentes.
+  PR #27: quatro checks aprovados no commit `d0aa680` (Linux, Windows,
+  PostgreSQL e interface). Merge ainda aberto na consulta de 16/11; deploy não
+  confirmado. Atualização documental posterior deve ter seu próprio CI conferido.
 - Reconciliar definição do resultado operacional antes de voltar a utilizá-lo.
 - Antes de convidar outros usuários, validar isolamento entre duas contas,
   acesso negado e revogação de sessão.
 - Ajustes pequenos permanecem no [backlog](pendencias-homologacao.md).
 - Benefício estudantil para API não confirmado; nenhuma recarga ou ativação
   de cobrança realizada por esta entrega. Nenhuma credencial registrada.
+
+Continuidade: [roteiro para o próximo chat](continuidade-projeto.md).
