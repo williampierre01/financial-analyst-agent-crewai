@@ -49,6 +49,78 @@ class ConfigurationTests(unittest.TestCase):
 
 
 class AccountingTests(unittest.TestCase):
+    def error(self, status):
+        exc = RuntimeError("private provider body")
+        exc.status_code = status
+        return exc
+
+    @patch("llm_provider.sleep")
+    def test_503_retry_is_measured_and_only_once_per_analysis(self, wait):
+        llm = self.llm()
+        create = llm._deepseek_client.chat.completions.create
+        create.side_effect = [self.error(503), response(), self.error(503)]
+        self.assertEqual(llm.call("test"), "Complete")
+        self.assertEqual(len(llm.usage.attempts), 2)
+        self.assertEqual(llm.usage.logical_calls, 1)
+        self.assertEqual(llm.usage.attempts[0]["status_code"], 503)
+        llm.call("test again")
+        self.assertEqual(create.call_count, 3)
+        llm._groq_client.chat.completions.create.assert_called_once()
+        wait.assert_called_once_with(2)
+
+    @patch("llm_provider.sleep")
+    def test_second_503_falls_back_and_other_errors_do_not_retry(self, wait):
+        for status, expected in [(503, 2), (402, 1), (401, 1), (403, 1),
+                                 (429, 1), (413, 1), (500, 1)]:
+            with self.subTest(status=status):
+                llm = self.llm()
+                create = llm._deepseek_client.chat.completions.create
+                create.side_effect = self.error(status)
+                self.assertEqual(llm.call("test"), "Complete")
+                self.assertEqual(create.call_count, expected)
+
+    @patch("llm_provider.sleep")
+    def test_retry_respects_budget_and_deadline(self, wait):
+        llm = self.llm(max_attempts=1)
+        llm._deepseek_client.chat.completions.create.side_effect = self.error(503)
+        with self.assertRaises(InterpretationUnavailable):
+            llm.call("test")
+        wait.assert_not_called()
+        self.assertEqual(len(llm.usage.attempts), 1)
+
+        llm = self.llm()
+        llm.providers = llm.providers[:1]
+        llm.usage.deadline = 10
+        llm._deepseek_client.chat.completions.create.side_effect = self.error(503)
+        with patch("llm_provider.monotonic", return_value=9):
+            with self.assertRaises(InterpretationUnavailable):
+                llm.call("test")
+        wait.assert_not_called()
+        self.assertEqual(llm._deepseek_client.chat.completions.create.call_args.kwargs["timeout"], 1)
+
+        llm = self.llm()
+        llm.usage.deadline = 10
+        llm._deepseek_client.chat.completions.create.side_effect = self.error(503)
+        now = [0]
+        wait.side_effect = lambda _: now.__setitem__(0, 11)
+        with patch("llm_provider.monotonic", side_effect=lambda: now[0]):
+            with self.assertRaises(InterpretationUnavailable):
+                llm.call("test")
+        self.assertEqual(len(llm.usage.attempts), 1)
+        llm._groq_client.chat.completions.create.assert_not_called()
+
+    @patch("llm_provider.sleep")
+    def test_single_provider_second_503_remains_unavailable(self, wait):
+        llm = self.llm()
+        llm.providers = llm.providers[:1]
+        llm._deepseek_client.chat.completions.create.side_effect = self.error(503)
+        with self.assertRaises(InterpretationUnavailable) as error:
+            llm.call("test")
+        self.assertEqual(error.exception.code, "interpretation_unavailable")
+        self.assertEqual(len(llm.usage.attempts), 2)
+        self.assertEqual(llm.usage.logical_calls, 1)
+        wait.assert_called_once_with(2)
+
     def llm(self, **limits):
         with patch("llm_provider.OpenAI"):
             llm = ConfigurableLLM(configured_providers({"DEEPSEEK_API_KEY": "test",

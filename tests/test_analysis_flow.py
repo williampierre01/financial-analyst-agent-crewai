@@ -353,7 +353,7 @@ class ProviderCompletionTests(unittest.TestCase):
         choice = SimpleNamespace(finish_reason="stop", message=message)
         client.chat.completions.create.return_value = SimpleNamespace(choices=[choice])
         kwargs = dict(client=client, model="test", provider_name="test", messages=[],
-                      tools=None, extra_body=None, max_tokens=10)
+                      tools=None, extra_body=None, max_tokens=10, timeout=60)
         self.assertEqual(llm._call_once(**kwargs), "Texto **completo**")
         choice.finish_reason = "tool_calls"
         message.tool_calls = [SimpleNamespace(function=SimpleNamespace(name="get_market_news"))]

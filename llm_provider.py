@@ -5,7 +5,7 @@ import logging
 import json
 import os
 from copy import deepcopy
-from time import monotonic
+from time import monotonic, sleep
 from llm_config import ProviderConfig, bounded_int, configured_providers
 from llm_usage import UsageMeter, current_usage
 from typing import Any, Dict, List, Optional, Union
@@ -80,6 +80,8 @@ class ConfigurableLLM(BaseLLM):
         self.providers = providers
         self.max_attempts = max_attempts
         self.max_request_chars = max_request_chars
+        self.request_timeout = timeout
+        self._retried_503 = False
         self.usage = current_usage.get() or UsageMeter()
         self._disabled = set()
         # CrewAI rebuilds tool messages without Google's opaque signatures.
@@ -150,7 +152,7 @@ class ConfigurableLLM(BaseLLM):
                 raise InterpretationUnavailable("interpretation_attempt_limit",
                     "A análise atingiu o limite de chamadas de IA. Os dados financeiros continuam disponíveis.")
             try:
-                return self._call_once(
+                return self._call_with_retry(
                     client=getattr(self, "_" + provider.name + "_client"),
                     model=provider.model, provider_name=provider.name,
                     messages=messages, tools=tools, extra_body=provider.extra_body,
@@ -177,6 +179,28 @@ class ConfigurableLLM(BaseLLM):
     # responsabilidade do executor nativo do CrewAI.
     # ------------------------------------------------------------------ #
 
+    def _remaining(self):
+        if self.usage.deadline is None:
+            return self.request_timeout
+        return self.usage.deadline - monotonic()
+
+    def _call_with_retry(self, **kwargs):
+        for retry in range(2):
+            remaining = self._remaining()
+            if remaining <= 0:
+                raise RuntimeError("Prazo da análise encerrado")
+            try:
+                return self._call_once(timeout=min(self.request_timeout, remaining), **kwargs)
+            except Exception as exc:
+                if (retry or self._retried_503 or getattr(exc, "status_code", None) != 503
+                        or len(self.usage.attempts) >= self.max_attempts
+                        or self._remaining() <= 2):
+                    raise
+                self._retried_503 = True
+                logger.warning("llm_retry analysis_id=%s provider=%s status=503 delay_seconds=2",
+                               self.usage.analysis_id, kwargs["provider_name"])
+                sleep(2)
+
     def _call_once(self, **kwargs):
         started = monotonic()
         attempt = dict(provider=kwargs["provider_name"], model=kwargs["model"],
@@ -188,6 +212,9 @@ class ConfigurableLLM(BaseLLM):
             return result
         except Exception as exc:
             attempt["outcome"] = provider_failure(exc)
+            status = getattr(exc, "status_code", None)
+            if type(status) is int:
+                attempt["status_code"] = status
             raise
         finally:
             attempt["duration_ms"] = round((monotonic() - started) * 1000)
@@ -203,6 +230,7 @@ class ConfigurableLLM(BaseLLM):
         extra_body: Optional[dict],
         max_tokens: int,
         attempt: dict,
+        timeout: float,
     ) -> Union[str, List[Any]]:
         self.last_provider_used = provider_name
 
@@ -216,6 +244,7 @@ class ConfigurableLLM(BaseLLM):
             "messages": messages,
             "temperature": self.temperature,
             "max_tokens": max_tokens,
+            "timeout": timeout,
         }
         if tools:
             kwargs["tools"] = tools

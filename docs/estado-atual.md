@@ -14,7 +14,17 @@ registrados separadamente.
 - Limitação do ambiente Windows: o encerramento automático dos servidores de teste ficou preso; os processos próprios foram encerrados separadamente. Não atribuir o tempo total do runner ao tempo dos testes. Investigar essa limpeza antes de automatizar execuções locais recorrentes.
 - Nenhuma chamada real de IA ou análise em produção foi executada. Estes testes não substituem a homologação real de Firebase/Neon ou do isolamento com duas contas.
 
-## Base incorporada e publicada
+## Homologação entre contas e falha 503 — 16/11/2026
+
+- PR #28 incorporado em `a3f8137`, CI aprovado; usuário informou publicação.
+- Segunda conta criada no Firebase e autorizada no Neon como `user`, ativa.
+- Capturas: proprietário acessou a análise PETR4; outra conta autenticada recebeu `analysis_not_found` para o mesmo ID. Após logout do proprietário, o acesso retornou `unauthenticated`; usuário confirmou que a outra conta permaneceu conectada.
+- Esses cenários passaram; não constituem auditoria completa nem teste de reutilização de cookie revogado. Bloqueio administrativo, expiração e direção inversa do acesso entre contas não foram homologados nesta sessão.
+- Análise `2c49459a-14f7-4fd0-86f3-aaad4c20e752`: Gemini `gemini-3.1-flash-lite` retornou HTTP 503 na etapa gathering. Uma tentativa, sem sucesso nem uso de tokens informado; dados financeiros preservados. Não há evidência de falta de saldo ou cota nessa execução.
+- Correção em desenvolvimento: uma repetição extra por análise exclusivamente para 503, após 2 segundos, respeitando teto de tentativas e prazo global. Sem chamada real para validar; merge/deploy ainda pendentes.
+- Validação local da correção: 138 testes descobertos, 135 aprovados e 3 PostgreSQL ignorados conforme decisão de seguir sem Docker. Schema OpenAPI conferido. Casos incluem recuperação após 503, segunda falha, erros não repetíveis, limite de tentativas, vencimento durante a espera e propagação do prazo para o medidor.
+
+## Base incorporada e publicada (histórico)
 
 - React + FastAPI no Render; dados financeiros preservados quando a IA falha.
 - Firebase, autorização por UID e sessões no Neon; MFA administrativo.

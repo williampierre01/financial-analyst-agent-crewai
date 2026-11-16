@@ -35,6 +35,24 @@ def finish(ticker, on_update):
                           interpretation_status="completed", interpretation="Texto final")
 
 
+class DeadlineContextTests(unittest.TestCase):
+    def test_worker_passes_deadline_to_meter_without_leaking_to_caller(self):
+        from llm_usage import UsageMeter, analysis_deadline
+        captured = []
+        def runner(ticker, on_update):
+            captured.append(UsageMeter().deadline - time.monotonic())
+            return finish(ticker, on_update)
+        store = AnalysisStore(runner=runner, timeout_seconds=30)
+        try:
+            store.create("PETR4", owner="test")
+        finally:
+            store.close()
+        self.assertEqual(len(captured), 1)
+        self.assertGreater(captured[0], 0)
+        self.assertLessEqual(captured[0], 30)
+        self.assertIsNone(analysis_deadline.get())
+
+
 def wait_done(client, url):
     deadline = time.monotonic() + 5
     while time.monotonic() < deadline:

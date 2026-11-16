@@ -35,7 +35,13 @@ da seleção, não apenas altere o modelo.
 
 ## Tentativas e preservação de dados
 
-Cada chamada lógica percorre a lista configurada, uma vez por provedor. SDK
+Cada chamada lógica percorre a lista configurada. Em HTTP 503 há no máximo
+uma tentativa extra por análise inteira, no mesmo provedor, após 2 segundos.
+Ela conta em `LLM_MAX_ATTEMPTS`, mantém a mesma chamada lógica e gera outro
+`llm_attempt`; `llm_retry` registra a espera e o identificador da análise.
+Não há essa repetição para outros erros, inclusive 401/402/403/413/429.
+Sem orçamento ou tempo para a espera, não há repetição. Depois da segunda
+falha, segue a alternativa configurada, se houver. SDK
 com `max_retries=0`; agentes com `max_retry_limit=0`. Após 402/401/403, aquele
 provedor não é tentado novamente na mesma análise. Outros erros podem voltar
 a ser tentados na próxima chamada lógica, dentro do teto de tentativas.
@@ -45,6 +51,10 @@ de caber no TPM/contexto do provedor. Solicitações maiores são recusadas sem
 truncar demonstrativos ou histórico de ferramentas. Não há repetição automática
 para reduzir o texto. Uma resposta incompleta também não é publicada como completa.
 O timeout de rede não substitui o limite global do trabalho da API.
+O prazo global é compartilhado com o LLM: novas tentativas são bloqueadas
+após seu vencimento e o timeout da requisição é limitado ao tempo restante.
+Isso não cancela à força threads ou ferramentas já em execução; o timer da
+API continua preservando os dados recebidos e impedindo atualizações tardias.
 
 ## Como conferir no Render
 
