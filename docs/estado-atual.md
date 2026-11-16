@@ -3,6 +3,17 @@
 Atualizado em **16/11/2026**. Código entregue, publicação e homologação são
 registrados separadamente.
 
+## Validação local autorizada em 16/11/2026
+
+- O usuário autorizou testes locais; essa decisão substitui a restrição anterior ao CI. Merge e deploy permanecem manuais.
+- Base testada: `58a1a0c`, Windows, Python 3.13.9, Node 22.17.1, npm 10.9.2 e dependências dos locks, sem alteração de versões.
+- Backend: 133 testes descobertos, 130 aprovados e 3 de PostgreSQL ignorados por ausência de banco descartável. Docker local não estava em execução; não foi usado o Neon de produção.
+- Decisão posterior do usuário: continuar sem iniciar Docker. Os 3 testes PostgreSQL ficam pendentes localmente, com validação no CI; não preparar banco local nem usar produção para contornar essa decisão.
+- Interface: 58 testes aprovados na repetição com um worker, sem retries. Na primeira execução ocorreram duas falhas intermitentes que passaram no retry; a integração executada simultaneamente também teve uma falha. A repetição isolada dos 3 testes de integração passou.
+- Build, formatação, compatibilidade das 187 dependências Python, schema OpenAPI, tipos gerados e equivalência de requirements.txt com o lock aprovados. A formatação exigiu normalizar a quebra de linha de start-server.mjs, sem mudança semântica.
+- Limitação do ambiente Windows: o encerramento automático dos servidores de teste ficou preso; os processos próprios foram encerrados separadamente. Não atribuir o tempo total do runner ao tempo dos testes. Investigar essa limpeza antes de automatizar execuções locais recorrentes.
+- Nenhuma chamada real de IA ou análise em produção foi executada. Estes testes não substituem a homologação real de Firebase/Neon ou do isolamento com duas contas.
+
 ## Base incorporada e publicada
 
 - React + FastAPI no Render; dados financeiros preservados quando a IA falha.
@@ -85,12 +96,13 @@ consultas para repetir evidência já disponível.
   `setup-python` não encontrou Python 3.13.9. Versão do Python e dependências
   preservadas; esta alteração afeta o ambiente de testes, não o Render.
 
-- Nesta branch: reforço das orientações para preservar o motivo do bloqueio do
+- Incorporado pelo PR #27: reforço das orientações para preservar o motivo do bloqueio do
   resultado operacional. Falta de conciliação não significa ausência na fonte.
   A orientação não é um verificador semântico e depende da adesão do modelo.
-  PR #27: quatro checks aprovados no commit `d0aa680` (Linux, Windows,
-  PostgreSQL e interface). Merge ainda aberto na consulta de 16/11; deploy não
-  confirmado. Atualização documental posterior deve ter seu próprio CI conferido.
+  PR #27: CI aprovado no head final `58a1a0c`, execução
+  [43822724129](https://github.com/williampierre01/financial-analyst-agent-crewai/actions/runs/43822724129).
+  Merge confirmado pelo GitHub em 16/11/2026 às 04:30 (Brasília), commit
+  `ef5bef7`. Publicação desse commit no Render ainda não confirmada.
 - Reconciliar definição do resultado operacional antes de voltar a utilizá-lo.
 - Antes de convidar outros usuários, validar isolamento entre duas contas,
   acesso negado e revogação de sessão.
