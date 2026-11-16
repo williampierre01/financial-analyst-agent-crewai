@@ -4,8 +4,8 @@
 
 Ler este arquivo, `estado-atual.md`, `plano-geral-desenvolvimento.md` e
 `pendencias-homologacao.md`. Conferir Git e GitHub antes de modificar arquivos.
-PR #27 estava aberto na última consulta; não presumir merge ou deploy concluídos.
-Verificar merge e depois evidência de publicação Live no Render. O usuário faz
+PR #27 teve merge confirmado em 16/11/2026 às 04:30 (Brasília), commit `ef5bef7`.
+Verificar evidência de publicação Live no Render; ela ainda não foi confirmada. O usuário faz
 merge e deploy/configuração manualmente. Não repetir análises só para obter
 evidência já disponível.
 
@@ -17,8 +17,9 @@ PR: https://github.com/williampierre01/financial-analyst-agent-crewai/pull/27
   operacional bloqueado por falta de conciliação não significa ausente na fonte.
   Valor continua bloqueado; não há novo verificador semântico.
 - CI fixado em Ubuntu 24.04 porque Python 3.13.9 não foi encontrado no Ubuntu
-  26.04. Os quatro checks passaram em `d0aa680`. Conferir novamente o head atual.
+  26.04. CI do head final `58a1a0c` aprovado, execução `43822724129`.
 - Estado atual registra sucesso real do Gemini em PETR4 e VALE3 em 15/11.
+- Testes locais sobre `58a1a0c`: 130 backend, 58 interface e 3 integração aprovados; detalhes e instabilidades da execução no estado atual. Os 3 testes PostgreSQL permanecem pendentes localmente, cobertos pelo CI. O usuário decidiu continuar sem iniciar Docker; não usar Neon de produção para esses testes.
 
 ## Serviços e evidências
 
@@ -54,7 +55,7 @@ validação entre duas contas, minimizando novas chamadas de IA.
 
 ## Regras de trabalho
 
-- Não executar testes, builds ou aplicativo localmente; validar pelo CI.
+- Em 16/11/2026, o usuário autorizou testes locais. Executar testes automatizados e builds com serviços simulados, mantendo o CI como validação adicional. Testes reais de provedores ou produção continuam separados; merge/deploy permanecem manuais.
 - Homologação real restrita a Petrobras e Vale para economizar tokens.
 - Acumular ajustes de baixo impacto: repetição de ressalvas, moedas, percentuais
   e espaçamento. Não confundir erro de conteúdo/dados/autorização com cosmética.

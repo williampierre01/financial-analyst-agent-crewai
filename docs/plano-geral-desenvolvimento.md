@@ -346,7 +346,7 @@ Fontes oficiais consultadas na comparação de 18/10/2026; reconferir durante a 
 - Separar funcionalidades implementadas, propostas e hipóteses a validar.
 - Apresentar correções encontradas na revisão antes de editar.
 - Manter commit, PR, merge e publicação sob o processo manual escolhido pelo usuário.
-- Executar validações automatizadas no CI, conforme a decisão atual de não testar localmente.
+- Conforme autorização de 16/11/2026, executar também testes locais e builds com serviços simulados, além do CI. A autorização não altera o merge/deploy manual nem autoriza cobrança de provedores.
 - Fazer avaliação visual no Render após publicação.
 - Não considerar uma entrega validada apenas porque compilou ou porque a IA seguiu uma instrução em uma consulta.
 - Revisar prioridades conforme a pesquisa e os resultados, preservando o histórico das decisões.
