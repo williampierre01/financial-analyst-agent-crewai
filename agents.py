@@ -138,7 +138,7 @@ def _build_crew(
     quant_task = Task(
         description=(
             "Com base nos dados validados abaixo, avalie quais métricas (P/L, ROE, "
-            "margem líquida) têm base suficiente e calcule somente essas. "
+            "lucro informado/receita) têm base suficiente e calcule somente essas. "
             "Não é obrigatório produzir DCF. Se um indicador estiver indisponível no "
             "resultado do código, reporte o motivo específico em vez de estimar."
             " Mesmo com fundamentals_available=true, valide os campos e periodos "

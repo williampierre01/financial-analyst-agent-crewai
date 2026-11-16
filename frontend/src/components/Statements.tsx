@@ -7,7 +7,7 @@ const groups = [
     title: "Resultados",
     fields: [
       ["revenue", "Receita"],
-      ["net_income", "Lucro líquido"],
+      ["net_income", "Lucro líquido informado pelo provedor"],
       ["operating_income", "Resultado operacional"],
       ["diluted_eps", "Lucro diluído por ação"],
     ],
@@ -27,7 +27,7 @@ const groups = [
     title: "Fluxo de caixa",
     fields: [
       ["operating_cash_flow", "Caixa operacional"],
-      ["free_cash_flow", "Fluxo de caixa livre"],
+      ["free_cash_flow", "Fluxo de caixa livre do provedor"],
     ],
   },
 ] as const;
@@ -81,6 +81,18 @@ export default function Statements({
                       <tr key={key}>
                         <th scope="row">
                           {label}
+                          {key === "net_income" && (
+                            <small>
+                              Pode ser atribuível aos acionistas; não equivale
+                              necessariamente ao lucro consolidado total.
+                            </small>
+                          )}
+                          {key === "free_cash_flow" && (
+                            <small>
+                              Fórmula não conciliada; pode diferir da medida
+                              publicada pela companhia.
+                            </small>
+                          )}
                           {key === "diluted_eps" && (
                             <small>Valor por ação · sem escala</small>
                           )}

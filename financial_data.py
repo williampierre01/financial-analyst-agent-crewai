@@ -14,7 +14,7 @@ from typing import Callable
 FIELDS = {
     "income_statement": {
         "revenue": ("Receita", "Total Revenue"),
-        "net_income": ("Lucro líquido", "Net Income"),
+        "net_income": ("Lucro líquido informado pelo provedor", "Net Income"),
         "operating_income": ("Resultado operacional", "Operating Income"),
         "diluted_eps": ("Lucro diluído por ação", "Diluted EPS"),
     },
@@ -26,7 +26,7 @@ FIELDS = {
     },
     "cash_flow": {
         "operating_cash_flow": ("Fluxo de caixa operacional", "Operating Cash Flow"),
-        "free_cash_flow": ("Fluxo de caixa livre", "Free Cash Flow"),
+        "free_cash_flow": ("Fluxo de caixa livre do provedor", "Free Cash Flow"),
     },
 }
 REQUIRED = {
@@ -204,5 +204,9 @@ def render_data_report(snapshot: dict) -> str:
                 lines.append(f"| {names[0]} | {period['period_end']} | {period['currency'] or 'Não informada'} | {number(period['values'].get(key))} |")
     if snapshot["warnings"]:
         lines += ["", "**Limitações dos dados**", ""] + [f"- {w}" for w in snapshot["warnings"]]
-    lines += ["", "Demonstração técnica; não constitui recomendação de investimento."]
+    lines += ["", "Lucro líquido informado pelo provedor pode ser atribuível aos acionistas; "
+              "não equivale necessariamente ao lucro consolidado total. "
+              "Fluxo de caixa livre do provedor: fórmula não conciliada; "
+              "pode diferir da medida publicada pela companhia.",
+              "", "Demonstração técnica; não constitui recomendação de investimento."]
     return "\n".join(lines)

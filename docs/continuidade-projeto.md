@@ -2,16 +2,22 @@
 
 ## Primeiro passo no próximo chat
 
+Última etapa: PR #29 incorporado e Live em `c3668b2`, confirmado pela captura
+do usuário. Diagnóstico documental em `diagnostico-dados-financeiros.md`;
+correção de rótulos/definições preparada na branch `codex/definicoes-indicadores`.
+Números e contrato preservados; lucro informado/receita não é automaticamente
+margem consolidada. Operacional continua bloqueado. Conferir PR/CI antes do merge.
+
 Atualização: PR #28 incorporado (`a3f8137`), publicação informada pelo usuário.
 Homologados acesso do proprietário, bloqueio por ID para outra conta, acesso
 negado após logout e manutenção da sessão da outra conta. Ver limites dessas
-evidências no estado atual. Correção 503 em preparação na branch
-`codex/retry-503`: uma repetição extra por análise, sem testes reais de IA.
+evidências no estado atual. Correção 503 já publicada pelo PR #29:
+uma repetição extra por análise, validada sem testes reais de IA.
 
 Ler este arquivo, `estado-atual.md`, `plano-geral-desenvolvimento.md` e
 `pendencias-homologacao.md`. Conferir Git e GitHub antes de modificar arquivos.
 PR #27 teve merge confirmado em 16/11/2026 às 04:30 (Brasília), commit `ef5bef7`.
-Verificar evidência de publicação Live no Render; ela ainda não foi confirmada. O usuário faz
+O deploy posterior do PR #29 está confirmado Live. O usuário faz
 merge e deploy/configuração manualmente. Não repetir análises só para obter
 evidência já disponível.
 

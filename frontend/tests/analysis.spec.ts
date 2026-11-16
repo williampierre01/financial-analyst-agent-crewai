@@ -9,6 +9,26 @@ const complete = () =>
     data: Snapshot;
     interpretation: string;
   };
+
+test("provider definitions remain explicit without changing supplied amounts", async ({
+  page,
+}) => {
+  await mock(page);
+  await page.goto("/");
+  await search(page);
+  await expect(
+    page.getByRole("row", { name: /Lucro líquido informado pelo provedor/ }),
+  ).toContainText("acionistas");
+  await expect(
+    page.getByRole("row", { name: /Fluxo de caixa livre do provedor/ }),
+  ).toContainText("Fórmula não conciliada");
+  await expect(
+    page.getByText("Lucro líquido anual do provedor", { exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByText("Fluxo de caixa livre anual do provedor", { exact: true }),
+  ).toBeVisible();
+});
 async function mock(page: Page, result = complete()) {
   let posts = 0;
   await page.route("**/api/analyses**", async (route) => {

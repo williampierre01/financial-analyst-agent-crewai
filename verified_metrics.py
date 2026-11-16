@@ -73,9 +73,12 @@ def calculate_metrics(snapshot: dict | None) -> list[dict]:
         equity = operand(balance, "stockholders_equity", "balance_sheet")
         metric("ROE sobre patrimônio de encerramento", end,
                "lucro líquido / patrimônio de encerramento × 100", [net, equity], ratio,
-               note="Usa o saldo final, não a média dos saldos. Não explica causas de variação.")
-        metric("Margem líquida", end, "lucro líquido / receita × 100",
-               [net, operand(income, "revenue", "income_statement")], ratio)
+               note="Usa lucro informado pelo provedor e patrimônio dos acionistas no encerramento. "
+                    "Perímetros contábeis não conciliados; não usa a média dos saldos nem explica causas de variação.")
+        metric("Lucro informado/receita", end, "lucro líquido informado pelo provedor / receita × 100",
+               [net, operand(income, "revenue", "income_statement")], ratio,
+               note="O lucro pode ser atribuível aos acionistas, distinto do lucro consolidado total. "
+                    "Não tratar automaticamente esta razão como margem líquida consolidada; perímetro não conciliado.")
         metric("Dívida/patrimônio", end, "dívida total / patrimônio de encerramento × 100",
                [operand(balance, "total_debt", "balance_sheet"), equity], ratio)
 
@@ -100,7 +103,8 @@ def calculate_metrics(snapshot: dict | None) -> list[dict]:
                extra_reason=("Saldo do encerramento anual imediatamente anterior não disponível "
                              "ou datas não compatíveis com a convenção adotada.") if opening is None else None,
                note="Aproximação pela média simples dos saldos de dois encerramentos anuais consecutivos; "
-                    "não é média ponderada no tempo. Depende de comparabilidade contábil, não verificada pela fonte.")
+                    "não é média ponderada no tempo. Usa lucro do provedor e patrimônio dos acionistas; "
+                    "perímetros e comparabilidade contábil não conciliados.")
 
     # Always report P/L availability, even without an income statement.
     end = max((r["period_end"] for r in incomes), default=None)

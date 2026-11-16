@@ -3,6 +3,14 @@
 Atualizado em **16/11/2026**. Código entregue, publicação e homologação são
 registrados separadamente.
 
+## Diagnóstico de dados — 16/11/2026
+
+- Validação da correção de definições: 135 testes backend aprovados, 3 PostgreSQL ignorados (sem Docker); 6 testes de navegador desktop/mobile aprovados, incluindo rótulos, acessibilidade e layout. Build, formatação dos arquivos alterados e schema OpenAPI aprovados. Servidor local encerrado separadamente após os testes, pela limitação Windows já registrada. Merge e publicação desta correção pendentes.
+
+- PR #29 incorporado em `c3668b2`; captura fornecida pelo usuário confirma Live no Render. Repetição 503 validada por simulação, sem provocar incidente real.
+- [Diagnóstico PETR4/VALE3](diagnostico-dados-financeiros.md): fontes oficiais confirmam distinção entre lucro atribuível e consolidado e diferença de definição do FCF Petrobras. A composição do Operating Income do fornecedor continua sem conciliação; bloqueio preservado.
+- Correção preparada após autorização: rótulos de lucro e FCF identificam o provedor; notas explicitam perímetro e fórmula não conciliados. Razão renomeada para “Lucro informado/receita”, sem alterar valores ou operandos. Orientações Quant/CIO e relatório textual alinhados. Não inferir lucro atribuível para todos os ativos, nem substituir FCF pela medida oficial. Contrato JSON e bloqueios preservados; sem nova consulta Yahoo ou IA.
+
 ## Validação local autorizada em 16/11/2026
 
 - O usuário autorizou testes locais; essa decisão substitui a restrição anterior ao CI. Merge e deploy permanecem manuais.
