@@ -15,11 +15,13 @@ if not logger.handlers:
     logger.addHandler(logging.StreamHandler())
 logger.propagate = False
 job_id = ContextVar("llm_job_id", default=None)
+analysis_deadline = ContextVar("llm_analysis_deadline", default=None)
 current_usage = ContextVar("llm_usage", default=None)
 
 
 @dataclass
 class UsageMeter:
+    deadline: float | None = field(default_factory=analysis_deadline.get)
     analysis_id: str = field(default_factory=lambda: job_id.get() or str(uuid4()))
     stage: str = "gathering"
     logical_calls: int = 0

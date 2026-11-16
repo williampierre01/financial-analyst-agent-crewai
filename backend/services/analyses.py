@@ -8,7 +8,7 @@ import time
 from uuid import uuid4
 
 from analysis_models import AnalysisResult
-from llm_usage import job_id as llm_job_id
+from llm_usage import job_id as llm_job_id, analysis_deadline
 from financial_data import normalize_ticker
 
 
@@ -97,6 +97,7 @@ class AnalysisStore:
             # Retention only starts once the worker actually exits.
 
     def _run(self, job_id, ticker):
+        deadline_token = analysis_deadline.set(time.monotonic() + self.timeout_seconds)
         timer = Timer(self.timeout_seconds, self._timeout, args=(job_id,))
         timer.daemon = True
         timer.start()
@@ -116,6 +117,7 @@ class AnalysisStore:
                         record["interpretation_status"] = "failed"
                     record["errors"].append({"code": "analysis_failed", "message": "A análise foi interrompida. Tente novamente."})
         finally:
+            analysis_deadline.reset(deadline_token)
             llm_job_id.reset(usage_token)
             timer.cancel()
             with self._lock:

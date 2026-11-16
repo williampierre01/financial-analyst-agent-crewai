@@ -2,6 +2,12 @@
 
 ## Primeiro passo no próximo chat
 
+Atualização: PR #28 incorporado (`a3f8137`), publicação informada pelo usuário.
+Homologados acesso do proprietário, bloqueio por ID para outra conta, acesso
+negado após logout e manutenção da sessão da outra conta. Ver limites dessas
+evidências no estado atual. Correção 503 em preparação na branch
+`codex/retry-503`: uma repetição extra por análise, sem testes reais de IA.
+
 Ler este arquivo, `estado-atual.md`, `plano-geral-desenvolvimento.md` e
 `pendencias-homologacao.md`. Conferir Git e GitHub antes de modificar arquivos.
 PR #27 teve merge confirmado em 16/11/2026 às 04:30 (Brasília), commit `ef5bef7`.
