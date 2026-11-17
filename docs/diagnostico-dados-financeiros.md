@@ -73,3 +73,114 @@ proveniência e valores esperados independentes da implementação.
 Limites: EPS e sua base de ações, dívida, balanço integral, reapresentações,
 comparabilidade entre empresas e FCF oficial da Vale não auditados nesta rodada.
 Não executar uma alteração de dados até definir o escopo da correção.
+
+## Nova coleta do fornecedor — 16/11/2026
+
+Consulta pública, sem IA, para PETR4.SA e VALE3.SA. Respostas HTTP 200,
+com moeda USD e períodos anuais. Resposta bruta e URL de consulta preservadas
+em `evidencias/yahoo-operating-2026-11-16.json`; o horário UTC consta no arquivo.
+Nenhum cookie ou cabeçalho de autenticação foi incluído.
+Esta coleta substitui a limitação de ausência de snapshot descrita na abertura.
+
+Valores abaixo em USD milhões, na ordem 2025 / 2024:
+
+| Campo Yahoo | Petrobras | Vale |
+|---|---:|---:|
+| OperatingIncome | 27.758 / 25.691 | 11.343 / 11.101 |
+| TotalOperatingIncomeAsReported | 26.113 / 26.876 | 5.897 / 10.788 |
+| GrossProfit | 42.459 / 45.972 | 13.456 / 13.791 |
+| OperatingExpense | 14.701 / 20.281 | 2.113 / 2.690 |
+
+O campo `TotalOperatingIncomeAsReported` coincide com os documentos oficiais
+citados acima nas quatro observações. `OperatingIncome` é igual a GrossProfit
+menos OperatingExpense nas quatro observações, mas não representa a mesma linha.
+Isso demonstra a divergência de campos nesta amostra, não uma definição universal.
+
+Na Vale, a ponte aritmética fecha:
+
+- 2025: 11.343 − 4.599 (ImpairmentOfCapitalAssets) − 847 (OtherSpecialCharges) = 5.897.
+- 2024: 11.101 − (−301) − 614 = 10.788.
+- `SpecialIncomeCharges` é −5.446 / −313, exatamente a diferença entre os campos.
+
+A identidade fecha dentro dos dados Yahoo. A classificação detalhada de
+OtherSpecialCharges nas notas oficiais ainda precisa de comprovação; não chamar
+esse resultado de auditoria nem classificar automaticamente todo item como não recorrente.
+
+Na Petrobras, as diferenças são +1.645 / −1.185 (OperatingIncome menos reportado).
+Ainda não há ponte documentada por componente. As classificações de despesas
+Yahoo diferem das linhas oficiais; não somar subtotais e componentes indiscriminadamente.
+
+Decisão: manter o bloqueio atual. O campo reportado é candidato para uma coleta
+separada com proveniência, moeda, período, ausência e validação explícitos, sem
+fallback para OperatingIncome/EBIT/EBITDA. A coincidência em duas empresas não
+autoriza liberação para todo o mercado. Nenhum código de produção foi alterado.
+
+Próxima etapa: documentar a composição Petrobras e a definição do fornecedor;
+preparar contrato e testes para o campo reportado somente com critérios de aceite
+claros. O diagnóstico não depende de Docker, Neon ou chamadas de IA.
+
+## Petrobras: ponte pelos totais conciliada — 16/11/2026
+
+Fonte adicional: [demonstrações Petrobras arquivadas na SEC](https://www.sec.gov/Archives/edgar/data/1119639/000129281426000706/pbrfs4q25usd_6k.htm), demonstração de resultado e notas 10–12.
+
+A ponte abaixo utiliza valores assinados, em USD milhões. Os dois caminhos
+chegam ao mesmo resultado antes dos impostos; não é uma decomposição completa
+da metodologia de normalização do fornecedor.
+
+| Componente | 2025 | 2024 |
+|---|---:|---:|
+| Yahoo OperatingIncome | 27.758 | 25.691 |
+| Yahoo OtherIncomeExpense | 2.984 | −10.542 |
+| Yahoo NetNonOperatingInterestIncomeExpense | −3.947 | −4.007 |
+| Soma / PretaxIncome | 26.795 | 11.142 |
+| Menos resultado financeiro oficial | −734 | +15.107 |
+| Menos equivalência patrimonial oficial | +52 | +627 |
+| Resultado operacional oficial / Yahoo reportado | 26.113 | 26.876 |
+
+Portanto, o ajuste entre operacional Yahoo e reportado é −1.645 em 2025 e
++1.185 em 2024. O resíduo desta ponte é zero nos dois anos. Não se trata de
+simples exclusão de impairment, nem há fundamento para substituir pelo EBIT.
+
+As notas oficiais mostram que o financeiro inclui mais que juros. A coincidência
+entre resultados antes dos impostos permite conciliar os agregados, mas não prova
+como cada rubrica foi redistribuída pelo fornecedor. Essa rastreabilidade detalhada
+continua pendente; não apresentar a ponte como auditoria integral.
+
+A [ajuda oficial Yahoo](https://help.yahoo.com/kb/SLN37694.html), localizada na busca,
+informa mudança do conjunto de dados Morningstar e de rótulos. A abertura retornou
+HTTP 429. Isso não fornece um contrato para os identificadores do endpoint usado
+pelo aplicativo: não presumir equivalência entre nomes da interface e campos API.
+
+### Resultado da investigação e critério para a próxima implementação
+
+- Divergência reproduzida e pontes aritméticas verificadas em Petrobras e Vale,
+  nos dois exercícios. Campo reportado coincide nas quatro observações.
+- Pendente: definição formal do identificador, rastreabilidade das reclassificações
+  e cobertura além desta amostra. O campo atual permanece bloqueado.
+- Próximo recorte seguro: coletar o campo reportado separadamente, conservando o
+  bloqueio de apresentação e de uso pela IA enquanto sua validação não for explícita.
+  Ausência não vira zero; não usar fallback para OperatingIncome, EBIT ou EBITDA.
+- Uma futura liberação exige regra documentada de moeda, unidade, período e
+  proveniência e teste de valores ausentes/conflitantes, sem correção fixa por ticker.
+
+Verificação offline reproduzível: `python scripts/check_operating_evidence.py`.
+Usa apenas o snapshot público salvo; não acessa rede, banco, Docker ou IA.
+
+## Coletor diagnóstico separado
+
+Implementado `operating_evidence.py`, fora do fluxo do aplicativo e das ferramentas
+MCP/IA. Coleta somente `annualTotalOperatingIncomeAsReported`, sem fallback.
+Preserva zeros e negativos; rejeita identidade/período inválidos, moeda desconhecida
+ou conflitante e valores não finitos. Duplicatas numéricas conflitantes geram erro.
+Todos os resultados têm `validation_status=unverified` e
+`eligible_for_analysis=false`; nenhum valor é promovido ao contrato público.
+
+Execução opcional (consulta Yahoo, sem IA), na raiz do repositório:
+
+```powershell
+.\.venv\Scripts\python.exe operating_evidence.py PETR4 --output ../petrobras-reported.json --cache-dir ../.yahoo-diagnostic-cache
+```
+
+O arquivo de saída precisa ser novo. O comando não é executado automaticamente
+pelo servidor. Nesta etapa, validação por respostas simuladas; o snapshot real da
+investigação anterior permanece como evidência. A interface e seu bloqueio não mudam.

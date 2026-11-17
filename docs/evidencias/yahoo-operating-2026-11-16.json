@@ -1,0 +1,5479 @@
+{
+  "retrieved_at": "2026-11-17T02:41:28.320355+00:00",
+  "tickers": {
+    "PETR4.SA": {
+      "url": "https://query2.finance.yahoo.com/ws/fundamentals-timeseries/v1/finance/timeseries/PETR4.SA?symbol=PETR4.SA&type=annualTaxEffectOfUnusualItems%2CannualTaxRateForCalcs%2CannualNormalizedEBITDA%2CannualNormalizedDilutedEPS%2CannualNormalizedBasicEPS%2CannualTotalUnusualItems%2CannualTotalUnusualItemsExcludingGoodwill%2CannualNetIncomeFromContinuingOperationNetMinorityInterest%2CannualReconciledDepreciation%2CannualReconciledCostOfRevenue%2CannualEBITDA%2CannualEBIT%2CannualNetInterestIncome%2CannualInterestExpense%2CannualInterestIncome%2CannualContinuingAndDiscontinuedDilutedEPS%2CannualContinuingAndDiscontinuedBasicEPS%2CannualNormalizedIncome%2CannualNetIncomeFromContinuingAndDiscontinuedOperation%2CannualTotalExpenses%2CannualRentExpenseSupplemental%2CannualReportedNormalizedDilutedEPS%2CannualReportedNormalizedBasicEPS%2CannualTotalOperatingIncomeAsReported%2CannualDividendPerShare%2CannualDilutedAverageShares%2CannualBasicAverageShares%2CannualDilutedEPS%2CannualDilutedEPSOtherGainsLosses%2CannualTaxLossCarryforwardDilutedEPS%2CannualDilutedAccountingChange%2CannualDilutedExtraordinary%2CannualDilutedDiscontinuousOperations%2CannualDilutedContinuousOperations%2CannualBasicEPS%2CannualBasicEPSOtherGainsLosses%2CannualTaxLossCarryforwardBasicEPS%2CannualBasicAccountingChange%2CannualBasicExtraordinary%2CannualBasicDiscontinuousOperations%2CannualBasicContinuousOperations%2CannualDilutedNIAvailtoComStockholders%2CannualAverageDilutionEarnings%2CannualNetIncomeCommonStockholders%2CannualOtherunderPreferredStockDividend%2CannualPreferredStockDividends%2CannualNetIncome%2CannualMinorityInterests%2CannualNetIncomeIncludingNoncontrollingInterests%2CannualNetIncomeFromTaxLossCarryforward%2CannualNetIncomeExtraordinary%2CannualNetIncomeDiscontinuousOperations%2CannualNetIncomeContinuousOperations%2CannualEarningsFromEquityInterestNetOfTax%2CannualTaxProvision%2CannualPretaxIncome%2CannualOtherIncomeExpense%2CannualOtherNonOperatingIncomeExpenses%2CannualSpecialIncomeCharges%2CannualGainOnSaleOfPPE%2CannualGainOnSaleOfBusiness%2CannualOtherSpecialCharges%2CannualWriteOff%2CannualImpairmentOfCapitalAssets%2CannualRestructuringAndMergernAcquisition%2CannualSecuritiesAmortization%2CannualEarningsFromEquityInterest%2CannualGainOnSaleOfSecurity%2CannualNetNonOperatingInterestIncomeExpense%2CannualTotalOtherFinanceCost%2CannualInterestExpenseNonOperating%2CannualInterestIncomeNonOperating%2CannualOperatingIncome%2CannualOperatingExpense%2CannualOtherOperatingExpenses%2CannualOtherTaxes%2CannualProvisionForDoubtfulAccounts%2CannualDepreciationAmortizationDepletionIncomeStatement%2CannualDepletionIncomeStatement%2CannualDepreciationAndAmortizationInIncomeStatement%2CannualAmortization%2CannualAmortizationOfIntangiblesIncomeStatement%2CannualDepreciationIncomeStatement%2CannualResearchAndDevelopment%2CannualSellingGeneralAndAdministration%2CannualSellingAndMarketingExpense%2CannualGeneralAndAdministrativeExpense%2CannualOtherGandA%2CannualInsuranceAndClaims%2CannualRentAndLandingFees%2CannualSalariesAndWages%2CannualGrossProfit%2CannualCostOfRevenue%2CannualTotalRevenue%2CannualExciseTaxes%2CannualOperatingRevenue%2CannualLossAdjustmentExpense%2CannualNetPolicyholderBenefitsAndClaims%2CannualPolicyholderBenefitsGross%2CannualPolicyholderBenefitsCeded%2CannualOccupancyAndEquipment%2CannualProfessionalExpenseAndContractServicesExpense%2CannualOtherNonInterestExpense&period1=1704067200&period2=1794883288",
+      "status": 200,
+      "payload": {
+        "timeseries": {
+          "result": [
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualResearchAndDevelopment"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualResearchAndDevelopment": [
+                {
+                  "dataId": 20151,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 789000000.0,
+                    "fmt": "789.00M"
+                  }
+                },
+                {
+                  "dataId": 20151,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 864000000.0,
+                    "fmt": "864.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualInterestExpenseNonOperating"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualInterestExpenseNonOperating": [
+                {
+                  "dataId": 20064,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 3841000000.0,
+                    "fmt": "3.84B"
+                  }
+                },
+                {
+                  "dataId": 20064,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4096000000.0,
+                    "fmt": "4.10B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualTotalRevenue"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalRevenue": [
+                {
+                  "dataId": 20100,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 91416000000.0,
+                    "fmt": "91.42B"
+                  }
+                },
+                {
+                  "dataId": 20100,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 89195000000.0,
+                    "fmt": "89.19B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualGrossProfit"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualGrossProfit": [
+                {
+                  "dataId": 20046,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 45972000000.0,
+                    "fmt": "45.97B"
+                  }
+                },
+                {
+                  "dataId": 20046,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 42459000000.0,
+                    "fmt": "42.46B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOtherTaxes"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOtherTaxes": [
+                {
+                  "dataId": 20271,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 3211000000.0,
+                    "fmt": "3.21B"
+                  }
+                },
+                {
+                  "dataId": 20271,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 553000000.0,
+                    "fmt": "553.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualTaxProvision"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTaxProvision": [
+                {
+                  "dataId": 20145,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 3537000000.0,
+                    "fmt": "3.54B"
+                  }
+                },
+                {
+                  "dataId": 20145,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 7075000000.0,
+                    "fmt": "7.08B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetIncomeIncludingNoncontrollingInterests"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncomeIncludingNoncontrollingInterests": [
+                {
+                  "dataId": 20346,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 7605000000.0,
+                    "fmt": "7.61B"
+                  }
+                },
+                {
+                  "dataId": 20346,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 19720000000.0,
+                    "fmt": "19.72B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualMinorityInterests"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualMinorityInterests": [
+                {
+                  "dataId": 20087,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -77000000.0,
+                    "fmt": "-77.00M"
+                  }
+                },
+                {
+                  "dataId": 20087,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -86000000.0,
+                    "fmt": "-86.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDilutedEPS"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualDilutedEPS": [
+                {
+                  "dataId": 29009,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 0.58,
+                    "fmt": "0.58"
+                  }
+                },
+                {
+                  "dataId": 29009,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1.52,
+                    "fmt": "1.52"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetInterestIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetInterestIncome": [
+                {
+                  "dataId": 20095,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -4007000000.0,
+                    "fmt": "-4.01B"
+                  }
+                },
+                {
+                  "dataId": 20095,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -3947000000.0,
+                    "fmt": "-3.95B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualTotalUnusualItemsExcludingGoodwill"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalUnusualItemsExcludingGoodwill": [
+                {
+                  "dataId": 20417,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -11056000000.0,
+                    "fmt": "-11.06B"
+                  }
+                },
+                {
+                  "dataId": 20417,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2095000000.0,
+                    "fmt": "2.10B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualEBITDA"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualEBITDA": [
+                {
+                  "dataId": 20190,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 27462000000.0,
+                    "fmt": "27.46B"
+                  }
+                },
+                {
+                  "dataId": 20190,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 46038000000.0,
+                    "fmt": "46.04B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOperatingIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOperatingIncome": [
+                {
+                  "dataId": 20109,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 25691000000.0,
+                    "fmt": "25.69B"
+                  }
+                },
+                {
+                  "dataId": 20109,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 27758000000.0,
+                    "fmt": "27.76B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOtherIncomeExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOtherIncomeExpense": [
+                {
+                  "dataId": 20117,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -10542000000.0,
+                    "fmt": "-10.54B"
+                  }
+                },
+                {
+                  "dataId": 20117,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2984000000.0,
+                    "fmt": "2.98B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOtherSpecialCharges"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOtherSpecialCharges": [
+                {
+                  "dataId": 20269,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 647000000.0,
+                    "fmt": "647.00M"
+                  }
+                },
+                {
+                  "dataId": 20269,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 407000000.0,
+                    "fmt": "407.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualTotalExpenses"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalExpenses": [
+                {
+                  "dataId": 20164,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 65725000000.0,
+                    "fmt": "65.72B"
+                  }
+                },
+                {
+                  "dataId": 20164,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 61437000000.0,
+                    "fmt": "61.44B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualTotalOperatingIncomeAsReported"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalOperatingIncomeAsReported": [
+                {
+                  "dataId": 20435,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 26876000000.0,
+                    "fmt": "26.88B"
+                  }
+                },
+                {
+                  "dataId": 20435,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 26113000000.0,
+                    "fmt": "26.11B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualTaxEffectOfUnusualItems"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTaxEffectOfUnusualItems": [
+                {
+                  "dataId": 20419,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -3582144000.0,
+                    "fmt": "-3.58B"
+                  }
+                },
+                {
+                  "dataId": 20419,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 557270000.0,
+                    "fmt": "557.27M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetIncomeContinuousOperations"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncomeContinuousOperations": [
+                {
+                  "dataId": 20094,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 7605000000.0,
+                    "fmt": "7.61B"
+                  }
+                },
+                {
+                  "dataId": 20094,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 19720000000.0,
+                    "fmt": "19.72B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualGainOnSaleOfSecurity"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualGainOnSaleOfSecurity": [
+                {
+                  "dataId": 20219,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -9098000000.0,
+                    "fmt": "-9.10B"
+                  }
+                },
+                {
+                  "dataId": 20219,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4487000000.0,
+                    "fmt": "4.49B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualEBIT"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualEBIT": [
+                {
+                  "dataId": 20189,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 14983000000.0,
+                    "fmt": "14.98B"
+                  }
+                },
+                {
+                  "dataId": 20189,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 30891000000.0,
+                    "fmt": "30.89B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualSellingAndMarketingExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualSellingAndMarketingExpense": [
+                {
+                  "dataId": 20158,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4080000000.0,
+                    "fmt": "4.08B"
+                  }
+                },
+                {
+                  "dataId": 20158,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4312000000.0,
+                    "fmt": "4.31B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualTotalUnusualItems"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalUnusualItems": [
+                {
+                  "dataId": 20416,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -11056000000.0,
+                    "fmt": "-11.06B"
+                  }
+                },
+                {
+                  "dataId": 20416,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2095000000.0,
+                    "fmt": "2.10B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNormalizedIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNormalizedIncome": [
+                {
+                  "dataId": 20316,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 15001856000.0,
+                    "fmt": "15.00B"
+                  }
+                },
+                {
+                  "dataId": 20316,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 18096270000.0,
+                    "fmt": "18.10B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualInterestIncomeNonOperating"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualInterestIncomeNonOperating": [
+                {
+                  "dataId": 20075,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 447000000.0,
+                    "fmt": "447.00M"
+                  }
+                },
+                {
+                  "dataId": 20075,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 402000000.0,
+                    "fmt": "402.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncome": [
+                {
+                  "dataId": 20091,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 7528000000.0,
+                    "fmt": "7.53B"
+                  }
+                },
+                {
+                  "dataId": 20091,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 19634000000.0,
+                    "fmt": "19.63B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualEarningsFromEquityInterest"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualEarningsFromEquityInterest": [
+                {
+                  "dataId": 20208,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -627000000.0,
+                    "fmt": "-627.00M"
+                  }
+                },
+                {
+                  "dataId": 20208,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -52000000.0,
+                    "fmt": "-52.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualProvisionForDoubtfulAccounts"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualProvisionForDoubtfulAccounts": [
+                {
+                  "dataId": 20283,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 258000000.0,
+                    "fmt": "258.00M"
+                  }
+                },
+                {
+                  "dataId": 20283,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 80000000.0,
+                    "fmt": "80.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualBasicAverageShares"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualBasicAverageShares": [
+                {
+                  "dataId": 29010,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 12898762128.0,
+                    "fmt": "12.90B"
+                  }
+                },
+                {
+                  "dataId": 29010,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 12888732761.0,
+                    "fmt": "12.89B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOperatingExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOperatingExpense": [
+                {
+                  "dataId": 20108,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 20281000000.0,
+                    "fmt": "20.28B"
+                  }
+                },
+                {
+                  "dataId": 20108,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 14701000000.0,
+                    "fmt": "14.70B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualCostOfRevenue"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualCostOfRevenue": [
+                {
+                  "dataId": 20013,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 45444000000.0,
+                    "fmt": "45.44B"
+                  }
+                },
+                {
+                  "dataId": 20013,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 46736000000.0,
+                    "fmt": "46.74B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualInterestIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualInterestIncome": [
+                {
+                  "dataId": 20177,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 447000000.0,
+                    "fmt": "447.00M"
+                  }
+                },
+                {
+                  "dataId": 20177,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 402000000.0,
+                    "fmt": "402.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualPretaxIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualPretaxIncome": [
+                {
+                  "dataId": 20136,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 11142000000.0,
+                    "fmt": "11.14B"
+                  }
+                },
+                {
+                  "dataId": 20136,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 26795000000.0,
+                    "fmt": "26.80B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualRestructuringAndMergernAcquisition"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualRestructuringAndMergernAcquisition": [
+                {
+                  "dataId": 20289,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 8000000.0,
+                    "fmt": "8.00M"
+                  }
+                },
+                {
+                  "dataId": 20289,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 486000000.0,
+                    "fmt": "486.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDepreciationAmortizationDepletionIncomeStatement"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualDepreciationAmortizationDepletionIncomeStatement": [
+                {
+                  "dataId": 20020,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 816000000.0,
+                    "fmt": "816.00M"
+                  }
+                },
+                {
+                  "dataId": 20020,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 937000000.0,
+                    "fmt": "937.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNormalizedEBITDA"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNormalizedEBITDA": [
+                {
+                  "dataId": 20420,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 38518000000.0,
+                    "fmt": "38.52B"
+                  }
+                },
+                {
+                  "dataId": 20420,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 43943000000.0,
+                    "fmt": "43.94B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDilutedNIAvailtoComStockholders"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualDilutedNIAvailtoComStockholders": [
+                {
+                  "dataId": 20424,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 7528000000.0,
+                    "fmt": "7.53B"
+                  }
+                },
+                {
+                  "dataId": 20424,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 19634000000.0,
+                    "fmt": "19.63B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualGeneralAndAdministrativeExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualGeneralAndAdministrativeExpense": [
+                {
+                  "dataId": 20045,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4953000000.0,
+                    "fmt": "4.95B"
+                  }
+                },
+                {
+                  "dataId": 20045,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4557000000.0,
+                    "fmt": "4.56B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualSalariesAndWages"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualSalariesAndWages": [
+                {
+                  "dataId": 20292,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4458000000.0,
+                    "fmt": "4.46B"
+                  }
+                },
+                {
+                  "dataId": 20292,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 3944000000.0,
+                    "fmt": "3.94B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualSellingGeneralAndAdministration"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualSellingGeneralAndAdministration": [
+                {
+                  "dataId": 20159,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 9033000000.0,
+                    "fmt": "9.03B"
+                  }
+                },
+                {
+                  "dataId": 20159,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 8869000000.0,
+                    "fmt": "8.87B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualRentExpenseSupplemental"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualRentExpenseSupplemental": [
+                {
+                  "dataId": 20440,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 495000000.0,
+                    "fmt": "495.00M"
+                  }
+                },
+                {
+                  "dataId": 20440,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 613000000.0,
+                    "fmt": "613.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOtherNonOperatingIncomeExpenses"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOtherNonOperatingIncomeExpenses": [
+                {
+                  "dataId": 20412,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1141000000.0,
+                    "fmt": "1.14B"
+                  }
+                },
+                {
+                  "dataId": 20412,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 941000000.0,
+                    "fmt": "941.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOtherOperatingExpenses"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOtherOperatingExpenses": [
+                {
+                  "dataId": 20312,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 3557000000.0,
+                    "fmt": "3.56B"
+                  }
+                },
+                {
+                  "dataId": 20312,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 740000000.0,
+                    "fmt": "740.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualImpairmentOfCapitalAssets"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualImpairmentOfCapitalAssets": [
+                {
+                  "dataId": 20225,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1531000000.0,
+                    "fmt": "1.53B"
+                  }
+                },
+                {
+                  "dataId": 20225,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1519000000.0,
+                    "fmt": "1.52B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualRentAndLandingFees"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualRentAndLandingFees": [
+                {
+                  "dataId": 20287,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 495000000.0,
+                    "fmt": "495.00M"
+                  }
+                },
+                {
+                  "dataId": 20287,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 613000000.0,
+                    "fmt": "613.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetIncomeFromContinuingAndDiscontinuedOperation"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncomeFromContinuingAndDiscontinuedOperation": [
+                {
+                  "dataId": 20309,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 7528000000.0,
+                    "fmt": "7.53B"
+                  }
+                },
+                {
+                  "dataId": 20309,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 19634000000.0,
+                    "fmt": "19.63B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualWriteOff"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualWriteOff": [
+                {
+                  "dataId": 20304,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1531000000.0,
+                    "fmt": "1.53B"
+                  }
+                },
+                {
+                  "dataId": 20304,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4177000000.0,
+                    "fmt": "4.18B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualGainOnSaleOfPPE"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualGainOnSaleOfPPE": [
+                {
+                  "dataId": 20218,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 228000000.0,
+                    "fmt": "228.00M"
+                  }
+                },
+                {
+                  "dataId": 20218,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 20000000.0,
+                    "fmt": "20.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDilutedAverageShares"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualDilutedAverageShares": [
+                {
+                  "dataId": 29011,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 12898762128.0,
+                    "fmt": "12.90B"
+                  }
+                },
+                {
+                  "dataId": 29011,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 12888732761.0,
+                    "fmt": "12.89B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualTaxRateForCalcs"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTaxRateForCalcs": [
+                {
+                  "dataId": 20418,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 0.324,
+                    "fmt": "0.32"
+                  }
+                },
+                {
+                  "dataId": 20418,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 0.266,
+                    "fmt": "0.27"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetNonOperatingInterestIncomeExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetNonOperatingInterestIncomeExpense": [
+                {
+                  "dataId": 20077,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -4007000000.0,
+                    "fmt": "-4.01B"
+                  }
+                },
+                {
+                  "dataId": 20077,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -3947000000.0,
+                    "fmt": "-3.95B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualReconciledCostOfRevenue"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualReconciledCostOfRevenue": [
+                {
+                  "dataId": 20314,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 33781000000.0,
+                    "fmt": "33.78B"
+                  }
+                },
+                {
+                  "dataId": 20314,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 32526000000.0,
+                    "fmt": "32.53B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualBasicEPS"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualBasicEPS": [
+                {
+                  "dataId": 29004,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 0.58,
+                    "fmt": "0.58"
+                  }
+                },
+                {
+                  "dataId": 29004,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1.52,
+                    "fmt": "1.52"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOperatingRevenue"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOperatingRevenue": [
+                {
+                  "dataId": 20112,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 91416000000.0,
+                    "fmt": "91.42B"
+                  },
+                  "businessSegmentData": [
+                    {
+                      "dataValue": 319000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Corporate and other businesses",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": -64218000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Eliminations",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 60516000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Exploration and Production (E&P)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 9518000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Gas and Low Carbon Energies (G&LCE)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 85281000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Refining, Transportation & Marketing (RT&M)",
+                      "isPrimarySegment": 1
+                    }
+                  ],
+                  "geographicSegmentData": [
+                    {
+                      "dataValue": 3610000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Americas (except United States)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 1989000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Asia (except China and Singapore)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 7701000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "China",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 66275000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Domestic market",
+                      "isPrimarySegment": 1
+                    },
+                    {
+                      "dataValue": 5440000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Europe",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 47000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Others",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 2883000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Singapore",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 3471000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "United States",
+                      "isPrimarySegment": 0
+                    }
+                  ]
+                },
+                {
+                  "dataId": 20112,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 89195000000.0,
+                    "fmt": "89.19B"
+                  },
+                  "businessSegmentData": [
+                    {
+                      "dataValue": 338000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Corporate and other businesses",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": -63540000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Eliminations",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 59537000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Exploration and Production (E&P)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 8695000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Gas and Low Carbon Energies (G&LCE)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 84165000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Refining, Transportation & Marketing (RT&M)",
+                      "isPrimarySegment": 1
+                    }
+                  ],
+                  "geographicSegmentData": [
+                    {
+                      "dataValue": 3607000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Americas (except United States)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 4315000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Asia (except China and Singapore)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 9679000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "China",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 62938000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Domestic market",
+                      "isPrimarySegment": 1
+                    },
+                    {
+                      "dataValue": 3657000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Europe",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 418000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Others",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 2641000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Singapore",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 1940000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "United States",
+                      "isPrimarySegment": 0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetIncomeCommonStockholders"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncomeCommonStockholders": [
+                {
+                  "dataId": 20093,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 7528000000.0,
+                    "fmt": "7.53B"
+                  },
+                  "businessSegmentData": [
+                    {
+                      "dataValue": -12625000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Corporate and other businesses",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": -446000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Eliminations",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 18593000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Exploration and Production (E&P)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 682000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Gas and Low Carbon Energies (G&LCE)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 1324000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Refining, Transportation & Marketing (RT&M)",
+                      "isPrimarySegment": 1
+                    }
+                  ]
+                },
+                {
+                  "dataId": 20093,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 19634000000.0,
+                    "fmt": "19.63B"
+                  },
+                  "businessSegmentData": [
+                    {
+                      "dataValue": -9000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Corporate and other businesses",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 404000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Eliminations",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 17228000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Exploration and Production (E&P)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 268000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Gas and Low Carbon Energies (G&LCE)",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 1743000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Refining, Transportation & Marketing (RT&M)",
+                      "isPrimarySegment": 1
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualReconciledDepreciation"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualReconciledDepreciation": [
+                {
+                  "dataId": 20315,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 12479000000.0,
+                    "fmt": "12.48B"
+                  }
+                },
+                {
+                  "dataId": 20315,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 15147000000.0,
+                    "fmt": "15.15B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualSpecialIncomeCharges"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualSpecialIncomeCharges": [
+                {
+                  "dataId": 20162,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -1958000000.0,
+                    "fmt": "-1.96B"
+                  }
+                },
+                {
+                  "dataId": 20162,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -2392000000.0,
+                    "fmt": "-2.39B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualInterestExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualInterestExpense": [
+                {
+                  "dataId": 20057,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 3841000000.0,
+                    "fmt": "3.84B"
+                  }
+                },
+                {
+                  "dataId": 20057,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4096000000.0,
+                    "fmt": "4.10B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualTotalOtherFinanceCost"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalOtherFinanceCost": [
+                {
+                  "dataId": 20368,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 613000000.0,
+                    "fmt": "613.00M"
+                  }
+                },
+                {
+                  "dataId": 20368,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 253000000.0,
+                    "fmt": "253.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetIncomeFromContinuingOperationNetMinorityInterest"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncomeFromContinuingOperationNetMinorityInterest": [
+                {
+                  "dataId": 20331,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 7528000000.0,
+                    "fmt": "7.53B"
+                  }
+                },
+                {
+                  "dataId": 20331,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 19634000000.0,
+                    "fmt": "19.63B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualContinuingAndDiscontinuedBasicEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualInsuranceAndClaims"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDividendPerShare"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualContinuingAndDiscontinuedDilutedEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOtherGandA"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDepletionIncomeStatement"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDepreciationIncomeStatement"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetIncomeFromTaxLossCarryforward"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetIncomeExtraordinary"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualExciseTaxes"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualBasicAccountingChange"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDilutedAccountingChange"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOtherNonInterestExpense"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetPolicyholderBenefitsAndClaims"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualTaxLossCarryforwardBasicEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualReportedNormalizedBasicEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualBasicExtraordinary"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNormalizedBasicEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDilutedContinuousOperations"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualTaxLossCarryforwardDilutedEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDilutedEPSOtherGainsLosses"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDilutedDiscontinuousOperations"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualProfessionalExpenseAndContractServicesExpense"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualPolicyholderBenefitsCeded"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualBasicContinuousOperations"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDepreciationAndAmortizationInIncomeStatement"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualAverageDilutionEarnings"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOccupancyAndEquipment"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualOtherunderPreferredStockDividend"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualSecuritiesAmortization"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualReportedNormalizedDilutedEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualBasicDiscontinuousOperations"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualAmortization"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualEarningsFromEquityInterestNetOfTax"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualBasicEPSOtherGainsLosses"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualLossAdjustmentExpense"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualAmortizationOfIntangiblesIncomeStatement"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualPolicyholderBenefitsGross"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNetIncomeDiscontinuousOperations"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualPreferredStockDividends"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualNormalizedDilutedEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualDilutedExtraordinary"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "PETR4.SA"
+                ],
+                "type": [
+                  "annualGainOnSaleOfBusiness"
+                ]
+              }
+            }
+          ],
+          "error": null
+        }
+      }
+    },
+    "VALE3.SA": {
+      "url": "https://query2.finance.yahoo.com/ws/fundamentals-timeseries/v1/finance/timeseries/VALE3.SA?symbol=VALE3.SA&type=annualTaxEffectOfUnusualItems%2CannualTaxRateForCalcs%2CannualNormalizedEBITDA%2CannualNormalizedDilutedEPS%2CannualNormalizedBasicEPS%2CannualTotalUnusualItems%2CannualTotalUnusualItemsExcludingGoodwill%2CannualNetIncomeFromContinuingOperationNetMinorityInterest%2CannualReconciledDepreciation%2CannualReconciledCostOfRevenue%2CannualEBITDA%2CannualEBIT%2CannualNetInterestIncome%2CannualInterestExpense%2CannualInterestIncome%2CannualContinuingAndDiscontinuedDilutedEPS%2CannualContinuingAndDiscontinuedBasicEPS%2CannualNormalizedIncome%2CannualNetIncomeFromContinuingAndDiscontinuedOperation%2CannualTotalExpenses%2CannualRentExpenseSupplemental%2CannualReportedNormalizedDilutedEPS%2CannualReportedNormalizedBasicEPS%2CannualTotalOperatingIncomeAsReported%2CannualDividendPerShare%2CannualDilutedAverageShares%2CannualBasicAverageShares%2CannualDilutedEPS%2CannualDilutedEPSOtherGainsLosses%2CannualTaxLossCarryforwardDilutedEPS%2CannualDilutedAccountingChange%2CannualDilutedExtraordinary%2CannualDilutedDiscontinuousOperations%2CannualDilutedContinuousOperations%2CannualBasicEPS%2CannualBasicEPSOtherGainsLosses%2CannualTaxLossCarryforwardBasicEPS%2CannualBasicAccountingChange%2CannualBasicExtraordinary%2CannualBasicDiscontinuousOperations%2CannualBasicContinuousOperations%2CannualDilutedNIAvailtoComStockholders%2CannualAverageDilutionEarnings%2CannualNetIncomeCommonStockholders%2CannualOtherunderPreferredStockDividend%2CannualPreferredStockDividends%2CannualNetIncome%2CannualMinorityInterests%2CannualNetIncomeIncludingNoncontrollingInterests%2CannualNetIncomeFromTaxLossCarryforward%2CannualNetIncomeExtraordinary%2CannualNetIncomeDiscontinuousOperations%2CannualNetIncomeContinuousOperations%2CannualEarningsFromEquityInterestNetOfTax%2CannualTaxProvision%2CannualPretaxIncome%2CannualOtherIncomeExpense%2CannualOtherNonOperatingIncomeExpenses%2CannualSpecialIncomeCharges%2CannualGainOnSaleOfPPE%2CannualGainOnSaleOfBusiness%2CannualOtherSpecialCharges%2CannualWriteOff%2CannualImpairmentOfCapitalAssets%2CannualRestructuringAndMergernAcquisition%2CannualSecuritiesAmortization%2CannualEarningsFromEquityInterest%2CannualGainOnSaleOfSecurity%2CannualNetNonOperatingInterestIncomeExpense%2CannualTotalOtherFinanceCost%2CannualInterestExpenseNonOperating%2CannualInterestIncomeNonOperating%2CannualOperatingIncome%2CannualOperatingExpense%2CannualOtherOperatingExpenses%2CannualOtherTaxes%2CannualProvisionForDoubtfulAccounts%2CannualDepreciationAmortizationDepletionIncomeStatement%2CannualDepletionIncomeStatement%2CannualDepreciationAndAmortizationInIncomeStatement%2CannualAmortization%2CannualAmortizationOfIntangiblesIncomeStatement%2CannualDepreciationIncomeStatement%2CannualResearchAndDevelopment%2CannualSellingGeneralAndAdministration%2CannualSellingAndMarketingExpense%2CannualGeneralAndAdministrativeExpense%2CannualOtherGandA%2CannualInsuranceAndClaims%2CannualRentAndLandingFees%2CannualSalariesAndWages%2CannualGrossProfit%2CannualCostOfRevenue%2CannualTotalRevenue%2CannualExciseTaxes%2CannualOperatingRevenue%2CannualLossAdjustmentExpense%2CannualNetPolicyholderBenefitsAndClaims%2CannualPolicyholderBenefitsGross%2CannualPolicyholderBenefitsCeded%2CannualOccupancyAndEquipment%2CannualProfessionalExpenseAndContractServicesExpense%2CannualOtherNonInterestExpense&period1=1704067200&period2=1794883289",
+      "status": 200,
+      "payload": {
+        "timeseries": {
+          "result": [
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOperatingIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOperatingIncome": [
+                {
+                  "dataId": 20109,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 11101000000.0,
+                    "fmt": "11.10B"
+                  },
+                  "businessSegmentData": [
+                    {
+                      "dataValue": -3057000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Depreciation, depletion and amortization",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": -940000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "EBITDA from associates and joint ventures",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 1453000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Energy Transition Metals",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": -55000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Impairment and gains (losses) on disposal of non-current assets, net and other",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": -55000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Impairment and result on disposals of non-current assets, net and other",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 15085000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Iron Ore Solutions",
+                      "isPrimarySegment": 1
+                    },
+                    {
+                      "dataValue": 15085000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Iron Solutions",
+                      "isPrimarySegment": 1
+                    },
+                    {
+                      "dataValue": -1698000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Other",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": -1698000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Unallocated items",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 1453000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Vale Base Metals",
+                      "isPrimarySegment": 0
+                    }
+                  ]
+                },
+                {
+                  "dataId": 20109,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 11343000000.0,
+                    "fmt": "11.34B"
+                  },
+                  "businessSegmentData": [
+                    {
+                      "dataValue": -3105000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Depreciation, depletion and amortization",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": -1072000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "EBITDA from associates and joint ventures",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": -5384000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Impairment and result on disposals of non-current assets, net and other",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 13803000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Iron Solutions",
+                      "isPrimarySegment": 1
+                    },
+                    {
+                      "dataValue": -1700000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Unallocated items",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 3355000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Vale Base Metals",
+                      "isPrimarySegment": 0
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOtherTaxes"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOtherTaxes": [
+                {
+                  "dataId": 20271,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 28000000.0,
+                    "fmt": "28.00M"
+                  }
+                },
+                {
+                  "dataId": 20271,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 68000000.0,
+                    "fmt": "68.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOtherIncomeExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOtherIncomeExpense": [
+                {
+                  "dataId": 20117,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -2851000000.0,
+                    "fmt": "-2.85B"
+                  }
+                },
+                {
+                  "dataId": 20117,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -4417000000.0,
+                    "fmt": "-4.42B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNormalizedIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNormalizedIncome": [
+                {
+                  "dataId": 20316,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 8469979988.052569,
+                    "fmt": "8.47B"
+                  }
+                },
+                {
+                  "dataId": 20316,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 5123340000.0,
+                    "fmt": "5.12B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualInterestExpenseNonOperating"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualInterestExpenseNonOperating": [
+                {
+                  "dataId": 20064,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1337000000.0,
+                    "fmt": "1.34B"
+                  }
+                },
+                {
+                  "dataId": 20064,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2041000000.0,
+                    "fmt": "2.04B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDilutedAverageShares"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualDilutedAverageShares": [
+                {
+                  "dataId": 29011,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4279867000.0,
+                    "fmt": "4.28B"
+                  }
+                },
+                {
+                  "dataId": 29011,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4274804000.0,
+                    "fmt": "4.27B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualResearchAndDevelopment"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualResearchAndDevelopment": [
+                {
+                  "dataId": 20151,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 790000000.0,
+                    "fmt": "790.00M"
+                  }
+                },
+                {
+                  "dataId": 20151,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 693000000.0,
+                    "fmt": "693.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualGrossProfit"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualGrossProfit": [
+                {
+                  "dataId": 20046,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 13791000000.0,
+                    "fmt": "13.79B"
+                  }
+                },
+                {
+                  "dataId": 20046,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 13456000000.0,
+                    "fmt": "13.46B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetInterestIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetInterestIncome": [
+                {
+                  "dataId": 20095,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -1554000000.0,
+                    "fmt": "-1.55B"
+                  }
+                },
+                {
+                  "dataId": 20095,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -2273000000.0,
+                    "fmt": "-2.27B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualEBITDA"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualEBITDA": [
+                {
+                  "dataId": 20190,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 11090000000.0,
+                    "fmt": "11.09B"
+                  }
+                },
+                {
+                  "dataId": 20190,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 9799000000.0,
+                    "fmt": "9.80B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualGainOnSaleOfSecurity"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualGainOnSaleOfSecurity": [
+                {
+                  "dataId": 20219,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -2269000000.0,
+                    "fmt": "-2.27B"
+                  }
+                },
+                {
+                  "dataId": 20219,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1247000000.0,
+                    "fmt": "1.25B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualTaxProvision"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTaxProvision": [
+                {
+                  "dataId": 20145,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 721000000.0,
+                    "fmt": "721.00M"
+                  }
+                },
+                {
+                  "dataId": 20145,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2670000000.0,
+                    "fmt": "2.67B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualSellingAndMarketingExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200
+              ],
+              "annualSellingAndMarketingExpense": [
+                {
+                  "dataId": 20158,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 21000000.0,
+                    "fmt": "21.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualMinorityInterests"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualMinorityInterests": [
+                {
+                  "dataId": 20087,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 191000000.0,
+                    "fmt": "191.00M"
+                  }
+                },
+                {
+                  "dataId": 20087,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 369000000.0,
+                    "fmt": "369.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualReconciledCostOfRevenue"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualReconciledCostOfRevenue": [
+                {
+                  "dataId": 20314,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 21264000000.0,
+                    "fmt": "21.26B"
+                  }
+                },
+                {
+                  "dataId": 20314,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 21914000000.0,
+                    "fmt": "21.91B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDilutedEPS"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualDilutedEPS": [
+                {
+                  "dataId": 29009,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1.44,
+                    "fmt": "1.44"
+                  }
+                },
+                {
+                  "dataId": 29009,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 0.55,
+                    "fmt": "0.55"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualImpairmentOfCapitalAssets"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualImpairmentOfCapitalAssets": [
+                {
+                  "dataId": 20225,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -301000000.0,
+                    "fmt": "-301.00M"
+                  }
+                },
+                {
+                  "dataId": 20225,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4599000000.0,
+                    "fmt": "4.60B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualTotalUnusualItemsExcludingGoodwill"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalUnusualItemsExcludingGoodwill": [
+                {
+                  "dataId": 20417,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -2582000000.0,
+                    "fmt": "-2.58B"
+                  }
+                },
+                {
+                  "dataId": 20417,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -4199000000.0,
+                    "fmt": "-4.20B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualTotalExpenses"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalExpenses": [
+                {
+                  "dataId": 20164,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 26955000000.0,
+                    "fmt": "26.95B"
+                  }
+                },
+                {
+                  "dataId": 20164,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 27060000000.0,
+                    "fmt": "27.06B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualEarningsFromEquityInterest"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualEarningsFromEquityInterest": [
+                {
+                  "dataId": 20208,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -269000000.0,
+                    "fmt": "-269.00M"
+                  }
+                },
+                {
+                  "dataId": 20208,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -218000000.0,
+                    "fmt": "-218.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetIncomeContinuousOperations"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncomeContinuousOperations": [
+                {
+                  "dataId": 20094,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 5975000000.0,
+                    "fmt": "5.97B"
+                  }
+                },
+                {
+                  "dataId": 20094,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1983000000.0,
+                    "fmt": "1.98B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualTotalUnusualItems"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalUnusualItems": [
+                {
+                  "dataId": 20416,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -2582000000.0,
+                    "fmt": "-2.58B"
+                  }
+                },
+                {
+                  "dataId": 20416,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -4199000000.0,
+                    "fmt": "-4.20B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualEBIT"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualEBIT": [
+                {
+                  "dataId": 20189,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 8033000000.0,
+                    "fmt": "8.03B"
+                  }
+                },
+                {
+                  "dataId": 20189,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 6694000000.0,
+                    "fmt": "6.69B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualPretaxIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualPretaxIncome": [
+                {
+                  "dataId": 20136,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 6696000000.0,
+                    "fmt": "6.70B"
+                  }
+                },
+                {
+                  "dataId": 20136,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4653000000.0,
+                    "fmt": "4.65B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOtherGandA"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOtherGandA": [
+                {
+                  "dataId": 20436,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 300000000.0,
+                    "fmt": "300.00M"
+                  }
+                },
+                {
+                  "dataId": 20436,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 317000000.0,
+                    "fmt": "317.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualInterestIncomeNonOperating"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualInterestIncomeNonOperating": [
+                {
+                  "dataId": 20075,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 94000000.0,
+                    "fmt": "94.00M"
+                  }
+                },
+                {
+                  "dataId": 20075,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 68000000.0,
+                    "fmt": "68.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualCostOfRevenue"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualCostOfRevenue": [
+                {
+                  "dataId": 20013,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 24265000000.0,
+                    "fmt": "24.27B"
+                  }
+                },
+                {
+                  "dataId": 20013,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 24947000000.0,
+                    "fmt": "24.95B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncome": [
+                {
+                  "dataId": 20091,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 6166000000.0,
+                    "fmt": "6.17B"
+                  }
+                },
+                {
+                  "dataId": 20091,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2352000000.0,
+                    "fmt": "2.35B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetIncomeFromContinuingAndDiscontinuedOperation"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncomeFromContinuingAndDiscontinuedOperation": [
+                {
+                  "dataId": 20309,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 6166000000.0,
+                    "fmt": "6.17B"
+                  }
+                },
+                {
+                  "dataId": 20309,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2352000000.0,
+                    "fmt": "2.35B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDepreciationAmortizationDepletionIncomeStatement"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualDepreciationAmortizationDepletionIncomeStatement": [
+                {
+                  "dataId": 20020,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 56000000.0,
+                    "fmt": "56.00M"
+                  }
+                },
+                {
+                  "dataId": 20020,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 72000000.0,
+                    "fmt": "72.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualBasicEPS"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualBasicEPS": [
+                {
+                  "dataId": 29004,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1.44,
+                    "fmt": "1.44"
+                  }
+                },
+                {
+                  "dataId": 29004,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 0.55,
+                    "fmt": "0.55"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOperatingExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOperatingExpense": [
+                {
+                  "dataId": 20108,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2690000000.0,
+                    "fmt": "2.69B"
+                  }
+                },
+                {
+                  "dataId": 20108,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2113000000.0,
+                    "fmt": "2.11B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualInterestIncome"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualInterestIncome": [
+                {
+                  "dataId": 20177,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 94000000.0,
+                    "fmt": "94.00M"
+                  }
+                },
+                {
+                  "dataId": 20177,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 68000000.0,
+                    "fmt": "68.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNormalizedEBITDA"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNormalizedEBITDA": [
+                {
+                  "dataId": 20420,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 13672000000.0,
+                    "fmt": "13.67B"
+                  }
+                },
+                {
+                  "dataId": 20420,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 13998000000.0,
+                    "fmt": "14.00B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualTotalOtherFinanceCost"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalOtherFinanceCost": [
+                {
+                  "dataId": 20368,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 311000000.0,
+                    "fmt": "311.00M"
+                  }
+                },
+                {
+                  "dataId": 20368,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 300000000.0,
+                    "fmt": "300.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualSellingGeneralAndAdministration"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualSellingGeneralAndAdministration": [
+                {
+                  "dataId": 20159,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 566000000.0,
+                    "fmt": "566.00M"
+                  }
+                },
+                {
+                  "dataId": 20159,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 569000000.0,
+                    "fmt": "569.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDepreciationAndAmortizationInIncomeStatement"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualDepreciationAndAmortizationInIncomeStatement": [
+                {
+                  "dataId": 20019,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 56000000.0,
+                    "fmt": "56.00M"
+                  }
+                },
+                {
+                  "dataId": 20019,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 72000000.0,
+                    "fmt": "72.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualBasicAverageShares"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualBasicAverageShares": [
+                {
+                  "dataId": 29010,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4274854000.0,
+                    "fmt": "4.27B"
+                  }
+                },
+                {
+                  "dataId": 29010,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 4268775000.0,
+                    "fmt": "4.27B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetIncomeDiscontinuousOperations"
+                ]
+              },
+              "timestamp": [
+                1735603200
+              ],
+              "annualNetIncomeDiscontinuousOperations": [
+                {
+                  "dataId": 20022,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 0.0,
+                    "fmt": "0.00"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDilutedNIAvailtoComStockholders"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualDilutedNIAvailtoComStockholders": [
+                {
+                  "dataId": 20424,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 6166000000.0,
+                    "fmt": "6.17B"
+                  }
+                },
+                {
+                  "dataId": 20424,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2352000000.0,
+                    "fmt": "2.35B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualGeneralAndAdministrativeExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualGeneralAndAdministrativeExpense": [
+                {
+                  "dataId": 20045,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 566000000.0,
+                    "fmt": "566.00M"
+                  }
+                },
+                {
+                  "dataId": 20045,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 569000000.0,
+                    "fmt": "569.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualTaxEffectOfUnusualItems"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTaxEffectOfUnusualItems": [
+                {
+                  "dataId": 20419,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -278020011.947431,
+                    "fmt": "-278.02M"
+                  }
+                },
+                {
+                  "dataId": 20419,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -1427660000.0,
+                    "fmt": "-1.43B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualSalariesAndWages"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualSalariesAndWages": [
+                {
+                  "dataId": 20292,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 266000000.0,
+                    "fmt": "266.00M"
+                  }
+                },
+                {
+                  "dataId": 20292,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 252000000.0,
+                    "fmt": "252.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualTotalOperatingIncomeAsReported"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalOperatingIncomeAsReported": [
+                {
+                  "dataId": 20435,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 10788000000.0,
+                    "fmt": "10.79B"
+                  }
+                },
+                {
+                  "dataId": 20435,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 5897000000.0,
+                    "fmt": "5.90B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOperatingRevenue"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOperatingRevenue": [
+                {
+                  "dataId": 20112,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 38056000000.0,
+                    "fmt": "38.06B"
+                  },
+                  "businessSegmentData": [
+                    {
+                      "dataValue": 6612000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Energy Transition Metals",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 31444000000.0,
+                      "segmentType": "Business",
+                      "segmentName": "Iron Ore Solutions",
+                      "isPrimarySegment": 1
+                    }
+                  ],
+                  "geographicSegmentData": [
+                    {
+                      "dataValue": 970000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Americas, except United States and Brazil",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 2887000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Asia, except Indonesia and China",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 3565000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Brazil",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 19375000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "China",
+                      "isPrimarySegment": 1
+                    },
+                    {
+                      "dataValue": 3019000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Europe,except Germany",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 1467000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Germany",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 3050000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Japan",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 2648000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "Middle East/Africa/Oceania",
+                      "isPrimarySegment": 0
+                    },
+                    {
+                      "dataValue": 1075000000.0,
+                      "segmentType": "Geographic",
+                      "segmentName": "United States of America",
+                      "isPrimarySegment": 0
+                    }
+                  ]
+                },
+                {
+                  "dataId": 20112,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 38403000000.0,
+                    "fmt": "38.40B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetIncomeCommonStockholders"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncomeCommonStockholders": [
+                {
+                  "dataId": 20093,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 6166000000.0,
+                    "fmt": "6.17B"
+                  }
+                },
+                {
+                  "dataId": 20093,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2352000000.0,
+                    "fmt": "2.35B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOtherSpecialCharges"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOtherSpecialCharges": [
+                {
+                  "dataId": 20269,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 614000000.0,
+                    "fmt": "614.00M"
+                  }
+                },
+                {
+                  "dataId": 20269,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 847000000.0,
+                    "fmt": "847.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetNonOperatingInterestIncomeExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetNonOperatingInterestIncomeExpense": [
+                {
+                  "dataId": 20077,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -1554000000.0,
+                    "fmt": "-1.55B"
+                  }
+                },
+                {
+                  "dataId": 20077,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -2273000000.0,
+                    "fmt": "-2.27B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetIncomeIncludingNoncontrollingInterests"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncomeIncludingNoncontrollingInterests": [
+                {
+                  "dataId": 20346,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 5975000000.0,
+                    "fmt": "5.97B"
+                  }
+                },
+                {
+                  "dataId": 20346,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1983000000.0,
+                    "fmt": "1.98B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOtherOperatingExpenses"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualOtherOperatingExpenses": [
+                {
+                  "dataId": 20312,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1278000000.0,
+                    "fmt": "1.28B"
+                  }
+                },
+                {
+                  "dataId": 20312,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 779000000.0,
+                    "fmt": "779.00M"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualInterestExpense"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualInterestExpense": [
+                {
+                  "dataId": 20057,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 1337000000.0,
+                    "fmt": "1.34B"
+                  }
+                },
+                {
+                  "dataId": 20057,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2041000000.0,
+                    "fmt": "2.04B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualReconciledDepreciation"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualReconciledDepreciation": [
+                {
+                  "dataId": 20315,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 3057000000.0,
+                    "fmt": "3.06B"
+                  }
+                },
+                {
+                  "dataId": 20315,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 3105000000.0,
+                    "fmt": "3.10B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualTotalRevenue"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTotalRevenue": [
+                {
+                  "dataId": 20100,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 38056000000.0,
+                    "fmt": "38.06B"
+                  }
+                },
+                {
+                  "dataId": 20100,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 38403000000.0,
+                    "fmt": "38.40B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualSpecialIncomeCharges"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualSpecialIncomeCharges": [
+                {
+                  "dataId": 20162,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -313000000.0,
+                    "fmt": "-313.00M"
+                  }
+                },
+                {
+                  "dataId": 20162,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": -5446000000.0,
+                    "fmt": "-5.45B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetIncomeFromContinuingOperationNetMinorityInterest"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualNetIncomeFromContinuingOperationNetMinorityInterest": [
+                {
+                  "dataId": 20331,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 6166000000.0,
+                    "fmt": "6.17B"
+                  }
+                },
+                {
+                  "dataId": 20331,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 2352000000.0,
+                    "fmt": "2.35B"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualTaxRateForCalcs"
+                ]
+              },
+              "timestamp": [
+                1735603200,
+                1767139200
+              ],
+              "annualTaxRateForCalcs": [
+                {
+                  "dataId": 20418,
+                  "asOfDate": "2024-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 0.107676,
+                    "fmt": "0.11"
+                  }
+                },
+                {
+                  "dataId": 20418,
+                  "asOfDate": "2025-12-31",
+                  "periodType": "12M",
+                  "currencyCode": "USD",
+                  "reportedValue": {
+                    "raw": 0.34,
+                    "fmt": "0.34"
+                  }
+                }
+              ]
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualContinuingAndDiscontinuedBasicEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualInsuranceAndClaims"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOtherNonOperatingIncomeExpenses"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDividendPerShare"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualContinuingAndDiscontinuedDilutedEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDepletionIncomeStatement"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDepreciationIncomeStatement"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetIncomeFromTaxLossCarryforward"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetIncomeExtraordinary"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualRestructuringAndMergernAcquisition"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualExciseTaxes"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualBasicAccountingChange"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDilutedAccountingChange"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOtherNonInterestExpense"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNetPolicyholderBenefitsAndClaims"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualRentExpenseSupplemental"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualTaxLossCarryforwardBasicEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualReportedNormalizedBasicEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualBasicExtraordinary"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNormalizedBasicEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDilutedContinuousOperations"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualTaxLossCarryforwardDilutedEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDilutedEPSOtherGainsLosses"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualProvisionForDoubtfulAccounts"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDilutedDiscontinuousOperations"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualProfessionalExpenseAndContractServicesExpense"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualPolicyholderBenefitsCeded"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualBasicContinuousOperations"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualAverageDilutionEarnings"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOccupancyAndEquipment"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualOtherunderPreferredStockDividend"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualSecuritiesAmortization"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualReportedNormalizedDilutedEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualBasicDiscontinuousOperations"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualAmortization"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualRentAndLandingFees"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualEarningsFromEquityInterestNetOfTax"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualBasicEPSOtherGainsLosses"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualLossAdjustmentExpense"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualAmortizationOfIntangiblesIncomeStatement"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualPolicyholderBenefitsGross"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualPreferredStockDividends"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualNormalizedDilutedEPS"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualGainOnSaleOfPPE"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualDilutedExtraordinary"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualGainOnSaleOfBusiness"
+                ]
+              }
+            },
+            {
+              "meta": {
+                "symbol": [
+                  "VALE3.SA"
+                ],
+                "type": [
+                  "annualWriteOff"
+                ]
+              }
+            }
+          ],
+          "error": null
+        }
+      }
+    }
+  }
+}

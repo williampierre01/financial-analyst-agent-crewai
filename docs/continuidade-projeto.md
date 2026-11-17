@@ -2,11 +2,14 @@
 
 ## Primeiro passo no próximo chat
 
-Última etapa: PR #29 incorporado e Live em `c3668b2`, confirmado pela captura
-do usuário. Diagnóstico documental em `diagnostico-dados-financeiros.md`;
-correção de rótulos/definições preparada na branch `codex/definicoes-indicadores`.
-Números e contrato preservados; lucro informado/receita não é automaticamente
-margem consolidada. Operacional continua bloqueado. Conferir PR/CI antes do merge.
+Última etapa publicada: PR #30, merge `c5b2890`, Live confirmado pelo usuário.
+Branch atual `codex/conciliacao-operacional`: diagnóstico com snapshot público,
+pontes aritméticas Petrobras/Vale e coletor diagnóstico separado, sem integração
+com aplicativo, MCP ou IA. Todos os resultados permanecem não validados.
+140 testes backend aprovados; 3 PostgreSQL ignorados conforme decisão sem Docker.
+As quatro conciliações offline passaram. Merge e deploy continuam manuais.
+Próxima decisão: critérios de validação e cobertura antes de liberar o campo reportado;
+não presumir que quatro coincidências autorizam uso geral no mercado.
 
 Atualização: PR #28 incorporado (`a3f8137`), publicação informada pelo usuário.
 Homologados acesso do proprietário, bloqueio por ID para outra conta, acesso
