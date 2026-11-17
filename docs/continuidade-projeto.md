@@ -1,15 +1,14 @@
-# Continuidade do projeto — 16/11/2026
+# Continuidade do projeto — 17/11/2026
 
 ## Primeiro passo no próximo chat
 
-Última etapa publicada: PR #30, merge `c5b2890`, Live confirmado pelo usuário.
-Branch atual `codex/conciliacao-operacional`: diagnóstico com snapshot público,
-pontes aritméticas Petrobras/Vale e coletor diagnóstico separado, sem integração
-com aplicativo, MCP ou IA. Todos os resultados permanecem não validados.
-140 testes backend aprovados; 3 PostgreSQL ignorados conforme decisão sem Docker.
-As quatro conciliações offline passaram. Merge e deploy continuam manuais.
-Próxima decisão: critérios de validação e cobertura antes de liberar o campo reportado;
-não presumir que quatro coincidências autorizam uso geral no mercado.
+Última etapa publicada: PR #31, merge `b5a1239`, checks aprovados e Live confirmado
+por captura do usuário. Coletor diagnóstico continua separado do aplicativo/MCP/IA;
+140 testes locais aprovados, 3 PostgreSQL ignorados conforme decisão sem Docker.
+Critérios registrados em `criterios-resultado-operacional.md`: próximo recorte é
+um validador offline por observação, com evidência oficial e motivos de bloqueio.
+Validador offline implementado localmente: 151 testes aprovados, 3 PostgreSQL ignorados. Implementação revisada e quatro evidências oficiais estruturadas, com hashes e referências. Próximo passo: revisão de versões/reapresentações e revisão documental identificada; nenhuma evidência real foi aprovada. Não liberar campos nem iniciar Docker.
+Merge e deploy permanecem manuais.
 
 Atualização: PR #28 incorporado (`a3f8137`), publicação informada pelo usuário.
 Homologados acesso do proprietário, bloqueio por ID para outra conta, acesso

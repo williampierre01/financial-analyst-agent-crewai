@@ -1,7 +1,12 @@
 # Estado atual do projeto
 
-Atualizado em **16/11/2026**. Código entregue, publicação e homologação são
+Atualizado em **17/11/2026**. Código entregue, publicação e homologação são
 registrados separadamente.
+
+## Publicação e próxima etapa — 17/11/2026
+
+- PR #31 incorporado em `b5a1239`; verificações GitHub aprovadas e captura do usuário confirma Live no Render.
+- [Critérios de validação](criterios-resultado-operacional.md) definidos por observação, com evidência oficial, precisão e revisão. Validador offline implementado localmente; 151 testes aprovados e 3 PostgreSQL ignorados. Sem integração com aplicativo ou IA; revisão das evidências reais pendente.
 
 ## Diagnóstico de dados — 16/11/2026
 

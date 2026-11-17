@@ -1,0 +1,132 @@
+{
+  "notes": "Transcription for review; no approval. Restatement assessment pending. Original document bytes retained outside repository in ../official-operating-documents/.",
+  "observations": [
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 26113000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    },
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 26876000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 5897000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 10788000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    }
+  ],
+  "official_records": [
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 26113,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": null,
+      "document": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426000706/pbrfs4q25usd_6k.htm",
+        "sha256": "86d6959b9c386963bb636e7eefc62202ed0943401b97321e2c05f8f8c7a0d07d",
+        "retrieved_at": "2026-11-17T09:14:18.569747+00:00",
+        "local_file": "petrobras-2025.html",
+        "version": "FY2025 filing, retrieved 2026-11-17",
+        "location": "Consolidated Statements of Income, printed p.4"
+      }
+    },
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 26876,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": null,
+      "document": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426000706/pbrfs4q25usd_6k.htm",
+        "sha256": "86d6959b9c386963bb636e7eefc62202ed0943401b97321e2c05f8f8c7a0d07d",
+        "retrieved_at": "2026-11-17T09:14:18.569747+00:00",
+        "local_file": "petrobras-2025.html",
+        "version": "FY2025 filing, retrieved 2026-11-17",
+        "location": "Consolidated Statements of Income, printed p.4"
+      }
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 5897,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": null,
+      "document": {
+        "url": "https://vale.com/documents/d/guest/form-20-f-2025-en",
+        "sha256": "1f33252654dec527ba327817e26b63f0884660c4a216ee7ac9331517b0ec7462",
+        "retrieved_at": "2026-11-17T09:14:18.805302+00:00",
+        "local_file": "vale-2025.pdf",
+        "version": "FY2025 filing, retrieved 2026-11-17",
+        "location": "Results of Operations, printed p.115"
+      }
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 10788,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": null,
+      "document": {
+        "url": "https://vale.com/documents/d/guest/form-20-f-2025-en",
+        "sha256": "1f33252654dec527ba327817e26b63f0884660c4a216ee7ac9331517b0ec7462",
+        "retrieved_at": "2026-11-17T09:14:18.805302+00:00",
+        "local_file": "vale-2025.pdf",
+        "version": "FY2025 filing, retrieved 2026-11-17",
+        "location": "Results of Operations, printed p.115"
+      }
+    }
+  ],
+  "reviews": []
+}
