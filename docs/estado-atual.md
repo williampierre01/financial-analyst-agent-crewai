@@ -5,7 +5,11 @@ registrados separadamente.
 
 ## Diagnóstico de dados — 16/11/2026
 
-- Validação da correção de definições: 135 testes backend aprovados, 3 PostgreSQL ignorados (sem Docker); 6 testes de navegador desktop/mobile aprovados, incluindo rótulos, acessibilidade e layout. Build, formatação dos arquivos alterados e schema OpenAPI aprovados. Servidor local encerrado separadamente após os testes, pela limitação Windows já registrada. Merge e publicação desta correção pendentes.
+- Coletor diagnóstico separado implementado, sem integração ao aplicativo/MCP/IA. Preserva proveniência e marca elegibilidade falsa. 140 testes aprovados, 3 PostgreSQL ignorados sem Docker; quatro pontes offline conferidas. Sem alteração do contrato público ou do bloqueio operacional.
+
+- Nova coleta pública Yahoo registrada no diagnóstico e em evidência JSON: campo TotalOperatingIncomeAsReported coincide com as quatro observações oficiais; ponte aritmética Vale fechada. Ponte Petrobras pelos agregados conciliada; reclassificações detalhadas e metodologia geral pendentes. Bloqueio mantido; sem IA ou Docker.
+
+- Validação da correção de definições: 135 testes backend aprovados, 3 PostgreSQL ignorados (sem Docker); 6 testes de navegador desktop/mobile aprovados, incluindo rótulos, acessibilidade e layout. Build, formatação dos arquivos alterados e schema OpenAPI aprovados. Servidor local encerrado separadamente após os testes, pela limitação Windows já registrada. PR #30 incorporado; usuário confirmou publicação Live em c5b2890.
 
 - PR #29 incorporado em `c3668b2`; captura fornecida pelo usuário confirma Live no Render. Repetição 503 validada por simulação, sem provocar incidente real.
 - [Diagnóstico PETR4/VALE3](diagnostico-dados-financeiros.md): fontes oficiais confirmam distinção entre lucro atribuível e consolidado e diferença de definição do FCF Petrobras. A composição do Operating Income do fornecedor continua sem conciliação; bloqueio preservado.
