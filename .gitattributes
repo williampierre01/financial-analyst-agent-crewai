@@ -15,19 +15,20 @@
 *.sh text eol=lf
 
 # Preserve exact bytes of SHA-256-bound, human-reviewed evidence.
-docs/evidencias/annual-source-verification-2026-11-24.json -text
-docs/evidencias/financial-filing-indexes-2026-11-26.json -text
-docs/evidencias/first-half-accounting-review-2026-11-25.json -text
-docs/evidencias/operating-review-package-2026-11-26.json -text
-docs/evidencias/petrobras-2q26-amendment-comparison-2026-11-25.json -text
-docs/evidencias/petrobras-3q26-accounting-review-2026-11-24.json -text
-docs/evidencias/petrobras-esg-scope-2026-11-26.json -text
-docs/evidencias/sec-cutoff-update-2026-11-26.json -text
-docs/evidencias/vale-2q26-amendment-comparison-2026-11-25.json -text
-docs/evidencias/vale-3q26-accounting-review-2026-11-24.json -text
-docs/evidencias/vale-new-filing-2026-11-25.json -text
-docs/evidencias/vale-release-image-hashes.json -text
-docs/evidencias/vale-release-version-diff.json -text
-docs/evidencias/visual-scope-sampling-2026-11-26.json -text
-docs/evidencias/visual-targeted-review-2026-11-26.json -text
-docs/revisao-final-operacional-2026-11-26.md -text
+docs/evidencias/annual-source-verification-2026-11-24.json -text whitespace=cr-at-eol
+docs/evidencias/financial-filing-indexes-2026-11-26.json -text whitespace=cr-at-eol
+docs/evidencias/first-half-accounting-review-2026-11-25.json -text whitespace=cr-at-eol
+docs/evidencias/operating-review-package-2026-11-26.json -text whitespace=cr-at-eol
+docs/evidencias/petrobras-2q26-amendment-comparison-2026-11-25.json -text whitespace=cr-at-eol
+docs/evidencias/petrobras-3q26-accounting-review-2026-11-24.json -text whitespace=cr-at-eol
+docs/evidencias/petrobras-esg-scope-2026-11-26.json -text whitespace=cr-at-eol
+docs/evidencias/sec-cutoff-update-2026-11-26.json -text whitespace=cr-at-eol
+docs/evidencias/vale-2q26-amendment-comparison-2026-11-25.json -text whitespace=cr-at-eol
+docs/evidencias/vale-3q26-accounting-review-2026-11-24.json -text whitespace=cr-at-eol
+docs/evidencias/vale-new-filing-2026-11-25.json -text whitespace=cr-at-eol
+docs/evidencias/vale-release-image-hashes.json -text whitespace=cr-at-eol
+docs/evidencias/vale-release-version-diff.json -text whitespace=cr-at-eol
+docs/evidencias/visual-scope-sampling-2026-11-26.json -text whitespace=cr-at-eol
+docs/evidencias/visual-targeted-review-2026-11-26.json -text whitespace=cr-at-eol
+docs/revisao-final-operacional-2026-11-26.md -text whitespace=cr-at-eol
+*.mjs text eol=lf
