@@ -1,0 +1,430 @@
+{
+  "scope": "Visual review of financial sections and footnotes; overview of other retrieved slides. No annual evidence approval.",
+  "pages": [
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 1,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_001.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-01.jpg",
+      "sha256": "094b14cb86c39bdeb98a30ad4ff16300399519764363834ba0d573cf23b74c89",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 2,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_002.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-02.jpg",
+      "sha256": "85e0c271e2503285355edfbb17d4cee2ed444abe8ee1f961b179d9984df949b5",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 3,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_003.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-03.jpg",
+      "sha256": "a62d7ef3db2797c82a807ab9ba22ba86de757209f1f885c26b44c378f5ab16c8",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 4,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_004.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-04.jpg",
+      "sha256": "127701b6bdb4978a7ab6a8146a2030c85d5c9343935ce655be8880a36b2bcb5a",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 5,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_005.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-05.jpg",
+      "sha256": "66e3ad3e48dcca51bc767ef2b1fde38ff39f21af440fcd6da91c001f0d33e3d3",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 6,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_006.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-06.jpg",
+      "sha256": "722afeff7d2dd828e4bbd523e8204a5c97ca6a6de662831a0c9e1764260579b4",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 7,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_007.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-07.jpg",
+      "sha256": "4438e3bf68352eef9621af75d4f74bc232fdf6f277477638306685bf9fca4b1b",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 8,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_008.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-08.jpg",
+      "sha256": "5362c3fe3eb0bbcabc4f968ba9f51264f1a6b05ddbcbe36f0b5c80f7177d7441",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 9,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_009.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-09.jpg",
+      "sha256": "3fa9c97f701cd77dd5c793d07521f461365ceafea9b6fa6721e3d43d6578c302",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 10,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_010.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-10.jpg",
+      "sha256": "a1fbdf0748d77b272609f75119cda3355e4da5dc637f170dade10c131e4463da",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 11,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_011.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-11.jpg",
+      "sha256": "513847d3602711432b741ba1d0d4761952292a3d560fbdf722cd71142a552989",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 12,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_012.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-12.jpg",
+      "sha256": "ac1b1b1adae9ba6a15aa42bd450d8978a6ae28d65dbf606deee7d1dec89340e5",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 13,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_013.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-13.jpg",
+      "sha256": "765a21ab788b5f9a5360e5bab7636f5b2528e0c182931ff0f08733cadfb65466",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 14,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_014.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-14.jpg",
+      "sha256": "317c3e88088f25704b0f852cb44967b6e597a5b047dba4e27752ef8917525e3c",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20260429_6k.htm",
+      "page": 15,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_015.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-slide-15.jpg",
+      "sha256": "f5ff13a3ea94978f9564e6e938e93a546a98b959db8683572af6755ddc65c835",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 1,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_001.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-01.jpg",
+      "sha256": "81eabc241fcf4688c49f0cbfeb1e60640ad37e19cc25adea2f2de862647f1ea9",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 2,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_002.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-02.jpg",
+      "sha256": "cca374b417b811a3748a29c9c572997d29e88ff72cb1762541cedc34623d426c",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 3,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_003.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-03.jpg",
+      "sha256": "e5256ef37a12716b071d9b16ce124c3341e5ae57c08c3525d52544f2daf24e63",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 4,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_004.jpg",
+      "error": "HTTP Error 504: ",
+      "review_status": "download_failed"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 5,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_005.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-05.jpg",
+      "sha256": "119a38d8fb8a6ec102c84c704eb11dc0fbca30a0c5fe9a4ca4b88cbb3297553b",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 6,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_006.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-06.jpg",
+      "sha256": "b6e40302525b7a41339797dadc6a945be0e901f60d7a90a220d3617ee7e22462",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 7,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_007.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-07.jpg",
+      "sha256": "b61609bfd45ff1944b68bea307bf951037fbccc7215510ba6e7d9dcb6df623e2",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 8,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_008.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-08.jpg",
+      "sha256": "ba5e4b79b7e78f1028522d9f63632bbb1face84cdf7fd585b44061e7e303bf9d",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 9,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_009.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-09.jpg",
+      "sha256": "5632fc5924ae07948644247dbc3f3da540c77bf4ee307cd3d67a0f0e9face305",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 10,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_010.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-10.jpg",
+      "sha256": "e8b205d0ffb5692e6614cc2f0bf96d05aa93dc831b0a974eeb3c484abf7954e2",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 11,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_011.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-11.jpg",
+      "sha256": "737a600630786e595770cb9c5390a3ae46281d7c4b382f0077f8f7b46cb49157",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 12,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_012.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-12.jpg",
+      "sha256": "e98e784922503a4ab3d04c273ab0ca44c041dc21f9d2f3d78fd264420a7edc5b",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 13,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_013.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-13.jpg",
+      "sha256": "735f0d3edc032603cf32b83fcf72bdf23fcdcaffc87c71f981fb73d623477dfe",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 14,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_014.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-14.jpg",
+      "sha256": "84c3f283a25bc0c84a0a8e31ccc389f5cbdeaf8da9d82da921c5cd3135b8b5fe",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 15,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_015.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-15.jpg",
+      "sha256": "02a34a07c2ceb654ede5b23f37279010ec3b7b61aea981586cb9efe08069245e",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "page": 16,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_016.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-slide-16.jpg",
+      "sha256": "62d025ff094c11d983c3c49d837267f8b0bc2a2a51f969ab30da9f56090364cd",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 1,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_001.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-01.jpg",
+      "sha256": "c37a48dec0a8ec25deecedcad15d772de62b3389a4e255eed13de82c4c9d91f2",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 2,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_002.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-02.jpg",
+      "sha256": "73871da822caef9499fdede08cb52d594745c1ce48e754aaf1f17a4d1b5e74ad",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 3,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_003.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-03.jpg",
+      "sha256": "f98801e4489d396925df07748dbe67348df7deb0b2a25d95d91c14d3256ba850",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 4,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_004.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-04.jpg",
+      "sha256": "3fb3110b4d3770b5fb06e36e981b65befc33e436b78f320a92b868f1345b8e3e",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 5,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_005.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-05.jpg",
+      "sha256": "4e8745227f7021f0fa2fed8471f31ad02351b044486976052e8f4a40f292498b",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 6,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_006.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-06.jpg",
+      "sha256": "9d2c24e56e55d620c626dd907b27d27f0e6f0a938243ab920d45451fa5cea092",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 7,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_007.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-07.jpg",
+      "sha256": "73ef73f6a794c42f0f6128f41c1b8982ad469a5ef840ec1a82601874a8908b5e",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 8,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_008.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-08.jpg",
+      "sha256": "ed2cefd468d2d592bb9401e37f893874c24d4f452cb997e7f42107b4ee7a31de",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 9,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_009.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-09.jpg",
+      "sha256": "38c9c1f26dc778213fcae0279f38c411de3ba7d363839e6ba128ab87f8c7376c",
+      "review_status": "overview_inspected"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 10,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_010.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-10.jpg",
+      "sha256": "6ff1f24993bd9bc45d8e0c20309ace1d5a16e05af7703b18c7ddbed86791ae4e",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 11,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_011.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-11.jpg",
+      "sha256": "be9cbcb36f2361b8c989b1375d599096b9d41df34d4eabf8f53540b5e6e0d56c",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 12,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_012.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-12.jpg",
+      "sha256": "91565057cc4d7513100596659f53dcf5cdbc8668d74141cbb2fd240d8c3195f6",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 13,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_013.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-13.jpg",
+      "sha256": "0f9995c70476138639944de6aef6ce4922cd0a8896ca0fb53f03765603b93788",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 14,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_014.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-14.jpg",
+      "sha256": "5970a7d8adbde1fde41321c5935647d5b6e6a1de28b066fcc9074a437166fdfc",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 15,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_015.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-15.jpg",
+      "sha256": "081b3b4cd8889d3c54e259075e3fd64c35663b9cdec7d9a8b0a1ba5173487590",
+      "review_status": "financial_content_and_footnotes_reviewed"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "page": 16,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_016.jpg",
+      "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-slide-16.jpg",
+      "sha256": "c189d9127e8416f6992ad3393c6eff4ba3cea19ac749b1d7c0e9e3bfc2bd2b1e",
+      "review_status": "overview_inspected"
+    }
+  ],
+  "review_date": "2026-11-24",
+  "downloaded_pages": 46,
+  "expected_pages": 47,
+  "financial_pages_reviewed": {
+    "vale20260429_6k.htm": [
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "vale20260731_6k.htm": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "vale20261030_6k.htm": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "eligible_for_analysis": false,
+  "annual_restatement_clearance": false,
+  "findings": [
+    {
+      "document": "vale20260429_6k.htm",
+      "proforma_ebitda_usd_million": 3895,
+      "streaming_in_cash_flow_others_usd_million": -257,
+      "release_cross_check": "vale20260428_6k.htm"
+    },
+    {
+      "document": "vale20260731_6k.htm",
+      "proforma_ebitda_usd_million": 4066,
+      "streaming_in_cash_flow_others_usd_million": -291,
+      "release_cross_check": "valepr2q26_6k.htm"
+    },
+    {
+      "document": "vale20261030_6k.htm",
+      "proforma_ebitda_usd_million": 3508,
+      "streaming_in_cash_flow_others_usd_million": -238,
+      "release_cross_check": "vale20261029_6k.htm"
+    }
+  ]
+}

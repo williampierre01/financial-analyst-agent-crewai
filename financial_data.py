@@ -9,6 +9,7 @@ import math
 import re
 from datetime import date, datetime, timedelta, timezone
 from typing import Callable
+from operating_registry import approved_operating_income
 
 
 FIELDS = {
@@ -16,6 +17,7 @@ FIELDS = {
         "revenue": ("Receita", "Total Revenue"),
         "net_income": ("Lucro líquido informado pelo provedor", "Net Income"),
         "operating_income": ("Resultado operacional", "Operating Income"),
+        "reported_operating_income": ("Resultado operacional reportado", "Total Operating Income As Reported"),
         "diluted_eps": ("Lucro diluído por ação", "Diluted EPS"),
     },
     "balance_sheet": {
@@ -98,16 +100,22 @@ def normalize_snapshot(raw: dict, ticker: str, now: datetime) -> dict:
                 continue
             currency = currency_code(meta.get("currency"))
             mapped = {key: finite_number(values.get(names[1])) for key, names in fields.items()}
+            operating_reference = None
+            if group == "income_statement":
+                operating_reference = approved_operating_income(
+                    ticker, end, currency, values.get("Total Operating Income As Reported"), now)
+                mapped["reported_operating_income"] = operating_reference["value"] if operating_reference else None
             if group == "income_statement" and mapped.get("operating_income") is not None:
                 # Yahoo's normalized Operating Income has not been reconciled
                 # with issuer statements. Do not expose it as a comparable fact.
                 mapped["operating_income"] = None
-                operating_income_withheld = True
+                operating_income_withheld = operating_income_withheld or operating_reference is None
             missing = [key for key in REQUIRED[group] if mapped[key] is None]
             periods.append({
                 "period_end": end_date.isoformat(), "period_type": "annual", "currency": currency,
                 "source": SOURCE, "unit": "currency_units", "per_share_fields": ["diluted_eps"] if group == "income_statement" else [],
                 "values": mapped, "missing_fields": missing,
+                **({"reported_operating_income_reference": operating_reference} if operating_reference else {}),
             })
             if not currency:
                 warnings.append(f"Moeda dos demonstrativos não informada em {group} ({end}).")
@@ -154,10 +162,10 @@ def normalize_snapshot(raw: dict, ticker: str, now: datetime) -> dict:
         warnings.append("Moeda dos demonstrativos difere da cotação; não combinar valores sem conversão validada.")
     has_values = any(v is not None for periods in statements.values() for p in periods for v in p["values"].values())
     if operating_income_withheld:
-        warnings.append("Resultado operacional indisponível: a definição do provedor ainda não foi conciliada com os demonstrativos oficiais; não usar para comparações ou conclusões.")
+        warnings.append("Resultado operacional reportado indisponível: a observação recebida ainda não está conciliada com uma revisão aprovada para esse valor, moeda e exercício; não usar para comparações ou conclusões.")
     complete = bool(recent_fundamentals and quote and quote["freshness"] == "recent" and financial_currency == "BRL" and not operating_income_withheld)
     return {
-        "schema_version": "3.0", "ticker": ticker, "display_ticker": ticker.removesuffix(".SA"),
+        "schema_version": "3.1", "ticker": ticker, "display_ticker": ticker.removesuffix(".SA"),
         "market": "BR", "exchange": "B3", "provider_used": SOURCE,
         "retrieved_at": now.isoformat(), "quote": quote, "statements": statements,
         "fundamentals_available": fundamentals_available, "common_period": common_period,
@@ -201,7 +209,12 @@ def render_data_report(snapshot: dict) -> str:
         periods = snapshot["statements"][group] or [{"period_end": "Não disponível", "currency": None, "values": {}}]
         for period in periods:
             for key, names in fields.items():
+                if key == "operating_income":
+                    continue  # Legacy normalized field remains null in the contract.
                 lines.append(f"| {names[0]} | {period['period_end']} | {period['currency'] or 'Não informada'} | {number(period['values'].get(key))} |")
+            reference = period.get("reported_operating_income_reference")
+            if reference:
+                lines.append(f"Fonte do resultado operacional reportado: {reference['document_url']} ({reference['document_location']}). {reference['scope']}")
     if snapshot["warnings"]:
         lines += ["", "**Limitações dos dados**", ""] + [f"- {w}" for w in snapshot["warnings"]]
     lines += ["", "Lucro líquido informado pelo provedor pode ser atribuível aos acionistas; "

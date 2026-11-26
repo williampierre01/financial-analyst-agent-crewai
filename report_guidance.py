@@ -18,6 +18,9 @@ Apresentação final:
   afirmações de alta, queda, eficiência ou hipóteses sobre sua diferença para
   o lucro líquido. Não o reconstrua por subtração nem preencha com notícias
   ou conhecimento externo. Preserve o motivo de indisponibilidade da base.
+- Use resultado operacional reportado somente quando fornecido com referência
+  documental. Não o confunda com o campo normalizado bloqueado. Preserve a fonte,
+  o exercício e a limitação de alcance da revisão, que não constitui auditoria.
 - Use as datas e horários de apresentação em Brasília fornecidos abaixo.
   Não extraia a data civil diretamente de timestamps UTC. Datas de encerramento
   contábil são datas, não instantes: preserve-as sem conversão de fuso.
@@ -86,6 +89,8 @@ def presentation_references(snapshot: dict | None, *, include_values: bool = Tru
     for group, fields in FIELDS.items():
         for period in snapshot["statements"].get(group, []):
             for field, (label, _) in fields.items():
+                if field == "operating_income" and snapshot.get("schema_version") == "3.1":
+                    continue
                 value = period["values"].get(field)
                 currency = period.get("currency")
                 unit = "R$" if currency == "BRL" else currency or "moeda não informada"
@@ -102,4 +107,7 @@ def presentation_references(snapshot: dict | None, *, include_values: bool = Tru
                 source = period.get("source")
                 source_label = "Yahoo Finance (via yfinance)" if source == "yfinance" else source or "não informada"
                 lines.append(f"- {label}: {formatted}; {groups[group]}; período encerrado em {period['period_end']}; fonte: {source_label}.")
+            reference = period.get("reported_operating_income_reference")
+            if reference:
+                lines.append(f"- Referência do resultado operacional reportado: {reference['document_url']}, {reference['document_location']}. {reference['scope']}")
     return "\n".join(lines) or "Sem demonstrativos disponíveis."

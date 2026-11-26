@@ -1,0 +1,113 @@
+{
+  "review_date": "2026-11-24",
+  "document": "pbrfs3q26usd_6k.htm",
+  "accession": "0001292814-26-005248",
+  "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426005248/pbrfs3q26usd_6k.htm",
+  "html_sha256": "39669cf40d6a523d6140ae7b9e7fcc1667ae6620723aed6acd2f1ad7447f246d",
+  "extracted_text_sha256": "66f015610c2fd8b393e568cac6813d411fd7f7d76a92761d8bf16babc0e5c318",
+  "scope": "Targeted review: notes 1 and 2, comparative income statement, note 18.4, note 30, reclassification contexts and independent review report. Not all notes reviewed.",
+  "sections": [
+    {
+      "section": "basis_and_policies",
+      "normalized_text_start": 12947,
+      "normalized_text_end": 14554,
+      "normalized_section_sha256": "d0c87efbf06c9c9f3b22454db0be972be52aef948e8645bb5fab8bdf3ea55097"
+    },
+    {
+      "section": "aip",
+      "normalized_text_start": 84999,
+      "normalized_text_end": 87560,
+      "normalized_section_sha256": "b78b8ecdabf306c02ea83cdd8b14f5bf2742a2135668254ba1cde642796d6f80"
+    },
+    {
+      "section": "subsequent_events",
+      "normalized_text_start": 146300,
+      "normalized_text_end": 148592,
+      "normalized_section_sha256": "23a56d5e184bbeaaec8fc53de4312812f1427b53d04f0f87bfca5f565eaf4353"
+    }
+  ],
+  "source_correction": "0001292814-26-005376 is a financial information presentation; accounting notes reviewed in pbrfs3q26usd_6k.htm.",
+  "findings": [
+    "IAS 34; authorization November 10, 2026; policies and computation methods same as annual 2025.",
+    "New standards effective January 1, 2026 reported as having no material effect.",
+    "Income comparatives are three/nine months 2026/2025, not annual 2025/2024.",
+    "Reclassification contexts concern OCI/hedges and dividends moved from equity to liabilities, not an identified annual operating-income restatement.",
+    "Note 18.4 schedules Berbigao/Sururu receivable and income effects for 4Q26.",
+    "KPMG interim review is not an annual audit or approval of project candidates."
+  ],
+  "lexical_counts": {
+    "restat\\w*": 0,
+    "retrospect\\w*": 0,
+    "reclass\\w*": 10
+  },
+  "checks": [
+    {
+      "period": "9M26",
+      "gross_profit": 48524,
+      "operating_expenses_net": -14912,
+      "operating_income": 33612,
+      "financial_result": 587,
+      "equity_result": 181,
+      "income_before_tax": 34380,
+      "tax": -9977,
+      "net_income": 24403,
+      "residuals": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "period": "9M25",
+      "gross_profit": 31617,
+      "operating_expenses_net": -11016,
+      "operating_income": 20601,
+      "financial_result": 3034,
+      "equity_result": 165,
+      "income_before_tax": 23800,
+      "tax": -6995,
+      "net_income": 16805,
+      "residuals": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "period": "3Q26",
+      "gross_profit": 17691,
+      "operating_expenses_net": -6180,
+      "operating_income": 11511,
+      "financial_result": -592,
+      "equity_result": 68,
+      "income_before_tax": 10987,
+      "tax": -3240,
+      "net_income": 7747,
+      "residuals": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "period": "3Q25",
+      "gross_profit": 11217,
+      "operating_expenses_net": -3241,
+      "operating_income": 7976,
+      "financial_result": 271,
+      "equity_result": 36,
+      "income_before_tax": 8283,
+      "tax": -2230,
+      "net_income": 6053,
+      "residuals": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "currency": "USD",
+  "unit": "million",
+  "annual_restatement_clearance": false,
+  "eligible_for_analysis": false
+}

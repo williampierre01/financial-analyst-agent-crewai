@@ -1,0 +1,44 @@
+{
+  "0000917851": {
+    "url": "https://data.sec.gov/submissions/CIK0000917851.json",
+    "checked_at": "2026-11-25T19:44:59.749453+00:00",
+    "filings_since_cutoff": [
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-24",
+        "accessionNumber": "0001292814-26-005390",
+        "primaryDocument": "vale20261124_6k.htm"
+      }
+    ]
+  },
+  "0001119639": {
+    "url": "https://data.sec.gov/submissions/CIK0001119639.json",
+    "checked_at": "2026-11-25T19:44:59.944112+00:00",
+    "filings_since_cutoff": [
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-24",
+        "accessionNumber": "0001292814-26-005388",
+        "primaryDocument": "pbr20261123_6k4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-24",
+        "accessionNumber": "0001292814-26-005384",
+        "primaryDocument": "pbr20261123_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-24",
+        "accessionNumber": "0001292814-26-005382",
+        "primaryDocument": "pbr20261123_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-24",
+        "accessionNumber": "0001292814-26-005380",
+        "primaryDocument": "pbr20261123_6k1.htm"
+      }
+    ]
+  }
+}

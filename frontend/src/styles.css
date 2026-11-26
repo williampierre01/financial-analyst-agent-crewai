@@ -1333,3 +1333,16 @@ th small {
   background: #fff;
   border-bottom: 1px solid var(--line);
 }
+
+/* Keep evidence separate from numbers without widening mobile tables. */
+.operating-reference {
+  display: block;
+  max-width: 230px;
+  margin: 6px 0 0 auto;
+  white-space: normal;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.statements tbody th {
+  min-width: 130px;
+}

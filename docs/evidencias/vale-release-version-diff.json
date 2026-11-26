@@ -1,0 +1,72 @@
+{
+  "method": "HTML text parsed with BeautifulSoup, whitespace-token comparison; images not compared",
+  "documents": {
+    "valepr4q25_6k.htm": {
+      "sha256": "35b30d9cc3cb8ee9d1312928618415b87b2b2ffd81bc51b047b3a863d43f3b26"
+    },
+    "valepr4q25_6ka.htm": {
+      "sha256": "c2c154c6549439e094becb58712e4488766e520963afa4c790a216fcd0d01d90"
+    },
+    "valepr4q25_6ka1.htm": {
+      "sha256": "19793f524d9a8e98c8fdd04e28faf6e9f9cbeeadd9b30b8ebbac09bff7fc4ce2"
+    }
+  },
+  "comparisons": [
+    {
+      "from": "valepr4q25_6k.htm",
+      "to": "valepr4q25_6ka.htm",
+      "changes": [
+        {
+          "before": "6-K",
+          "after": "6-K/A"
+        },
+        {
+          "before": "valepr4q25_6k.htm 6-K",
+          "after": "valepr4q25_6ka.htm 6-K/A"
+        },
+        {
+          "before": "6-K",
+          "after": "6-K/A"
+        },
+        {
+          "before": "723",
+          "after": "703"
+        },
+        {
+          "before": "479 5% 78 %",
+          "after": "449 4% 90%"
+        },
+        {
+          "before": "12,",
+          "after": "13,"
+        }
+      ]
+    },
+    {
+      "from": "valepr4q25_6ka.htm",
+      "to": "valepr4q25_6ka1.htm",
+      "changes": [
+        {
+          "before": "valepr4q25_6ka.htm",
+          "after": "valepr4q25_6ka1.htm"
+        },
+        {
+          "before": "echaracterization",
+          "after": "decharacterization"
+        },
+        {
+          "before": "195",
+          "after": "287"
+        },
+        {
+          "before": "2028-2035",
+          "after": "2029-2035"
+        },
+        {
+          "before": "13,",
+          "after": "12,"
+        }
+      ]
+    }
+  ]
+}

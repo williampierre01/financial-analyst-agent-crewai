@@ -250,7 +250,10 @@
         "properties": {
           "schema_version": {
             "type": "string",
-            "const": "3.0",
+            "enum": [
+              "3.0",
+              "3.1"
+            ],
             "title": "Schema Version"
           },
           "ticker": {
@@ -400,6 +403,51 @@
         ],
         "title": "HealthResponse"
       },
+      "OperatingIncomeReference": {
+        "properties": {
+          "value": {
+            "type": "number",
+            "title": "Value"
+          },
+          "source_field": {
+            "type": "string",
+            "const": "annualTotalOperatingIncomeAsReported",
+            "title": "Source Field"
+          },
+          "document_url": {
+            "type": "string",
+            "title": "Document Url"
+          },
+          "document_location": {
+            "type": "string",
+            "title": "Document Location"
+          },
+          "evidence_digest": {
+            "type": "string",
+            "title": "Evidence Digest"
+          },
+          "reviewed_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Reviewed At"
+          },
+          "scope": {
+            "type": "string",
+            "title": "Scope"
+          }
+        },
+        "type": "object",
+        "required": [
+          "value",
+          "source_field",
+          "document_url",
+          "document_location",
+          "evidence_digest",
+          "reviewed_at",
+          "scope"
+        ],
+        "title": "OperatingIncomeReference"
+      },
       "Quote": {
         "properties": {
           "price": {
@@ -509,6 +557,16 @@
             },
             "type": "array",
             "title": "Missing Fields"
+          },
+          "reported_operating_income_reference": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/OperatingIncomeReference"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
