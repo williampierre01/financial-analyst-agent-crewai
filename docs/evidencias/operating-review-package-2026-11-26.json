@@ -1,0 +1,225 @@
+{
+  "notes": "Prepared for human review, not approved. Assessment is restricted to the explicitly documented scope and exclusions. No runtime eligibility.",
+  "observations": [
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 26113000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    },
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 26876000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 5897000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 10788000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    }
+  ],
+  "official_records": [
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 26113,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": false,
+      "document": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426002168/pbrform20f_2025.htm",
+        "sha256": "ff71ddd5bf58ed99b6fae8f7aa20d9eff8a20b7d060302f874b729910244c1f3",
+        "retrieved_at": "2026-11-24T18:47:07.014909+00:00",
+        "local_file": "pbrform20f_2025.htm",
+        "location": "F-4",
+        "version": "FY2025 Form 20-F, retrieved 2026-11-24"
+      },
+      "measure_label": "Income before net finance income, results of equity-accounted investments and income taxes",
+      "assessment": {
+        "scope": {
+          "path": "docs/revisao-final-operacional-2026-11-26.md",
+          "sha256": "a28062b75533f7cc1e811ab77911ce6b51f401ebf66c6c408da00ab788259ae9",
+          "human_acceptance_required": true
+        },
+        "supporting_evidence_digest": "5a9951dc6cf6aba7454503214f8c847f7711c0927c801e8058d37a9687424fb1",
+        "conclusion": "No unresolved change to this observation identified within reviewed accounting documents; external-channel and sampled-document limits require reviewer acceptance.",
+        "assessed_on": "2026-11-26",
+        "type": "technical_preparation_not_human_approval"
+      }
+    },
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 26876,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": false,
+      "document": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426002168/pbrform20f_2025.htm",
+        "sha256": "ff71ddd5bf58ed99b6fae8f7aa20d9eff8a20b7d060302f874b729910244c1f3",
+        "retrieved_at": "2026-11-24T18:47:07.014909+00:00",
+        "local_file": "pbrform20f_2025.htm",
+        "location": "F-4",
+        "version": "FY2025 Form 20-F, retrieved 2026-11-24"
+      },
+      "measure_label": "Income before net finance income, results of equity-accounted investments and income taxes",
+      "assessment": {
+        "scope": {
+          "path": "docs/revisao-final-operacional-2026-11-26.md",
+          "sha256": "a28062b75533f7cc1e811ab77911ce6b51f401ebf66c6c408da00ab788259ae9",
+          "human_acceptance_required": true
+        },
+        "supporting_evidence_digest": "5a9951dc6cf6aba7454503214f8c847f7711c0927c801e8058d37a9687424fb1",
+        "conclusion": "No unresolved change to this observation identified within reviewed accounting documents; external-channel and sampled-document limits require reviewer acceptance.",
+        "assessed_on": "2026-11-26",
+        "type": "technical_preparation_not_human_approval"
+      }
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 5897,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": false,
+      "document": {
+        "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426001844/valeform20f_2025.htm",
+        "sha256": "219370292e619b6972e8e757fe1e7b830c64adc757b55dff0588baebd9d35599",
+        "retrieved_at": "2026-11-24T18:47:09.516405+00:00",
+        "local_file": "valeform20f_2025.htm",
+        "location": "F-3",
+        "version": "FY2025 Form 20-F, retrieved 2026-11-24"
+      },
+      "measure_label": "Operating income",
+      "assessment": {
+        "scope": {
+          "path": "docs/revisao-final-operacional-2026-11-26.md",
+          "sha256": "a28062b75533f7cc1e811ab77911ce6b51f401ebf66c6c408da00ab788259ae9",
+          "human_acceptance_required": true
+        },
+        "supporting_evidence_digest": "5a9951dc6cf6aba7454503214f8c847f7711c0927c801e8058d37a9687424fb1",
+        "conclusion": "No unresolved change to this observation identified within reviewed accounting documents; external-channel and sampled-document limits require reviewer acceptance.",
+        "assessed_on": "2026-11-26",
+        "type": "technical_preparation_not_human_approval"
+      }
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 10788,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": false,
+      "document": {
+        "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426001844/valeform20f_2025.htm",
+        "sha256": "219370292e619b6972e8e757fe1e7b830c64adc757b55dff0588baebd9d35599",
+        "retrieved_at": "2026-11-24T18:47:09.516405+00:00",
+        "local_file": "valeform20f_2025.htm",
+        "location": "F-3",
+        "version": "FY2025 Form 20-F, retrieved 2026-11-24"
+      },
+      "measure_label": "Operating income",
+      "assessment": {
+        "scope": {
+          "path": "docs/revisao-final-operacional-2026-11-26.md",
+          "sha256": "a28062b75533f7cc1e811ab77911ce6b51f401ebf66c6c408da00ab788259ae9",
+          "human_acceptance_required": true
+        },
+        "supporting_evidence_digest": "5a9951dc6cf6aba7454503214f8c847f7711c0927c801e8058d37a9687424fb1",
+        "conclusion": "No unresolved change to this observation identified within reviewed accounting documents; external-channel and sampled-document limits require reviewer acceptance.",
+        "assessed_on": "2026-11-26",
+        "type": "technical_preparation_not_human_approval"
+      }
+    }
+  ],
+  "reviews": [],
+  "package_version": "2026-11-26-1",
+  "rule_version": "1",
+  "evidence_digests": [
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2025-12-31",
+      "digest": "049beceffe0cfa2f4bfd6e0c1f75d5b86381f69ccb8653744ac83f935babe5cf"
+    },
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2024-12-31",
+      "digest": "5e708caff5a87ee223ddced3561eebb95d84eaef917a203e0edf8f6c4d58d975"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2025-12-31",
+      "digest": "e3211d6fcaf52b3dc9a82ec6bff32f3a339e36e11a21c2739048fe9c599adf20"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2024-12-31",
+      "digest": "2631174ef19b9d1e20c2641d02f6cfda98a57784ec3ef15ee9c2e86a77ed438e"
+    }
+  ],
+  "review_scope": {
+    "path": "docs/revisao-final-operacional-2026-11-26.md",
+    "sha256": "a28062b75533f7cc1e811ab77911ce6b51f401ebf66c6c408da00ab788259ae9",
+    "human_acceptance_required": true
+  },
+  "supporting_evidence": {
+    "annual-source-verification-2026-11-24.json": "52d0f5baeae0dfae11eb467df582b0f186f4a7c2f984df8d26c127db1af995f6",
+    "first-half-accounting-review-2026-11-25.json": "25134d81a75b65e6c838c77546c5c48a2130de8b22085e61380f2aa07a050d3f",
+    "vale-2q26-amendment-comparison-2026-11-25.json": "518f7e65817d76bf3cd27af4e1472b5e37bcf2f30095ab51a68e433cef2d1d6d",
+    "petrobras-2q26-amendment-comparison-2026-11-25.json": "70c77ff4db2c7778eae928776c5137625a27fa195a3b84a67a1800003bd57595",
+    "vale-3q26-accounting-review-2026-11-24.json": "554b72dd0ac264d4029d934e84fa7f7929754230467fc870b3f5f3e79ef0326b",
+    "petrobras-3q26-accounting-review-2026-11-24.json": "59c0c1d342f41acbb0bde9dd7f3105d12dab4bb88a994cea02113c7106354ffd",
+    "vale-release-version-diff.json": "7af925edd4cdcc9cabab74dc01ae195706034cafc3d65aa18a769d2ad72a1d11",
+    "vale-release-image-hashes.json": "446d352d21bd4475c3f64381a41081775f4c0a258c92e796f187d9f222b0bea6",
+    "financial-filing-indexes-2026-11-26.json": "dc25c56c6d6fd1d04ec3570756372123b5dc3902d39401bde369bc6ac5efea51",
+    "visual-scope-sampling-2026-11-26.json": "fe5b911af88c80484b5a8bafd359e2cb01900f31d48d9df3c3d29eb875e8a360",
+    "visual-targeted-review-2026-11-26.json": "0998b06f11127eab47e6a1cdbe7dbd3b341294d0957ca31b0177f0488938dca9",
+    "petrobras-esg-scope-2026-11-26.json": "052e18d340d33aa2cc9a3ffcffd3eb79cf546b5e3af03bf94e39623d4c766df0",
+    "sec-cutoff-update-2026-11-26.json": "dae906b9261bd373c7e1067d916df7815ead90e082f5c58085205dadafa7684d",
+    "vale-new-filing-2026-11-25.json": "6a5a90966ff3247ba46b5848ee52256e5bc31dee078874f15ea4b130936c9661"
+  }
+}

@@ -1,0 +1,993 @@
+{
+  "review_date": "2026-11-25",
+  "sources": [
+    {
+      "document": "pbrfs2q26usd_6k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426004133/pbrfs2q26usd_6k.htm",
+      "accession": "0001292814-26-004133",
+      "html_sha256": "fc7e3828be9e6ceedf6f65ecc1b015512af95294a635b5ef5c4c41d6b3648106",
+      "normalized_text_sha256": "26d0a318d9a1d2287ad3efe5449e0d0ca5338055e880d3cc60b8cea7d984741a"
+    },
+    {
+      "document": "pbrfs2q26usd_6ka.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426004623/pbrfs2q26usd_6ka.htm",
+      "accession": "0001292814-26-004623",
+      "html_sha256": "250249f80b6dc407a2c98c6b81ff230ce16abe9a983943a18a46a71e039f92c4",
+      "normalized_text_sha256": "545f38dcbb6688329495828dd62e286a04c474fe8b43202067f1c3bded544b72"
+    }
+  ],
+  "method": "BeautifulSoup html.parser; remove script/style/ix:header/ix:hidden; collapse whitespace; tokenize words and punctuation; SequenceMatcher autojunk=False. Comparison of extracted report text, not validation of XBRL contexts, units, signs or taxonomy.",
+  "diff_counts": {
+    "insert": 102,
+    "delete": 2,
+    "replace": 0
+  },
+  "changes": [
+    {
+      "operation": "delete",
+      "original_token_start": 0,
+      "original_token_end": 10,
+      "amended_token_start": 0,
+      "amended_token_end": 0,
+      "category": "filing_wrapper_removed",
+      "contains_digits": true
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 27,
+      "original_token_end": 27,
+      "amended_token_start": 17,
+      "amended_token_end": 23,
+      "category": "amendment_cover_date",
+      "contains_digits": true
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 203,
+      "original_token_end": 203,
+      "amended_token_start": 199,
+      "amended_token_end": 291,
+      "category": "amendment_explanation",
+      "contains_digits": true
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 596,
+      "original_token_end": 596,
+      "amended_token_start": 684,
+      "amended_token_end": 694,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 825,
+      "original_token_end": 825,
+      "amended_token_start": 923,
+      "amended_token_end": 935,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 1299,
+      "original_token_end": 1299,
+      "amended_token_start": 1409,
+      "amended_token_end": 1414,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 1515,
+      "original_token_end": 1515,
+      "amended_token_start": 1630,
+      "amended_token_end": 1647,
+      "category": "existing_total_repeated",
+      "contains_digits": true
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 1657,
+      "original_token_end": 1657,
+      "amended_token_start": 1789,
+      "amended_token_end": 1801,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 1731,
+      "original_token_end": 1731,
+      "amended_token_start": 1875,
+      "amended_token_end": 1892,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 1755,
+      "original_token_end": 1755,
+      "amended_token_start": 1916,
+      "amended_token_end": 1919,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 1782,
+      "original_token_end": 1782,
+      "amended_token_start": 1946,
+      "amended_token_end": 1951,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 1845,
+      "original_token_end": 1845,
+      "amended_token_start": 2014,
+      "amended_token_end": 2029,
+      "category": "existing_total_repeated",
+      "contains_digits": true
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 3325,
+      "original_token_end": 3325,
+      "amended_token_start": 3509,
+      "amended_token_end": 3515,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 3536,
+      "original_token_end": 3536,
+      "amended_token_start": 3726,
+      "amended_token_end": 3730,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 3691,
+      "original_token_end": 3691,
+      "amended_token_start": 3885,
+      "amended_token_end": 3890,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 4122,
+      "original_token_end": 4122,
+      "amended_token_start": 4321,
+      "amended_token_end": 4327,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 4355,
+      "original_token_end": 4355,
+      "amended_token_start": 4560,
+      "amended_token_end": 4565,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 4625,
+      "original_token_end": 4625,
+      "amended_token_start": 4835,
+      "amended_token_end": 4839,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 4757,
+      "original_token_end": 4757,
+      "amended_token_start": 4971,
+      "amended_token_end": 4977,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 4878,
+      "original_token_end": 4878,
+      "amended_token_start": 5098,
+      "amended_token_end": 5104,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 5254,
+      "original_token_end": 5254,
+      "amended_token_start": 5480,
+      "amended_token_end": 5488,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 5617,
+      "original_token_end": 5617,
+      "amended_token_start": 5851,
+      "amended_token_end": 5860,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "delete",
+      "original_token_start": 7081,
+      "original_token_end": 7088,
+      "amended_token_start": 7324,
+      "amended_token_end": 7324,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 7562,
+      "original_token_end": 7562,
+      "amended_token_start": 7798,
+      "amended_token_end": 7807,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 8611,
+      "original_token_end": 8611,
+      "amended_token_start": 8856,
+      "amended_token_end": 8863,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 8742,
+      "original_token_end": 8742,
+      "amended_token_start": 8994,
+      "amended_token_end": 9000,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 9144,
+      "original_token_end": 9144,
+      "amended_token_start": 9402,
+      "amended_token_end": 9410,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 9520,
+      "original_token_end": 9520,
+      "amended_token_start": 9786,
+      "amended_token_end": 9794,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 9670,
+      "original_token_end": 9670,
+      "amended_token_start": 9944,
+      "amended_token_end": 9951,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 9738,
+      "original_token_end": 9738,
+      "amended_token_start": 10019,
+      "amended_token_end": 10022,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 9968,
+      "original_token_end": 9968,
+      "amended_token_start": 10252,
+      "amended_token_end": 10255,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 10105,
+      "original_token_end": 10105,
+      "amended_token_start": 10392,
+      "amended_token_end": 10396,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 10416,
+      "original_token_end": 10416,
+      "amended_token_start": 10707,
+      "amended_token_end": 10713,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 10519,
+      "original_token_end": 10519,
+      "amended_token_start": 10816,
+      "amended_token_end": 10827,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 10932,
+      "original_token_end": 10932,
+      "amended_token_start": 11240,
+      "amended_token_end": 11245,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 10998,
+      "original_token_end": 10998,
+      "amended_token_start": 11311,
+      "amended_token_end": 11316,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 11137,
+      "original_token_end": 11137,
+      "amended_token_start": 11455,
+      "amended_token_end": 11463,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 11292,
+      "original_token_end": 11292,
+      "amended_token_start": 11618,
+      "amended_token_end": 11627,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 11848,
+      "original_token_end": 11848,
+      "amended_token_start": 12183,
+      "amended_token_end": 12187,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 12000,
+      "original_token_end": 12000,
+      "amended_token_start": 12339,
+      "amended_token_end": 12347,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 12800,
+      "original_token_end": 12800,
+      "amended_token_start": 13147,
+      "amended_token_end": 13151,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 12865,
+      "original_token_end": 12865,
+      "amended_token_start": 13216,
+      "amended_token_end": 13222,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 12962,
+      "original_token_end": 12962,
+      "amended_token_start": 13319,
+      "amended_token_end": 13326,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 13444,
+      "original_token_end": 13444,
+      "amended_token_start": 13808,
+      "amended_token_end": 13813,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 13949,
+      "original_token_end": 13949,
+      "amended_token_start": 14318,
+      "amended_token_end": 14323,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 14252,
+      "original_token_end": 14252,
+      "amended_token_start": 14626,
+      "amended_token_end": 14633,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 14694,
+      "original_token_end": 14694,
+      "amended_token_start": 15075,
+      "amended_token_end": 15085,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 15544,
+      "original_token_end": 15544,
+      "amended_token_start": 15935,
+      "amended_token_end": 15941,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 15585,
+      "original_token_end": 15585,
+      "amended_token_start": 15982,
+      "amended_token_end": 15990,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 15772,
+      "original_token_end": 15772,
+      "amended_token_start": 16177,
+      "amended_token_end": 16183,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 15815,
+      "original_token_end": 15815,
+      "amended_token_start": 16226,
+      "amended_token_end": 16235,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 16076,
+      "original_token_end": 16076,
+      "amended_token_start": 16496,
+      "amended_token_end": 16501,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 17978,
+      "original_token_end": 17978,
+      "amended_token_start": 18403,
+      "amended_token_end": 18412,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 18080,
+      "original_token_end": 18080,
+      "amended_token_start": 18514,
+      "amended_token_end": 18525,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 18153,
+      "original_token_end": 18153,
+      "amended_token_start": 18598,
+      "amended_token_end": 18604,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 18332,
+      "original_token_end": 18332,
+      "amended_token_start": 18783,
+      "amended_token_end": 18794,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 19332,
+      "original_token_end": 19332,
+      "amended_token_start": 19794,
+      "amended_token_end": 19800,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 19415,
+      "original_token_end": 19415,
+      "amended_token_start": 19883,
+      "amended_token_end": 19891,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 19620,
+      "original_token_end": 19620,
+      "amended_token_start": 20096,
+      "amended_token_end": 20105,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 20092,
+      "original_token_end": 20092,
+      "amended_token_start": 20577,
+      "amended_token_end": 20585,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 20493,
+      "original_token_end": 20493,
+      "amended_token_start": 20986,
+      "amended_token_end": 20991,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 21073,
+      "original_token_end": 21073,
+      "amended_token_start": 21571,
+      "amended_token_end": 21577,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 21290,
+      "original_token_end": 21290,
+      "amended_token_start": 21794,
+      "amended_token_end": 21798,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 21627,
+      "original_token_end": 21627,
+      "amended_token_start": 22135,
+      "amended_token_end": 22143,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 21802,
+      "original_token_end": 21802,
+      "amended_token_start": 22318,
+      "amended_token_end": 22332,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 22445,
+      "original_token_end": 22445,
+      "amended_token_start": 22975,
+      "amended_token_end": 22982,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 22931,
+      "original_token_end": 22931,
+      "amended_token_start": 23468,
+      "amended_token_end": 23476,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 23051,
+      "original_token_end": 23051,
+      "amended_token_start": 23596,
+      "amended_token_end": 23601,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 23304,
+      "original_token_end": 23304,
+      "amended_token_start": 23854,
+      "amended_token_end": 23860,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 23591,
+      "original_token_end": 23591,
+      "amended_token_start": 24147,
+      "amended_token_end": 24152,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 23943,
+      "original_token_end": 23943,
+      "amended_token_start": 24504,
+      "amended_token_end": 24516,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 24656,
+      "original_token_end": 24656,
+      "amended_token_start": 25229,
+      "amended_token_end": 25243,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 24796,
+      "original_token_end": 24796,
+      "amended_token_start": 25383,
+      "amended_token_end": 25388,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 24973,
+      "original_token_end": 24973,
+      "amended_token_start": 25565,
+      "amended_token_end": 25571,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 25220,
+      "original_token_end": 25220,
+      "amended_token_start": 25818,
+      "amended_token_end": 25827,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 25326,
+      "original_token_end": 25326,
+      "amended_token_start": 25933,
+      "amended_token_end": 25939,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 25519,
+      "original_token_end": 25519,
+      "amended_token_start": 26132,
+      "amended_token_end": 26136,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 25632,
+      "original_token_end": 25632,
+      "amended_token_start": 26249,
+      "amended_token_end": 26256,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 25903,
+      "original_token_end": 25903,
+      "amended_token_start": 26527,
+      "amended_token_end": 26534,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 26412,
+      "original_token_end": 26412,
+      "amended_token_start": 27043,
+      "amended_token_end": 27048,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 26618,
+      "original_token_end": 26618,
+      "amended_token_start": 27254,
+      "amended_token_end": 27258,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 26864,
+      "original_token_end": 26864,
+      "amended_token_start": 27504,
+      "amended_token_end": 27508,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 26908,
+      "original_token_end": 26908,
+      "amended_token_start": 27552,
+      "amended_token_end": 27557,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 27491,
+      "original_token_end": 27491,
+      "amended_token_start": 28140,
+      "amended_token_end": 28151,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 27686,
+      "original_token_end": 27686,
+      "amended_token_start": 28346,
+      "amended_token_end": 28358,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 27782,
+      "original_token_end": 27782,
+      "amended_token_start": 28454,
+      "amended_token_end": 28459,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 27900,
+      "original_token_end": 27900,
+      "amended_token_start": 28577,
+      "amended_token_end": 28583,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 28138,
+      "original_token_end": 28138,
+      "amended_token_start": 28821,
+      "amended_token_end": 28827,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 28157,
+      "original_token_end": 28157,
+      "amended_token_start": 28846,
+      "amended_token_end": 28855,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 28362,
+      "original_token_end": 28362,
+      "amended_token_start": 29060,
+      "amended_token_end": 29069,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 28466,
+      "original_token_end": 28466,
+      "amended_token_start": 29173,
+      "amended_token_end": 29179,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 28689,
+      "original_token_end": 28689,
+      "amended_token_start": 29402,
+      "amended_token_end": 29409,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 28874,
+      "original_token_end": 28874,
+      "amended_token_start": 29594,
+      "amended_token_end": 29603,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 29205,
+      "original_token_end": 29205,
+      "amended_token_start": 29934,
+      "amended_token_end": 29940,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 29407,
+      "original_token_end": 29407,
+      "amended_token_start": 30142,
+      "amended_token_end": 30153,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 29968,
+      "original_token_end": 29968,
+      "amended_token_start": 30714,
+      "amended_token_end": 30724,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 30155,
+      "original_token_end": 30155,
+      "amended_token_start": 30911,
+      "amended_token_end": 30917,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 30809,
+      "original_token_end": 30809,
+      "amended_token_start": 31571,
+      "amended_token_end": 31577,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 31031,
+      "original_token_end": 31031,
+      "amended_token_start": 31799,
+      "amended_token_end": 31806,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 31486,
+      "original_token_end": 31486,
+      "amended_token_start": 32261,
+      "amended_token_end": 32267,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 31930,
+      "original_token_end": 31930,
+      "amended_token_start": 32711,
+      "amended_token_end": 32716,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 32421,
+      "original_token_end": 32421,
+      "amended_token_start": 33207,
+      "amended_token_end": 33216,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 32546,
+      "original_token_end": 32546,
+      "amended_token_start": 33341,
+      "amended_token_end": 33355,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    },
+    {
+      "operation": "insert",
+      "original_token_start": 32722,
+      "original_token_end": 32722,
+      "amended_token_start": 33531,
+      "amended_token_end": 33538,
+      "category": "text_labels_or_headings",
+      "contains_digits": false
+    }
+  ],
+  "operating_income_comparison": {
+    "periods": [
+      "Jan-Jun/2026",
+      "Jan-Jun/2025",
+      "Apr-Jun/2026",
+      "Apr-Jun/2025"
+    ],
+    "currency": "USD",
+    "unit": "million",
+    "original": [
+      22101,
+      12625,
+      14253,
+      5349
+    ],
+    "amended": [
+      22101,
+      12625,
+      14253,
+      5349
+    ]
+  },
+  "finding": "Explanatory note states Exhibit 101 interactive data addition only. Numeric token changes are filing metadata and repetitions of totals already in original; no changed operating-income values identified in extracted text.",
+  "amendment_financial_value_change_identified": false,
+  "annual_restatement_clearance": false,
+  "eligible_for_analysis": false,
+  "limits": [
+    "Not a semantic validation of the electronic data package.",
+    "Does not approve annual 2025/2024 candidates or clear every subsequent filing."
+  ]
+}

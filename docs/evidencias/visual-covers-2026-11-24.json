@@ -1,0 +1,134 @@
+[
+  {
+    "document": "vale20260327_6ka.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426001857/vale202603186ka_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-001857-cover.jpg",
+    "sha256": "1454e00b5548dfc73c50098c9d1a7c2e343a4d950e40ccae1141ac147a3c8385",
+    "image_count": 100,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "Management Proposal and Proxy Statement — Annual and Extraordinary General Meetings 2026",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  },
+  {
+    "document": "vale20260331_6k1.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426001963/vale202603316k1_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-001963-cover.jpg",
+    "sha256": "9b256f7f6e170fab2fa4cff70d33956a41979e04e781cca8ded8474d33ba877b",
+    "image_count": 75,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "VBM Day 2026 — The New VBM",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  },
+  {
+    "document": "vale20260429_6k.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002668/vale202604296k_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-002668-cover.jpg",
+    "sha256": "094b14cb86c39bdeb98a30ad4ff16300399519764363834ba0d573cf23b74c89",
+    "image_count": 15,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "1Q26 Performance — April 29th, 2026",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  },
+  {
+    "document": "vale20260512_6k1.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002993/image_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-002993-cover.jpg",
+    "sha256": "8bb5a816f5028ba2545e4da00781565be13338ce318a831cdc6db5274f8074dd",
+    "image_count": 10,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "Bank of America Global Metals, Mining and Steel Conference 2026",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  },
+  {
+    "document": "vale20260609_6k1.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426003397/vale202606096k1_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-003397-cover.jpg",
+    "sha256": "ddc9a9185684a1ea4d391d3e963d07e36caecb9c45253ba8cf1ae8b6f6d7db2e",
+    "image_count": 44,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "Analyst & Investor Tour 2026",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  },
+  {
+    "document": "vale20260615_6k1.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426003448/image_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-003448-cover.jpg",
+    "sha256": "e9f8d0a000bde1ca7906d3a627d1969b3988d64ea2e7db3ef9bf1c8d72d6e4b6",
+    "image_count": 116,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "Sustainability Related Financial Information 2025",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  },
+  {
+    "document": "vale20260630_6k.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426003630/vale202606306k_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-003630-cover.jpg",
+    "sha256": "6193bcf537f789625bc41751ca3224ed13ff39f16b6b30e6b772b1656a64fbf3",
+    "image_count": 25,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "ESG Webinar — June 30th, 2026",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  },
+  {
+    "document": "vale20260710_6k.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426003731/vale202607106k_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-003731-cover.jpg",
+    "sha256": "d78ced469f465594205826bc67d1d85a32cdf89283dd73db226da10e6a8868d7",
+    "image_count": 4,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "Minutes of Extraordinary Board Meeting — June 22, 2026",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  },
+  {
+    "document": "vale20260731_6k.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004000/vale202607316k_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-004000-cover.jpg",
+    "sha256": "81eabc241fcf4688c49f0cbfeb1e60640ad37e19cc25adea2f2de862647f1ea9",
+    "image_count": 16,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "2Q26 Performance — July 31st, 2026",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  },
+  {
+    "document": "vale20261030_6k.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005070/vale202610306k_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-005070-cover.jpg",
+    "sha256": "c37a48dec0a8ec25deecedcad15d772de62b3389a4e255eed13de82c4c9d91f2",
+    "image_count": 16,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "3Q26 Performance — October 30th, 2026",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  },
+  {
+    "document": "pbr20260422_6k.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426002473/image_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-002473-cover.jpg",
+    "sha256": "2f7fb9f835c21336138344b9360511aa33ea2bfff87b754170784337940596ef",
+    "image_count": 127,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "Corporate Human Rights and Citizenship Supplement 2025",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  },
+  {
+    "document": "pbr20260428_6k.htm",
+    "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426002572/pbr202604286k_001.jpg",
+    "file": "../official-operating-documents/subsequent-filings/0001292814-26-002572-cover.jpg",
+    "sha256": "d563095576d301fcf4a71ae943d2db665919fbd90f7404863745c7171d1e7e10",
+    "image_count": 29,
+    "scope": "first image only; document not cleared",
+    "observed_cover_title": "Investor Tour Buzios 2026",
+    "review_date": "2026-11-24",
+    "semantic_clearance": false
+  }
+]

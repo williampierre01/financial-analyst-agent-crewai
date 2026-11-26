@@ -20,7 +20,7 @@ class PresentationReferencesTests(unittest.TestCase):
             data = self.snapshot(ticker)
             period = data["statements"]["income_statement"][0]
             period["values"].update(revenue=19_634_000_000, net_income=-1_500_000,
-                                    diluted_eps=1.52, operating_income=0)
+                                    diluted_eps=1.52, reported_operating_income=0)
             original = deepcopy(data)
             text = presentation_references(data)
             self.assertIn("R$ 19.634,00 mi", text)

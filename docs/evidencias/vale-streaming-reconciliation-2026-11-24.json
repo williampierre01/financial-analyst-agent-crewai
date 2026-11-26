@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-24",
+  "currency": "USD",
+  "unit": "million",
+  "sources": [
+    {
+      "file": "../official-operating-documents/subsequent-filings/000129281426005058-vale20261029_6k.txt",
+      "extracted_text_sha256": "47ef9bbf3b4bddcb4240ef01508ddbe0d7c4c3a9717b06aefad4a985d05c1e6a"
+    },
+    {
+      "file": "../official-operating-documents/subsequent-filings/000129281426005056-valedfifrs3q26_6k.txt",
+      "extracted_text_sha256": "b34a4631f451badeba9545f408f91d275f0e43c31b37eb64bfe8660d04602320"
+    }
+  ],
+  "formula": "adjusted_ebit - associates_ebitda - streaming - impairment_and_other_noncurrent_adjustment = ifrs_operating_income",
+  "checks": [
+    {
+      "period": "3Q26",
+      "adjusted_ebit": 2401,
+      "associates_ebitda": 328,
+      "streaming": 238,
+      "impairment_and_other_noncurrent_adjustment": 242,
+      "ifrs_operating_income": 1593,
+      "residual": 0
+    },
+    {
+      "period": "3Q25",
+      "adjusted_ebit": 3608,
+      "associates_ebitda": 292,
+      "streaming": 155,
+      "impairment_and_other_noncurrent_adjustment": 370,
+      "ifrs_operating_income": 2791,
+      "residual": 0
+    },
+    {
+      "period": "9M26",
+      "adjusted_ebit": 8151,
+      "associates_ebitda": 896,
+      "streaming": 786,
+      "impairment_and_other_noncurrent_adjustment": 346,
+      "ifrs_operating_income": 6123,
+      "residual": 0
+    },
+    {
+      "period": "9M25",
+      "adjusted_ebit": 8625,
+      "associates_ebitda": 786,
+      "streaming": 490,
+      "impairment_and_other_noncurrent_adjustment": 755,
+      "ifrs_operating_income": 6594,
+      "residual": 0
+    }
+  ],
+  "scope": "3Q and nine-month columns only; no annual restatement clearance",
+  "eligible_for_analysis": false
+}

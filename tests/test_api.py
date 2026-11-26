@@ -125,7 +125,7 @@ class ApiTests(unittest.TestCase):
             url = accepted.headers["Location"]
             result = wait_done(client, url)
             self.assertEqual(result.json()["interpretation"], "Texto final")
-            self.assertEqual(result.json()["data"]["schema_version"], "3.0")
+            self.assertEqual(result.json()["data"]["schema_version"], "3.1")
             self.assertEqual(result.headers["Cache-Control"], "no-store")
             for _ in range(3):
                 self.assertEqual(client.get(url).status_code, 200)

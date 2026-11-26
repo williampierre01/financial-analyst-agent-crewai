@@ -1,0 +1,104 @@
+{
+  "review_date": "2026-11-24",
+  "document": "valedfifrs3q26_6k.htm",
+  "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426005056/valedfifrs3q26_6k.htm",
+  "html_sha256": "9cf245027825cf590f2e1910473150adb879fb41a98e0e7131819c5200f42995",
+  "extracted_text_sha256": "b34a4631f451badeba9545f408f91d275f0e43c31b37eb64bfe8660d04602320",
+  "sections_reviewed": [
+    {
+      "section": "note_30",
+      "start_offset": 103622,
+      "end_offset": 105644,
+      "extracted_section_sha256": "69ca88aef4f452109f4c688099e854832f200ebdaea26cad22318105dd58707a"
+    },
+    {
+      "section": "note_3",
+      "start_offset": 13866,
+      "end_offset": 21735,
+      "extracted_section_sha256": "bc37d7744b04cfb8e820dc7080b381024254e439cdcd14f5233b8cb8a4f70a8c"
+    },
+    {
+      "section": "note_4",
+      "start_offset": 21735,
+      "end_offset": 23086,
+      "extracted_section_sha256": "342584041e550944252a488b92e1aa904ac2d6ac5183a90057957553fa378522"
+    },
+    {
+      "section": "independent_review",
+      "start_offset": 105644,
+      "end_offset": 108740,
+      "extracted_section_sha256": "f9c44a05a0c6885d7a37f68697b44405ac8df3828247924a4f40b7906afc5fb5"
+    }
+  ],
+  "findings": {
+    "basis": "IAS 34; note 30 states policies, estimates/judgments, risk management and measurement methods follow latest annual statements; read alongside year ended 2025-12-31.",
+    "comparatives": "Income statement compares three and nine months ended September 30, 2026 and 2025; financial position compares September 2026 and December 2025. No annual 2025/2024 operating-income comparison here.",
+    "streaming": "Note 3(a)(i) separates noncurrent asset results and streaming within its EBITDA reconciliation; consistent with previously reviewed release bridge.",
+    "reclassification_hits": "Three occurrences concern OCI translation/reclassification, not an identified correction to annual operating income.",
+    "auditor_scope": "Interim review dated 2026-10-29, substantially narrower than audit; prior annual audit opinion mentioned does not substitute for approval of candidate data."
+  },
+  "lexical_counts": {
+    "restat\\w*": 0,
+    "retrospect\\w*": 0,
+    "reclass\\w*": 3
+  },
+  "checks": [
+    {
+      "period": "3Q26",
+      "adjusted_ebitda": 3327,
+      "depreciation": -926,
+      "noncurrent_assets_streaming_and_other": -480,
+      "equity_reconciliation": -525,
+      "financial_result": 138,
+      "income_before_taxes": 1534,
+      "ifrs_operating_income": 1593,
+      "ifrs_equity_result": -197,
+      "segment_bridge_residual": 0,
+      "income_statement_bridge_residual": 0
+    },
+    {
+      "period": "3Q25",
+      "adjusted_ebitda": 4369,
+      "depreciation": -761,
+      "noncurrent_assets_streaming_and_other": -525,
+      "equity_reconciliation": -132,
+      "financial_result": -339,
+      "income_before_taxes": 2612,
+      "ifrs_operating_income": 2791,
+      "ifrs_equity_result": 160,
+      "segment_bridge_residual": 0,
+      "income_statement_bridge_residual": 0
+    },
+    {
+      "period": "9M26",
+      "adjusted_ebitda": 10833,
+      "depreciation": -2682,
+      "noncurrent_assets_streaming_and_other": -1132,
+      "equity_reconciliation": -957,
+      "financial_result": -301,
+      "income_before_taxes": 5761,
+      "ifrs_operating_income": 6123,
+      "ifrs_equity_result": -61,
+      "segment_bridge_residual": 0,
+      "income_statement_bridge_residual": 0
+    },
+    {
+      "period": "9M25",
+      "adjusted_ebitda": 10870,
+      "depreciation": -2245,
+      "noncurrent_assets_streaming_and_other": -1245,
+      "equity_reconciliation": -635,
+      "financial_result": 13,
+      "income_before_taxes": 6758,
+      "ifrs_operating_income": 6594,
+      "ifrs_equity_result": 151,
+      "segment_bridge_residual": 0,
+      "income_statement_bridge_residual": 0
+    }
+  ],
+  "currency": "USD",
+  "unit": "million",
+  "annual_restatement_clearance": false,
+  "eligible_for_analysis": false,
+  "scope": "Targeted review of notes 3, 4, 30, comparative income statement and independent review; not full review of every note or later filing."
+}

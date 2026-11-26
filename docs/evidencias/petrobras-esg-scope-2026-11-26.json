@@ -1,0 +1,8 @@
+{
+  "url": "https://sustentabilidade.petrobras.com.br/documents/1449993/0/2025_ESG_DATASHEET_v9_final.pdf/ff4c2eff-8d9c-a6d6-2cf1-933f16d213f1?download=true&t=1784652310000&version=1.0",
+  "sha256": "89212498e0490ed75088c3372c50cba87fb5966fb4845b890f152dff0cc65c61",
+  "retrieved_at": "2026-11-26T13:10:30.623996+00:00",
+  "scope": "Contents and notes on pages 2, 3 and 10; targeted restatement review, not full audit",
+  "finding": "Historical adjustments concern atmospheric emissions, 2024 spilled volume and 2021 steam sales volumes. These indicators do not replace the consolidated annual operating-income line. Table/footnote spilled-volume inconsistency is retained; no general consistency assertion.",
+  "decision": "Exclude these ESG revisions from the four operating-income observations; retain limited scope for reviewer."
+}

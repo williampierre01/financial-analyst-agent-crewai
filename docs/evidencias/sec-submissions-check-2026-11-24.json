@@ -1,0 +1,4652 @@
+{
+  "0000917851": {
+    "source": "https://data.sec.gov/submissions/CIK0000917851.json",
+    "checked_at": "2026-11-24T18:46:30.146259+00:00",
+    "response_sha256": "decfa65fb1525ea3ddfdbd48fc358036e792fdcd1e9c373a3c32488abd11d58c",
+    "recent_min_date": "2022-02-11",
+    "filings": [
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-23",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005378",
+        "primaryDocument": "vale20261123_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-16",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005319",
+        "primaryDocument": "vale20261113_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-10",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005201",
+        "primaryDocument": "vale20261109_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-30",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-005070",
+        "primaryDocument": "vale20261030_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-30",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-005058",
+        "primaryDocument": "vale20261029_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-30",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-005056",
+        "primaryDocument": "valedfifrs3q26_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-30",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-005054",
+        "primaryDocument": "valedfbrgaap3q26_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-20",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-004954",
+        "primaryDocument": "vale20261020_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-16",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-004942",
+        "primaryDocument": "vale20261016_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-15",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-004934",
+        "primaryDocument": "vale20261014_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-14",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-004914",
+        "primaryDocument": "vale20261013_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-13",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-004898",
+        "primaryDocument": "vale20261009_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-02",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-004828",
+        "primaryDocument": "vale20261001_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-30",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004754",
+        "primaryDocument": "vale20260930_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-30",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004746",
+        "primaryDocument": "vale20260929_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-30",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004744",
+        "primaryDocument": "vale20260929_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-24",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004682",
+        "primaryDocument": "vale20260923_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-09-22",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004670",
+        "primaryDocument": "vale20260922_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-22",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004668",
+        "primaryDocument": "vale20260922_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-22",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004640",
+        "primaryDocument": "vale20260922_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-11",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004526",
+        "primaryDocument": "vale20260910_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-10",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004514",
+        "primaryDocument": "vale20260909_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-08",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004493",
+        "primaryDocument": "vale20260908_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-28",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004381",
+        "primaryDocument": "vale20260827_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-08-24",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004322",
+        "primaryDocument": "valedfifrs2q26_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-20",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004308",
+        "primaryDocument": "vale20260820_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-13",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004212",
+        "primaryDocument": "vale20260812_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-08-06",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004095",
+        "primaryDocument": "vale20260806_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-06",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004085",
+        "primaryDocument": "vale20260805_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-05",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004075",
+        "primaryDocument": "vale20260805_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-05",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004049",
+        "primaryDocument": "vale20260804_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004018",
+        "primaryDocument": "vale20260730_6k4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004016",
+        "primaryDocument": "vale20260730_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004014",
+        "primaryDocument": "vale20260730_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004012",
+        "primaryDocument": "valedfifrs2q26_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004010",
+        "primaryDocument": "valedfbrgaap2q26_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004008",
+        "primaryDocument": "vale20260730_6k6.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004006",
+        "primaryDocument": "vale20260730_6k7.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004004",
+        "primaryDocument": "vale20260730_6k8.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004002",
+        "primaryDocument": "valepr2q26_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004000",
+        "primaryDocument": "vale20260731_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003990",
+        "primaryDocument": "vale20260730_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003988",
+        "primaryDocument": "vale20260730_6k5.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-31",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003982",
+        "primaryDocument": "vale20260730_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-28",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003940",
+        "primaryDocument": "vale20260727_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-27",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003914",
+        "primaryDocument": "vale20260727_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-23",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003868",
+        "primaryDocument": "vale2020722_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-23",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003866",
+        "primaryDocument": "vale20260722_6k1.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-07-22",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003852",
+        "primaryDocument": "vale20260722_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-22",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003850",
+        "primaryDocument": "vale20260722_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-22",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003848",
+        "primaryDocument": "vale20260722_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-22",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003844",
+        "primaryDocument": "vale20260721_6k2.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-07-22",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003840",
+        "primaryDocument": "vale20260721_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-22",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003838",
+        "primaryDocument": "vale20260721_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-21",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003826",
+        "primaryDocument": "vale20260721_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-14",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003758",
+        "primaryDocument": "vale20260714_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-14",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003754",
+        "primaryDocument": "vale20260714_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-10",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003731",
+        "primaryDocument": "vale20260710_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-07-10",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003725",
+        "primaryDocument": "vale20260710_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-09",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003715",
+        "primaryDocument": "vale20260708_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-07",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003701",
+        "primaryDocument": "vale20260706_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-06",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003669",
+        "primaryDocument": "vale20260702_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-30",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003630",
+        "primaryDocument": "vale20260630_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-06-25",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003588",
+        "primaryDocument": "vale20260624_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-25",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003586",
+        "primaryDocument": "vale20260624_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-23",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003567",
+        "primaryDocument": "vale20260623_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-23",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003566",
+        "primaryDocument": "vale20260623_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-15",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003448",
+        "primaryDocument": "vale20260615_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-15",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003444",
+        "primaryDocument": "vale20260615_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-12",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003428",
+        "primaryDocument": "vale20260611_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-09",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003397",
+        "primaryDocument": "vale20260609_6k1.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-06-09",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003394",
+        "primaryDocument": "vale20260609_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-09",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003387",
+        "primaryDocument": "vale20260609_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-14",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003051",
+        "primaryDocument": "vale20260514_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-12",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002993",
+        "primaryDocument": "vale20260512_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-12",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002985",
+        "primaryDocument": "vale20260512_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-30",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002718",
+        "primaryDocument": "vale20260430_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-30",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002708",
+        "primaryDocument": "vale20260430_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-30",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002706",
+        "primaryDocument": "vale20260430_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-29",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-002668",
+        "primaryDocument": "vale20260429_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-29",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-002648",
+        "primaryDocument": "vale20260428_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-29",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002637",
+        "primaryDocument": "vale20260428_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-29",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-002634",
+        "primaryDocument": "valedfbrgaap1q26_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-29",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-002632",
+        "primaryDocument": "valedfifrs1q26_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-04-22",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002440",
+        "primaryDocument": "vale20260422_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-17",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002379",
+        "primaryDocument": "vale20260416_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-17",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-002376",
+        "primaryDocument": "vale20260416_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-15",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-002274",
+        "primaryDocument": "vale20260414_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-14",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002245",
+        "primaryDocument": "vale20260413_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-13",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002228",
+        "primaryDocument": "vale20260410_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-07",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002134",
+        "primaryDocument": "vale20260406_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-31",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001963",
+        "primaryDocument": "vale20260331_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-31",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001958",
+        "primaryDocument": "vale20260331_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-31",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001931",
+        "primaryDocument": "vale20260330_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-03-30",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001857",
+        "primaryDocument": "vale20260327_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-30",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001847",
+        "primaryDocument": "vale20260327_6k.htm"
+      },
+      {
+        "form": "20-F",
+        "filingDate": "2026-03-27",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-001844",
+        "primaryDocument": "valeform20f_2025.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-25",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001729",
+        "primaryDocument": "vale20260324_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-24",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001705",
+        "primaryDocument": "vale20260323_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-03-20",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001447",
+        "primaryDocument": "vale20260318_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-18",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-001051",
+        "primaryDocument": "vale20260317_6k5.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-18",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-001047",
+        "primaryDocument": "vale20260317_6k4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-18",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-001039",
+        "primaryDocument": "vale20260317_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-18",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-001034",
+        "primaryDocument": "vale20260317_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-18",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-001027",
+        "primaryDocument": "vale20260317_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-18",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-001022",
+        "primaryDocument": "vale20260317_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000841",
+        "primaryDocument": "vale20260312_6k4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000839",
+        "primaryDocument": "vale20260312_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000837",
+        "primaryDocument": "vale20260312_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000836",
+        "primaryDocument": "vale20260312_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000834",
+        "primaryDocument": "vale20260312_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-05",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000676",
+        "primaryDocument": "vale20260304_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-05",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000674",
+        "primaryDocument": "vale20260304_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-05",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000668",
+        "primaryDocument": "vale20260304_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-03-02",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000608",
+        "primaryDocument": "valepr4q25_6ka1.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-03-02",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000606",
+        "primaryDocument": "vale20260227_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-27",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000550",
+        "primaryDocument": "vale20260226_6k5.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-27",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000548",
+        "primaryDocument": "vale20260226_6k4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-27",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000546",
+        "primaryDocument": "vale20260226_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-27",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000543",
+        "primaryDocument": "vale20260226_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-27",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000541",
+        "primaryDocument": "vale20260226_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-27",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000539",
+        "primaryDocument": "vale20260226_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-23",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000468",
+        "primaryDocument": "vale20260223_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-23",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000464",
+        "primaryDocument": "vale20260223_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-20",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000450",
+        "primaryDocument": "vale20260220_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-19",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000428",
+        "primaryDocument": "vale20260219_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-17",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000394",
+        "primaryDocument": "vale20260213_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-17",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000392",
+        "primaryDocument": "vale20260213_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-13",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000377",
+        "primaryDocument": "vale20260213_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-02-13",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000375",
+        "primaryDocument": "valepr4q25_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-13",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000369",
+        "primaryDocument": "valepr4q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-13",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000367",
+        "primaryDocument": "vale20260212_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000365",
+        "primaryDocument": "vale20260212_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000363",
+        "primaryDocument": "vale20260212_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-13",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000361",
+        "primaryDocument": "valedfifrs4q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-13",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000359",
+        "primaryDocument": "valedfbrgaap4q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-11",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000303",
+        "primaryDocument": "valecvm358jan26_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-10",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000291",
+        "primaryDocument": "vale20260209_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-06",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000251",
+        "primaryDocument": "vale20260205_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-02-06",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000247",
+        "primaryDocument": "vale20260205_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-02",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000213",
+        "primaryDocument": "vale20260201_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-27",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000189",
+        "primaryDocument": "vale20260127_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-27",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000183",
+        "primaryDocument": "vale20260126_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-27",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000180",
+        "primaryDocument": "vale20260126_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-26",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000174",
+        "primaryDocument": "vale20260126_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-26",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000170",
+        "primaryDocument": "vale20260126_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-14",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000110",
+        "primaryDocument": "vale20260114_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000102",
+        "primaryDocument": "vale20260113_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-13",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000092",
+        "primaryDocument": "vale20260112_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-01-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000088",
+        "primaryDocument": "vale20260112_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000086",
+        "primaryDocument": "vale20260112_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000084",
+        "primaryDocument": "vale20260112_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-12",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000054",
+        "primaryDocument": "valecvm358dec25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-10",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004228",
+        "primaryDocument": "valecvm358nov25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-10",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004220",
+        "primaryDocument": "vale20251210_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-10",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004218",
+        "primaryDocument": "vale20251210_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-10",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004217",
+        "primaryDocument": "vale20251210_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-10",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004214",
+        "primaryDocument": "vale20251210_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-05",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004172",
+        "primaryDocument": "vale20251205_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-04",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004158",
+        "primaryDocument": "vale20251204_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-02",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004138",
+        "primaryDocument": "vale20251202_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-02",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004136",
+        "primaryDocument": "vale20251202_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-02",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004135",
+        "primaryDocument": "vale20251202_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-28",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004096",
+        "primaryDocument": "vale20251127_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-25",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004062",
+        "primaryDocument": "vale20251125_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-24",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004054",
+        "primaryDocument": "vale20251121_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-20",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004048",
+        "primaryDocument": "vale20251119_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-19",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004042",
+        "primaryDocument": "vale20251118_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-17",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004006",
+        "primaryDocument": "vale20251116_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-17",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-004004",
+        "primaryDocument": "vale20251114_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-17",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003992",
+        "primaryDocument": "vale20251114_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-14",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003976",
+        "primaryDocument": "vale20251114_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-11-14",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003966",
+        "primaryDocument": "vale20251113_6ka1.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-11-14",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003964",
+        "primaryDocument": "vale20251113_6ka.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-11-12",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003906",
+        "primaryDocument": "vale20251111_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-10",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003883",
+        "primaryDocument": "valecvm358oct25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-10",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003869",
+        "primaryDocument": "vale20251107_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-10",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003867",
+        "primaryDocument": "vale20251107_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-06",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003809",
+        "primaryDocument": "vale20251105_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-05",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003801",
+        "primaryDocument": "vale20251105_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-04",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003767",
+        "primaryDocument": "vale20251103_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-11-03",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003739",
+        "primaryDocument": "vale20251031_6ka.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-11-03",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003737",
+        "primaryDocument": "valepr3q25_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-31",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003731",
+        "primaryDocument": "vale20251031_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-31",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003723",
+        "primaryDocument": "valepr3q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-31",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003717",
+        "primaryDocument": "vale20251030_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-31",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003715",
+        "primaryDocument": "valedfbrgaap3q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-31",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003714",
+        "primaryDocument": "valedfifrs3q25_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-10-30",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003683",
+        "primaryDocument": "vale20251029_6ka3.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-10-30",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003681",
+        "primaryDocument": "vale20251029_6ka6.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-10-30",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003679",
+        "primaryDocument": "vale20251029_6ka5.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-10-30",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003677",
+        "primaryDocument": "vale20251029_6ka4.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-10-30",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003675",
+        "primaryDocument": "vale20251029_6ka2.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-10-30",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003673",
+        "primaryDocument": "vale20251029_6ka.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-10-30",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003671",
+        "primaryDocument": "vale20251029_6ka1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-24",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003613",
+        "primaryDocument": "vale20251023_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-22",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003583",
+        "primaryDocument": "vale20251021_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-21",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003581",
+        "primaryDocument": "vale20251021_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-10-21",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003579",
+        "primaryDocument": "valecvm358aug25_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-17",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003565",
+        "primaryDocument": "vale20251016_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-15",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003546",
+        "primaryDocument": "vale20251014_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-10",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003516",
+        "primaryDocument": "valecvm358sep25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-09",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003500",
+        "primaryDocument": "vale20251009_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-09",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003498",
+        "primaryDocument": "vale20251009_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-06",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003462",
+        "primaryDocument": "vale20251006_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-06",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003460",
+        "primaryDocument": "vale20251006_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-03",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003446",
+        "primaryDocument": "vale20251002_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-10-02",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003437",
+        "primaryDocument": "vale20251001_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-30",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003419",
+        "primaryDocument": "vale20250930_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-30",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-003417",
+        "primaryDocument": "vale20250929_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-09-24",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003372",
+        "primaryDocument": "vale20250923_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-23",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003358",
+        "primaryDocument": "vale20250922_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-23",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003352",
+        "primaryDocument": "vale20250922_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-18",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003330",
+        "primaryDocument": "vale20250918_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-17",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003320",
+        "primaryDocument": "vale20250917_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-09-15",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-003297",
+        "primaryDocument": "valepr2q25_6ka1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-11",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003279",
+        "primaryDocument": "vale20250911_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-10",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003262",
+        "primaryDocument": "valecvm358aug25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-10",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003250",
+        "primaryDocument": "vale20250910_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-10",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003248",
+        "primaryDocument": "vale20250910_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-09-09",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-003232",
+        "primaryDocument": "valedfifrs2q25_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-05",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003212",
+        "primaryDocument": "vale20250904_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-05",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003210",
+        "primaryDocument": "vale20250904_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-03",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003202",
+        "primaryDocument": "vale20250902_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-29",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003186",
+        "primaryDocument": "vale20250828_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-28",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003174",
+        "primaryDocument": "vale20250828_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-18",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003106",
+        "primaryDocument": "vale20250812_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-12",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003033",
+        "primaryDocument": "vale20250812_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-08",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003000",
+        "primaryDocument": "valecvm358jul25_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-08-05",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002875",
+        "primaryDocument": "valepr2q25_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-04",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002865",
+        "primaryDocument": "vale20250801_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-01",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002853",
+        "primaryDocument": "vale20250801_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-01",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002851",
+        "primaryDocument": "vale20250801_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-01",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002845",
+        "primaryDocument": "vale20250731_6k5.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-01",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002843",
+        "primaryDocument": "vale20250731_6k4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-01",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002842",
+        "primaryDocument": "vale20250731_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-01",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002839",
+        "primaryDocument": "valepr2q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-01",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002837",
+        "primaryDocument": "vale20250731_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-01",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002835",
+        "primaryDocument": "vale20250731_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-01",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002833",
+        "primaryDocument": "vale20250731_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-01",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002831",
+        "primaryDocument": "valedfifrs2q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-01",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002829",
+        "primaryDocument": "valedfbrgaap2q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-24",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002737",
+        "primaryDocument": "vale20250724_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-24",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002735",
+        "primaryDocument": "vale20250724_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-23",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002715",
+        "primaryDocument": "vale20250722_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-10",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002626",
+        "primaryDocument": "valecvm358jun25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-09",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002610",
+        "primaryDocument": "vale20250708_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-02",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002553",
+        "primaryDocument": "vale20250702_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-02",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002549",
+        "primaryDocument": "vale20250702_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-01",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002537",
+        "primaryDocument": "vale20250701_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-27",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002513",
+        "primaryDocument": "vale20250627_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-27",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002511",
+        "primaryDocument": "vale20250627_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-27",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002507",
+        "primaryDocument": "vale20250626_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-25",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002497",
+        "primaryDocument": "vale20250625_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-25",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002493",
+        "primaryDocument": "vale20250625_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-20",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002452",
+        "primaryDocument": "vale20250618_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-16",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002422",
+        "primaryDocument": "vale20250616_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-13",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002410",
+        "primaryDocument": "vale20250612_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-13",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002408",
+        "primaryDocument": "vale20250612_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-10",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002394",
+        "primaryDocument": "valecvm358may25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-10",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002386",
+        "primaryDocument": "vale20250609_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-05",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002368",
+        "primaryDocument": "vale20250604_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-05",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002367",
+        "primaryDocument": "vale20250604_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-05",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002364",
+        "primaryDocument": "vale20250604_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-05",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002362",
+        "primaryDocument": "vale20250604_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-03",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002330",
+        "primaryDocument": "vale20250602_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-03",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-002326",
+        "primaryDocument": "vale20250602_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-02",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-002320",
+        "primaryDocument": "vale20250602_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-02",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002315",
+        "primaryDocument": "vale20250602_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-30",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002281",
+        "primaryDocument": "vale20250529_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-30",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002279",
+        "primaryDocument": "vale20250529_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-28",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002255",
+        "primaryDocument": "vale20250528_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-27",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002223",
+        "primaryDocument": "vale20250523_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-27",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002221",
+        "primaryDocument": "vale20250523_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-23",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002199",
+        "primaryDocument": "vale20250522_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-23",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002197",
+        "primaryDocument": "vale20250522_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-16",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002113",
+        "primaryDocument": "vale20250515_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-16",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002111",
+        "primaryDocument": "vale20250515_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-05-14",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002073",
+        "primaryDocument": "vale20250513_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-13",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002047",
+        "primaryDocument": "vale20250513_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-12",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001985",
+        "primaryDocument": "valecvm358apr25_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-05-09",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001981",
+        "primaryDocument": "vale20250509_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-05",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001841",
+        "primaryDocument": "vale20250430_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-01",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001831",
+        "primaryDocument": "vale20250430_6k4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-01",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001829",
+        "primaryDocument": "vale20250430_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-01",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001827",
+        "primaryDocument": "vale20250430_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-30",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001799",
+        "primaryDocument": "vale20250430_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-04-30",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001797",
+        "primaryDocument": "vale20250430_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-29",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001717",
+        "primaryDocument": "vale20250429_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-25",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001642",
+        "primaryDocument": "vale20250425_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-25",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001638",
+        "primaryDocument": "valepr1q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-25",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001635",
+        "primaryDocument": "valedfifrs1q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-25",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001633",
+        "primaryDocument": "valedfbrgaap1q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-16",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001494",
+        "primaryDocument": "vale20250415_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-14",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-001473",
+        "primaryDocument": "vale20250414_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-14",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001471",
+        "primaryDocument": "vale20250414_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-11",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001427",
+        "primaryDocument": "valecvm358mar25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-10",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001409",
+        "primaryDocument": "vale20250409_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-07",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001378",
+        "primaryDocument": "vale20250404_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-07",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001374",
+        "primaryDocument": "vale20250404_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-04-03",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001338",
+        "primaryDocument": "vale20250402_6ka.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-04-03",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001336",
+        "primaryDocument": "vale20250402_6ka1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-01",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001270",
+        "primaryDocument": "vale20250331_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-31",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001251",
+        "primaryDocument": "vale20250331_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-31",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001174",
+        "primaryDocument": "vale20250328_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-31",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001172",
+        "primaryDocument": "vale20250328_6k.htm"
+      },
+      {
+        "form": "20-F",
+        "filingDate": "2025-03-28",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-001137",
+        "primaryDocument": "valeform20f_2024.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-25",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001052",
+        "primaryDocument": "vale20250325_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-25",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001036",
+        "primaryDocument": "vale20250324_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-03-24",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001009",
+        "primaryDocument": "vale20250321_6ka1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-24",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001007",
+        "primaryDocument": "vale20250321_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-24",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000999",
+        "primaryDocument": "vale20250321_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-19",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000966",
+        "primaryDocument": "vale20250317_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-19",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000958",
+        "primaryDocument": "vale20250318_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-18",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000950",
+        "primaryDocument": "vale20250317_6k6.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-18",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000949",
+        "primaryDocument": "vale20250317_6k4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-18",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000947",
+        "primaryDocument": "vale20250317_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-18",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000945",
+        "primaryDocument": "vale20250317_6k5.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-18",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000943",
+        "primaryDocument": "vale20250317_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-18",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000941",
+        "primaryDocument": "vale20250317_6k1.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-03-18",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000936",
+        "primaryDocument": "vale20250317_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-14",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000905",
+        "primaryDocument": "vale20250313_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-14",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000903",
+        "primaryDocument": "vale20250313_6k2.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-03-14",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000895",
+        "primaryDocument": "vale20250313_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000889",
+        "primaryDocument": "vale20250313_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000874",
+        "primaryDocument": "vale20250312_6k8.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000872",
+        "primaryDocument": "vale20250312_6k7.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000870",
+        "primaryDocument": "vale20250312_6k6.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000868",
+        "primaryDocument": "vale20250312_6k9.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000866",
+        "primaryDocument": "vale20250312_6ka3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000864",
+        "primaryDocument": "vale20250312_6k10.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000863",
+        "primaryDocument": "vale20250312_6k5.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000860",
+        "primaryDocument": "vale20250312_6ka4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000859",
+        "primaryDocument": "vale20250312_6k4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000856",
+        "primaryDocument": "vale20250312_6k11.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000855",
+        "primaryDocument": "vale20250312_6k3.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000852",
+        "primaryDocument": "vale20250312_6ka2.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000850",
+        "primaryDocument": "vale20250312_6ka1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000848",
+        "primaryDocument": "vale20250312_6k2.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000846",
+        "primaryDocument": "vale20250312_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000844",
+        "primaryDocument": "vale20250312_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000840",
+        "primaryDocument": "vale20250312_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-10",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000768",
+        "primaryDocument": "vale20250307_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-07",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000760",
+        "primaryDocument": "vale20250307_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-28",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000684",
+        "primaryDocument": "vale20250228_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-27",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000668",
+        "primaryDocument": "vale20250227_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-25",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000574",
+        "primaryDocument": "vale20250225_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-25",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000565",
+        "primaryDocument": "vale20250224_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-25",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000561",
+        "primaryDocument": "vale20250224_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-24",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000540",
+        "primaryDocument": "vale20250224_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-24",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000538",
+        "primaryDocument": "vale20250222_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-24",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000536",
+        "primaryDocument": "vale20250222_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-24",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000534",
+        "primaryDocument": "vale20250222_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-24",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000530",
+        "primaryDocument": "vale20250221_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-24",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000528",
+        "primaryDocument": "vale20250224_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-21",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000514",
+        "primaryDocument": "vale20250221_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-02-21",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000508",
+        "primaryDocument": "valedfifrs4q24_6ka.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-02-21",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000506",
+        "primaryDocument": "vale20250221_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000476",
+        "primaryDocument": "vale20250220_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000472",
+        "primaryDocument": "vale20250219_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000466",
+        "primaryDocument": "vale20250219_6k4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000464",
+        "primaryDocument": "vale20250219_6k6.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000462",
+        "primaryDocument": "vale20250219_6k5.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000460",
+        "primaryDocument": "vale20250219_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000458",
+        "primaryDocument": "vale20250219_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000456",
+        "primaryDocument": "vale20250219_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000454",
+        "primaryDocument": "valedfifrs4q24_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000452",
+        "primaryDocument": "valedfbrgaap4q24_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-14",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000408",
+        "primaryDocument": "vale20250214_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000382",
+        "primaryDocument": "vale20250212_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-11",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000342",
+        "primaryDocument": "valecvm358jan25_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-01-29",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000178",
+        "primaryDocument": "vale20250128_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-28",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000174",
+        "primaryDocument": "vale20250128_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-23",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000148",
+        "primaryDocument": "vale20250123_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-21",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000142",
+        "primaryDocument": "vale20250120_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-14",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000090",
+        "primaryDocument": "vale20250114_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000080",
+        "primaryDocument": "vale20250113_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-10",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000052",
+        "primaryDocument": "vale20250110_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-10",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000038",
+        "primaryDocument": "vale20250108_6k.htm"
+      }
+    ]
+  },
+  "0001119639": {
+    "source": "https://data.sec.gov/submissions/CIK0001119639.json",
+    "checked_at": "2026-11-24T18:46:30.220368+00:00",
+    "response_sha256": "5dbd41e05834f8ca1bb806cce7748e3b83b53a582893a86f132f79362ccd3a48",
+    "recent_min_date": "2022-07-18",
+    "filings": [
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-24",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005388",
+        "primaryDocument": "pbr20261123_6k4.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-24",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005384",
+        "primaryDocument": "pbr20261123_6k3.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-24",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005382",
+        "primaryDocument": "pbr20261123_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-24",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005380",
+        "primaryDocument": "pbr20261123_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-23",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-005376",
+        "primaryDocument": "pbr20261123_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-18",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-005346",
+        "primaryDocument": "pbr20261117_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-17",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005337",
+        "primaryDocument": "pbr20261116_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-17",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005335",
+        "primaryDocument": "pbr20261116_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-12",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-005256",
+        "primaryDocument": "pbr20261110_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-12",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-005252",
+        "primaryDocument": "pbrrmf3q26usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-12",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-005249",
+        "primaryDocument": "pbrfs3q26rs_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-12",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-005248",
+        "primaryDocument": "pbrfs3q26usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-12",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005239",
+        "primaryDocument": "pbr20261112_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-12",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005231",
+        "primaryDocument": "pbr20261110_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-12",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005229",
+        "primaryDocument": "pbr20261110_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-04",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005142",
+        "primaryDocument": "pbr20261104_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-11-04",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005140",
+        "primaryDocument": "pbr20261104_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-30",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-005052",
+        "primaryDocument": "pbr20261029_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-29",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-005030",
+        "primaryDocument": "pbr20261028_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-14",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-004920",
+        "primaryDocument": "pbr20261013_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-14",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-004918",
+        "primaryDocument": "pbr20261013_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-13",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-004910",
+        "primaryDocument": "pbr20261013_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-08",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-004868",
+        "primaryDocument": "pbr20261008_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-02",
+        "reportDate": "2026-12-31",
+        "accessionNumber": "0001292814-26-004836",
+        "primaryDocument": "pbr20261002_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-01",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004768",
+        "primaryDocument": "pbr20260930_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-10-01",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004760",
+        "primaryDocument": "pbr20260930_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-23",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004672",
+        "primaryDocument": "pbr20260922_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-09-21",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004623",
+        "primaryDocument": "pbrfs2q26usd_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-21",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004612",
+        "primaryDocument": "pbr20260921_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-21",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004610",
+        "primaryDocument": "pbr20260921_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-17",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004582",
+        "primaryDocument": "pbr20260917_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-09-14",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004540",
+        "primaryDocument": "pbr20260911_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-27",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004365",
+        "primaryDocument": "pbr20260826_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-21",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004314",
+        "primaryDocument": "pbr20260821_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-20",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004304",
+        "primaryDocument": "pbr20260820_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-17",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004270",
+        "primaryDocument": "pbr20260814_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-17",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004262",
+        "primaryDocument": "pbr20260814_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-14",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004234",
+        "primaryDocument": "pbr20260813_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-07",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004133",
+        "primaryDocument": "pbrfs2q26usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-07",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004131",
+        "primaryDocument": "pbrfs2q26rs_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-07",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004129",
+        "primaryDocument": "pbrrmf2q26usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-07",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-004128",
+        "primaryDocument": "pbr20260806_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-07",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004123",
+        "primaryDocument": "pbr20260806_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-08-03",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-004038",
+        "primaryDocument": "pbr20260803_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-29",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003948",
+        "primaryDocument": "pbr20260728_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-27",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003912",
+        "primaryDocument": "pbr20260724_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-23",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003856",
+        "primaryDocument": "pbr20260722_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-14",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003752",
+        "primaryDocument": "pbr20260713_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-10",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003721",
+        "primaryDocument": "pbr20260709_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-08",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003709",
+        "primaryDocument": "pbr20260707_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-07",
+        "reportDate": "2026-09-30",
+        "accessionNumber": "0001292814-26-003703",
+        "primaryDocument": "pbr20260706_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-07-01",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003640",
+        "primaryDocument": "pbr20260630_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-29",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003618",
+        "primaryDocument": "pbr20260626_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-24",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003578",
+        "primaryDocument": "pbr20260623_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-23",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003574",
+        "primaryDocument": "pbr20260623_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-23",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003568",
+        "primaryDocument": "pbr20260622_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-22",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003554",
+        "primaryDocument": "pbr20260619_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-18",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003534",
+        "primaryDocument": "pbr20260617_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-16",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003472",
+        "primaryDocument": "pbr20260616_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-10",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003409",
+        "primaryDocument": "pbr20260610_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-06-02",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003269",
+        "primaryDocument": "pbr20260602_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-29",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003241",
+        "primaryDocument": "pbr20260529_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-28",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003221",
+        "primaryDocument": "pbr20260526_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-26",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003182",
+        "primaryDocument": "pbr20260525_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-22",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-003167",
+        "primaryDocument": "pbr20260522_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-22",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003165",
+        "primaryDocument": "pbr20260522_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-22",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003157",
+        "primaryDocument": "pbr20260521_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-21",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003141",
+        "primaryDocument": "pbr20260520_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-21",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003139",
+        "primaryDocument": "pbr20260520_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-19",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-003105",
+        "primaryDocument": "pbr20260518_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-14",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003033",
+        "primaryDocument": "pbr20260514_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-14",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-003031",
+        "primaryDocument": "pbr20260514_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-12",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-003000",
+        "primaryDocument": "pbrfs1q26usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-12",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-002988",
+        "primaryDocument": "pbrfs1q26rs_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-12",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-002981",
+        "primaryDocument": "pbrrmf1q26usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-12",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-002979",
+        "primaryDocument": "pbr20260511_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-12",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002977",
+        "primaryDocument": "pbr20260511_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-05",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002761",
+        "primaryDocument": "pbr20260504_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-05",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002747",
+        "primaryDocument": "pbr20260504_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-01",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002736",
+        "primaryDocument": "pbr20260501_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-05-01",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-002724",
+        "primaryDocument": "pbr20260430_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-28",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002572",
+        "primaryDocument": "pbr20260428_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-28",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002551",
+        "primaryDocument": "pbr20260427_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-24",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002489",
+        "primaryDocument": "pbr20260423_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-23",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002473",
+        "primaryDocument": "pbr20260422_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-23",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002470",
+        "primaryDocument": "pbr20260422_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-20",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002425",
+        "primaryDocument": "pbr20260420_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-17",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002392",
+        "primaryDocument": "pbr20260417_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-17",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002388",
+        "primaryDocument": "pbr20260416_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-17",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002361",
+        "primaryDocument": "pbr20260416_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-15",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002272",
+        "primaryDocument": "pbr20260414_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-14",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002243",
+        "primaryDocument": "pbr20260413_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-14",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002241",
+        "primaryDocument": "pbr20260413_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-13",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002232",
+        "primaryDocument": "pbr20260413_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-09",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002195",
+        "primaryDocument": "pbr20260409_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-09",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002181",
+        "primaryDocument": "pbr20260408_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2026-04-09",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002177",
+        "primaryDocument": "pbr20260408_6ka.htm"
+      },
+      {
+        "form": "20-F",
+        "filingDate": "2026-04-09",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-002168",
+        "primaryDocument": "pbrform20f_2025.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-07",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002141",
+        "primaryDocument": "pbr20260406_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-07",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002139",
+        "primaryDocument": "pbr20260406_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-07",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002137",
+        "primaryDocument": "pbr20260406_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-02",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002086",
+        "primaryDocument": "pbr20260402_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-02",
+        "reportDate": "2026-06-30",
+        "accessionNumber": "0001292814-26-002077",
+        "primaryDocument": "pbr20260401_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-04-01",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-002041",
+        "primaryDocument": "pbr20260331_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-26",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001782",
+        "primaryDocument": "pbr20260326_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-24",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001698",
+        "primaryDocument": "pbr20260323_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-23",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001610",
+        "primaryDocument": "pbr20260320_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-19",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001236",
+        "primaryDocument": "pbr20260318_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-18",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-001067",
+        "primaryDocument": "pbr20260318_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-17",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000902",
+        "primaryDocument": "pbr20260316_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-17",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000900",
+        "primaryDocument": "pbr20260316_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-16",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000889",
+        "primaryDocument": "pbr20260313_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-16",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000885",
+        "primaryDocument": "pbr20260316_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-13",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000831",
+        "primaryDocument": "pbr20260312_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-12",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000812",
+        "primaryDocument": "pbr20260312_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-09",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000721",
+        "primaryDocument": "pbr20260306_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-06",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000708",
+        "primaryDocument": "pbrfs4q25rs_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-06",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000706",
+        "primaryDocument": "pbrfs4q25usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-06",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000696",
+        "primaryDocument": "pbrrmf4q25usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-06",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000694",
+        "primaryDocument": "pbr20260305_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-06",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000690",
+        "primaryDocument": "pbr20260305_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-03-05",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000666",
+        "primaryDocument": "pbr20260304_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-25",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000497",
+        "primaryDocument": "pbr20260225_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-12",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000341",
+        "primaryDocument": "pbr20260212_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-12",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000339",
+        "primaryDocument": "pbr20260212_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-11",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-26-000301",
+        "primaryDocument": "pbr20260210_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-06",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000255",
+        "primaryDocument": "pbr20260206_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-06",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000253",
+        "primaryDocument": "pbr20260205_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-02-04",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000241",
+        "primaryDocument": "pbr20260204_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-28",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000197",
+        "primaryDocument": "pbr20260128_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-16",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000128",
+        "primaryDocument": "pbr20260115_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-14",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000104",
+        "primaryDocument": "pbr20260113_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2026-01-02",
+        "reportDate": "2026-03-31",
+        "accessionNumber": "0001292814-26-000002",
+        "primaryDocument": "pbr20260102_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-29",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004395",
+        "primaryDocument": "pbr20251223_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-29",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004393",
+        "primaryDocument": "pbr20251223_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-19",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004319",
+        "primaryDocument": "pbr20251218_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-16",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004295",
+        "primaryDocument": "pbr20251216_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-16",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004270",
+        "primaryDocument": "pbr20251215_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-11",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004238",
+        "primaryDocument": "pbr20251210_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-04",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004164",
+        "primaryDocument": "pbr20251204_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-12-01",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004126",
+        "primaryDocument": "pbr20251201_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-28",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004085",
+        "primaryDocument": "pbr20251127_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-28",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004081",
+        "primaryDocument": "pbr20251127_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-28",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004078",
+        "primaryDocument": "pbr20251126_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-25",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004066",
+        "primaryDocument": "pbr20251125_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-21",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004052",
+        "primaryDocument": "pbr20251121_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-17",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-004012",
+        "primaryDocument": "pbr20251117_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-17",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-004008",
+        "primaryDocument": "pbrrmf3q25usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-17",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-004000",
+        "primaryDocument": "pbr20251117_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-13",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003952",
+        "primaryDocument": "pbr20251113_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-07",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003847",
+        "primaryDocument": "pbrfs3q25usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-07",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003845",
+        "primaryDocument": "pbrfs3q25rs_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-07",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003833",
+        "primaryDocument": "pbr20251106_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-07",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003831",
+        "primaryDocument": "pbr20251106_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-07",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003825",
+        "primaryDocument": "pbr20251106_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-06",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003807",
+        "primaryDocument": "pbr20251105_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-05",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003791",
+        "primaryDocument": "pbr20251105_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-11-03",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003747",
+        "primaryDocument": "pbr20251103_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-11-03",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003745",
+        "primaryDocument": "pbr20251103_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-28",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003641",
+        "primaryDocument": "pbr20251028_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-27",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003631",
+        "primaryDocument": "pbr20251024_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-23",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003599",
+        "primaryDocument": "pbr20251022_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-21",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003575",
+        "primaryDocument": "pbr20251020_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-20",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003571",
+        "primaryDocument": "pbr20251020_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-10-08",
+        "reportDate": "2025-12-31",
+        "accessionNumber": "0001292814-25-003492",
+        "primaryDocument": "pbr20251008_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-22",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003346",
+        "primaryDocument": "pbr20250922_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-15",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003293",
+        "primaryDocument": "pbr20250912_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-11",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003264",
+        "primaryDocument": "pbr20250910_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-10",
+        "reportDate": "2025-09-10",
+        "accessionNumber": "0001104659-25-089003",
+        "primaryDocument": "tm2525749d1_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-04",
+        "reportDate": "2025-09-03",
+        "accessionNumber": "0001104659-25-087359",
+        "primaryDocument": "tm2525228d1_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-04",
+        "reportDate": "2025-09-03",
+        "accessionNumber": "0001104659-25-087159",
+        "primaryDocument": "tm2524699d3_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-03",
+        "reportDate": "2025-09-03",
+        "accessionNumber": "0001104659-25-086716",
+        "primaryDocument": "tm2524699d2_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-09-03",
+        "reportDate": "2025-09-03",
+        "accessionNumber": "0001104659-25-086710",
+        "primaryDocument": "tm2524699d4_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-29",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003188",
+        "primaryDocument": "pbr20250829_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-28",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003164",
+        "primaryDocument": "pbr20250827_6k.htm"
+      },
+      {
+        "form": "6-K/A",
+        "filingDate": "2025-08-26",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-003156",
+        "primaryDocument": "pbrfs2q25usd_6ka.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-22",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-003144",
+        "primaryDocument": "pbr20250807_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-22",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-003142",
+        "primaryDocument": "pbrpr2q25_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-22",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003136",
+        "primaryDocument": "pbr20250821_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-20",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003126",
+        "primaryDocument": "pbr20250820_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-20",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-003120",
+        "primaryDocument": "pbr20250820_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-14",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-003059",
+        "primaryDocument": "pbr20250814_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-08",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002980",
+        "primaryDocument": "pbrrmf2q25usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-08",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002976",
+        "primaryDocument": "pbrfs2q25usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-08",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002974",
+        "primaryDocument": "pbrfs2q25rs_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-08",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002970",
+        "primaryDocument": "pbr20250807_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-08",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002968",
+        "primaryDocument": "pbr20250807_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-08-05",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002877",
+        "primaryDocument": "pbr20250804_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-30",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002777",
+        "primaryDocument": "pbr20250730_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-30",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002769",
+        "primaryDocument": "pbr20250729_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-25",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002747",
+        "primaryDocument": "pbr20250724_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-23",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002723",
+        "primaryDocument": "pbr20250723_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-11",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002657",
+        "primaryDocument": "pbr20250711_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-10",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002620",
+        "primaryDocument": "pbr20250710_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-07",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002575",
+        "primaryDocument": "pbr20250704_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-03",
+        "reportDate": "2025-09-30",
+        "accessionNumber": "0001292814-25-002569",
+        "primaryDocument": "pbr20250703_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-07-01",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002531",
+        "primaryDocument": "pbr20250630_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-25",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002499",
+        "primaryDocument": "pbr20250625_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-20",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002458",
+        "primaryDocument": "pbr20250618_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-17",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002430",
+        "primaryDocument": "pbr20250617_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-16",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002424",
+        "primaryDocument": "pbr20250616_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-13",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002412",
+        "primaryDocument": "pbr20250613_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-09",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002378",
+        "primaryDocument": "pbr20250606_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-05",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002358",
+        "primaryDocument": "pbr20250604_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-03",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002328",
+        "primaryDocument": "pbr20250602_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-02",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002312",
+        "primaryDocument": "pbr20250530_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-06-02",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002297",
+        "primaryDocument": "pbr20250530_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-29",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002267",
+        "primaryDocument": "pbr20250528_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-28",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002253",
+        "primaryDocument": "pbr20250528_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-28",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-002246",
+        "primaryDocument": "pbr20250527_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-27",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002236",
+        "primaryDocument": "pbr20250526_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-27",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002234",
+        "primaryDocument": "pbr20250526_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-27",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002231",
+        "primaryDocument": "pbr20250524_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-27",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002215",
+        "primaryDocument": "pbr20250523_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-23",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002209",
+        "primaryDocument": "pbr20250523_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-23",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002207",
+        "primaryDocument": "pbr20250523_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-23",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002203",
+        "primaryDocument": "pbr20250522_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-22",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002183",
+        "primaryDocument": "pbr20250522_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-20",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002161",
+        "primaryDocument": "pbr20250520_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-002149",
+        "primaryDocument": "pbr20250519_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-15",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-002093",
+        "primaryDocument": "pbrrmf1q25usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-14",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002075",
+        "primaryDocument": "pbr20250514_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-002053",
+        "primaryDocument": "pbrfs1q25rs_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-002051",
+        "primaryDocument": "pbrfs1q25usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-13",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002045",
+        "primaryDocument": "pbr20250512_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-13",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002041",
+        "primaryDocument": "pbr20250512_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-12",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-002025",
+        "primaryDocument": "pbr20250512_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-12",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001983",
+        "primaryDocument": "pbr20250509_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-09",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001965",
+        "primaryDocument": "pbr20250509_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-05-05",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001839",
+        "primaryDocument": "pbr20250505_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-30",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001745",
+        "primaryDocument": "pbr20250429_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-17",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001538",
+        "primaryDocument": "pbr20250416_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-17",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001521",
+        "primaryDocument": "pbr20250416_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-16",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001507",
+        "primaryDocument": "pbr20250416_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-15",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001479",
+        "primaryDocument": "pbr20250414_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-14",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001455",
+        "primaryDocument": "pbr20250411_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-04",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001354",
+        "primaryDocument": "pbr20250403_6k1.htm"
+      },
+      {
+        "form": "20-F",
+        "filingDate": "2025-04-03",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-001352",
+        "primaryDocument": "pbrform20f_2024.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-04-03",
+        "reportDate": "2025-06-30",
+        "accessionNumber": "0001292814-25-001346",
+        "primaryDocument": "pbr20250403_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-31",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001139",
+        "primaryDocument": "pbr20250328_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-28",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001110",
+        "primaryDocument": "pbr20250327_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-27",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001094",
+        "primaryDocument": "pbr20250327_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-26",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001078",
+        "primaryDocument": "pbr20250326_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-26",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001059",
+        "primaryDocument": "pbr20250325_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-26",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001057",
+        "primaryDocument": "pbr20250325_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-25",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-001030",
+        "primaryDocument": "pbr20250324_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000983",
+        "primaryDocument": "pbr20250319_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-18",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000934",
+        "primaryDocument": "pbr20250317_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-14",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000909",
+        "primaryDocument": "pbr20250314_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000887",
+        "primaryDocument": "pbr20250313_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000878",
+        "primaryDocument": "pbr20250313_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000876",
+        "primaryDocument": "pbr20250313_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-13",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000838",
+        "primaryDocument": "pbr20250312_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-10",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000770",
+        "primaryDocument": "pbr20250308_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-10",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000764",
+        "primaryDocument": "pbr20250307_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-03-07",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000762",
+        "primaryDocument": "pbr20250307_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-27",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000670",
+        "primaryDocument": "pbrfs4q24rs_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-27",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000664",
+        "primaryDocument": "pbrfs4q24usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-27",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000660",
+        "primaryDocument": "pbrrmf4q24usd_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-27",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000636",
+        "primaryDocument": "pbr20250226_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-27",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000634",
+        "primaryDocument": "pbr20250226_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000496",
+        "primaryDocument": "pbr20250220_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000490",
+        "primaryDocument": "pbr20250220_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000471",
+        "primaryDocument": "pbr20250219_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-20",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000470",
+        "primaryDocument": "pbr20250219_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-18",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000417",
+        "primaryDocument": "pbr20250216_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-18",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000415",
+        "primaryDocument": "pbr20250215_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-14",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000410",
+        "primaryDocument": "pbr20250214_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-14",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000404",
+        "primaryDocument": "pbr20250213_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-06",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000274",
+        "primaryDocument": "pbr20250206_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-03",
+        "reportDate": "2024-12-31",
+        "accessionNumber": "0001292814-25-000245",
+        "primaryDocument": "pbr20250203_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-02-03",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000243",
+        "primaryDocument": "pbr20250203_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-31",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000224",
+        "primaryDocument": "pbr20250131_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-30",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000208",
+        "primaryDocument": "pbr20250129_6k2.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-29",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000198",
+        "primaryDocument": "pbr20250129_6k1.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-29",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000196",
+        "primaryDocument": "pbr20250129_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-28",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000172",
+        "primaryDocument": "pbr20250127_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-24",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000158",
+        "primaryDocument": "pbr20250124_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-24",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000150",
+        "primaryDocument": "pbr20250123_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-22",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000146",
+        "primaryDocument": "pbr20250122_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000064",
+        "primaryDocument": "pbr20250113_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-13",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000058",
+        "primaryDocument": "pbr20250110_6k.htm"
+      },
+      {
+        "form": "6-K",
+        "filingDate": "2025-01-10",
+        "reportDate": "2025-03-31",
+        "accessionNumber": "0001292814-25-000042",
+        "primaryDocument": "pbr20250109_6k.htm"
+      }
+    ]
+  }
+}

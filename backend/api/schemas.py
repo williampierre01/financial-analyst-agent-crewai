@@ -26,6 +26,16 @@ class Quote(BaseModel):
     freshness: Literal["unknown", "stale", "recent"]
 
 
+class OperatingIncomeReference(BaseModel):
+    value: FiniteFloat
+    source_field: Literal["annualTotalOperatingIncomeAsReported"]
+    document_url: str
+    document_location: str
+    evidence_digest: str
+    reviewed_at: datetime
+    scope: str
+
+
 class StatementPeriod(BaseModel):
     period_end: date
     period_type: Literal["annual"]
@@ -35,6 +45,7 @@ class StatementPeriod(BaseModel):
     per_share_fields: list[str]
     values: dict[str, FiniteFloat | None]
     missing_fields: list[str]
+    reported_operating_income_reference: OperatingIncomeReference | None = None
 
 
 class Statements(BaseModel):
@@ -44,7 +55,7 @@ class Statements(BaseModel):
 
 
 class FinancialSnapshot(BaseModel):
-    schema_version: Literal["3.0"]
+    schema_version: Literal["3.0", "3.1"]
     ticker: str
     display_ticker: str
     market: Literal["BR"]

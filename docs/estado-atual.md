@@ -1,4 +1,17 @@
+> Atualização 26/11/2026 — aprovação recebida: William, responsável neste chat, declarou “revisão final aprovada”. Registro separado em `evidencias/operating-review-approval-2026-11-26.json`, vinculado ao pacote exato e seu alcance. Integração local do contrato 3.1 implementada: campo `reported_operating_income`, referência oficial, correspondência exata e revogação por alteração de evidência/aprovação. Campo normalizado legado permanece nulo. Backend: 163 testes executados, 160 aprovados e 3 ignorados. Interface: testes desktop/mobile passaram; build aprovado. Ainda não publicado nem mesclado. Não editar o documento de revisão aprovado: seu hash faz parte do registro.
+
+> Atualização 26/11/2026: preparação do recorte documental concluída, sujeita à aceitação das limitações pelo revisor. O usuário se ofereceu como responsável; ainda não aprovou valores. Pacote `evidencias/operating-review-package-2026-11-26.json` e documento `revisao-final-operacional-2026-11-26.md` prontos. Os quatro resultados continuam `unverified / missing_matching_review`, sem elegibilidade. 23 testes locais passaram. Próxima ação: revisão identificada do pacote; integração runtime depende dela.
+
+> Atualização 25/11/2026: D3 encerrado como seleção técnica dos 20-F; página 4 da Vale 2T26 recuperada. Pacote provisório com quatro digests preparado, sem aprovação e sem liberação. 21 testes operacionais passaram. C1–C3 ainda exigem conclusão; ver `decisao-fontes-operacionais-2026-11-25.md` e matriz. Integração runtime não implementada nesta atualização.
+
 # Estado atual do projeto
+
+> Atualização mais recente — 25/11/2026: pendências consolidadas em
+> [matriz-pendencias-operacionais.md](matriz-pendencias-operacionais.md).
+> D1 e D2 concluídos nos recortes registrados. Retomar por D3: escolha da fonte Vale. A matriz separa
+> verificações concluídas, lacunas de cobertura e requisitos para aprovação.
+> Quatro candidatos permanecem sem revisão aprovada e bloqueados.
+
 
 Atualizado em **17/11/2026**. Código entregue, publicação e homologação são
 registrados separadamente.
@@ -138,3 +151,40 @@ consultas para repetir evidência já disponível.
   de cobrança realizada por esta entrega. Nenhuma credencial registrada.
 
 Continuidade: [roteiro para o próximo chat](continuidade-projeto.md).
+
+## Revisão documental — 17/11/2026
+
+PR #32 incorporado em `c6dc4eb`, checks aprovados e Live confirmado por captura.
+Levantamento SEC e comparação Vale 2024 registrados em
+[revisão de versões](revisao-versoes-operacionais.md). Checagem de reapresentações
+ainda parcial; quatro candidatos não aprovados. Nenhuma alteração em produção.
+
+Atualização de 24/11/2026: as 114 imagens dos três releases Vale foram coletadas,
+comparadas por hash e as páginas diferentes conferidas visualmente. Foram
+encontradas divergências entre texto e imagem nas páginas 2 e 25 da segunda
+emenda. Revisão dos releases concluída nesse escopo; vigência documental e
+aprovação dos quatro candidatos continuam pendentes. Ver a seção mais recente
+de `revisao-versoes-operacionais.md`. Alterações somente documentais.
+
+Referência anual definida em 24/11: 20-F SEC de 2025, demonstrações consolidadas
+Petrobras F-4 e Vale F-3. Os quatro valores candidatos foram corroborados e os
+arquivos preservados com hashes. Inventário de protocolos atualizado, sem 20-F/A
+no recorte consultado. A avaliação dos comunicados posteriores continua incompleta;
+seleção da referência não equivale a liberação do indicador.
+
+Triagem posterior concluída em 24/11: 193 documentos primários preservados,
+14 documentos com ocorrências de correção contextualizadas e 12 documentos
+predominantemente visuais identificados para conferência. Nenhuma alteração direta
+dos quatro valores foi identificada nos trechos examinados. Isso não é revisão
+integral dos documentos/anexos nem aprovação de uso. Manifesto:
+`evidencias/subsequent-filings-triage-2026-11-24.json`.
+
+### Avanço documental em 24/11/2026
+
+Identificadas e conferidas as 12 capas pendentes. Conciliação de streaming da
+Vale verificada em quatro períodos trimestrais/acumulados, com resíduo zero.
+Remissões GRI examinadas: a página 5 da Petrobras não detalha reapresentações;
+conferência de indicadores/ESG Datasheet permanece pendente. Ver o último bloco
+de `revisao-versoes-operacionais.md` para alcance e evidências. Próximo passo:
+revisar as páginas financeiras das apresentações Vale 1T26, 2T26 e 3T26.
+Resultado operacional continua sem liberação; candidatos e código inalterados.

@@ -1,0 +1,49 @@
+{
+  "method": "Selected annual consolidated income statement; table values checked against candidate snapshot. Not a human approval or exhaustive subsequent-filings review.",
+  "records": [
+    {
+      "ticker": "PETR4.SA",
+      "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426002168/pbrform20f_2025.htm",
+      "sha256": "ff71ddd5bf58ed99b6fae8f7aa20d9eff8a20b7d060302f874b729910244c1f3",
+      "retrieved_at": "2026-11-24T18:47:07.014909+00:00",
+      "local_file": "pbrform20f_2025.htm",
+      "location": "F-4",
+      "measure_label": "Income before net finance income, results of equity-accounted investments and income taxes",
+      "currency": "USD",
+      "scale": 1000000,
+      "periods": [
+        "2025-12-31",
+        "2024-12-31"
+      ],
+      "values": [
+        26113,
+        26876
+      ],
+      "matching_table_rows": 1,
+      "decision": "selected_reference_pending_restatement_review",
+      "eligible_for_analysis": false
+    },
+    {
+      "ticker": "VALE3.SA",
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426001844/valeform20f_2025.htm",
+      "sha256": "219370292e619b6972e8e757fe1e7b830c64adc757b55dff0588baebd9d35599",
+      "retrieved_at": "2026-11-24T18:47:09.516405+00:00",
+      "local_file": "valeform20f_2025.htm",
+      "location": "F-3",
+      "measure_label": "Operating income",
+      "currency": "USD",
+      "scale": 1000000,
+      "periods": [
+        "2025-12-31",
+        "2024-12-31"
+      ],
+      "values": [
+        5897,
+        10788
+      ],
+      "matching_table_rows": 2,
+      "decision": "selected_reference_pending_restatement_review",
+      "eligible_for_analysis": false
+    }
+  ]
+}

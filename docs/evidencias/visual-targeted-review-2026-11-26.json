@@ -1,0 +1,33 @@
+{
+  "method": "Visual review: Vale assembly proposal pages 73-74 and sustainability financial information pages 5-6. Page numbers refer to image sequence, matching visible printed pages.",
+  "pages": [
+    {
+      "document": "vale20260327_6ka.htm",
+      "page": 73,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426001857/vale202603186ka_073.jpg",
+      "file": "C:\\Users\\will\\Documents\\ChatGPT\\Q\\official-operating-documents\\subsequent-filings\\0001292814-26-001857-scope-73.jpg",
+      "sha256": "eb894051c06ac9842c2bb95436e320146b6bb6b3ebae41165c01bb3652242987"
+    },
+    {
+      "document": "vale20260327_6ka.htm",
+      "page": 74,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426001857/vale202603186ka_074.jpg",
+      "file": "C:\\Users\\will\\Documents\\ChatGPT\\Q\\official-operating-documents\\subsequent-filings\\0001292814-26-001857-scope-74.jpg",
+      "sha256": "8fd3f0202ba34a60bce7f74fd7ac826b782e7e8e844d529ac3e60f9785db8716"
+    },
+    {
+      "document": "vale20260615_6k1.htm",
+      "page": 5,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426003448/image_005.jpg",
+      "file": "C:\\Users\\will\\Documents\\ChatGPT\\Q\\official-operating-documents\\subsequent-filings\\0001292814-26-003448-scope-05.jpg",
+      "sha256": "9a71ef2b0cd87de23804a7bc8eb1f5246b68cb252b99090696e1818e1bf64aaf"
+    },
+    {
+      "document": "vale20260615_6k1.htm",
+      "page": 6,
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426003448/image_006.jpg",
+      "file": "C:\\Users\\will\\Documents\\ChatGPT\\Q\\official-operating-documents\\subsequent-filings\\0001292814-26-003448-scope-06.jpg",
+      "sha256": "d8b43488e7e253cec064efa5c1699f4e48af9cdfe198dab8d8bd4f88084a9983"
+    }
+  ]
+}

@@ -1,0 +1,696 @@
+{
+  "review_date": "2026-11-25",
+  "sources": [
+    {
+      "document": "valedfifrs2q26_6k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004012/valedfifrs2q26_6k.htm",
+      "accession": "0001292814-26-004012",
+      "html_sha256": "1dface1f8806f83773b910591d84a30902f7d99b96670beadb44ad725de35565",
+      "normalized_text_sha256": "83139226ac91772db173de6e95b6bf75f53d427fe6dfad30869bbd4f6042fd0b"
+    },
+    {
+      "document": "valedfifrs2q26_6ka.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004322/valedfifrs2q26_6ka.htm",
+      "accession": "0001292814-26-004322",
+      "html_sha256": "74d676f57e7a0a0c586fd82140ae6206c5e3de28d1d244a2243939472e500b82",
+      "normalized_text_sha256": "3fbd42c6a4b192117fc5504e9611e4b6a5febee0a479db849b0badfb74510304"
+    }
+  ],
+  "method": "HTML extraction excluding script/style/ix:header/ix:hidden; whitespace normalization; word/punctuation SequenceMatcher autojunk=False. No XBRL semantic validation.",
+  "diff_counts": {
+    "delete": 1,
+    "insert": 85,
+    "replace": 6
+  },
+  "changes": [
+    {
+      "operation": "delete",
+      "category": "filing_wrapper",
+      "context": "",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "form_identifier",
+      "context": ". C . 20549 FORM 6 - K",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "exhibit_101_explanation",
+      "context": "- F x Form 40 - F ¨",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "557 Retirement benefit obligations 10 56 6 52",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "adjustment to income statement – 1 – 10",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": ", 717 1 , 505 Other 696 529",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "for sale 27 ( b ) 27 –",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "318 Other 1 , 403 1 , 400",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "equipment 11 46 , 399 43 , 625",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": ") 21 2 , 651 Other 884 656",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "for sale 27 ( b ) 181 –",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": ", 944 1 , 968 Other 561 360",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "retirement obligations . 10 a ) Adjusted EBITDA",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "operating revenue by business segment and geographic area",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "goods sold and services rendered by business segment",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": ", 467 11 , 536 d ) Assets",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "Cost of goods sold , and services rendered",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": ", 536 b ) Selling and administrative expenses",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "176 131 328 276 c ) Other operating",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "amount of taxes recorded is shown below :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "b ) Deferred income tax assets and liabilities",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "exposure is shown in the table below :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "010 Others 507 – 507 470 – 470",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "payable taxes and settlement programs ( REFIS )",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "diluted earnings per share are presented below :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "0 . 82 17 18 7 . Accounts",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "provisionally priced accounts receivable is detailed below :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "10 % + - 115 8 . Inventories",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "3 , 184 Vale Base Metals 715 686",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": ". 19 9 . Suppliers and other payables",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": ". 10 . Cash flows from operating activities",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "assets 21 11 . Property , plant ,",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "obligations ” . Effects in the income statement",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "( 53 ) Provision changes during the period",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": ". 23 Asset retirement obligations and environmental obligations",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "Base Metals segment . 13 . Intangible assets",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "to these railway concessions are presented below :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "agreements . 25 26 15 . Financial results",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "95 211 193 Others 21 17 39 35",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "79 ) ( 99 ) ( 116 )",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "( 62 ) 548 663 1 , 313",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "initial recognition according to the following categories :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": ". 28 b ) Hierarchy of fair value",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "reasonable approximation of their respective fair value .",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "of derivatives on the statement of financial position",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "Total 1 , 035 320 617 146 Net",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "29 Effects of derivatives on the income statement",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "313 Effects of derivatives on the cash flows",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": ". i ) Foreign exchange and interest rates",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "replace",
+      "category": "numeric_separator",
+      "context": "Exchange and Interest Rate Derivatives US $ 12",
+      "before": ".",
+      "after": ","
+    },
+    {
+      "operation": "replace",
+      "category": "numeric_separator",
+      "context": "US $ 12 . 578 US $ 9",
+      "before": ".",
+      "after": ","
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "derivative financial instruments is presented as follows :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "Protection program for product prices and input costs",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "derivative financial instruments is presented as follows :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "a . iii ) Embedded derivatives in contracts",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "derivative financial instruments is presented as follows :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "12 ) a . iv ) Hedge accounting",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "instruments , cash and cash equivalents transaction .",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "of loans and borrowings by type and currency",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "principal and interest of loans and borrowings payments",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "19 . Leases a ) Right of use",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "( 81 ) 13 558 b ) Leases",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "at the present value of such obligations .",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "119 85 247 691 33 20 . Other",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "month of period year is presented below :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "cash flows from liabilities arising from financing activities",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": ", among others . Effects in income statements",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "200 Changes in the provision in the period",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "changes on the provision are presented below :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "replace",
+      "category": "currency_spacing",
+      "context": "was reduced to approximately US $ 851 (",
+      "before": null,
+      "after": "EUR 745"
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "legal and administrative proceedings Effects in income statements",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "90 Changes in the provisions in the period",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "to environmental licensing . 41 b ) Contingent",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "classified as possible . c ) Judicial deposits",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "replace",
+      "category": "numeric_separator",
+      "context": "US $ 61 , 714 corresponding to 4",
+      "before": ".",
+      "after": ","
+    },
+    {
+      "operation": "replace",
+      "category": "numeric_separator",
+      "context": "61 , 714 corresponding to 4 . 439",
+      "before": ".",
+      "after": ","
+    },
+    {
+      "operation": "replace",
+      "category": "numeric_separator",
+      "context": "714 corresponding to 4 . 439 . 159",
+      "before": ".",
+      "after": ","
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "profits and reserves to the extent authorized .",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "2025 , there were no share cancellations .",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "end in August 2026 , detailed below :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "shareholders was based on the following resolutions :",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "2026 . d . i ) Dividends reconciliation",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "21 45 46 26 . Investments in associates",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "136 47 27 . Acquisitions and divestitures Effects",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "held for sale , as presented below .",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "in the agreement . 48 28 . Employee",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "of shares granted on the grant date .",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "expected value of the total performance factor .",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "b ) Employee post - retirement obligation Reconciliation",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "in note 26 . 50 a ) Transactions",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "Brasileira de Pelotização . 51 b ) Outstanding",
+      "before": null,
+      "after": null
+    },
+    {
+      "operation": "insert",
+      "category": "labels_or_headings",
+      "context": "translate its foreign operations are as follows :",
+      "before": null,
+      "after": null
+    }
+  ],
+  "operating_income": {
+    "periods": [
+      "2Q26",
+      "2Q25",
+      "6M26",
+      "6M25"
+    ],
+    "currency": "USD",
+    "unit": "million",
+    "original": [
+      2155,
+      2004,
+      4530,
+      3803
+    ],
+    "amended": [
+      2155,
+      2004,
+      4530,
+      3803
+    ]
+  },
+  "finding": "Four operating-income values unchanged. Declared purpose is Exhibit 101 addition. Five punctuation replacements concern derivative notionals and share count; one currency spacing replacement. These presentation changes are not silently discarded.",
+  "annual_restatement_clearance": false,
+  "eligible_for_analysis": false
+}

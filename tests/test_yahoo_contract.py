@@ -47,7 +47,7 @@ class YahooContractTests(unittest.TestCase):
         result = self.load()
         self.assertEqual(result["provider_used"], "yfinance")
         self.assertEqual(result["status"], "complete")
-        self.assertEqual(result["schema_version"], "3.0")
+        self.assertEqual(result["schema_version"], "3.1")
         self.assertNotIn("selection", result)
         self.loader.assert_called_once_with(SYMBOL)
         values = result["statements"]["income_statement"][0]["values"]
@@ -142,7 +142,7 @@ class YahooContractTests(unittest.TestCase):
     def test_public_tool_uses_only_yahoo(self):
         with patch.object(server, "_get_financial_statements_yfinance", return_value=payload()) as fetch:
             result = server.get_financial_statements("petr4")
-            self.assertEqual(result["schema_version"], "3.0")
+            self.assertEqual(result["schema_version"], "3.1")
             self.assertNotIn("selection", result)
             fetch.assert_called_once_with(SYMBOL)
 

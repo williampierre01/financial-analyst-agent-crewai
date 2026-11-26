@@ -131,6 +131,7 @@ MAX_PERIODS = 2  # so os 2 periodos mais recentes -- o JSON com 5 anos e ~30
 # linhas que realmente importam pro Quant Analyst calcular P/L, ROE, Margem
 # Liquida e DCF -- o restante e ruido que so consome tokens sem agregar.
 _ESSENTIAL_INCOME_STATEMENT = {
+    "Total Operating Income As Reported",
     "Total Revenue", "Gross Profit", "Operating Income", "EBITDA", "EBIT",
     "Net Income", "Total Expenses", "Diluted EPS", "Basic EPS", "Pretax Income",
 }

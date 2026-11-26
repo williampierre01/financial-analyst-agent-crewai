@@ -77,38 +77,75 @@ export default function Statements({
                     </tr>
                   </thead>
                   <tbody>
-                    {group.fields.map(([key, label]) => (
-                      <tr key={key}>
-                        <th scope="row">
-                          {label}
-                          {key === "net_income" && (
-                            <small>
-                              Pode ser atribuível aos acionistas; não equivale
-                              necessariamente ao lucro consolidado total.
-                            </small>
-                          )}
-                          {key === "free_cash_flow" && (
-                            <small>
-                              Fórmula não conciliada; pode diferir da medida
-                              publicada pela companhia.
-                            </small>
-                          )}
-                          {key === "diluted_eps" && (
-                            <small>Valor por ação · sem escala</small>
-                          )}
-                        </th>
-                        {periods.map((period) => (
-                          <td key={period.period_end}>
-                            {money(
-                              period.values[key],
-                              period.currency,
-                              millions &&
-                                !period.per_share_fields.includes(key),
+                    {group.fields.map(([originalKey, originalLabel]) => {
+                      const reported =
+                        originalKey === "operating_income" &&
+                        data.schema_version === "3.1";
+                      const key = reported
+                        ? "reported_operating_income"
+                        : originalKey;
+                      const label = reported
+                        ? "Resultado operacional reportado"
+                        : originalLabel;
+                      return (
+                        <tr key={key}>
+                          <th scope="row">
+                            {label}
+                            {key === "net_income" && (
+                              <small>
+                                Pode ser atribuível aos acionistas; não equivale
+                                necessariamente ao lucro consolidado total.
+                              </small>
                             )}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
+                            {key === "free_cash_flow" && (
+                              <small>
+                                Fórmula não conciliada; pode diferir da medida
+                                publicada pela companhia.
+                              </small>
+                            )}
+                            {key === "diluted_eps" && (
+                              <small>Valor por ação · sem escala</small>
+                            )}
+                          </th>
+                          {periods.map((period) => (
+                            <td key={period.period_end}>
+                              {money(
+                                period.values[key],
+                                period.currency,
+                                millions &&
+                                  !period.per_share_fields.includes(key),
+                              )}
+                              {reported &&
+                                period.reported_operating_income_reference && (
+                                  <small className="operating-reference">
+                                    <a
+                                      href={
+                                        period
+                                          .reported_operating_income_reference
+                                          .document_url
+                                      }
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                    >
+                                      Fonte oficial ·{" "}
+                                      {
+                                        period
+                                          .reported_operating_income_reference
+                                          .document_location
+                                      }
+                                    </a>
+                                    {" · "}
+                                    {
+                                      period.reported_operating_income_reference
+                                        .scope
+                                    }
+                                  </small>
+                                )}
+                            </td>
+                          ))}
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

@@ -1,0 +1,207 @@
+{
+  "review_date": "2026-11-25",
+  "sources": [
+    {
+      "document": "valedfifrs1q26_6k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426002632/valedfifrs1q26_6k.htm",
+      "html_sha256": "e218b0bbe3ce6c8dbc915a7c35da2af38b4105ff3ffee9317b9a560da162c6f4",
+      "basis_section_normalized_sha256": "98075ddaa82e81895eb02c1a1da0876e7585fd0f7d48da0d4f5ff97d7a055eed",
+      "scope": "Basis/policies, comparative income rows, reclassification contexts; Vale note 3(a) EBITDA bridge also read.",
+      "lexical_counts": {
+        "restat\\w*": 0,
+        "retrospect\\w*": 0,
+        "reclass\\w*": 4
+      }
+    },
+    {
+      "document": "valedfifrs2q26_6k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426004012/valedfifrs2q26_6k.htm",
+      "html_sha256": "1dface1f8806f83773b910591d84a30902f7d99b96670beadb44ad725de35565",
+      "basis_section_normalized_sha256": "751c048b6dcd694158bca47e4f9b85bd9fa51539ecef53d7bdf1f31855ed9bd6",
+      "scope": "Basis/policies, comparative income rows, reclassification contexts; Vale note 3(a) EBITDA bridge also read.",
+      "lexical_counts": {
+        "restat\\w*": 0,
+        "retrospect\\w*": 0,
+        "reclass\\w*": 3
+      }
+    },
+    {
+      "document": "pbrfs1q26usd_6k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426003000/pbrfs1q26usd_6k.htm",
+      "html_sha256": "12c24754b2a312f821e71eb318fc06d51e44f290aec00989fd0a398f45858b1b",
+      "basis_section_normalized_sha256": "5b057ac552d92a92398e17f03ace1d8c6fcfb27219eb7f4e5aa674a39730baaa",
+      "scope": "Basis/policies, comparative income rows, reclassification contexts; Vale note 3(a) EBITDA bridge also read.",
+      "lexical_counts": {
+        "restat\\w*": 0,
+        "retrospect\\w*": 0,
+        "reclass\\w*": 10
+      }
+    },
+    {
+      "document": "pbrfs2q26usd_6k.htm",
+      "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426004133/pbrfs2q26usd_6k.htm",
+      "html_sha256": "fc7e3828be9e6ceedf6f65ecc1b015512af95294a635b5ef5c4c41d6b3648106",
+      "basis_section_normalized_sha256": "9b997808d536578516af31d0e4b7d239525d1bdaf92a4e64fd163ef4ad5e5e63",
+      "scope": "Basis/policies, comparative income rows, reclassification contexts; Vale note 3(a) EBITDA bridge also read.",
+      "lexical_counts": {
+        "restat\\w*": 0,
+        "retrospect\\w*": 0,
+        "reclass\\w*": 10
+      }
+    }
+  ],
+  "currency": "USD",
+  "unit": "million",
+  "income_bridges": [
+    {
+      "company": "Vale",
+      "period": "1Q26",
+      "operating_income": 2375,
+      "financial_result": 34,
+      "equity_result": 36,
+      "income_before_tax": 2445,
+      "residual": 0
+    },
+    {
+      "company": "Vale",
+      "period": "1Q25",
+      "operating_income": 1799,
+      "financial_result": 185,
+      "equity_result": 59,
+      "income_before_tax": 2043,
+      "residual": 0
+    },
+    {
+      "company": "Vale",
+      "period": "2Q26",
+      "operating_income": 2155,
+      "financial_result": -473,
+      "equity_result": 100,
+      "income_before_tax": 1782,
+      "residual": 0
+    },
+    {
+      "company": "Vale",
+      "period": "2Q25",
+      "operating_income": 2004,
+      "financial_result": 167,
+      "equity_result": -68,
+      "income_before_tax": 2103,
+      "residual": 0
+    },
+    {
+      "company": "Vale",
+      "period": "6M26",
+      "operating_income": 4530,
+      "financial_result": -439,
+      "equity_result": 136,
+      "income_before_tax": 4227,
+      "residual": 0
+    },
+    {
+      "company": "Vale",
+      "period": "6M25",
+      "operating_income": 3803,
+      "financial_result": 352,
+      "equity_result": -9,
+      "income_before_tax": 4146,
+      "residual": 0
+    },
+    {
+      "company": "Petrobras",
+      "period": "1Q26",
+      "operating_income": 7848,
+      "financial_result": 1467,
+      "equity_result": 10,
+      "income_before_tax": 9325,
+      "residual": 0
+    },
+    {
+      "company": "Petrobras",
+      "period": "1Q25",
+      "operating_income": 7276,
+      "financial_result": 1748,
+      "equity_result": 82,
+      "income_before_tax": 9106,
+      "residual": 0
+    },
+    {
+      "company": "Petrobras",
+      "period": "2Q26",
+      "operating_income": 14253,
+      "financial_result": -288,
+      "equity_result": 103,
+      "income_before_tax": 14068,
+      "residual": 0
+    },
+    {
+      "company": "Petrobras",
+      "period": "2Q25",
+      "operating_income": 5349,
+      "financial_result": 1015,
+      "equity_result": 47,
+      "income_before_tax": 6411,
+      "residual": 0
+    },
+    {
+      "company": "Petrobras",
+      "period": "6M26",
+      "operating_income": 22101,
+      "financial_result": 1179,
+      "equity_result": 113,
+      "income_before_tax": 23393,
+      "residual": 0
+    },
+    {
+      "company": "Petrobras",
+      "period": "6M25",
+      "operating_income": 12625,
+      "financial_result": 2763,
+      "equity_result": 129,
+      "income_before_tax": 15517,
+      "residual": 0
+    }
+  ],
+  "quarter_to_half_year": [
+    {
+      "company": "Vale",
+      "year": "2025",
+      "q1": 1799,
+      "q2": 2004,
+      "half_year": 3803,
+      "residual": 0
+    },
+    {
+      "company": "Vale",
+      "year": "2026",
+      "q1": 2375,
+      "q2": 2155,
+      "half_year": 4530,
+      "residual": 0
+    },
+    {
+      "company": "Petrobras",
+      "year": "2025",
+      "q1": 7276,
+      "q2": 5349,
+      "half_year": 12625,
+      "residual": 0
+    },
+    {
+      "company": "Petrobras",
+      "year": "2026",
+      "q1": 7848,
+      "q2": 14253,
+      "half_year": 22101,
+      "residual": 0
+    }
+  ],
+  "findings": [
+    "Four reports state continuity of annual 2025 accounting policies; Petrobras reports no material effect from newly effective standards.",
+    "No restat/retrospect stems found; this is supporting lexical screening only.",
+    "Reclassification contexts concern OCI/hedges, dividends (Petrobras), and a Vale Samarco legal-loss assessment following a November 2025 decision, with USD449 million recognized in equity results rather than the operating-income line.",
+    "No annual operating-income correction identified in the reviewed sections; comparative columns are quarterly/half-year, not annual 2025/2024."
+  ],
+  "annual_restatement_clearance": false,
+  "eligible_for_analysis": false
+}

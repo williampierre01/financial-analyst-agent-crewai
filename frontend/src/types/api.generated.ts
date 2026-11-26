@@ -117,9 +117,9 @@ export interface components {
         FinancialSnapshot: {
             /**
              * Schema Version
-             * @constant
+             * @enum {string}
              */
-            schema_version: "3.0";
+            schema_version: "3.0" | "3.1";
             /** Ticker */
             ticker: string;
             /** Display Ticker */
@@ -181,6 +181,29 @@ export interface components {
             /** Retention Seconds */
             retention_seconds: number;
         };
+        /** OperatingIncomeReference */
+        OperatingIncomeReference: {
+            /** Value */
+            value: number;
+            /**
+             * Source Field
+             * @constant
+             */
+            source_field: "annualTotalOperatingIncomeAsReported";
+            /** Document Url */
+            document_url: string;
+            /** Document Location */
+            document_location: string;
+            /** Evidence Digest */
+            evidence_digest: string;
+            /**
+             * Reviewed At
+             * Format: date-time
+             */
+            reviewed_at: string;
+            /** Scope */
+            scope: string;
+        };
         /** Quote */
         Quote: {
             /** Price */
@@ -235,6 +258,7 @@ export interface components {
             };
             /** Missing Fields */
             missing_fields: string[];
+            reported_operating_income_reference?: components["schemas"]["OperatingIncomeReference"] | null;
         };
         /** Statements */
         Statements: {

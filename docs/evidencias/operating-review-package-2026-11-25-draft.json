@@ -1,0 +1,165 @@
+{
+  "notes": "Review draft, not approved. Annual SEC references replace earlier documents. Coverage assessment remains incomplete; unresolved_restatement stays null. No runtime eligibility.",
+  "observations": [
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 26113000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    },
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 26876000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 5897000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "unit": "currency_units",
+      "value": 10788000000.0,
+      "source": "Yahoo fundamentals-timeseries",
+      "source_field": "annualTotalOperatingIncomeAsReported",
+      "retrieved_at": "2026-11-17T02:41:28.320355+00:00"
+    }
+  ],
+  "official_records": [
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 26113,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": null,
+      "document": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426002168/pbrform20f_2025.htm",
+        "sha256": "ff71ddd5bf58ed99b6fae8f7aa20d9eff8a20b7d060302f874b729910244c1f3",
+        "retrieved_at": "2026-11-24T18:47:07.014909+00:00",
+        "local_file": "pbrform20f_2025.htm",
+        "location": "F-4",
+        "version": "FY2025 Form 20-F, retrieved 2026-11-24"
+      },
+      "measure_label": "Income before net finance income, results of equity-accounted investments and income taxes"
+    },
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 26876,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": null,
+      "document": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1119639/000129281426002168/pbrform20f_2025.htm",
+        "sha256": "ff71ddd5bf58ed99b6fae8f7aa20d9eff8a20b7d060302f874b729910244c1f3",
+        "retrieved_at": "2026-11-24T18:47:07.014909+00:00",
+        "local_file": "pbrform20f_2025.htm",
+        "location": "F-4",
+        "version": "FY2025 Form 20-F, retrieved 2026-11-24"
+      },
+      "measure_label": "Income before net finance income, results of equity-accounted investments and income taxes"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2025-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 5897,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": null,
+      "document": {
+        "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426001844/valeform20f_2025.htm",
+        "sha256": "219370292e619b6972e8e757fe1e7b830c64adc757b55dff0588baebd9d35599",
+        "retrieved_at": "2026-11-24T18:47:09.516405+00:00",
+        "local_file": "valeform20f_2025.htm",
+        "location": "F-3",
+        "version": "FY2025 Form 20-F, retrieved 2026-11-24"
+      },
+      "measure_label": "Operating income"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2024-12-31",
+      "period_type": "annual",
+      "currency": "USD",
+      "value": 10788,
+      "scale": 1000000,
+      "precision": 1,
+      "perimeter": "consolidated",
+      "measure": "operating_income_reported",
+      "unresolved_restatement": null,
+      "document": {
+        "url": "https://www.sec.gov/Archives/edgar/data/917851/000129281426001844/valeform20f_2025.htm",
+        "sha256": "219370292e619b6972e8e757fe1e7b830c64adc757b55dff0588baebd9d35599",
+        "retrieved_at": "2026-11-24T18:47:09.516405+00:00",
+        "local_file": "valeform20f_2025.htm",
+        "location": "F-3",
+        "version": "FY2025 Form 20-F, retrieved 2026-11-24"
+      },
+      "measure_label": "Operating income"
+    }
+  ],
+  "reviews": [],
+  "package_version": "2026-11-25-draft-1",
+  "rule_version": "1",
+  "coverage_pending": [
+    "C1: filing indexes/exhibits, channels and inventory update",
+    "C2: nine visual documents beyond covers",
+    "C3: Petrobras ESG restatement scope"
+  ],
+  "evidence_digests": [
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2025-12-31",
+      "digest": "eb719f20ae88e336a66ee65574509fb490b8e7dfb7b8bfd381dfb50211304c43"
+    },
+    {
+      "ticker": "PETR4.SA",
+      "period_end": "2024-12-31",
+      "digest": "099b0d220183e9a5171894797cd75be99f495f54ef4e63656ffe93da52b98e94"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2025-12-31",
+      "digest": "64daa5975e8941c935d6db1d809d4c0b4607442d1791b9f19fae7028c10dd941"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "period_end": "2024-12-31",
+      "digest": "afc5de8dc96e8983e33fe3ea74a19e61992205759cf5b5ff029a6032de9a6413"
+    }
+  ]
+}

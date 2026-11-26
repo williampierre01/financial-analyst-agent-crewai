@@ -1,0 +1,44 @@
+{
+  "package_version": "2026-11-26-1",
+  "package_sha256": "e648994cfc0d1e13c6f289c840b10ea174bab0d7991e76bd43df87f8840f23c6",
+  "reviewer": "William (usuário responsável neste chat)",
+  "identity_basis": "Responsável do projeto nesta conversa; declarou que faria a revisão e aprovou o pacote apresentado. Não representa verificação externa de identidade.",
+  "decision_message": "revisão final aprovada",
+  "recorded_at": "2026-11-26T22:41:09+00:00",
+  "timestamp_basis": "UTC do registro da aprovação recebida nesta conversa, não timestamp original da mensagem",
+  "scope_sha256": "a28062b75533f7cc1e811ab77911ce6b51f401ebf66c6c408da00ab788259ae9",
+  "reviews": [
+    {
+      "evidence_digest": "049beceffe0cfa2f4bfd6e0c1f75d5b86381f69ccb8653744ac83f935babe5cf",
+      "rule_version": "1",
+      "reviewer": "William (usuário responsável neste chat)",
+      "decision": "approved",
+      "reviewed_at": "2026-11-26T22:41:09+00:00",
+      "scope_accepted": true
+    },
+    {
+      "evidence_digest": "5e708caff5a87ee223ddced3561eebb95d84eaef917a203e0edf8f6c4d58d975",
+      "rule_version": "1",
+      "reviewer": "William (usuário responsável neste chat)",
+      "decision": "approved",
+      "reviewed_at": "2026-11-26T22:41:09+00:00",
+      "scope_accepted": true
+    },
+    {
+      "evidence_digest": "e3211d6fcaf52b3dc9a82ec6bff32f3a339e36e11a21c2739048fe9c599adf20",
+      "rule_version": "1",
+      "reviewer": "William (usuário responsável neste chat)",
+      "decision": "approved",
+      "reviewed_at": "2026-11-26T22:41:09+00:00",
+      "scope_accepted": true
+    },
+    {
+      "evidence_digest": "2631174ef19b9d1e20c2641d02f6cfda98a57784ec3ef15ee9c2e86a77ed438e",
+      "rule_version": "1",
+      "reviewer": "William (usuário responsável neste chat)",
+      "decision": "approved",
+      "reviewed_at": "2026-11-26T22:41:09+00:00",
+      "scope_accepted": true
+    }
+  ]
+}
