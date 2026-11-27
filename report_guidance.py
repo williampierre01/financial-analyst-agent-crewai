@@ -23,6 +23,11 @@ Apresentação final:
   documental. Não o confunda com o campo normalizado bloqueado. Preserve a fonte,
   o exercício e a limitação de alcance da revisão, que não constitui auditoria.
   Não atribua ao reportado disponível o bloqueio do campo operacional normalizado.
+  Se necessário, explique: "Os valores reportados, isoladamente, não permitem
+  concluir eficiência operacional nem determinar as causas da variação."
+  Não transforme o alcance limitado da revisão em uma alegação de conciliação
+  pendente. Não é obrigatório discutir essa medida entre os três achados; sua
+  omissão editorial não exige inventar uma restrição de uso.
   Não copie instruções de redação, como "não force conclusões", para o aviso ao leitor.
 - Use as datas e horários de apresentação em Brasília fornecidos abaixo.
   Não extraia a data civil diretamente de timestamps UTC. Datas de encerramento

@@ -67,3 +67,23 @@ do contexto aos dois agentes sem alterar a base original. Sem IA real ou Docker.
 O ajuste de instruções não é um verificador determinístico da resposta do modelo.
 Após o próximo deploy, gerar novas consultas PETR4 e VALE3 e conferir a coerência
 entre tabela e texto. A verificação visual de VALE3 ainda está pendente.
+
+
+## Validação de PETR4 e VALE3 e ressalva restante — 27/11/2026
+
+O usuário confirmou ed38373 Live e forneceu novas consultas concluídas de PETR4
+(02:22 Brasília) e VALE3 (02:30 Brasília). As tabelas mostram os quatro valores
+aprovados com fontes F-4/F-3; ambas as interpretações reconhecem sua disponibilidade.
+Uma tentativa anterior falhou na etapa CIO (Gemini, unavailable após cerca de 60s);
+a tentativa seguinte terminou, sem alteração de configuração pelo assistente.
+
+Permaneceu a justificativa sem suporte de falta de conciliação com outros
+demonstrativos ou conciliação contábil completa. O novo ajuste de instruções
+separa disponibilidade documental de inferência causal: valores disponíveis podem
+ser citados e comparados em exercícios compatíveis, mas isoladamente não provam
+eficiência ou causas. Ressalvas de lucro/FCF não devem migrar para essa medida.
+A escolha editorial de outros achados não requer inventar uma restrição de uso.
+
+Não há alteração dos valores, registro aprovado, cálculos ou snapshots armazenados.
+A validação real do texto permanece pendente de novas consultas após este ajuste;
+instruções não constituem verificação determinística da saída do modelo.
