@@ -1,5 +1,38 @@
 # Pendências da homologação no Render
 
+## Situação vigente — 27/11/2026
+
+Este resumo substitui os próximos passos e estados pendentes das entradas
+históricas abaixo; essas entradas permanecem como trilha de evolução.
+
+- PRs #33, #34 e #35 incorporados. Último merge: `96b55fe`; CI do PR #35
+  aprovado e Live confirmado por captura do usuário.
+- Quatro valores operacionais reportados aprovados e exibidos: PETR4 2025/2024
+  USD 26.113/26.876 milhões; VALE3 2025/2024 USD 5.897/10.788 milhões.
+  Revisão de alcance limitado, sem auditoria; campo normalizado continua bloqueado.
+- PETR4 consultada em 27/11 às 02:53 Brasília: tabela e interpretação coerentes
+  no recorte observado, sem inventar falta de conciliação; ressalva causal correta.
+- Por decisão do usuário para economizar tokens, VALE3 não foi retestada no
+  commit 96b55fe. Sua validação anterior no ed38373 é preservada, não extrapolada.
+- Correção operacional encerrada neste recorte. Não há garantia determinística
+  sobre futuras respostas da IA, nem validação integral de notícias/indicadores.
+- Última suíte local: 165 testes, 162 aprovados, 3 de banco ignorados. Sem Docker
+  local, banco de produção para testes ou novas chamadas de IA pelo assistente.
+- Não editar o pacote documental, seu alcance ou evidências vinculadas por hash.
+- Etapa de síntese/evidências implementada localmente: até três indicadores,
+  detalhes de cálculo e aviso estrutural. Aguardando revisão e merge do novo PR.
+  Sem novas chamadas de IA e sem alteração das fórmulas ou do pacote aprovado.
+
+### Pendências mantidas
+
+- Síntese/apresentação: repetição das ressalvas das notícias, uso de "as of" e
+  posição da moeda. Acumular em um único recorte, sem novas chamadas só por estética.
+- Disponibilidade da IA: falha anterior de cerca de 60s na etapa CIO, seguida de
+  consultas concluídas. Causa exata e eventual provedor alternativo não validados.
+- Autenticação: cenários adicionais registrados no estado atual permanecem abertos.
+
+## Histórico das rodadas anteriores
+
 ## 15/11/2026 — Gemini concluído nas duas ações
 
 PR #26 Live em `d01ba22`. PETR4 e VALE3 concluíram quatro chamadas cada, todas

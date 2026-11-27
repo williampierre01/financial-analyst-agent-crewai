@@ -112,6 +112,32 @@ export interface components {
             interpretation: string | null;
             /** Errors */
             errors: components["schemas"]["AnalysisError"][];
+            /** Metrics */
+            metrics?: components["schemas"]["CalculatedMetric"][];
+        };
+        /** CalculatedMetric */
+        CalculatedMetric: {
+            /** Name */
+            name: string;
+            /** Period End */
+            period_end: string | null;
+            /** Formula */
+            formula: string;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "calculated" | "unavailable";
+            /** Value */
+            value: number | null;
+            /** Unit */
+            unit: string;
+            /** Inputs */
+            inputs: (components["schemas"]["MetricOperand"] | null)[];
+            /** Reason */
+            reason: string | null;
+            /** Note */
+            note: string;
         };
         /** FinancialSnapshot */
         FinancialSnapshot: {
@@ -180,6 +206,25 @@ export interface components {
             max_records: number;
             /** Retention Seconds */
             retention_seconds: number;
+        };
+        /** MetricOperand */
+        MetricOperand: {
+            /** Indicator */
+            indicator: string;
+            /** Statement */
+            statement: string;
+            /** Value */
+            value: number | null;
+            /** Period End */
+            period_end: string | null;
+            /** Currency */
+            currency: string | null;
+            /** Source */
+            source: string | null;
+            /** Unit */
+            unit: string | null;
+            /** Period Type */
+            period_type: string | null;
         };
         /** OperatingIncomeReference */
         OperatingIncomeReference: {

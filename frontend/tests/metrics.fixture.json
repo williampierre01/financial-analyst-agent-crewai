@@ -1,0 +1,163 @@
+[
+  {
+    "name": "ROE sobre patrimônio de encerramento",
+    "period_end": "2025-12-31",
+    "formula": "lucro líquido / patrimônio de encerramento × 100",
+    "status": "calculated",
+    "value": -5.0,
+    "unit": "%",
+    "inputs": [
+      {
+        "indicator": "net_income",
+        "statement": "income_statement",
+        "value": -100.0,
+        "period_end": "2025-12-31",
+        "currency": "BRL",
+        "source": "yfinance",
+        "unit": "currency_units",
+        "period_type": "annual"
+      },
+      {
+        "indicator": "stockholders_equity",
+        "statement": "balance_sheet",
+        "value": 2000.0,
+        "period_end": "2025-12-31",
+        "currency": "BRL",
+        "source": "yfinance",
+        "unit": "currency_units",
+        "period_type": "annual"
+      }
+    ],
+    "reason": null,
+    "note": "Usa lucro informado pelo provedor e patrimônio dos acionistas no encerramento. Perímetros contábeis não conciliados; não usa a média dos saldos nem explica causas de variação."
+  },
+  {
+    "name": "Lucro informado/receita",
+    "period_end": "2025-12-31",
+    "formula": "lucro líquido informado pelo provedor / receita × 100",
+    "status": "calculated",
+    "value": -10.0,
+    "unit": "%",
+    "inputs": [
+      {
+        "indicator": "net_income",
+        "statement": "income_statement",
+        "value": -100.0,
+        "period_end": "2025-12-31",
+        "currency": "BRL",
+        "source": "yfinance",
+        "unit": "currency_units",
+        "period_type": "annual"
+      },
+      {
+        "indicator": "revenue",
+        "statement": "income_statement",
+        "value": 1000.0,
+        "period_end": "2025-12-31",
+        "currency": "BRL",
+        "source": "yfinance",
+        "unit": "currency_units",
+        "period_type": "annual"
+      }
+    ],
+    "reason": null,
+    "note": "O lucro pode ser atribuível aos acionistas, distinto do lucro consolidado total. Não tratar automaticamente esta razão como margem líquida consolidada; perímetro não conciliado."
+  },
+  {
+    "name": "Dívida/patrimônio",
+    "period_end": "2025-12-31",
+    "formula": "dívida total / patrimônio de encerramento × 100",
+    "status": "unavailable",
+    "value": null,
+    "unit": "%",
+    "inputs": [
+      {
+        "indicator": "total_debt",
+        "statement": "balance_sheet",
+        "value": null,
+        "period_end": "2025-12-31",
+        "currency": "BRL",
+        "source": "yfinance",
+        "unit": "currency_units",
+        "period_type": "annual"
+      },
+      {
+        "indicator": "stockholders_equity",
+        "statement": "balance_sheet",
+        "value": 2000.0,
+        "period_end": "2025-12-31",
+        "currency": "BRL",
+        "source": "yfinance",
+        "unit": "currency_units",
+        "period_type": "annual"
+      }
+    ],
+    "reason": "Faltam valores necessários para este cálculo.",
+    "note": ""
+  },
+  {
+    "name": "ROE sobre média de dois saldos",
+    "period_end": "2025-12-31",
+    "formula": "lucro líquido / ((patrimônio anterior + patrimônio final) / 2) × 100",
+    "status": "unavailable",
+    "value": null,
+    "unit": "%",
+    "inputs": [
+      {
+        "indicator": "net_income",
+        "statement": "income_statement",
+        "value": -100.0,
+        "period_end": "2025-12-31",
+        "currency": "BRL",
+        "source": "yfinance",
+        "unit": "currency_units",
+        "period_type": "annual"
+      },
+      null,
+      {
+        "indicator": "stockholders_equity",
+        "statement": "balance_sheet",
+        "value": 2000.0,
+        "period_end": "2025-12-31",
+        "currency": "BRL",
+        "source": "yfinance",
+        "unit": "currency_units",
+        "period_type": "annual"
+      }
+    ],
+    "reason": "Saldo do encerramento anual imediatamente anterior não disponível ou datas não compatíveis com a convenção adotada.",
+    "note": "Aproximação pela média simples dos saldos de dois encerramentos anuais consecutivos; não é média ponderada no tempo. Usa lucro do provedor e patrimônio dos acionistas; perímetros e comparabilidade contábil não conciliados."
+  },
+  {
+    "name": "P/L",
+    "period_end": "2025-12-31",
+    "formula": "cotação informada / lucro diluído por ação anual",
+    "status": "unavailable",
+    "value": null,
+    "unit": "vezes",
+    "inputs": [
+      {
+        "indicator": "price",
+        "statement": "quote",
+        "value": 32.51,
+        "period_end": "2026-10-13T13:00:00+00:00",
+        "currency": "BRL",
+        "source": "yfinance",
+        "unit": "currency_units",
+        "period_type": "quote"
+      },
+      {
+        "indicator": "diluted_eps",
+        "statement": "income_statement",
+        "value": 0.0,
+        "period_end": "2025-12-31",
+        "currency": "BRL",
+        "source": "yfinance",
+        "unit": "currency_units",
+        "period_type": "annual"
+      }
+    ],
+    "reason": "Denominador zero ou negativo: indicador não calculado.",
+    "note": "Combina a cotação na data indicada com o último lucro anual disponível; não é P/L histórico do encerramento nem dos últimos 12 meses móveis."
+  }
+]
