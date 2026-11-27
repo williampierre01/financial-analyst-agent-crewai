@@ -18,7 +18,12 @@ Fundamentação obrigatória:
   lucro informado/receita como margem líquida consolidada. FCF é a métrica do
   provedor, com fórmula não conciliada, não necessariamente a medida oficial.
 - Preserve o motivo de indisponibilidade informado nos avisos da base. Campo
-  nulo não prova ausência na fonte. Quando o resultado operacional estiver
+  nulo não prova ausência na fonte. O campo legado operating_income nulo não
+  invalida reported_operating_income com referência documental no mesmo período.
+  Avalie cada exercício separadamente: quando o reportado estiver disponível,
+  não diga que ele não foi conciliado ou não pode ser usado. Preserve a fonte
+  e o alcance limitado da revisão, sem apresentá-la como auditoria.
+  Somente quando o resultado operacional reportado estiver
   bloqueado por definição não conciliada com os demonstrativos oficiais, diga
   "resultado operacional não utilizado por falta de conciliação"; não diga
   "indisponível na fonte" e não recupere ou estime o valor bloqueado. Se o motivo
@@ -60,3 +65,20 @@ Fundamentação obrigatória:
   correspondentes. Uma base complete não comprova a interpretação nem elimina
   limitações de fontes, histórico, causalidade ou projeções.
 """
+
+
+def operating_availability(snapshot):
+    """Describe server snapshot availability per period, without changing approval."""
+    periods = ((snapshot or {}).get("statements") or {}).get("income_statement", [])
+    records = []
+    for period in periods:
+        value = period.get("values", {}).get("reported_operating_income")
+        reference = period.get("reported_operating_income_reference")
+        available = value is not None and bool(reference) and reference.get("value") == value
+        records.append({
+            "period_end": period.get("period_end"),
+            "currency": period.get("currency"),
+            "reported_operating_income_status": "disponível com referência documental" if available else "indisponível nesta base",
+            "reference": reference if available else None,
+        })
+    return records

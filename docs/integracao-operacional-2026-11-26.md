@@ -46,3 +46,24 @@ no Windows, após as duas verificações de apresentação terem passado.
 
 A publicação deste trabalho em PR não autoriza merge automático. O merge e a
 validação do deploy seguem o fluxo manual adotado pelo projeto.
+
+
+## Verificação após o deploy e ajuste de coerência — 27/11/2026
+
+As capturas fornecidas pelo usuário confirmam o deploy f306747 e a apresentação
+em PETR4 de USD 26.113,00 mi (2025) e USD 26.876,00 mi (2024), com fonte F-4.
+A interpretação, porém, declarou falta de conciliação do resultado reportado.
+A regra compartilhada ainda mencionava o bloqueio sem distinguir o campo legado.
+
+O ajuste separa os dois campos nas instruções e acrescenta ao contexto dos dois
+agentes financeiros a disponibilidade por exercício, preservando referências e
+períodos indisponíveis. Também permite URLs documentais além dos links de notícias
+e orienta a não reproduzir instruções de redação no aviso ao leitor.
+Não modifica valores, aprovação, tabelas, métricas ou relatórios já armazenados.
+
+Validação local: 165 testes executados, 162 passaram e 3 de banco ignorados.
+Casos cobrem zero disponível, referência divergente, exercício ausente e entrega
+do contexto aos dois agentes sem alterar a base original. Sem IA real ou Docker.
+O ajuste de instruções não é um verificador determinístico da resposta do modelo.
+Após o próximo deploy, gerar novas consultas PETR4 e VALE3 e conferir a coerência
+entre tabela e texto. A verificação visual de VALE3 ainda está pendente.

@@ -14,13 +14,16 @@ Apresentação final:
 - Fluxo de caixa livre é a métrica do provedor, com fórmula não conciliada;
   pode diferir da medida oficial da companhia. Não invente sua composição,
   nem o trate como caixa disponível para dividendos.
-- Resultado operacional indisponível por falta de conciliação não sustenta
+- Somente se o resultado operacional reportado estiver indisponível no exercício,
+  preserve essa limitação. Um resultado indisponível não sustenta
   afirmações de alta, queda, eficiência ou hipóteses sobre sua diferença para
   o lucro líquido. Não o reconstrua por subtração nem preencha com notícias
   ou conhecimento externo. Preserve o motivo de indisponibilidade da base.
 - Use resultado operacional reportado somente quando fornecido com referência
   documental. Não o confunda com o campo normalizado bloqueado. Preserve a fonte,
   o exercício e a limitação de alcance da revisão, que não constitui auditoria.
+  Não atribua ao reportado disponível o bloqueio do campo operacional normalizado.
+  Não copie instruções de redação, como "não force conclusões", para o aviso ao leitor.
 - Use as datas e horários de apresentação em Brasília fornecidos abaixo.
   Não extraia a data civil diretamente de timestamps UTC. Datas de encerramento
   contábil são datas, não instantes: preserve-as sem conversão de fuso.
