@@ -75,6 +75,29 @@ class AnalysisError(BaseModel):
     message: str
 
 
+class MetricOperand(BaseModel):
+    indicator: str
+    statement: str
+    value: FiniteFloat | None
+    period_end: str | None
+    currency: str | None
+    source: str | None
+    unit: str | None
+    period_type: str | None
+
+
+class CalculatedMetric(BaseModel):
+    name: str
+    period_end: str | None
+    formula: str
+    status: Literal["calculated", "unavailable"]
+    value: FiniteFloat | None
+    unit: str
+    inputs: list[MetricOperand | None]
+    reason: str | None
+    note: str
+
+
 class AnalysisResponse(BaseModel):
     id: UUID
     created_at: datetime
@@ -87,6 +110,7 @@ class AnalysisResponse(BaseModel):
     interpretation_status: Literal["pending", "running", "completed", "failed", "skipped"]
     interpretation: str | None
     errors: list[AnalysisError]
+    metrics: list[CalculatedMetric] = Field(default_factory=list)
 
 
 class HealthResponse(BaseModel):

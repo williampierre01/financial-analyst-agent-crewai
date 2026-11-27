@@ -7,6 +7,7 @@ from fastapi import FastAPI, HTTPException, Request, Response
 from backend.api.schemas import AnalysisRequest, AnalysisResponse, HealthResponse
 from backend.services.analyses import AnalysisStore, CapacityExceeded, StoreClosed, run_analysis
 from backend.security.auth import AuthService
+from verified_metrics import calculate_metrics
 from backend.security.routes import install_security
 
 
@@ -39,7 +40,7 @@ def create_app(runner=run_analysis, *, auth_service=None, **store_options):
             raise HTTPException(503, detail={"code": "service_unavailable", "message": "Serviço temporariamente indisponível."}) from None
         response.headers["Location"] = f"{request.scope.get('root_path', '')}/analyses/{record['id']}"
         response.headers["Cache-Control"] = "no-store"
-        return record
+        return {**record, "metrics": calculate_metrics(record.get("data"))}
 
     @app.get("/analyses/{analysis_id}", response_model=AnalysisResponse)
     def get_analysis(analysis_id: UUID, response: Response, request: Request):
@@ -47,7 +48,7 @@ def create_app(runner=run_analysis, *, auth_service=None, **store_options):
         if record is None:
             raise HTTPException(404, detail={"code": "analysis_not_found", "message": "Análise não encontrada ou expirada."})
         response.headers["Cache-Control"] = "no-store"
-        return record
+        return {**record, "metrics": calculate_metrics(record.get("data"))}
 
     return app
 

@@ -1346,3 +1346,52 @@ th small {
 .statements tbody th {
   min-width: 130px;
 }
+
+.evidence-panel {
+  margin-bottom: 24px;
+}
+.evidence-body {
+  padding: 24px;
+}
+.evidence-body p,
+.evidence-body li {
+  line-height: 1.7;
+}
+.evidence-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.evidence-highlights article {
+  padding: 18px;
+  border: 1px solid #dce4df;
+  border-radius: 10px;
+}
+.evidence-highlights h3 {
+  font-size: 14px;
+}
+.evidence-highlights strong {
+  font-size: 25px;
+}
+.evidence-highlights p {
+  font-size: 12px;
+}
+.evidence-body summary {
+  cursor: pointer;
+  padding: 14px 0;
+  font-weight: 600;
+}
+.evidence-detail {
+  padding: 16px 0;
+  border-top: 1px solid #dce4df;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 700px) {
+  .evidence-highlights {
+    grid-template-columns: 1fr;
+  }
+  .evidence-body {
+    padding: 16px;
+  }
+}

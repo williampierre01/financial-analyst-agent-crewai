@@ -228,6 +228,13 @@
             },
             "type": "array",
             "title": "Errors"
+          },
+          "metrics": {
+            "items": {
+              "$ref": "#/components/schemas/CalculatedMetric"
+            },
+            "type": "array",
+            "title": "Metrics"
           }
         },
         "type": "object",
@@ -245,6 +252,94 @@
           "errors"
         ],
         "title": "AnalysisResponse"
+      },
+      "CalculatedMetric": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "period_end": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period End"
+          },
+          "formula": {
+            "type": "string",
+            "title": "Formula"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "calculated",
+              "unavailable"
+            ],
+            "title": "Status"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "inputs": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/MetricOperand"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Inputs"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "note": {
+            "type": "string",
+            "title": "Note"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "period_end",
+          "formula",
+          "status",
+          "value",
+          "unit",
+          "inputs",
+          "reason",
+          "note"
+        ],
+        "title": "CalculatedMetric"
       },
       "FinancialSnapshot": {
         "properties": {
@@ -402,6 +497,96 @@
           "retention_seconds"
         ],
         "title": "HealthResponse"
+      },
+      "MetricOperand": {
+        "properties": {
+          "indicator": {
+            "type": "string",
+            "title": "Indicator"
+          },
+          "statement": {
+            "type": "string",
+            "title": "Statement"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "period_end": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period End"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Currency"
+          },
+          "source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "period_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "indicator",
+          "statement",
+          "value",
+          "period_end",
+          "currency",
+          "source",
+          "unit",
+          "period_type"
+        ],
+        "title": "MetricOperand"
       },
       "OperatingIncomeReference": {
         "properties": {

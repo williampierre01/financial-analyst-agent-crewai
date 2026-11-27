@@ -1,3 +1,28 @@
+## Situação vigente — 27/11/2026
+
+Este resumo substitui os próximos passos e estados pendentes das entradas
+históricas abaixo; essas entradas permanecem como trilha de evolução.
+
+- PRs #33, #34 e #35 incorporados. Último merge: `96b55fe`; CI do PR #35
+  aprovado e Live confirmado por captura do usuário.
+- Quatro valores operacionais reportados aprovados e exibidos: PETR4 2025/2024
+  USD 26.113/26.876 milhões; VALE3 2025/2024 USD 5.897/10.788 milhões.
+  Revisão de alcance limitado, sem auditoria; campo normalizado continua bloqueado.
+- PETR4 consultada em 27/11 às 02:53 Brasília: tabela e interpretação coerentes
+  no recorte observado, sem inventar falta de conciliação; ressalva causal correta.
+- Por decisão do usuário para economizar tokens, VALE3 não foi retestada no
+  commit 96b55fe. Sua validação anterior no ed38373 é preservada, não extrapolada.
+- Correção operacional encerrada neste recorte. Não há garantia determinística
+  sobre futuras respostas da IA, nem validação integral de notícias/indicadores.
+- Última suíte local: 165 testes, 162 aprovados, 3 de banco ignorados. Sem Docker
+  local, banco de produção para testes ou novas chamadas de IA pelo assistente.
+- Não editar o pacote documental, seu alcance ou evidências vinculadas por hash.
+- Etapa de síntese/evidências implementada localmente: até três indicadores,
+  detalhes de cálculo e aviso estrutural. Aguardando revisão e merge do novo PR.
+  Sem novas chamadas de IA e sem alteração das fórmulas ou do pacote aprovado.
+
+## Registro histórico
+
 > Atualização 26/11/2026 — aprovação recebida: William, responsável neste chat, declarou “revisão final aprovada”. Registro separado em `evidencias/operating-review-approval-2026-11-26.json`, vinculado ao pacote exato e seu alcance. Integração local do contrato 3.1 implementada: campo `reported_operating_income`, referência oficial, correspondência exata e revogação por alteração de evidência/aprovação. Campo normalizado legado permanece nulo. Backend: 163 testes executados, 160 aprovados e 3 ignorados. Interface: testes desktop/mobile passaram; build aprovado. Ainda não publicado nem mesclado. Não editar o documento de revisão aprovado: seu hash faz parte do registro.
 
 > Atualização 26/11/2026: preparação do recorte documental concluída, sujeita à aceitação das limitações pelo revisor. O usuário se ofereceu como responsável; ainda não aprovou valores. Pacote `evidencias/operating-review-package-2026-11-26.json` e documento `revisao-final-operacional-2026-11-26.md` prontos. Os quatro resultados continuam `unverified / missing_matching_review`, sem elegibilidade. 23 testes locais passaram. Próxima ação: revisão identificada do pacote; integração runtime depende dela.

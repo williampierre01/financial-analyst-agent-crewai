@@ -148,6 +148,8 @@ class ApiTests(unittest.TestCase):
                 self.assertEqual(partial["status"], "running")
                 self.assertIsNotNone(partial["data"]["quote"])
                 self.assertIsNone(partial["interpretation"])
+                self.assertTrue(partial["metrics"])
+                self.assertTrue(all("inputs" in m and "formula" in m for m in partial["metrics"]))
             finally:
                 release.set()
             self.assertEqual(wait_done(client, accepted.headers["Location"]).json()["status"], "completed")
@@ -163,6 +165,9 @@ class ApiTests(unittest.TestCase):
             result = wait_done(client, accepted.headers["Location"]).json()
             self.assertEqual(result["data"]["status"], "partial")
             self.assertEqual(result["interpretation_status"], "failed")
+            from verified_metrics import calculate_metrics
+            self.assertEqual(result["metrics"], calculate_metrics(data()))
+            self.assertTrue(any(m["status"] == "calculated" for m in result["metrics"]))
             self.assertEqual(result["status"], "completed")
 
     def test_unexpected_failure_keeps_published_data_and_hides_details(self):

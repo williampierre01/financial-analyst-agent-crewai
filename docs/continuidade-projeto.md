@@ -1,3 +1,57 @@
+## Situação vigente — 27/11/2026
+
+Este resumo substitui os próximos passos e estados pendentes das entradas
+históricas abaixo; essas entradas permanecem como trilha de evolução.
+
+- PRs #33, #34 e #35 incorporados. Último merge: `96b55fe`; CI do PR #35
+  aprovado e Live confirmado por captura do usuário.
+- Quatro valores operacionais reportados aprovados e exibidos: PETR4 2025/2024
+  USD 26.113/26.876 milhões; VALE3 2025/2024 USD 5.897/10.788 milhões.
+  Revisão de alcance limitado, sem auditoria; campo normalizado continua bloqueado.
+- PETR4 consultada em 27/11 às 02:53 Brasília: tabela e interpretação coerentes
+  no recorte observado, sem inventar falta de conciliação; ressalva causal correta.
+- Por decisão do usuário para economizar tokens, VALE3 não foi retestada no
+  commit 96b55fe. Sua validação anterior no ed38373 é preservada, não extrapolada.
+- Correção operacional encerrada neste recorte. Não há garantia determinística
+  sobre futuras respostas da IA, nem validação integral de notícias/indicadores.
+- Última suíte local: 165 testes, 162 aprovados, 3 de banco ignorados. Sem Docker
+  local, banco de produção para testes ou novas chamadas de IA pelo assistente.
+- Não editar o pacote documental, seu alcance ou evidências vinculadas por hash.
+
+## Etapa atual: síntese e evidências
+
+Implementação autorizada pelo usuário e preparada para revisão em PR:
+
+- Até três indicadores calculados do exercício mais recente, em ordem fixa:
+  ROE sobre patrimônio de encerramento, lucro informado/receita e dívida/patrimônio.
+  Ausências não geram destaques artificiais.
+- Detalhes expansíveis com fórmula, operandos, exercício, moeda, fonte e limites.
+  A API expõe os cálculos existentes; não altera fórmulas nem chama IA novamente.
+- Dados e cálculos continuam disponíveis quando a interpretação falha.
+- Aviso quando faltam as seções esperadas do relatório, preservando o texto recebido.
+  A verificação é estrutural: não certifica fontes, semântica ou correção financeira.
+- Esta entrega apresenta indicadores, não uma síntese automática de hipóteses.
+  Redução adicional de repetição e refinamento editorial permanecem para outro recorte.
+
+Verificação local: backend 162 aprovados e 3 de PostgreSQL ignorados; interface
+66 cenários aprovados na rodada e 2 repetidos com sucesso após conflito de
+arquivos temporários entre execuções; integração 3 cenários aprovados; build e
+contrato gerado conferidos. Acessibilidade automática do painel aprovada em desktop
+e celular. No Windows, os servidores de teste ficaram aguardando encerramento e
+foram interrompidos após os resultados; isso não equivale a saída limpa do runner.
+A confirmação limpa da suíte fica a cargo do CI. Nenhuma chamada real de IA.
+
+Economia acordada: usar dados simulados nos testes; não repetir consultas reais por
+mudanças de apresentação. Uma consulta PETR4 só quando necessária para homologação.
+
+Fora deste recorte: histórico persistente, novas fontes/ativos, conversão cambial,
+compra/venda/manter, cobrança e integração de outro provedor. Histórico é a etapa
+seguinte do plano: permitirá reabrir resultados sem nova chamada de IA.
+Pendências de autenticação (bloqueio, expiração, acesso inverso e cookie revogado)
+continuam separadas; o teste anterior de duas contas não é auditoria completa.
+
+## Registro histórico
+
 > Atualização 26/11/2026 — aprovação recebida: William, responsável neste chat, declarou “revisão final aprovada”. Registro separado em `evidencias/operating-review-approval-2026-11-26.json`, vinculado ao pacote exato e seu alcance. Integração local do contrato 3.1 implementada: campo `reported_operating_income`, referência oficial, correspondência exata e revogação por alteração de evidência/aprovação. Campo normalizado legado permanece nulo. Backend: 163 testes executados, 160 aprovados e 3 ignorados. Interface: testes desktop/mobile passaram; build aprovado. Ainda não publicado nem mesclado. Não editar o documento de revisão aprovado: seu hash faz parte do registro.
 
 > Atualização 26/11/2026: preparação do recorte documental concluída, sujeita à aceitação das limitações pelo revisor. O usuário se ofereceu como responsável; ainda não aprovou valores. Pacote `evidencias/operating-review-package-2026-11-26.json` e documento `revisao-final-operacional-2026-11-26.md` prontos. Os quatro resultados continuam `unverified / missing_matching_review`, sem elegibilidade. 23 testes locais passaram. Próxima ação: revisão identificada do pacote; integração runtime depende dela.

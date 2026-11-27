@@ -17,10 +17,14 @@ import {
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import EvidenceSummary from "./components/EvidenceSummary";
 import Statements from "./components/Statements";
 import { useAnalysis } from "./services/useAnalysis";
 import { date, money } from "./services/format";
-import { reportMarkdown } from "./services/reportMarkdown";
+import {
+  reportMarkdown,
+  missingReportSections,
+} from "./services/reportMarkdown";
 import { reportPresentation } from "./services/reportPresentation";
 import type { Snapshot } from "./services/api";
 
@@ -438,6 +442,7 @@ export default function App({ uid }: { uid: string }) {
                 </span>
               </div>
             </section>
+            <EvidenceSummary metrics={analysis?.metrics ?? []} />
             <section
               className="panel interpretation-panel"
               id="interpretacao"
@@ -454,6 +459,17 @@ export default function App({ uid }: { uid: string }) {
               </div>
               {analysis?.interpretation ? (
                 <div className="markdown">
+                  {missingReportSections(analysis.interpretation).length >
+                    0 && (
+                    <p role="status">
+                      Relatório com estrutura incompleta. Seções não
+                      identificadas:{" "}
+                      {missingReportSections(analysis.interpretation).join(
+                        ", ",
+                      )}
+                      . O texto recebido foi preservado.
+                    </p>
+                  )}
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm, reportPresentation]}
                     skipHtml
