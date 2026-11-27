@@ -11,7 +11,7 @@ from llm_usage import UsageMeter, current_usage
 from typing import Any, Dict, List, Optional, Union
 
 from crewai import BaseLLM
-from openai import OpenAI
+from openai import OpenAI, APITimeoutError, APIConnectionError
 
 logger = logging.getLogger("llm_provider")
 
@@ -43,6 +43,11 @@ class InterpretationUnavailable(RuntimeError):
 
 
 def provider_failure(exc: Exception) -> str:
+    # Typed SDK errors only: never infer a timeout from elapsed time or body text.
+    if isinstance(exc, (APITimeoutError, TimeoutError)):
+        return "timeout"
+    if isinstance(exc, APIConnectionError):
+        return "connection"
     return {402: "balance", 413: "capacity", 429: "rate_limit",
             401: "credentials", 403: "credentials"}.get(
                 getattr(exc, "status_code", None), "unavailable")
@@ -163,6 +168,8 @@ class ConfigurableLLM(BaseLLM):
                     self._disabled.add(provider.name)
                 logger.warning("llm_fallback provider=%s kind=%s", provider.name, kind)
         message = {
+            "timeout": "O serviço de IA não respondeu dentro do prazo da chamada.",
+            "connection": "Não foi possível estabelecer ou manter a conexão com o serviço de IA.",
             "capacity": "O serviço de IA recusou o volume de texto desta análise.",
             "rate_limit": "O serviço de IA atingiu seu limite temporário de uso.",
             "balance": "O serviço de IA está sem saldo disponível.",
@@ -205,7 +212,8 @@ class ConfigurableLLM(BaseLLM):
         started = monotonic()
         attempt = dict(provider=kwargs["provider_name"], model=kwargs["model"],
                        stage=self.usage.stage, logical_call=self.usage.logical_calls,
-                       outcome="unavailable", input_tokens=None, output_tokens=None)
+                       outcome="unavailable", input_tokens=None, output_tokens=None,
+                       request_timeout_seconds=kwargs["timeout"])
         try:
             result = self._complete(attempt=attempt, **kwargs)
             attempt["outcome"] = "success"
