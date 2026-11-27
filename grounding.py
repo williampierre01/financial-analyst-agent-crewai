@@ -23,6 +23,13 @@ Fundamentação obrigatória:
   Avalie cada exercício separadamente: quando o reportado estiver disponível,
   não diga que ele não foi conciliado ou não pode ser usado. Preserve a fonte
   e o alcance limitado da revisão, sem apresentá-la como auditoria.
+  O reportado disponível pode ser citado e comparado entre exercícios compatíveis.
+  Seus valores isolados não demonstram eficiência operacional nem explicam causas
+  de variação. Essa limitação de inferência não é uma pendência de conciliação.
+  Não invente "ausência de conciliação contábil completa" ou "falta de conciliação
+  com outros demonstrativos" como justificativa para não usar o reportado aprovado.
+  As ressalvas de perímetro do lucro e de fórmula do fluxo de caixa livre pertencem
+  a essas medidas; não as transfira ao resultado operacional reportado.
   Somente quando o resultado operacional reportado estiver
   bloqueado por definição não conciliada com os demonstrativos oficiais, diga
   "resultado operacional não utilizado por falta de conciliação"; não diga
