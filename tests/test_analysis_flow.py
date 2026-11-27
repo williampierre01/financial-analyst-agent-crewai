@@ -202,7 +202,12 @@ class EvidenceContextTests(unittest.TestCase):
         partial["status"] = "partial"
         partial["quote"]["freshness"] = "stale"
         partial["statements"]["income_statement"][0]["currency"] = None
-        for data in [snapshot(), partial]:
+        approved = snapshot()
+        income = approved["statements"]["income_statement"][0]
+        income["values"]["operating_income"] = None
+        income["values"]["reported_operating_income"] = 0
+        income["reported_operating_income_reference"] = {"value": 0, "document_url": "https://example.org/official"}
+        for data in [snapshot(), partial, approved]:
             with self.subTest(status=data["status"]):
                 original = deepcopy(data)
                 stages = []
@@ -223,6 +228,7 @@ class EvidenceContextTests(unittest.TestCase):
                     # No model summary can erase nulls, zero, negatives, source, dates or warnings.
                     self.assertEqual(json.loads(encoded), original)
                     self.assertIn(agents.EVIDENCE_RULES, task.description)
+                    self.assertIn(agents.encode(agents.operating_availability(data)), task.description)
                     self.assertIn(agents.encode(agents.compact_metrics(agents.calculate_metrics(data))), task.description)
                 self.assertNotIn(agents.REPORT_RULES, quant.description)
                 self.assertIn(agents.REPORT_RULES, cio.description)
