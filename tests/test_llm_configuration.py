@@ -55,6 +55,35 @@ class AccountingTests(unittest.TestCase):
         return exc
 
     @patch("llm_provider.sleep")
+    def test_typed_transport_failures_are_distinct_and_do_not_retry(self, wait):
+        import httpx
+        from openai import APITimeoutError, APIConnectionError
+        request = httpx.Request("POST", "https://example.invalid/private")
+        for exc, kind in [
+            (APITimeoutError(request=request), "timeout"),
+            (APIConnectionError(message="private body secret", request=request), "connection"),
+            (RuntimeError("timeout private body secret"), "unavailable"),
+        ]:
+            with self.subTest(kind=kind):
+                llm = self.llm(timeout=17)
+                llm.providers = llm.providers[:1]
+                create = llm._deepseek_client.chat.completions.create
+                create.side_effect = exc
+                with self.assertLogs("llm_usage", level="INFO") as logs:
+                    with self.assertRaises(InterpretationUnavailable) as error:
+                        llm.call("private prompt")
+                self.assertEqual(error.exception.code, "interpretation_" + kind)
+                self.assertIn("dados financeiros continuam disponíveis", str(error.exception))
+                create.assert_called_once()
+                attempt = llm.usage.attempts[0]
+                self.assertEqual(attempt["outcome"], kind)
+                self.assertEqual(attempt["request_timeout_seconds"], 17)
+                self.assertIsNone(attempt["input_tokens"])
+                self.assertNotIn("private", str(logs.output))
+                self.assertNotIn("secret", str(error.exception))
+        wait.assert_not_called()
+
+    @patch("llm_provider.sleep")
     def test_503_retry_is_measured_and_only_once_per_analysis(self, wait):
         llm = self.llm()
         create = llm._deepseek_client.chat.completions.create

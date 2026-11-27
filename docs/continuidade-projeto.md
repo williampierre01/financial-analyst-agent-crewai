@@ -1,3 +1,17 @@
+## Atualização de diagnóstico — 27/11/2026
+
+PR #36 incorporado em `820678d`. Capturas do usuário da consulta PETR4 às
+14:23 mostram três indicadores, evidências expansíveis e preservação dos dados
+com interpretação indisponível. O log mostra uma tentativa Gemini na etapa
+`gathering`, duração de 63.961 ms, resultado `unavailable`, sem uso informado.
+Esse registro antigo não permite confirmar timeout, conexão ou outra causa.
+
+Próximo PR distingue timeout e falha de conexão por tipos do SDK, com mensagens
+públicas fixas e prazo da chamada no log. Erros desconhecidos continuam genéricos.
+Não registra corpo do erro, prompt, resposta ou credenciais. Não aumenta prazo,
+repetições ou chamadas. Não resolve a disponibilidade do provedor; melhora o
+próximo diagnóstico. Validação somente com simulações locais, sem nova consulta.
+
 ## Situação vigente — 27/11/2026
 
 Este resumo substitui os próximos passos e estados pendentes das entradas
